@@ -1,11 +1,6 @@
 ---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
 layout: home
 ---
-
-# Добро пожаловать на мой сайт!
-
-Здесь будет мой контент. Я использую тему Tactile и Jekyll.
-
-## О проекте
-
-Этот проект создан для тестирования и создания моего сайта.
