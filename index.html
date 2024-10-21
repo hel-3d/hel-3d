@@ -6,13 +6,9 @@
     <title>Елена Гусаревич - Резюме и Портфолио</title>
     <!-- Подключение Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Иконки для разных устройств -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-
+    <!-- Предзагрузка видео -->
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
     <style>
         /* Видео-фон */
         .background-video {
@@ -33,6 +29,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачная подложка */
             color: #FFF;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
