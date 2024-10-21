@@ -9,12 +9,12 @@
     <style>
         /* Видео-фон */
         .background-video {
-            position: fixed;
+            position: fixed; /* Зафиксируем видео */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Подстроить под размер экрана */
             z-index: -1;
         }
 
@@ -87,37 +87,11 @@
             .about-container {
                 flex-direction: column;
                 text-align: center;
-                gap: 20px;
+                gap: 20px; /* Уменьшим промежуток */
             }
 
             .about-text, .about-image {
                 width: 100%; /* Максимальная ширина для мобильных */
-            }
-
-            /* ОГРАНИЧЕНИЕ для фото на мобильных */
-            .about-image {
-                width: 80%;
-                max-width: 200px; /* Максимальная ширина на мобильных устройствах */
-            }
-
-            /* Мобильная версия видео */
-            .background-video-desktop {
-                display: none; /* Скрываем десктопное видео */
-            }
-
-            .background-video-mobile {
-                display: block;
-            }
-        }
-
-        /* Видео для десктопа */
-        @media (min-width: 769px) {
-            .background-video-mobile {
-                display: none; /* Скрываем мобильное видео на десктопе */
-            }
-
-            .background-video-desktop {
-                display: block;
             }
         }
 
@@ -127,7 +101,7 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            padding: 20px;
+            padding: 20px; /* Те же отступы, что и в верхнем блоке */
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -155,15 +129,12 @@
 </head>
 <body>
 
-    <!-- Видео для десктопа -->
-    <video autoplay muted loop playsinline class="background-video background-video-desktop">
-        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-    </video>
-
-    <!-- Видео для мобильных устройств -->
-    <video autoplay muted loop playsinline class="background-video background-video-mobile">
-        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4">
+    <!-- Видео в качестве фона -->
+    <video autoplay muted loop playsinline class="background-video">
+        <!-- Видео для десктопов -->
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <!-- Видео для мобильных -->
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
         Ваш браузер не поддерживает видео.
     </video>
 
