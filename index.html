@@ -9,12 +9,12 @@
     <style>
         /* Видео-фон */
         .background-video {
-            position: absolute;
+            position: fixed; /* Зафиксируем видео */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Подстроить под размер экрана */
             z-index: -1;
         }
 
@@ -26,7 +26,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            background-color: rgba(0, 0, 0, 0.6); /* Подложка под видео */
+            background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачная подложка */
             color: #FFF;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -34,9 +34,9 @@
         .container {
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
-            padding: 20px; /* Уменьшенные отступы */
+            padding: 20px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            max-width: 90%; /* Адаптивная ширина для мобильных */
+            max-width: 90%;
             margin-bottom: 20px;
         }
 
@@ -48,17 +48,7 @@
             font-size: 1.2em;
         }
 
-        /* Обычные кнопки */
-        .btn-primary {
-            background-color: #FF6F61;
-            border: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #FF4A3B;
-        }
-
+        /* Кнопки */
         .btn-outline-secondary {
             border-color: #FFF;
             color: #FFF;
@@ -70,21 +60,13 @@
             color: #000;
         }
 
-        /* Кнопка "Соцсети и контакты" */
         .btn-highlighted {
             background-color: #740315;
             color: white;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Анимация при наведении */
-            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315; /* Эффект неона вокруг кнопки */
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
         }
 
-        .btn-highlighted:hover {
-            background-color: #2c0b16; /* Цвет при наведении */
-            color: white;
-            box-shadow: 0 0 10px #740315, 0 0 15px #740315, 0 0 30px #740315; /* Увеличение свечения при наведении */
-        }
-
-        /* Адаптация под мобильные устройства */
+        /* Адаптация для мобильных устройств */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -94,66 +76,44 @@
                 font-size: 1em;
             }
 
-            .btn-lg {
-                font-size: 0.9em;
-                padding: 10px 20px;
-            }
-
-            /* Адаптация размера для второго контейнера */
+            /* Контейнер с текстом и изображением */
             .about-container {
-                flex-direction: column; /* Перестроить элементы в колонку */
-                text-align: center; /* Выравнивание по центру */
+                flex-direction: column;
+                text-align: center;
+                gap: 20px; /* Уменьшим промежуток */
             }
 
-            .about-text {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .about-image {
-                width: 80%; /* Увеличить ширину изображения для адаптации */
-                max-width: 300px; /* Ограничить максимальный размер */
+            .about-text, .about-image {
+                width: 100%; /* Максимальная ширина для мобильных */
             }
         }
 
-        /* Стиль для блока с текстом и фотографией */
+        /* Контейнер с текстом и изображением */
         .about-container {
             display: flex;
-            justify-content: center; /* Центрируем содержимое */
+            justify-content: center;
             align-items: center;
-            gap: 380px; /* Добавляем промежуток между текстом и изображением */
-            padding: 10px;
+            gap: 30px;
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            flex-wrap: wrap;
         }
 
         .about-text {
             width: 50%;
-            max-width: 100ch; /* Ограничение длины строки до примерно 102 символов */
+            max-width: 100ch;
             text-align: left;
-            margin: 0;
-            white-space: normal; /* Разрешаем перенос строк */
-            word-wrap: break-word; /* Переносим длинные слова на новую строку */
         }
 
         .about-image {
             width: 30%;
             max-width: 300px;
-            text-align: center; /* Центрируем изображение */
         }
 
         .about-image img {
             width: 100%;
             height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto; /* Масштабирование изображения с сохранением пропорций */
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
@@ -163,7 +123,7 @@
 
     <!-- Видео в качестве фона -->
     <video autoplay muted loop class="background-video">
-        <source src="https://github.com/hel-3d/hel-3d/raw/master/123.mp4" type="video/mp4">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
 
@@ -175,13 +135,13 @@
 
         <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
-            <a href="1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Портфолио 3D GameDev</a>
-            <a href="1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
-            <a href="1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
-            <a href="1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
-            <a href="1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Обучающий материал</a>
-            <a href="1.7_Contacts.html" class="btn btn-highlighted btn-lg">Соцсети и контакты</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Портфолио 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Обучающий материал</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Соцсети и контакты</a>
         </div>
     </div>
 
@@ -193,7 +153,7 @@
             <p>Я также занимаюсь разработкой и внедрением новых методов для оптимизации рабочих процессов, помогая командам работать быстрее и эффективнее. Я верю в постоянное развитие и обучение, и мне нравится делиться своими знаниями с другими.</p>
         </div>
         <div class="about-image">
-            <img src="https://github.com/hel-3d/hel-3d/raw/master/1234.jpg" alt="Елена Гусаревич">
+            <img src="https://hel-3d.github.io/hel-3d/1234.jpg" alt="Елена Гусаревич">
         </div>
     </div>
 
