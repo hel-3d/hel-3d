@@ -3,31 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме Елены Гусаревич</title>
+    <title>Елена Гусаревич - Соцсети и Контакты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
+    <style>
+        /* Видео-фон */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            color: #FFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            margin-bottom: 20px;
+        }
+
+        /* Кнопки */
+        .btn-outline-secondary {
+            border-color: #FFF;
+            color: #FFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+                .btn-highlighted {
+            background-color: #740315;
+            color: white;
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .btn-disabled {
+            background-color: rgba(51, 51, 51, 0.2);
+            color: #888;
+            border: 1px solid #888;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .social-btn {
+            color: #FFF;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid #FFF;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            min-width: 150px; /* Минимальная ширина кнопок */
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .social-btn:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .form-control, .btn-primary {
+            margin-top: 10px;
+            max-width: 500px;
+        }
+
+        .contact-info .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-text, .about-image {
+            flex: 1 1 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Резюме 3D GameDev</h1>
-    </header>
 
-    <section>
-        <h2>Опыт работы</h2>
-        <p>Старший 3D художник по окружению в XYZ Company (Апрель 2024 - настоящее время)</p>
-        <p>... (остальная информация о твоем опыте)</p>
-    </section>
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+        Ваш браузер не поддерживает видео.
+    </video>
 
-    <section>
-        <h2>Навыки</h2>
-        <ul>
-            <li>Blender</li>
-            <li>Unreal Engine</li>
-            <li>Python</li>
-            <!-- добавь свои навыки -->
-        </ul>
-    </section>
+    <!-- Главный контейнер -->
+    <div class="container text-center my-5">
+        <h1 class="display-4">Елена Гусаревич</h1>
+        <p class="lead">Старший 3D художник по окружению / Разработчик игр</p>
+        <p>Знания: Blender, Unreal Engine, Python, Notion и другие</p>
 
-    <nav>
-        <a href="index.html">Назад на главную</a>
-    </nav>
+        <!-- Навигационные кнопки -->
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Начальная страница</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Портфолио 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Обучающий материал</a>
+            <a href="#" class="btn btn-disabled btn-lg">Соцсети и контакты</a>
+        </div>
+    </div>
+
+    <div class="container contact-info">
+        <div class="row">
+            <div class="about-text">
+                <h2>Найми меня на проект</h2>
+
+                <h4>Дополнительные ресурсы:</h4>
+                <div class="d-flex flex-wrap">
+                    <a href="https://www.artstation.com/yourhunger" class="social-btn" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/artstation.png" alt="Artstation"> Artstation
+                    </a>
+                    <a href="https://clck.ru/3EP8Gq" class="social-btn" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/figma.png" alt="Figma"> Figma
+                    </a>
+                    <a href="https://www.cgtrader.com/designers/i-am-fbx-man" class="social-btn" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/3d.png" alt="CGTrader"> CGTrader
+                    </a>
+                </div>
+
+                <h4>Контактная информация:</h4>
+                <div class="d-flex flex-wrap">
+                    <a href="https://www.linkedin.com/in/helena-gusarevich/" class="social-btn" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn"> LinkedIn
+                    </a>
+                    <a href="https://t.me/Hel_inst" class="social-btn" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/telegram-app.png" alt="Telegram"> Telegram
+                    </a>
+                </div>
+                <p>Email: <a href="mailto:pdf.man.3d@gmail.com" style="color: #FFF;">pdf.man.3d@gmail.com</a></p>
+
+                <h4>Свяжитесь со мной</h4>
+                <form action="http://89.22.229.54/send-email.php" method="POST" onsubmit="return handleSubmit(event)">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Ваше сообщение" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-highlighted btn-lg">Отправить</button>
+                </form>
+            </div>
+
+            <div class="about-image">
+                <img src="TmUz.jpg" alt="Елена Гусаревич">
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("Сообщение успешно отправлено!");
+                form.reset();
+            } else {
+                response.json().then(data => alert(data.error || "Ошибка при отправке сообщения."));
+            }
+        }).catch(error => {
+            alert("Произошла ошибка при отправке сообщения.");
+        });
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
