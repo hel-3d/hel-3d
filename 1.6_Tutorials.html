@@ -3,21 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио Елены Гусаревич</title>
+    <title>Елена Гусаревич - 3Д резюме</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
+    <style>
+        /* Видео-фон */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            color: #FFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            margin-bottom: 20px;
+        }
+
+        li {
+    color: #999; /* Это может сделать текст серым */
+}
+        /* Кнопки статей */
+    .article-button {
+        display: flex;
+        justify-content: center; /* Горизонтальное центрирование */
+        padding: 15px; /* Уменьшение внутреннего отступа */
+        border: 1px solid #FFF;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+        color: #999999;
+        max-width: 300px; /* Ограничение ширины кнопки */
+        max-height: 80px; /* Уменьшили минимальную высоту */
+    }
+
+        .article-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+.article-button img {
+    width: 110px;
+    height: 50px;
+    object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Выравнивание текста по центру */
+            justify-content: center; /* Центрирование внутри контейнера */
+        }
+
+        .article-title {
+            font-size: 1em;
+            margin: 0;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .article-description {
+            font-size: 0.95em;
+            color: #CCC;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+            -webkit-box-orient: vertical;
+        }
+
+        /* Стили секций */
+        .section-title {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFF;
+            padding-bottom: 10px;
+        }
+
+        /* Кнопки */
+        .btn-outline-secondary {
+            border-color: #FFF;
+            color: #FFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+                .btn-highlighted {
+            background-color: #740315;
+            color: white;
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .btn-disabled {
+            background-color: rgba(51, 51, 51, 0.2);
+            color: #888;
+            border: 1px solid #888;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .social-btn {
+            color: #FFF;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid #FFF;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            min-width: 150px; /* Минимальная ширина кнопок */
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .social-btn:hover {
+            background-color: #999999;
+            color: #000;
+        }
+
+        .form-control, .btn-primary {
+            margin-top: 10px;
+            max-width: 500px;
+        }
+
+        .contact-info .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-text, .about-image {
+            flex: 1 1 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Портфолио 3D GameDev</h1>
-    </header>
 
-    <section>
-        <h2>Мои работы</h2>
-        <p>Здесь будут примеры твоих проектов с изображениями, описаниями и ссылками.</p>
-        <!-- Ты можешь добавить ссылки на GitHub или другие источники -->
-    </section>
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+        Ваш браузер не поддерживает видео.
+    </video>
 
-    <nav>
-        <a href="index.html">Назад на главную</a>
-    </nav>
+    <!-- Главный контейнер -->
+    <div class="container text-center my-5">
+        <h1 class="display-4">Elena Gusarevich (Hel)</h1>
+        <p class="lead">Lead 3D Environment Artist / Game Developer</p>
+        <p>With 4 years in 3D modeling, I excel in optimizing visuals and model weights. Experienced in leading and managing modeling teams, I ensure efficient project execution.</p>
+
+        <!-- Навигационные кнопки -->
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Начальная страница</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Портфолио 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
+            <a href="#" class="btn btn-disabled btn-lg">Обучающий материал</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Соцсети и контакты</a>
+        </div>
+    </div>
+
+    <!-- Секция с резюме -->
+    <div id="resume-container">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elena Gusarevich - Resume</title>
+    <style>
+        #resume-container body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+#resume-container .container {
+    display: flex; /* Включение flexbox для контейнера */
+    flex-wrap: wrap; /* Добавляем перенос строк, если ширины не хватает */
+    justify-content: space-between; /* Отступы между колонками */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+#resume-container .left-column {
+    flex: 1 1 65%; /* Задаем размер левой колонки */
+    padding: 20px;
+    min-width: 300px; /* Минимальная ширина текста */
+}
+
+#resume-container .right-column {
+    flex: 0 0 30%; /* Задаем размер правой колонки */
+    background-color: #320109;
+    color: #999999;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    max-width: 350px; /* Ограничение ширины */
+    min-width: 200px; /* Минимальная ширина */
+}
+        #resume-container h1, 
+        #resume-container h2, 
+        #resume-container h3 {
+            color: #999999; /* Изменен цвет на более тёмный для лучшей читаемости */
+        }
+        #resume-container .right-column h3 {
+            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
+        }
+        #resume-container .header {
+            text-align: left;
+            padding-bottom: 20px;
+        }
+        #resume-container .header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        #resume-container .header h2 {
+            margin: 5px 0 10px 0;
+            font-size: 18px;
+            color: #999999;
+        }
+        #resume-container .contact-info {
+            font-size: 14px;
+            color: #999999;
+            margin-bottom: 20px;
+        }
+        #resume-container .contact-info a {
+            color: #999999;
+            text-decoration: none;
+        }
+        #resume-container .contact-info img {
+            vertical-align: middle;
+            margin-right: 8px;
+            width: 15px; /* Уменьшение размера иконок в 2 раза */
+            height: 15px; /* Уменьшение размера иконок в 2 раза */
+        }
+        #resume-container .section {
+            margin-bottom: 20px;
+        }
+        #resume-container .section-title {
+            font-size: 18px;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #ffffff; /* Темный цвет для заголовков */
+            position: relative;
+        }
+        #resume-container .right-column .section-title {
+            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
+        }
+        #resume-container .section-title:after {
+            content: "";
+            display: block;
+            width: 100%; 
+            height: 2px;
+            background-color: #8d9dab; 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin-top: 5px; 
+        }
+        #resume-container .right-column {
+            flex: 0 0 30%;
+            background-color: #320109;
+            color: #999999;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            border: 1px solid #ffffff; /* Белая рамка вокруг контейнера */
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень, если требуется */
+            max-width: 350px;
+            min-width: 200px;
+}
+        }
+        #resume-container .section-content p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        #resume-container ul {
+            margin: 10px 0 10px 20px;
+        }
+        #resume-container ul li {
+            margin-bottom: 10px;
+        }
+        #resume-container .skills, 
+        #resume-container .achievements, 
+        #resume-container .passions {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            font-size: 14px;
+        }
+        #resume-container .skills li, 
+        #resume-container .achievements li, 
+        #resume-container .passions li {
+            background: none;
+            margin-bottom: 10px;
+            padding: 0;
+            border-radius: 0;
+            color: #999999;
+        }
+        #resume-container .skills {
+            margin-bottom: 20px;
+        }
+        #resume-container .skills li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        #resume-container .skills li::after {
+            content: " •";
+        }
+        #resume-container .skills li:last-child::after {
+            content: "";
+        }
+#resume-container .photo {
+    border-radius: 50%; /* Делает фото круглым */
+    width: 150px;
+    height: 150px;
+    background-color: #7F8C8D;
+    margin-bottom: 20px;
+    background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ffffff; /* Белая рамка вокруг фото */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень */
+}
+
+        #resume-container .icon {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url('https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=FFFFFF');
+        }
+        #resume-container .achievements li strong {
+            display: inline;
+            margin-bottom: 0;
+            padding-left: 5px;
+        }
+        #resume-container .achievements li p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

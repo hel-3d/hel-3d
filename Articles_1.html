@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статья - Название статьи</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet"> <!-- Подсветка синтаксиса Prism.js -->
+    <style>
+        /* Основные стили */
+        body {
+            margin: 0;
+            padding: 20px;
+            color: #FFF;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+         /* Бесконечная рамка из изображений */
+        .side-border {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            background-image: url('https://sun6-22.userapi.com/s/v1/ig2/pLm1feutFZTz74UbWsoIG_deZ58Tv30L4nvGXH2dDxZJyHTLXYYdE9gt663fTQJAPN68arj5FP_jNJ_8vh6Eyjr6.jpg?size=50x50&quality=96&crop=0,0,599,599&ava=1');
+            background-repeat: repeat-y;
+        }
+        .side-border.left {
+            left: 0;
+        }
+        .side-border.right {
+            right: 0;
+        }
+
+        /* Кнопка возврата */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            color: #FFF;
+            border: 1px solid #FFF;
+            border-radius: 5px;
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Заголовок */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFF;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+         /* Текстовые блоки */
+        p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        /* Стили для списков */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+        }
+        ul li:before {
+            content: url('https://img.icons8.com/?size=25&id=6603&format=png&color=FFFFFF'); /* Уменьшение размера иконки */
+            position: absolute;
+            left: 0;
+        }
+        ul ul li:before {
+            content: url('https://img.icons8.com/?size=25&id=94AkuNMnr07H&format=png&color=FFFFFF'); /* Уменьшение размера для иконки второго уровня */
+        }
+
+        /* Изображения в тексте */
+        .float-image {
+            width: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .float-right {
+            float: right;
+            margin-left: 20px;
+        }
+        .float-left {
+            float: left;
+            margin-right: 20px;
+        }
+
+        /* Кнопки навигации в конце статьи */
+         /* Кнопки статей */
+        .article-button {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            border: 1px solid #FFF;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #FFF;
+            min-height: 160px;
+        }
+
+        .article-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .article-button img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+            flex-shrink: 0; /* Избегает сжатия изображения */
+        }
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .article-title {
+            font-size: 1.2em;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .article-description {
+            font-size: 0.95em;
+            color: #CCC;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+            -webkit-box-orient: vertical;
+        }
+
+        /* Стили секций */
+        .section-title {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFF;
+            padding-bottom: 10px;
+        }
+
+        /* Кнопки */
+        .btn-outline-secondary {
+            border-color: #FFF;
+            color: #FFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+                .btn-highlighted {
+            background-color: #740315;
+            color: white;
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .btn-disabled {
+            background-color: rgba(51, 51, 51, 0.2);
+            color: #888;
+            border: 1px solid #888;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .social-btn {
+            color: #FFF;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid #FFF;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            min-width: 150px; /* Минимальная ширина кнопок */
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .social-btn:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .form-control, .btn-primary {
+            margin-top: 10px;
+            max-width: 500px;
+        }
+
+        .contact-info .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-text, .about-image {
+            flex: 1 1 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        /* Подсветка кода */
+        .code-container pre[class*="language-"], .code-container code[class*="language-"] {
+            font-size: 1em;
+            line-height: 1.5;
+            background: #2D2D2D;
+            color: #FFF;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+            white-space: pre;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка возврата -->
+    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
+
+    <!-- Заголовок статьи -->
+    <h1>Название статьи</h1>
+
+    <!-- Подзаголовок -->
+    <h2>Подзаголовок статьи</h2>
+
+    <!-- Текст статьи -->
+    <p>Это абзац текста, который описывает основное содержание статьи. Здесь можно добавить любое количество текста для расширенного объяснения.</p>
+    
+    <!-- Пример с плавающим изображением -->
+    <img src="https://www.askmoney.com/wp-content/uploads/sites/18/2020/05/877be34a389097a4dd6c70bf734c8282.jpg" alt="Пример изображения" class="float-image float-right">
+
+    <p>Это дополнительный текст, который будет обтекать изображение. Продолжайте добавлять текст, чтобы проверить, как он будет выравниваться вокруг изображения.</p>
+
+    <!-- Список с иконками -->
+    <h2>Пункты и под-пункты</h2>
+    <ul>
+        <li>Основной пункт списка
+            <ul>
+                <li>Подпункт с дополнительной информацией</li>
+                <li>Еще один подпункт</li>
+            </ul>
+        </li>
+        <li>Следующий основной пункт</li>
+    </ul>
+
+    <!-- Блок кода с подсветкой -->
+    <h2>Пример кода</h2>
+    <pre class="language-html"><code class="language-html">
+&lt;div class="article-content"&gt;
+    &lt;p&gt;Это пример кода с подсветкой.&lt;/p&gt;
+&lt;/div&gt;
+    </code></pre>
+
+    <!-- Кнопки навигации по другим статьям -->
+    <div class="container">
+        <h2 class="section-title">Другие статьи по теме</h2>    
+        <!-- Кнопка возврата -->
+    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail1.jpg" alt="Article 1 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Как выбрать выделенный сервер</h3>
+                        <p class="article-description">Как выбрать выделенный сервер.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail2.jpg" alt="Article 2 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Топ 10 лучших хостингов 2024 2</h3>
+                        <p class="article-description">Топ 10 лучших хостингов 2024.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail3.jpg" alt="Article 3 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Статья 3</h3>
+                        <p class="article-description">Краткое описание статьи</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    <!-- Подключение библиотеки Prism.js для подсветки синтаксиса -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
