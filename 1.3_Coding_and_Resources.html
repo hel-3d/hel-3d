@@ -78,6 +78,23 @@
             align-items: center;
         }
 
+        .project {
+            position: relative; /* Это нужно для позиционирования подписи */
+            padding-bottom: 40px; /* Добавим отступ снизу для подписи */
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+        }
+
+        .project-signature {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.85rem;
+            color: white; /* Замените на желаемый цвет */
+            text-align: right;
+            font-style: italic; /* Для красоты */
+        }
+
         li {
             color: #999; /* Это может сделать текст серым */
         }
@@ -287,6 +304,20 @@
         <li>Обходит ограничения Instagram на скачивание </li>
         <li>Работает как в личке с ботом, так и как общий помощник в виде админа групп</li>
         <li>Занимательная статистика бота по кнопке</li>
+    </ul>
+    <a href="#" class="btn btn-outline-secondary">Перейти на страницу проекта</a>
+    <span class="project-signature">Найдите @Hel_inst_bot в Instagram, чтобы свободно использовать его</span>
+</div>
+<div class="project">
+    <h4>
+        <img class="icon-circle" src="https://cdn4.cdn-telegram.org/file/YdhrD4I21fq7qMRm8wZRYXVyonDJlQVkRFFro_MqDew9mz6-wChEa4O5otJ4Qhk0ATjisx34bKFu62mPxdHZRf8Dvxe3fqebSy2SuAeTX84-tfN-YnUN2zUt50BAw7PV5HKACP0OjSTUbatc30fMmtUijcI81U1N2YSejOqnQChtsAD-K9QjLgmC2jdx9J6gvgQNJ3qpu7UsUL9J6LilC2hkEHcEuLsjrFiDw6AYhYG6eJ9C6lojo_GUeSQi-lw8Z-ANq60vvrThA_Z8qiFgFVeokn5ub3pczNwNHixAKdEccuN4TpwetYQOhlolsozqd8Jl9d2tZWJfju4swpsFBQ.jpg" alt="Иконка">
+        Comix_parser парсит группу Vk и качает посты с изображениями в канал Telegram начиная с самого старого двигаясь к новым
+    </h4>
+    <ul>
+        <li>Пример работы можно посмотреть в канале @LMK_comix</li>
+        <li>Позволяет перепостить весь контент выбранной группы к себе в канал Telegram с заданным интервалом</li>
+        <li>Есть версия, которая обходит ограничение закрытых групп Vk</li>
+        <li>Есть версия с юзерфрендли интерфейсом для настройки бота без потребности покупателю вникать в код</li>
     </ul>
     <a href="#" class="btn btn-outline-secondary">Перейти на страницу проекта</a>
 </div>
