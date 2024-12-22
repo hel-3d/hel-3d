@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#333333">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png"> <!-- Иконка для вкладки -->
+</head>
+<body>
+    <div id="score-board">
+        <span id="score">Очки: 0</span>
+        <span id="moves">Ходы: 0</span>
+    </div>
+    <div id="game-container">
+        <div id="game-board"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                console.log('Service Worker зарегистрирован с областью: ', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker регистрация провалилась: ', error);
+            });
+        }
+    </script>
+</body>
+</html>
