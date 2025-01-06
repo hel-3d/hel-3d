@@ -68,7 +68,7 @@
         }
 
         .right-column {
-            width: 520px; /* Фиксированная ширина */
+            width: 520px;
             flex: none; /* Убираем автоматическое растяжение */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -77,33 +77,165 @@
             flex-direction: column;
             align-items: center;
         }
+/* Общий стиль для .project */
+.project {
+    position: relative;
+    padding: 20px; /* Добавляем внутренние отступы */
+    margin-bottom: 20px; /* Отступ между блоками */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+}
+
+/* Десктопная версия */
+@media screen and (min-width: 769px) {
+    .project {
+        padding: 10px; /* Внутренний отступ для десктопа */
+        margin-bottom: 20px; /* Расстояние между блоками проектов */
+    }
+}
+
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+    .project {
+        padding: 10px; /* Уменьшенные внутренние отступы */
+        margin-bottom: 10px; /* Отступ между блоками */
+    }
+}
+        @media screen and (max-width: 768px) {
+    .right-column {
+        display: none; /* Скрыть правую колонку на мобильных устройствах */
+    }
+}
+
+/* Показываем сообщение только на мобильных устройствах */
+@media screen and (max-width: 768px) {
+    .mobile-message {
+        display: block; /* Показываем на мобильных */
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 10px;
+        margin: 20px 0;
+        border-radius: 10px;
+    }
+}
+/* Общие стили для подписи */
+.project-signature {
+    word-wrap: break-word;
+    font-size: 0.85rem;
+    color: white;
+    font-style: italic;
+}
+
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+    .project-signature {
+        position: static; /* Сбрасываем абсолютное позиционирование */
+        display: block;  /* Делаем элемент блочным */
+        margin-top: 10px; /* Отступ сверху */
+        text-align: left; /* Выравнивание текста */
+    }
+
+    .project .btn {
+        margin-top: 0; /* Убираем отступ сверху кнопки */
+    }
+}
+
+/* Десктопная версия */
+@media screen and (min-width: 769px) {
+
+    .project-signature {
+        position: relative; /* 
+        right: 0px; /* Расположение справа */
+        font-size: 0.85rem;
+        color: white;
+        text-align: right;
+    }
+}
+
+/* Скрываем сообщение на устройствах с шириной экрана больше 768px */
+@media screen and (min-width: 769px) {
+    .mobile-message {
+        display: none; /* Скрываем на ПК */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .right-column {
+        display: flex; /* Убедитесь, что колонка видна на больших экранах */
+    }
+}
+
 
         .project {
             position: relative; /* Это нужно для позиционирования подписи */
-            padding-bottom: 40px; /* Добавим отступ снизу для подписи */
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
+            padding-bottom: 10px; /* Добавим отступ снизу для подписи */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
         }
 
         .project-signature {
             position: absolute;
-            bottom: 10px;
+            bottom: 15px;
             right: 10px;
+            word-wrap: break-word;
+            padding: 10px;
             font-size: 0.85rem;
             color: white; /* Замените на желаемый цвет */
             text-align: right;
             font-style: italic; /* Для красоты */
         }
+@media screen and (max-width: 768px) {
+.project {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Для мобильной версии */
+@media screen and (max-width: 768px) {
+    .project-signature {
+        position: static; /* Сбрасываем абсолютное позиционирование */
+        margin-bottom: 15px; /* Добавьте отступ снизу для кнопки */
+        display: block;  /* Делаем элемент блочным */
+        margin-top: 10px; /* Отступ сверху */
+        text-align: left; /* Выравнивание текста *
+    }
+
+    .project .btn {
+        margin-top: 0; /* Убираем отступ сверху кнопки */
+    }
+}
+
+/* Для десктопной версии */
+@media screen and (min-width: 769px) {
+    .project-signature {
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: 10px; /* Расположение внизу блока */
+        right: 10px; /* Расположение справа */
+        font-size: 0.85rem;
+        color: white; /* Цвет текста */
+        text-align: right; /* Выравнивание текста */
+        padding-bottom: 50px; /* Увеличьте отступ снизу для кнопки и подписи */
+    }
+
+    .project {
+        padding-bottom: 40px; /* Пространство для подписи */
+    }
+}
+
+
+    .btn {
+        margin-top: 15px;
+        width: 100%; /* Кнопка будет занимать всю ширину */
+    }
+}
 
         li {
             color: #999; /* Это может сделать текст серым */
-        }
-
-        .project {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
         }
 
         .project h4 {
@@ -238,6 +370,9 @@
 <div class="container content-container">
     <!-- Левая колонка -->
     <div class="left-column">
+    <div class="mobile-message">
+    Откройте эту страницу на ПК, чтобы сыграть в мои мини-игры
+</div>
         <h3 class="section-title">Мои проекты (Python, Js, Html)</h3>
         <p class="article-description">(Некоторые из них вы можете скачать бесплатно или купить)</p>
         <!-- Категория: Плагины для 3D софта -->

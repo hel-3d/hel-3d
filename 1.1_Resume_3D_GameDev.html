@@ -217,6 +217,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elena Gusarevich - Resume</title>
     <style>
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+    #resume-container .container {
+        flex-direction: column; /* Размещаем колонки вертикально */
+    }
+
+    #resume-container .left-column,
+    #resume-container .right-column {
+        flex: 1 1 100%; /* Обе колонки занимают всю ширину */
+        max-width: 100%; /* Убираем максимальную ширину */
+        margin-bottom: 20px; /* Отступ между колонками */
+    }
+
+    #resume-container .right-column {
+        align-items: flex-start; /* Контент прижимаем к началу */
+        padding: 15px; /* Уменьшаем внутренние отступы */
+        box-shadow: none; /* Убираем тень для упрощения */
+    }
+
+    #resume-container .photo {
+        width: 100px; /* Уменьшаем размер изображения */
+        height: 100px;
+        margin: 0 auto 10px; /* Центрируем фото */
+    }
+
+    #resume-container .skills, 
+    #resume-container .achievements, 
+    #resume-container .passions {
+        font-size: 0.85rem; /* Уменьшаем размер шрифта */
+    }
+}
+
         #resume-container body {
             font-family: Arial, sans-serif;
             margin: 0;
