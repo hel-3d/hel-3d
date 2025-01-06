@@ -276,10 +276,10 @@ pre {
     <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
 
     <!-- Заголовок статьи -->
-    <h1>Скрипт для конвертации изображений в pdf convert_to_pdf.py</h1>
+    <h1>Скрипт для нарезки pdf в изображения - convert_pdf_to_images.py</h1>
 
     <!-- Кнопка скачивания -->
-    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Скачать convert_to_pdf</a>
+    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Скачать convert_pdf_to_images</a>
 
     <!-- Кнопка доната -->
 <a href="https://yoomoney.ru/fundraise/17HENGAD7EB.250103" class="back-button">
@@ -291,12 +291,12 @@ pre {
 
 
     <!-- Текст статьи -->
-    <p>Скрипт был написан для упрощения моей собственной работы. Мне будет приятно, если ваша жизнь станет с ним проще. Буквально в пару секунд вы можете конвертировать все изображения в выбранной папке в один pdf. Изображения будут подогнаны по размеру, собраны в алфавитном порядке, а сам pdf будет назван именем первого изображения. Скрипт работает с изображениями в форматах: png, jpg, jpeg, bmp, gif, tiff. </p>
+    <p>Скрипт был написан для упрощения моей собственной работы. Мне будет приятно, если ваша жизнь станет с ним проще.<p> <p>Буквально в несколько секунд вы можете конвертировать pdf файл в набор изображений сохранив их в выбранную папку или создав папку если её не существует.  Все страницы конвертируются в указанной последовательности. Каждое изображение получает имя в формате [название файла]_page_[номер страницы].[формат]. Для удобства скрипт оснащён графическим интерфейсом.<p> <p>convert_pdf_to_images.py работает с изображениями в форматах: JPG, PNG, TIFF. </p>
     
     <!-- Пример с плавающим изображением -->
-    <img src="to_pdf.png" alt="Пример изображения" class="float-image float-right">
+    <img src="to_jpg_1.png" alt="Пример изображения" class="float-image float-right">
 
-    <p>Для удобства я написала небольшой интерфейс для открытия нужной папки и к тому же добавила в архив bat файл для быстрого открытия скрипта. Кнопка для скачивания архива скрипта находится выше. В конце статьи для любопытствующих будет представлен сам код.  </p>
+    <p>Для удобства я написала небольшой интерфейс и к тому же добавила в архив bat файл для быстрого открытия скрипта. Кнопка для скачивания архива скрипта находится выше. В конце статьи для любопытствующих будет представлен сам код.  </p>
 
     <!-- Список с иконками -->
     <h2>Инструкция по установке и запуску</h2>
@@ -315,25 +315,29 @@ pre {
             </li>
         </ul>
     </li>
-    <li>Установите библиотеку Pillow:
+    <li>Установите библиотеки Pillow и PyMuPDF:
     </li>
         <ul>
             <li>В командной строке введите (Для Windows):
 
-                <pre class="language-bash"><code>pip install pillow</code></pre></li>
+                <pre class="language-bash"><code>pip install pymupdf pillow</code></pre></li>
 </ul>
 
     <li>Распакуйте архив.
     </li>
     <li>Запустите скрипт:
         <ul>
-            <li>Дважды щёлкните на файл run_convert_to_pdf.bat если у вас Windows.</li>
-            <li>Если у вас другая операционная система - запустите run_convert_to_pdf.py через командную строку.
+            <li>Дважды щёлкните на файл convert_pdf_to_images.bat если у вас Windows.</li>
+            <li>Если у вас другая операционная система - запустите convert_pdf_to_images.py через командную строку.
     </li>
-    <li>Выберите папку, в котором находятся ваши изображения и нажмите ОК.
+    <li>Выберите PDF файл, папку для сохранения и формат изображений в интерфейсе.
     </li>
-    <li>Дождитесь уведомления о создании pdf и проверьте ваш новый pdf файл в папке с изображениями .
+        <!-- Пример с плавающим изображением -->
+    <img src="to_jpg_2.png" alt="Пример изображения" class="float-image">
+    <li>Дождитесь завершения конвертации. Все страницы будут сохранены как отдельные изображения в указанной папке.
     </li>
+            <!-- Пример с плавающим изображением -->
+    <img src="to_jpg_3.png" alt="Пример изображения" class="float-image">
 </ul>
 
 <div class="side-border left"></div>
@@ -343,82 +347,144 @@ pre {
     <h2>Оригинал кода</h2>
 <pre class="language-python"><code>
 import os
-from PIL import Image
-import re
+import fitz  # PyMuPDF
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from tkinter import ttk  # Для стилизованного OptionMenu
+from PIL import Image
 
-def numerical_sort(value):
-    """Функция для сортировки, учитывающая числовые части в имени файла"""
-    numbers = re.findall(r'\d+', value)
-    return list(map(int, numbers)) if numbers else [0]
+def save_image_as_tiff(pix, image_path):
+    # Конвертация Pixmap в изображение Pillow
+    img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+    img.save(image_path, format="TIFF")
 
-def images_to_pdf(folder_path):
-    # Получаем список всех файлов изображений в папке
-    image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff'))]
 
-    if not image_files:
-        messagebox.showerror("Ошибка", "Нет изображений в выбранной папке.")
+def convert_pdf_to_images(pdf_path, output_folder, image_format):
+    try:
+        pdf_document = fitz.open(pdf_path)
+        print(f"Всего страниц: {pdf_document.page_count}")
+
+        for page_num in range(pdf_document.page_count):
+            page = pdf_document.load_page(page_num)
+            pix = page.get_pixmap()
+
+            # Определяем путь для сохранения
+            image_path = os.path.join(
+                output_folder,
+                f"{os.path.basename(pdf_path)[:-4]}_page_{page_num + 1}.{image_format.lower()}",
+            )
+
+            # Если формат TIFF, используем Pillow
+            if image_format.lower() == "tiff":
+                save_image_as_tiff(pix, image_path)
+            else:
+                pix.save(image_path)  # Для PNG и JPG
+
+            print(f"Сохранено: {image_path}")
+        
+        messagebox.showinfo("Успех", f"Изображения сохранены в папке: {output_folder}")
+    except Exception as e:
+        messagebox.showerror("Ошибка", f"Ошибка при обработке файла {pdf_path}: {e}")
+
+def select_pdf_file():
+    pdf_path = filedialog.askopenfilename(
+        title="Выберите PDF файл",
+        filetypes=[("PDF файлы", "*.pdf")],
+    )
+    if pdf_path:
+        selected_pdf_label.config(text=f"{pdf_path}")  # Полностью заменяем текст
+        convert_button.config(state=tk.NORMAL)
+        convert_button.pdf_path = pdf_path
+
+
+def select_output_folder():
+    output_folder = filedialog.askdirectory(title="Выберите папку для сохранения")
+    if output_folder:
+        selected_folder_label.config(text=f"{output_folder}")  # Полностью заменяем текст
+        convert_button.output_folder = output_folder
+
+def start_conversion():
+    pdf_path = getattr(convert_button, "pdf_path", None)
+    output_folder = getattr(convert_button, "output_folder", None)
+    image_format = format_var.get()
+
+    if not pdf_path or not output_folder:
+        messagebox.showerror("Ошибка", "Пожалуйста, выберите PDF файл и папку для сохранения.")
         return
-    
-    # Сортируем файлы с учётом числовых частей в именах файлов
-    image_files.sort(key=numerical_sort)
 
-    # Имя выходного PDF файла берется из названия первого изображения
-    output_pdf = os.path.join(folder_path, os.path.splitext(image_files[0])[0] + ".pdf")
-    
-    image_list = []
-    
-    # Определяем размер для всех изображений по первому изображению
-    with Image.open(os.path.join(folder_path, image_files[0])) as first_image:
-        base_width, base_height = first_image.size
-        first_image_rgb = first_image.convert('RGB')
-        image_list.append(first_image_rgb)
+    convert_pdf_to_images(pdf_path, output_folder, image_format)
 
-    # Обрабатываем остальные изображения
-    for image_file in image_files[1:]:
-        image_path = os.path.join(folder_path, image_file)
-        with Image.open(image_path) as img:
-            # Приводим все изображения к размеру первого изображения
-            img_resized = img.resize((base_width, base_height))
-            img_rgb = img_resized.convert('RGB')
-            image_list.append(img_rgb)
-    
-    # Первый файл сохраняем, а остальные добавляем в PDF
-    first_image.save(output_pdf, save_all=True, append_images=image_list[1:])
-    
-    messagebox.showinfo("Успех", f"PDF успешно создан: {output_pdf}")
 
-def browse_folder():
-    folder_path = filedialog.askdirectory()
-    if folder_path:
-        images_to_pdf(folder_path)
-
-# Создание окна
+# Создание главного окна
 root = tk.Tk()
-root.title("Конвертация в PDF")
-root.geometry("300x100")
+root.title("PDF в Изображения")
+root.geometry("500x250")
+root.configure(bg="#2e2e2e")
 
-# Настройки тёмной темы
-dark_bg = "#2e2e2e"  # Тёмный фон
-dark_fg = "#ffffff"  # Цвет текста
-button_bg = "#444444"  # Цвет кнопок
-button_fg = "#ffffff"  # Цвет текста на кнопках
+# Тёмная тема
+label_fg = "#ffffff"
+button_bg = "#444444"
+button_fg = "#ffffff"
+button_width = 17  # Фиксированная ширина для всех кнопок
 
-# Применение тёмной темы
-root.configure(bg=dark_bg)
+# Выбор PDF файла (строка 1)
+frame_pdf_button = tk.Frame(root, bg="#2e2e2e")
+frame_pdf_button.pack(pady=5, fill="x")
 
-label = tk.Label(root, text="Выберите папку с изображениями:", bg=dark_bg, fg=dark_fg)
-label.pack(pady=10)
+pdf_file_label = tk.Label(frame_pdf_button, text="Выберите PDF файл", fg=label_fg, bg="#2e2e2e", font=("Arial", 12), anchor="w")
+pdf_file_label.pack(side="left", padx=10)
 
-button_browse = tk.Button(root, text="Выбрать папку", bg=button_bg, fg=button_fg, command=browse_folder)
-button_browse.pack(pady=10)
+select_pdf_button = tk.Button(frame_pdf_button, text="Выбрать PDF", command=select_pdf_file, bg=button_bg, fg=button_fg, width=button_width)
+select_pdf_button.pack(side="right", padx=10)
 
-# Добавление отступов и оформления
-for widget in (label, button_browse):
-    widget.config(font=("Arial", 12))
+# Отображение выбранного файла на отдельной строке
+frame_pdf_path = tk.Frame(root, bg="#2e2e2e")
+frame_pdf_path.pack(pady=(0, 10), fill="x")
+
+selected_pdf_label = tk.Label(frame_pdf_path, text="", fg=label_fg, bg="#2e2e2e", font=("Arial", 8), anchor="w", wraplength=480)
+selected_pdf_label.pack(fill="x", padx=10)
+
+# Выбор папки для сохранения (строка 2)
+frame_folder_button = tk.Frame(root, bg="#2e2e2e")
+frame_folder_button.pack(pady=5, fill="x")
+
+output_folder_label = tk.Label(frame_folder_button, text="Выберите папку для сохранения", fg=label_fg, bg="#2e2e2e", font=("Arial", 12), anchor="w")
+output_folder_label.pack(side="left", padx=10)
+
+select_folder_button = tk.Button(frame_folder_button, text="Выбрать папку", command=select_output_folder, bg=button_bg, fg=button_fg, width=button_width)
+select_folder_button.pack(side="right", padx=10)
+
+# Отображение выбранной папки на отдельной строке
+frame_folder_path = tk.Frame(root, bg="#2e2e2e")
+frame_folder_path.pack(pady=(0, 10), fill="x")
+
+selected_folder_label = tk.Label(frame_folder_path, text="", fg=label_fg, bg="#2e2e2e", font=("Arial", 8), anchor="w", wraplength=480)
+selected_folder_label.pack(fill="x", padx=10)
+
+
+# Выбор формата изображений (строка 3)
+frame_format = tk.Frame(root, bg="#2e2e2e")
+frame_format.pack(pady=5, fill="x")
+
+format_label = tk.Label(frame_format, text="Выберите формат изображения:", fg=label_fg, bg="#2e2e2e", font=("Arial", 12), anchor="w")
+format_label.pack(side="left", padx=10)
+
+format_var = tk.StringVar(value="JPG")
+format_dropdown = ttk.OptionMenu(frame_format, format_var, "JPG", "JPG", "PNG", "TIFF")
+format_dropdown.config(width=15)  # Устанавливаем фиксированную ширину
+format_dropdown.pack(side="right", padx=14)
+
+# Кнопка конвертации (строка 4)
+frame_convert = tk.Frame(root, bg="#2e2e2e")
+frame_convert.pack(pady=20, fill="x")
+
+convert_button = tk.Button(
+    frame_convert, text="Конвертировать", state=tk.DISABLED, command=start_conversion, bg=button_bg, fg=button_fg, width=button_width
+)
+convert_button.pack()
 
 root.mainloop()
+
 </code></pre>
 
 
