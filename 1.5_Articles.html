@@ -64,13 +64,14 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
-        .article-button img {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            margin-right: 20px;
-            flex-shrink: 0; /* Избегает сжатия изображения */
-        }
+.article-button img {
+    width: 80px; /* Фиксированная ширина */
+    height: 80px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезает изображение по краям, сохраняя пропорции */
+    object-position: center; /* Центрирует содержимое изображения */
+    border-radius: 10px; /* Скругленные углы */
+    margin-right: 20px; /* Отступ справа */
+}
 
         .article-content {
             display: flex;
