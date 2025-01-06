@@ -100,22 +100,32 @@ ul ul li:before {
     margin-right: 8px; /* Отступ между иконкой и текстом */
     vertical-align: middle; /* Центрирование по вертикали относительно текста */
 }
+.float-image, .float-right, .float-left {
+    display: block !important;
+    margin: 20px 0 !important; /* Убираем auto и добавляем только верхний и нижний отступ */
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+}
 
-        /* Изображения в тексте */
-        .float-image {
-            width: 400px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        .float-right {
-            float: right;
-            margin-left: 20px;
-        }
-        .float-left {
-            float: left;
-            margin-right: 20px;
-        }
+.float-right, .float-left {
+    float: none !important;
+}
+
+img {
+    float: none !important;
+    display: block !important;
+    margin: 20px 0 !important; /* Только отступ сверху и снизу */
+    text-align: left; /* Убеждаемся, что текст идет по левому краю */
+}
+
+ul li img {
+    display: block !important;
+    margin: 20px 0 !important; /* Аналогично добавляем отступы */
+    text-align: left;
+}
+
 
         /* Кнопки навигации в конце статьи */
          /* Кнопки статей */
@@ -444,7 +454,7 @@ pre {
     <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
 
     <!-- Заголовок статьи -->
-    <h1>Как запустить свой локальный сервер GTA 5 на AltV</h1>
+    <h1>Как запустить свой локальный сервер GTA V на AltV</h1>
 
     <!-- Кнопка доната -->
 <a href="https://yoomoney.ru/fundraise/17HENGAD7EB.250103" class="back-button">
@@ -464,46 +474,50 @@ pre {
         <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801221135.png" alt="Скриншот загрузки alt:V">
     </li>
     <li>Сделайте стандартную установку скаченного файла.</li>
-    <li>Затем скачайте пример сервера с той же страницы, выставив эти настройки:
-        <img src="Pasted_image_20240801221914.png" alt="Настройки для скачивания">
+    <li>Затем скачайте пример сервера с той же страницы, предварительно выставив эти настройки:
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801221914.png" alt="Настройки для скачивания">
     </li>
     <li>Распакуйте файл <code>alt-server.zip</code>, переименуйте главную папку для удобства так, чтобы вы понимали что это за сервер, например, <strong>government</strong>.
-        <img src="Pasted_image_20240801222052.png" alt="Распакованный сервер">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222215.png" >
     </li>
     <li>Откройте папку <code>resources</code> и создайте там папку для ваших модов или кастомных моделей/интерьеров. Назовите её как вам нравится. Свою я назвала <strong>test</strong>.
-        <img src="Pasted_image_20240801222540.png" alt="Папка resources/test">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222540.png" alt="Папка resources/test">
     </li>
     <li>В этой папке создайте папку <code>stream</code> и два текстовых файла (блокнот): <code>resource.toml</code> и <code>stream.toml</code>.
-        <img src="Pasted_image_20240801222750.png" alt="Создание файлов">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222750.png" alt="Создание файлов">
     </li>
-    <li>Откройте <code>resource.toml</code> и вставьте следующий текст:
-        <pre><code>type = 'dlc'
+<li>
+    Откройте <code>resource.toml</code> и вставьте следующий текст:
+    <pre><code>type = 'dlc'
 main = 'stream.toml'
 
 client-files = [
     'stream/*'
 ]</code></pre>
-        <ul>
-                    <li>Убедитесь, что файл сохранен с расширением <code>.toml</code>.</li>
-                </ul>
-    </li>
+    <ul>
+        <li>Убедитесь, что файл сохранен с расширением <code>.toml</code>.</li>
+    </ul>
+</li>
     <li>Откройте <code>stream.toml</code> и вставьте текст:
         <pre><code>files = [ 'stream/*' ]
 
 [meta]</code></pre>
     </li>
     <li>В папке <code>stream</code> вы можете создать удобную файловую систему или не создавать её. В любом случае все ваши файлы модов, кастомных интерьеров для стриминга будут складываться в папку <code>stream</code>.
-        <img src="Pasted_image_20240801223558.png" alt="Файлы в папке stream">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223558.png" alt="Файлы в папке stream">
     </li>
-    <li>Откройте файл <code>index.js</code> в папке <code>resources/freeroam/server</code> и укажите координаты спавна.
-        <img src="Pasted_image_20240801224321.png" alt="Координаты спавна">
-        <ul>
-                    <li>В этом файле прописаны точки спавна вашего персонажа. Вы знаете, где вам нужно появиться? Это конкретное место? Укажите его координаты вместо указанного там списка случайных точек спавна по умолчанию, чтобы не искать потом нужное место по карте бегая ножками. </li>
-                </ul>
-        <img src="Pasted_image_20240801224321.png" alt="Координаты спавна">
-    </li>
-    <li>Откройте файл <code>server.toml</code> в главной папке сервера и замените его содержимое следующим текстом:
-        <pre><code>name = 'alt:V Server'
+<li>
+    Откройте файл <code>index.js</code> в папке <code>resources/freeroam/server</code> и укажите координаты спавна.
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223733.png" alt="Координаты спавна">
+    <ul>
+        <li>В этом файле прописаны точки спавна вашего персонажа. Если вы знаете конкретное место, где вам нужно появиться, укажите его координаты вместо указанного там списка случайных точек спавна по умолчанию. Это сэкономит вам время на поиск нужного места.</li>
+    </ul>
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224321.png" alt="Координаты спавна">
+</li>
+
+<li>
+    Откройте файл <code>server.toml</code> в главной папке сервера и замените его содержимое следующим текстом:
+    <pre><code>name = 'alt:V Server'
 port = 7788
 players = 128
 # password = 'ultra-password'
@@ -519,38 +533,40 @@ resources = [
 'freeroam',
 'test',
 ]</code></pre>
-        <ul>
-                    <li>Если вы назвали свою папку с ресурсами не так же как я, то поменяйте здесь на ваше название:</li>
-                </ul>
-<img src="Pasted_image_20240801223558.png" alt="Файлы в папке stream">
-    </li>
-    <li>Запустите сервер, нажав на файл <code> altv-server.exe</code> в главной папке.
-        <img src="Pasted_image_20240801225205.png" alt="Запуск сервера">
-    </li>
-            <ul>
-                    <li>Если вы назвали свою папку с ресурсами не так же как я, то поменяйте здесь на ваше название:</li>
-                </ul>
-<img src="Pasted_image_20240801225205.png" alt="Запуск сервера">
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224749.png" alt="Файлы в папке server.toml">
+    <ul>
+        <li>Если вы назвали свою папку с ресурсами не так же, как я, то поменяйте здесь на ваше название:</li>
+    </ul>
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225113.png" alt="Пример изменения названия папки">
+<li>
+    Запустите сервер, нажав на файл <code>altv-server.exe</code> в главной папке.
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225205.png" alt="Запуск сервера">
+    <ul>
+        <li>Откроется окно сервера, и если всё хорошо, то красных ошибок сервера не будет.</li>
+    </ul>
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225344.png" alt="Пример окна запущенного сервера">
+</li>
+
     <li>Запустите AltV, который мы установили в пункте 2 этого руководства.
-        <img src="Pasted_image_20240801225909.png" alt="Подключение к серверу">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225547.png" alt="Подключение к серверу">
     </li>
         <li>Нажмите на это окно:
-        <img src="Pasted_image_20240801225909.png" alt="Подключение к серверу">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225820.png" alt="Подключение к серверу">
     </li>
         <li>Укажите в верхней графе номер сервера 127.0.0.1:7788 и нажмите "подключиться"
-        <img src="Pasted_image_20240801225909.png" alt="Подключение к серверу">
+        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225909.png" alt="Подключение к серверу">
     </li>
 </ol>
 
 <p>Локальный адрес <code>127.0.0.1</code> — это специальный IP-адрес, который используется для обозначения "локальной петли" или "localhost". Этот адрес всегда указывает на сам компьютер, на котором он используется.</p>
 <p>Когда кто-то указывает <code>127.0.0.1</code>, это означает, что он подключается к серверу, работающему на его собственном компьютере. Поэтому:</p>
-        <ul>
-                    <li>Если ты указал <code>127.0.0.1</code> и порт <code>7788</code>, ты подключаешься к серверу на своем компьютере.</li>
-                    <li>Другие пользователи, указавшие <code>127.0.0.1</code>, будут подключаться к своим собственным компьютерам, а не к твоему серверу.</li>
-                </ul>
-    </li>
+<ul>
+    <li>Если ты указал <code>127.0.0.1</code> и порт <code>7788</code>, ты подключаешься к серверу на своем компьютере.</li>
+    <li>Другие пользователи, указавшие <code>127.0.0.1</code>, будут подключаться к своим собственным компьютерам, а не к твоему серверу.</li>
+</ul>
+
 <p>16. Вы создали, запустили сервер, подключились и прекрасны!</p>
-<img src="Pasted_image_20240801230647.png" alt="Успешный запуск">
+<img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801230647.png" alt="Успешный запуск">
 
     <!-- Кнопки навигации по другим статьям -->
     <div class="container">
