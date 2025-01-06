@@ -12,6 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">  
  <style>
+
+
         /* Основные стили */
         body {
             margin: 0;
@@ -246,11 +248,16 @@ ul ul li:before {
         }
 
 pre {
-    margin-left: 0; /* Убирает отступы, связанные с элементами списка */
-    padding-left: 15px; /* Опционально, чтобы добавить небольшой отступ */
-    border-left: 3px solid #ccc; /* Опционально, визуальное выделение */
+    overflow-x: auto; /* Добавляет горизонтальный скролл */
+    white-space: pre; /* Отключает перенос строк */
+    word-wrap: normal; /* Убирает автоматический перенос слов */
+    padding: 10px; /* Добавляет внутренние отступы */
+    border: 1px solid #ccc; /* Лёгкая рамка вокруг */
+    border-radius: 5px; /* Скруглённые углы */
     background-color: #2d2d2d; /* Цвет фона */
     color: #fff; /* Цвет текста */
+    max-width: 100%; /* Ограничивает ширину */
+    box-sizing: border-box; /* Учитывает отступы в ширине */
 }
 
         /* Подсветка кода */
@@ -267,6 +274,165 @@ pre {
             max-width: 100%;
             box-sizing: border-box;
         }
+
+        @media screen and (max-width: 768px) {
+    pre {
+        font-size: 0.9em; /* Уменьшаем размер шрифта */
+        padding: 10px; /* Уменьшаем отступы */
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px; /* Уменьшаем внутренние отступы */
+    }
+ /* Адаптация для мобильных устройств */
+
+    h1 {
+        font-size: 1.8em; /* Уменьшаем размер заголовка */
+        text-align: center;
+    }
+
+    .back-button {
+        padding: 8px 1px; /* Уменьшаем размер кнопок */
+        font-size: 0.9em; /* Уменьшаем шрифт кнопок */
+    }
+
+    .float-image {
+        max-width: 100%; /* Ограничиваем ширину изображений */
+        height: auto; /* Сохраняем пропорции */
+        float: none; /* Убираем обтекание */
+        margin: 10px 0; /* Добавляем отступы сверху и снизу */
+    }
+
+    ul {
+        padding-left: 20px; /* Добавляем отступ для списка */
+    }
+
+    ul li {
+        padding-left: 20px; /* Сохраняем отступ для иконок */
+        margin-left: 0; /* Убираем лишние отступы */
+        padding-left: 10px; /* Добавляем небольшой отступ */
+    }
+
+    pre {
+        font-size: 0.9em; /* Уменьшаем размер шрифта */
+        overflow-x: auto; /* Добавляем горизонтальный скролл */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+        word-wrap: break-word; /* Переносим длинные строки */
+    }
+
+    .article-button {
+        flex-direction: column; /* Размещаем содержимое кнопки вертикально */
+        align-items: center; /* Центрируем содержимое */
+        text-align: center; /* Выравниваем текст по центру */
+        padding: 10px; /* Уменьшаем отступы */
+        min-height: auto; /* Убираем минимальную высоту */
+    }
+
+    /* Сами кнопки */
+    .article-button {
+        padding: 8px; /* Уменьшаем внутренние отступы кнопок */
+        margin: 5px 0; /* Уменьшаем внешние отступы */
+    }
+
+        .article-button img {
+        margin-bottom: 5px; /* Уменьшаем отступ снизу у изображения */
+    }
+
+    /* Описание статей */
+    .article-title {
+        margin-bottom: 5px; /* Уменьшаем отступы заголовков */
+    }
+
+    .article-description {
+        margin-top: 0; /* Убираем верхние отступы у описания */
+    }
+
+    .row {
+        flex-direction: column; /* Размещаем элементы в одну колонку */
+        gap: 5px; /* Уменьшаем расстояние между элементами */
+        margin: 0; /* Убираем отступы у ряда */
+    }
+
+    .col-md-4 {
+        padding: 5px; /* Уменьшаем внутренние отступы у колонок */
+    }
+
+    /* Контейнер страницы */
+    .container {
+        padding: 5px; /* Уменьшаем общий отступ внутри контейнера */
+    }
+
+    .code-container pre {
+        margin: 5px 0; /* Уменьшаем внешние отступы кода */
+        padding: 5px; /* Уменьшаем внутренние отступы */
+    }
+}
+@media screen and (max-width: 768px) {
+    .back-button {
+        font-size: 0.9em; /* Уменьшаем размер текста кнопки */
+        padding: 8px 10px; /* Уменьшаем отступы */
+        display: block; /* Каждая кнопка на своей строке */
+        text-align: center; /* Центрируем текст */
+    }
+}
+@media screen and (max-width: 768px) {
+    .article-button {
+        flex-direction: column; /* Размещаем содержимое вертикально */
+        align-items: center; /* Центрируем содержимое */
+        text-align: center; /* Выравниваем текст */
+        padding: 20px; /* Уменьшаем внутренние отступы */
+        min-height: auto; /* Убираем фиксированную высоту */
+    }
+
+    .article-button img {
+        width: 60px; /* Уменьшаем размер изображения */
+        height: auto; /* Сохраняем пропорции */
+        margin-bottom: 0px; /* Добавляем отступ снизу */
+    }
+}
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.5em; /* Уменьшаем размер заголовка */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Уменьшаем размер подзаголовка */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+    }
+}
+.code-container {
+    position: relative;
+    max-width: 100%;
+}
+
+.scroll-hint {
+    display: none; /* Скрываем по умолчанию */
+    background-color: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    color: #fff; /* Белый текст */
+    padding: 5px 5px; /* Внутренние отступы */
+    border-radius: 5px; /* Скруглённые углы */
+    font-size: 0.9em; /* Размер шрифта */
+    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+@media screen and (max-width: 768px) {
+    .scroll-hint {
+        display: block; /* Показываем только на мобильных */
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
 
     </style>
 </head>
@@ -420,7 +586,10 @@ for widget in (label, button_browse):
 
 root.mainloop()
 </code></pre>
-
+    <div class="scroll-hint">
+        Листай код туда →
+    </div>
+</div>
 
     <!-- Кнопки навигации по другим статьям -->
     <div class="container">
