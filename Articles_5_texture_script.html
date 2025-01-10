@@ -495,97 +495,13 @@ pre {
 
     <h2>Автоматизация импортирования и создания текстурных материалов</h2>
 <p>"Texture_script" — это мощный инструмент, разработанный для упрощения работы с текстурами в Unreal Engine 5. Этот плагин предназначен для дизайнеров, разработчиков игр и 3D-художников, которые работают с большими библиотеками текстурных карт и хотят сократить время на их обработку.</p>
-
 <h3>Основные возможности:</h3>
 <ol>
     <li>Импорт текстур за секунды:
-        <a href="https://altv.mp/ru/downloads/" target="_blank">Скачать alt:V</a>.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_5_texture_script_foto/photo_2024-10-03_04-05-32.jpg" alt="Скриншот">
     </li>
-    <li>Сделайте стандартную установку скаченного файла.</li>
-    <li>Затем скачайте пример сервера с той же страницы, предварительно выставив эти настройки:
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801221914.png" alt="Настройки для скачивания">
-    </li>
-    <li>Распакуйте файл <code>alt-server.zip</code>, переименуйте главную папку для удобства так, чтобы вы понимали что это за сервер, например, <strong>government</strong>.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222215.png" >
-    </li>
-    <li>Откройте папку <code>resources</code> и создайте там папку для ваших модов или кастомных моделей/интерьеров. Назовите её как вам нравится. Свою я назвала <strong>test</strong>.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222540.png" alt="Папка resources/test">
-    </li>
-    <li>В этой папке создайте папку <code>stream</code> и два текстовых файла (блокнот): <code>resource.toml</code> и <code>stream.toml</code>.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222750.png" alt="Создание файлов">
-    </li>
-<li>
-    Откройте <code>resource.toml</code> и вставьте следующий текст:
-    <pre><code>type = 'dlc'
-main = 'stream.toml'
-
-client-files = [
-    'stream/*'
-]</code></pre>
-    <ul>
-        <li>Убедитесь, что файл сохранен с расширением <code>.toml</code>.</li>
-    </ul>
-</li>
-    <li>Откройте <code>stream.toml</code> и вставьте текст:
-        <pre><code>files = [ 'stream/*' ]
-
-[meta]</code></pre>
-    </li>
-    <li>В папке <code>stream</code> вы можете создать удобную файловую систему или не создавать её. В любом случае все ваши файлы модов, кастомных интерьеров для стриминга будут складываться в папку <code>stream</code>.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223558.png" alt="Файлы в папке stream">
-    </li>
-<li>
-    Откройте файл <code>index.js</code> в папке <code>resources/freeroam/server</code> и укажите координаты спавна.
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223733.png" alt="Координаты спавна">
-    <ul>
-        <li>В этом файле прописаны точки спавна вашего персонажа. Если вы знаете конкретное место, где вам нужно появиться, укажите его координаты вместо указанного там списка случайных точек спавна по умолчанию. Это сэкономит вам время на поиск нужного места.</li>
-    </ul>
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224321.png" alt="Координаты спавна">
-</li>
-
-<li>
-    Откройте файл <code>server.toml</code> в главной папке сервера и замените его содержимое следующим текстом:
-    <pre><code>name = 'alt:V Server'
-port = 7788
-players = 128
-# password = 'ultra-password'
-announce = false
-# token = 'YOUR_TOKEN'
-gamemode = 'Freeroam'
-website = 'example.com'
-language = 'en'
-description = 'alt:V Sample Server'
-modules = ['js-module']
-resources = [ 
-'chat',
-'freeroam',
-'test',
-]</code></pre>
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224749.png" alt="Файлы в папке server.toml">
-    <ul>
-        <li>Если вы назвали свою папку с ресурсами не так же, как я, то поменяйте здесь на ваше название:</li>
-    </ul>
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225113.png" alt="Пример изменения названия папки">
-<li>
-    Запустите сервер, нажав на файл <code>altv-server.exe</code> в главной папке.
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225205.png" alt="Запуск сервера">
-    <ul>
-        <li>Откроется окно сервера, и если всё хорошо, то красных ошибок сервера не будет.</li>
-    </ul>
-    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225344.png" alt="Пример окна запущенного сервера">
-</li>
-
-    <li>Запустите AltV, который мы установили в пункте 2 этого руководства.
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225547.png" alt="Подключение к серверу">
-    </li>
-        <li>Нажмите на это окно:
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225820.png" alt="Подключение к серверу">
-    </li>
-        <li>Укажите в верхней графе номер сервера 127.0.0.1:7788 и нажмите "подключиться"
-        <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225909.png" alt="Подключение к серверу">
-    </li>
-</ol>
+<ul>
+    <li>Плагин сканирует локальную папку с текстурами, сортирует файлы по их назначению (BaseColor, Normal, Roughness, AO) и автоматически загружает их в Unreal Engine 5.</li>
+</ul>
 
 <p>Локальный адрес <code>127.0.0.1</code> — это специальный IP-адрес, который используется для обозначения "локальной петли" или "localhost". Этот адрес всегда указывает на сам компьютер, на котором он используется.</p>
 <p>Когда кто-то указывает <code>127.0.0.1</code>, это означает, что он подключается к серверу, работающему на его собственном компьютере. Поэтому:</p>
@@ -595,7 +511,7 @@ resources = [
 </ul>
 
 <p>16. Вы создали, запустили сервер, подключились и прекрасны!</p>
-<img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801230647.png" alt="Успешный запуск">
+<img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_5_texture_script_foto/photo_2024-10-03_04-05-32.jpg" alt="Скриншот">
 
     <!-- Кнопки навигации по другим статьям -->
     <div class="container">

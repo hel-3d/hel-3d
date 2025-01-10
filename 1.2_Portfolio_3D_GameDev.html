@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <script src="https://viewer.marmoset.co/main/marmoset.js"></script>
     <style>
         /* Видео-фон */
         .background-video {
@@ -43,61 +44,65 @@
             max-width: 90%;
             margin-bottom: 20px;
         }
+        /* Категория с одним блоком в ряду */
+        .single-row .col-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
 
-        li {
-    color: #999; /* Это может сделать текст серым */
+        /* Категория с двумя блоками в ряду */
+        .double-row .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column; /* Элементы располагаются в столбик (на маленьких экранах) */
+        }
+
+        .flex-md-row {
+            flex-direction: row; /* Элементы располагаются в строку на средних экранах и выше */
+        }
+
+        .flex-fill {
+            flex: 1; /* Равномерное распределение ширины между элементами */
+        }
+
+        .me-md-3 {
+            margin-right: 1rem; /* Отступ справа между Viewer и описанием (на средних экранах и выше) */
 }
+
         /* Кнопки статей */
     .article-button {
         display: flex;
-        justify-content: center; /* Горизонтальное центрирование */
-        padding: 15px; /* Уменьшение внутреннего отступа */
+        align-items: flex-start;
+            padding: 20px;
+
+        /* justify-content: center; Горизонтальное центрирование */
+        /* padding: 15px; Уменьшение внутреннего отступа */
         border: 1px solid #FFF;
-        border-radius: 15px;
+            border-radius: 10px;
         margin-bottom: 20px;
         background-color: rgba(255, 255, 255, 0.1);
         transition: background-color 0.3s, box-shadow 0.3s;
         text-decoration: none;
-        color: #999999;
-        max-width: 300px; /* Ограничение ширины кнопки */
-        max-height: 80px; /* Уменьшили минимальную высоту */
+            color: #FFF;
+            min-height: 160px;
     }
 
         .article-button:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-.article-button img {
-    width: 110px;
-    height: 50px;
-    object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
-    border-radius: 10px;
-    margin-right: 15px;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
         .article-content {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Выравнивание текста по центру */
-            justify-content: center; /* Центрирование внутри контейнера */
-        }
-
-        .article-title {
-            font-size: 1em;
-            margin: 0;
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .article-description {
-            font-size: 0.95em;
-            color: #CCC;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
-            -webkit-box-orient: vertical;
+            flex-grow: 1;
         }
 
         /* Стили секций */
@@ -115,6 +120,7 @@
             color: #FFF;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
                 .btn-highlighted {
             background-color: #740315;
             color: white;
@@ -155,7 +161,7 @@
         }
 
         .social-btn:hover {
-            background-color: #999999;
+                background-color: #FFF;
             color: #000;
         }
 
@@ -181,6 +187,11 @@
             border-radius: 15px;
         }
     </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>3D Модель через Marmoset Viewer</title>
+        <script src="https://viewer.marmoset.co/main/marmoset.js"></script>
+    </head>
 </head>
 <body>
 
@@ -209,205 +220,169 @@
         </div>
     </div>
 
-    <!-- Секция с резюме -->
-    <div id="resume-container">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elena Gusarevich - Resume</title>
+    <!-- Секции с кнопками статей -->
+    <div class="container">
+        <h3 class="section-title">Художественное Gamedev портфолио</h3>
+        <p class="article-description">На своих последних проектах я всё больше занимаюсь руководством и всё меньше реальным 3Д моделированием. Так что сегодня я хочу показать игровые документации, 3д модели, схемы локаций и другие ресурсы относящиеся к геймдизайну и моделированию</p>
+        <p class="article-description">Вы можете посмотреть мою игровую документацию по ссылке на гуглдиске </p>
+        <a href="#" class="btn btn-outline-secondary">Перейти на страницу документации</a>
+
+        <h2 class="section-title">3D Модели</h2>
+        <div class="row">
+            <!-- Первый блок -->
+            <div class="col-md-6 col-12 mb-4">
+                <div class="article-button">
+                    <div class="d-flex flex-column align-items-stretch">
+                        <!-- Заголовок -->
+                        <div class="d-flex flex-column flex-md-row align-items-stretch">
+                            <!-- Marmoset Viewer -->
+                            <div class="mview-container flex-fill me-md-3">
+                                <script>
+                                    var params = { width: 1024, height: 768, autoStart: false };
+                                    //var myviewer = marmoset.embed("tikva.mview", params );
+
+                                    var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
+                                    var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
+
+
+                                    var myviewer = marmoset.embed("https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019", params);
+                                </script>
+                            </div>
+
+                            <div class="flex-fill d-flex flex-column justify-content-between">
+                                <!-- Заголовок -->
+                                <div class="flex-fill">
+                                    <h2 class="article-title text-start">Название модели: Ракета</h2>
+                                </div>
+                                <p class="article-description">
+                                    Это модель ракеты, разработанная с использованием PBR текстур. Особенности: реалистичные отражения, детализированная поверхность и высокая оптимизация для игровых движков.
+                                </p>
+                                <!-- Кнопка для перехода -->
+                                <div class="mt-auto text-end">
+                                    <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
+                                        Перейти на страницу модели
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Первый блок -->
+            <div class="col-md-6 col-12 mb-4">
+                <div class="article-button">
+                    <div class="d-flex flex-column align-items-stretch">
+                        <!-- Заголовок -->
+                        <div class="d-flex flex-column flex-md-row align-items-stretch">
+                            <!-- Marmoset Viewer -->
+                            <div class="mview-container flex-fill me-md-3">
+                                <script>
+                                    var params = { width: "100%", height: "100%", autoStart: true };
+                                    marmoset.embed(
+                                        "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
+                                        params
+                                    );
+                                </script>
+                            </div>
+
+                            <div class="flex-fill d-flex flex-column justify-content-between">
+                                <!-- Заголовок -->
+                                <div class="flex-fill">
+                                    <h2 class="article-title text-start">Название модели: Ракета</h2>
+                                </div>
+                                <p class="article-description">
+                                    Это модель ракеты, разработанная с использованием PBR текстур. Особенности: реалистичные отражения, детализированная поверхность и высокая оптимизация для игровых движков.
+                                </p>
+                                <!-- Кнопка для перехода -->
+                                <div class="mt-auto text-end">
+                                    <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
+                                        Перейти на страницу модели
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     <style>
-        #resume-container body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            .mview-container {
+                width: 200%; /* Увеличиваем ширину до 60% родительского контейнера */
+                height: 400px; /* Высота остаётся фиксированной */
+                background: #222; /* Фон для загрузки */
+                border-radius: 10px; /* Скругление углов */
+                flex-shrink: 0; /* Предотвращает сжатие контейнера */
         }
-#resume-container .container {
-    display: flex; /* Включение flexbox для контейнера */
-    flex-wrap: wrap; /* Добавляем перенос строк, если ширины не хватает */
-    justify-content: space-between; /* Отступы между колонками */
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    max-width: 90%;
-    margin-bottom: 20px;
-}
 
-#resume-container .left-column {
-    flex: 1 1 65%; /* Задаем размер левой колонки */
-    padding: 20px;
-    min-width: 300px; /* Минимальная ширина текста */
-}
-
-#resume-container .right-column {
-    flex: 0 0 30%; /* Задаем размер правой колонки */
-    background-color: #320109;
-    color: #999999;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 15px;
-    max-width: 350px; /* Ограничение ширины */
-    min-width: 200px; /* Минимальная ширина */
-}
-        #resume-container h1, 
-        #resume-container h2, 
-        #resume-container h3 {
-            color: #999999; /* Изменен цвет на более тёмный для лучшей читаемости */
-        }
-        #resume-container .right-column h3 {
-            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
-        }
-        #resume-container .header {
-            text-align: left;
-            padding-bottom: 20px;
-        }
-        #resume-container .header h1 {
-            margin: 0;
-            font-size: 26px;
-        }
-        #resume-container .header h2 {
-            margin: 5px 0 10px 0;
-            font-size: 18px;
-            color: #999999;
-        }
-        #resume-container .contact-info {
-            font-size: 14px;
-            color: #999999;
-            margin-bottom: 20px;
-        }
-        #resume-container .contact-info a {
-            color: #999999;
-            text-decoration: none;
-        }
-        #resume-container .contact-info img {
-            vertical-align: middle;
-            margin-right: 8px;
-            width: 15px; /* Уменьшение размера иконок в 2 раза */
-            height: 15px; /* Уменьшение размера иконок в 2 раза */
-        }
-        #resume-container .section {
-            margin-bottom: 20px;
-        }
-        #resume-container .section-title {
-            font-size: 18px;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            color: #ffffff; /* Темный цвет для заголовков */
-            position: relative;
-        }
-        #resume-container .right-column .section-title {
-            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
-        }
-        #resume-container .section-title:after {
-            content: "";
-            display: block;
-            width: 100%; 
-            height: 2px;
-            background-color: #8d9dab; 
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin-top: 5px; 
-        }
-        #resume-container .right-column {
-            flex: 0 0 30%;
-            background-color: #320109;
-            color: #999999;
-            padding: 20px;
+            .article-button {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            border-radius: 15px;
-            border: 1px solid #ffffff; /* Белая рамка вокруг контейнера */
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень, если требуется */
-            max-width: 350px;
-            min-width: 200px;
-}
-        }
-        #resume-container .section-content p {
-            margin: 5px 0;
-            line-height: 1.6;
-        }
-        #resume-container ul {
-            margin: 10px 0 10px 20px;
-        }
-        #resume-container ul li {
-            margin-bottom: 10px;
-        }
-        #resume-container .skills, 
-        #resume-container .achievements, 
-        #resume-container .passions {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
-            font-size: 14px;
-        }
-        #resume-container .skills li, 
-        #resume-container .achievements li, 
-        #resume-container .passions li {
-            background: none;
-            margin-bottom: 10px;
-            padding: 0;
-            border-radius: 0;
-            color: #999999;
-        }
-        #resume-container .skills {
-            margin-bottom: 20px;
-        }
-        #resume-container .skills li {
-            display: inline-block;
-            margin-right: 5px;
-        }
-        #resume-container .skills li::after {
-            content: " •";
-        }
-        #resume-container .skills li:last-child::after {
-            content: "";
-        }
-#resume-container .photo {
-    border-radius: 50%; /* Делает фото круглым */
-    width: 150px;
-    height: 150px;
-    background-color: #7F8C8D;
-    margin-bottom: 20px;
-    background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #ffffff; /* Белая рамка вокруг фото */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень */
-}
+                border: 1px solid #FFF; /* Граница */
+                border-radius: 10px; /* Скругление блока */
+                padding: 20px; /* Внутренние отступы */
+                background-color: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+                color: #FFF; /* Цвет текста */
+            }
 
-        #resume-container .icon {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-image: url('https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=FFFFFF');
-        }
-        #resume-container .achievements li strong {
-            display: inline;
-            margin-bottom: 0;
-            padding-left: 5px;
-        }
-        #resume-container .achievements li p {
-            margin-top: 0;
+            .article-title {
+                font-size: 1.2rem; /* Размер заголовка */
+                margin-bottom: 20px; /* Отступ снизу */
+                text-align: right; /* Выровнено по правому краю */
+            }
+
+            .article-description {
+                flex-grow: 1; /* Описание занимает оставшееся место */
+                font-size: 1rem; /* Размер текста */
+                margin-bottom: 20px; /* Отступ снизу */
+            }
+
+            .btn-outline-secondary {
+                border-color: #FFF;
+                color: #FFF;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .btn-outline-secondary:hover {
+                    background-color: #FFF;
+                    color: #000;
         }
     </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+        </head>
+<body>
 </head>
 <body>
     <div class="container">
-        <div class="left-column">
-
-
+            <h1>Встроенная 3D-модель через Marmoset Viewer</h1>
+            <div class="viewer-wrapper">
+                <div id="marmoset-viewer" class="viewer"></div>
+            </div>
         </div>
+        <script>
+            var params = { autoStart: true };
+            var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
+            var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
 
-    </div>
+            // Вставляем Viewer в div с ID "marmoset-viewer"
+            //marmoset.embed(
+            //    "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
+            //    params,
+            //);
+
+            var marmoset = new marmoset.WebViewer(800, 800, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
+
+
+            const myDivOrSomething = document.getElementById("marmoset-viewer");
+            myDivOrSomething.appendChild(marmoset.domRoot);
+
+            myviewer.loadScene();
+
+        </script>
 </body>
 </html>
 

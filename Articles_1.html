@@ -1,177 +1,50 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Статья - Название статьи</title>
+    <title>Елена Гусаревич - 3Д резюме</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet"> <!-- Подсветка синтаксиса Prism.js -->
-     <!-- Иконки для разных устройств -->
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
+    <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
+    <!-- Иконки для разных устройств -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">  
- <style>
-        /* Основные стили */
-        body {
+    <script src="https://viewer.marmoset.co/main/marmoset.js"></script>
+</head>
+    <style>
+        /* Видео-фон */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        body, html {
             margin: 0;
-            padding: 120px;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             color: #FFF;
-            background-color: #121212;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Кнопка возврата */
-.back-button {
-    display: inline-flex;
-    align-items: center; /* Вертикальное выравнивание */
-    justify-content: center; /* Горизонтальное выравнивание */
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    color: #FFF;
-    border: 1px solid #FFF;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: background-color 0.3s, color 0.3s;
+.container {
+    max-width: 90%; /* Ограничение ширины */
+    margin: 20px auto; /* Центрирование и отступы */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Предотвращение "выпадения" вложенных элементов */
 }
-
-.back-button img {
-    margin-right: 10px !important; /* Принудительно применяет отступ */
-}
-
-        .back-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Заголовок */
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #FFF;
-            padding-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            margin-top: 20px;
-            margin-bottom: 15px;
-        }
-
-         /* Текстовые блоки */
-        p {
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-
-        /* Стили для списков */
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-ul li {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: 10px;
-}
-
-ul li:before {
-    content: '';
-    display: inline-block; /* Обеспечивает, что иконка будет на одном уровне с текстом */
-    position: relative;
-    width: 16px;
-    height: 16px;
-    background-image: url('pack_icon_punkt.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 8px; /* Расстояние от текста */
-}
-
-ul ul li:before {
-    background-image: url('pack_icon_punkt_c.svg');
-}
-
-.icon {
-    margin-right: 8px; /* Отступ между иконкой и текстом */
-    vertical-align: middle; /* Центрирование по вертикали относительно текста */
-}
-
-        /* Изображения в тексте */
-        .float-image {
-            width: 400px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        .float-right {
-            float: right;
-            margin-left: 20px;
-        }
-        .float-left {
-            float: left;
-            margin-right: 20px;
-        }
-
-        /* Кнопки навигации в конце статьи */
-         /* Кнопки статей */
-        .article-button {
-            display: flex;
-            align-items: flex-start;
-            padding: 20px;
-            border: 1px solid #FFF;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: #FFF;
-            min-height: 160px;
-        }
-
-        .article-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .article-button img {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            margin-right: 20px;
-            flex-shrink: 0; /* Избегает сжатия изображения */
-        }
-
-        .article-content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .article-title {
-            font-size: 1.2em;
-            margin: 0;
-            margin-bottom: 10px;
-        }
-
-        .article-description {
-            font-size: 0.95em;
-            color: #CCC;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
-            -webkit-box-orient: vertical;
-        }
-
-        /* Стили секций */
-        .section-title {
-            font-size: 2em;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #FFF;
-            padding-bottom: 10px;
-        }
 
         /* Кнопки */
         .btn-outline-secondary {
@@ -209,7 +82,7 @@ ul ul li:before {
             padding: 8px;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            min-width: 200px; /* Минимальная ширина кнопок */
+            min-width: 150px; /* Минимальная ширина кнопок */
         }
 
         .social-btn img {
@@ -244,224 +117,66 @@ ul ul li:before {
             width: 100%;
             border-radius: 15px;
         }
-
-pre {
-    margin-left: 0; /* Убирает отступы, связанные с элементами списка */
-    padding-left: 15px; /* Опционально, чтобы добавить небольшой отступ */
-    border-left: 3px solid #ccc; /* Опционально, визуальное выделение */
-    background-color: #2d2d2d; /* Цвет фона */
-    color: #fff; /* Цвет текста */
+    #marmoset-viewer {
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
 }
 
-        /* Подсветка кода */
-        .code-container pre[class*="language-"], .code-container code[class*="language-"] {
-            font-size: 1em;
-            line-height: 1.5;
-            background: #2D2D2D;
-            color: #FFF;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            overflow-x: auto;
-            white-space: pre;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
     </style>
-</head>
 <body>
 
-    <!-- Кнопка возврата -->
-    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+        Ваш браузер не поддерживает видео.
+    </video>
 
-    <!-- Заголовок статьи -->
-    <h1>Скрипт для конвертации изображений в pdf convert_to_pdf.py</h1>
+    <!-- Главный контейнер -->
+    <div class="container text-center my-5">
+        <h1 class="display-4">Elena Gusarevich (Hel)</h1>
+        <p class="lead">Lead 3D Environment Artist / Game Developer</p>
+        <p>With 4 years in 3D modeling, I excel in optimizing visuals and model weights. Experienced in leading and managing modeling teams, I ensure efficient project execution.</p>
 
-    <!-- Кнопка скачивания -->
-    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Скачать convert_to_pdf</a>
-
-    <!-- Кнопка доната -->
-<a href="https://yoomoney.ru/fundraise/17HENGAD7EB.250103" class="back-button">
-    Задонатить автору *
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path fill="#ffffff" d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3m-4.4 15.55l-.1.1l-.1-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05"/>
-    </svg>
-</a>
-
-
-    <!-- Текст статьи -->
-    <p>Скрипт был написан для упрощения моей собственной работы. Мне будет приятно, если ваша жизнь станет с ним проще. Буквально в пару секунд вы можете конвертировать все изображения в выбранной папке в один pdf. Изображения будут подогнаны по размеру, собраны в алфавитном порядке, а сам pdf будет назван именем первого изображения. Скрипт работает с изображениями в форматах: png, jpg, jpeg, bmp, gif, tiff. </p>
-    
-    <!-- Пример с плавающим изображением -->
-    <img src="to_pdf.png" alt="Пример изображения" class="float-image float-right">
-
-    <p>Для удобства я написала небольшой интерфейс для открытия нужной папки и к тому же добавила в архив bat файл для быстрого открытия скрипта. Кнопка для скачивания архива скрипта находится выше. В конце статьи для любопытствующих будет представлен сам код.  </p>
-
-    <!-- Список с иконками -->
-    <h2>Инструкция по установке и запуску</h2>
-<ul>
-    <li>Проверьте, установлен ли Python на вашем компьютере:
-        <ul>
-            <li>Откройте командную строку (Win+R → введите cmd → нажмите Enter).</li>
-            <li>Введите команду:</li>
-                </li><pre class="language-bash"><code>python --version</code></pre>
-            </li>
-            <li>Если вывод показывает версию Python, переходите к следующему шагу. Если нет:
-                <ul>
-                    <li>Установите Python с официального сайта: <a href="https://www.python.org/">python.org</a>.</li>
-                    <li>Во время установки отметьте галочку "Add Python to PATH".</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>Установите библиотеку Pillow:
-    </li>
-        <ul>
-            <li>В командной строке введите (Для Windows):
-
-                <pre class="language-bash"><code>pip install pillow</code></pre></li>
-</ul>
-
-    <li>Распакуйте архив.
-    </li>
-    <li>Запустите скрипт:
-        <ul>
-            <li>Дважды щёлкните на файл run_convert_to_pdf.bat если у вас Windows.</li>
-            <li>Если у вас другая операционная система - запустите run_convert_to_pdf.py через командную строку.
-    </li>
-    <li>Выберите папку, в котором находятся ваши изображения и нажмите ОК.
-    </li>
-    <li>Дождитесь уведомления о создании pdf и проверьте ваш новый pdf файл в папке с изображениями .
-    </li>
-</ul>
-
-<div class="side-border left"></div>
-<div class="side-border right"></div>
-
-    <!-- Блок кода с подсветкой -->
-    <h2>Оригинал кода</h2>
-<pre class="language-python"><code>
-import os
-from PIL import Image
-import re
-import tkinter as tk
-from tkinter import filedialog, messagebox
-
-def numerical_sort(value):
-    """Функция для сортировки, учитывающая числовые части в имени файла"""
-    numbers = re.findall(r'\d+', value)
-    return list(map(int, numbers)) if numbers else [0]
-
-def images_to_pdf(folder_path):
-    # Получаем список всех файлов изображений в папке
-    image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff'))]
-
-    if not image_files:
-        messagebox.showerror("Ошибка", "Нет изображений в выбранной папке.")
-        return
-    
-    # Сортируем файлы с учётом числовых частей в именах файлов
-    image_files.sort(key=numerical_sort)
-
-    # Имя выходного PDF файла берется из названия первого изображения
-    output_pdf = os.path.join(folder_path, os.path.splitext(image_files[0])[0] + ".pdf")
-    
-    image_list = []
-    
-    # Определяем размер для всех изображений по первому изображению
-    with Image.open(os.path.join(folder_path, image_files[0])) as first_image:
-        base_width, base_height = first_image.size
-        first_image_rgb = first_image.convert('RGB')
-        image_list.append(first_image_rgb)
-
-    # Обрабатываем остальные изображения
-    for image_file in image_files[1:]:
-        image_path = os.path.join(folder_path, image_file)
-        with Image.open(image_path) as img:
-            # Приводим все изображения к размеру первого изображения
-            img_resized = img.resize((base_width, base_height))
-            img_rgb = img_resized.convert('RGB')
-            image_list.append(img_rgb)
-    
-    # Первый файл сохраняем, а остальные добавляем в PDF
-    first_image.save(output_pdf, save_all=True, append_images=image_list[1:])
-    
-    messagebox.showinfo("Успех", f"PDF успешно создан: {output_pdf}")
-
-def browse_folder():
-    folder_path = filedialog.askdirectory()
-    if folder_path:
-        images_to_pdf(folder_path)
-
-# Создание окна
-root = tk.Tk()
-root.title("Конвертация в PDF")
-root.geometry("300x100")
-
-# Настройки тёмной темы
-dark_bg = "#2e2e2e"  # Тёмный фон
-dark_fg = "#ffffff"  # Цвет текста
-button_bg = "#444444"  # Цвет кнопок
-button_fg = "#ffffff"  # Цвет текста на кнопках
-
-# Применение тёмной темы
-root.configure(bg=dark_bg)
-
-label = tk.Label(root, text="Выберите папку с изображениями:", bg=dark_bg, fg=dark_fg)
-label.pack(pady=10)
-
-button_browse = tk.Button(root, text="Выбрать папку", bg=button_bg, fg=button_fg, command=browse_folder)
-button_browse.pack(pady=10)
-
-# Добавление отступов и оформления
-for widget in (label, button_browse):
-    widget.config(font=("Arial", 12))
-
-root.mainloop()
-</code></pre>
-
-
-    <!-- Кнопки навигации по другим статьям -->
-    <div class="container">
-        <h2 class="section-title">Другие статьи по теме</h2>    
-        <!-- Кнопка возврата -->
-    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <a href="#" class="article-button">
-                    <img src="link-to-thumbnail1.jpg" alt="Article 1 Thumbnail">
-                    <div class="article-content">
-                        <h3 class="article-title">Как выбрать выделенный сервер</h3>
-                        <p class="article-description">Как выбрать выделенный сервер.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a href="#" class="article-button">
-                    <img src="link-to-thumbnail2.jpg" alt="Article 2 Thumbnail">
-                    <div class="article-content">
-                        <h3 class="article-title">Топ 10 лучших хостингов 2024 2</h3>
-                        <p class="article-description">Топ 10 лучших хостингов 2024.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a href="#" class="article-button">
-                    <img src="link-to-thumbnail3.jpg" alt="Article 3 Thumbnail">
-                    <div class="article-content">
-                        <h3 class="article-title">Статья 3</h3>
-                        <p class="article-description">Краткое описание статьи</p>
-                    </div>
-                </a>
-            </div>
+        <!-- Навигационные кнопки -->
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Начальная страница</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
+            <a href="#" class="btn btn-disabled btn-lg">Портфолио 3D GameDev</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Обучающий материал</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Соцсети и контакты</a>
         </div>
 
-    <!-- Подключение библиотеки Prism.js для подсветки синтаксиса -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Секции с кнопками статей -->
+    <div class="container">
+            <h3 class="section-title">Художественное Gamedev портфолио</h3>
+        <p class="article-description">На своих последних проектах я всё больше занимаюсь руководством и всё меньше реальным 3Д моделированием. Так что сегодня я хочу показать игровые документации, 3д модели, схемы локаций и другие ресурсы относящиеся к геймдизайну и моделированию</p>
+        <p class="article-description">Вы можете посмотреть мою игровую документацию по ссылке на гуглдиске </p>     
+        <a href="#" class="btn btn-outline-secondary">Перейти на страницу документации</a>
+    </div>
+        </div>
+    <div class="container">
+    <h1>Встроенная 3D-модель через Marmoset Viewer</h1>
+    <script>
+var params = { width: 500, height: 500, autoStart: false };
+//var myviewer = marmoset.embed("tikva.mview", params );
 
-</body>
+var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
+var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
+
+var myviewer = marmoset.embed("https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019", params );
+        // Указываем путь к файлу .mview
+        var mviewFile = "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019";
+
+        // Функция для успешной загрузки миниатюры
+        function onLoad() {
+            console.log("Thumbnail loaded successfully!");
+        }
+        // Загружаем миниатюру
+        marmoset.fetchThumbnail(mviewFile, onLoad, onError, imgElement);
+    </script>
+    </div>
 </html>
