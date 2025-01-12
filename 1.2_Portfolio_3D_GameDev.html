@@ -237,16 +237,30 @@
                         <div class="d-flex flex-column flex-md-row align-items-stretch">
                             <!-- Marmoset Viewer -->
                             <div class="mview-container flex-fill me-md-3">
-                                <script>
-                                    var params = { width: 1024, height: 768, autoStart: false };
-                                    //var myviewer = marmoset.embed("tikva.mview", params );
+            <div class="viewer-wrapper">
+                <div id="marmoset-viewer" class="viewer"></div>
+            </div>
+        </div>
+        <script>
+            var params = { autoStart: true };
+            var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
+            var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
 
-                                    var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
-                                    var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
+            // Вставляем Viewer в div с ID "marmoset-viewer"
+            //marmoset.embed(
+            //    "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
+            //    params,
+            //);
+
+            var marmoset = new marmoset.WebViewer(400, 400, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
 
 
-                                    var myviewer = marmoset.embed("https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019", params);
-                                </script>
+            const myDivOrSomething = document.getElementById("marmoset-viewer");
+            myDivOrSomething.appendChild(marmoset.domRoot);
+
+            myviewer.loadScene();
+
+        </script>
                             </div>
 
                             <div class="flex-fill d-flex flex-column justify-content-between">
@@ -309,7 +323,7 @@
 
     <style>
             .mview-container {
-                width: 200%; /* Увеличиваем ширину до 60% родительского контейнера */
+                width: 800px; /* Увеличиваем ширину до 60% родительского контейнера */
                 height: 400px; /* Высота остаётся фиксированной */
                 background: #222; /* Фон для загрузки */
                 border-radius: 10px; /* Скругление углов */
