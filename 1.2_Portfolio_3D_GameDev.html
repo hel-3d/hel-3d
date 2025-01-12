@@ -41,20 +41,22 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            max-width: 90%;
+            max-width: 72%;
             margin-bottom: 20px;
         }
-        /* Категория с одним блоком в ряду */
-        .single-row .col-12 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
 
-        /* Категория с двумя блоками в ряду */
-        .double-row .col-md-6 {
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
+
+.single-row .col-12 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 32px;
+}
+
+.col-md-6 {
+    flex: 0 0 calc(50% - 8px); /* Уменьшите ширину для учёта gap */
+    max-width: calc(50% - 8px);
+}
+
 
         .d-flex {
             display: flex;
@@ -154,38 +156,13 @@
             min-width: 150px; /* Минимальная ширина кнопок */
         }
 
-        .social-btn img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-
-        .social-btn:hover {
-                background-color: #FFF;
-            color: #000;
-        }
-
-        .form-control, .btn-primary {
-            margin-top: 10px;
-            max-width: 500px;
-        }
-
-        .contact-info .row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .about-text, .about-image {
-            flex: 1 1 300px;
-            max-width: 500px;
-        }
 
         .about-image img {
-            width: 100%;
-            border-radius: 15px;
-        }
+    width: 300px; /* Фиксированная ширина */
+    height: 300px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезает изображение по краям, сохраняя пропорции */
+    object-position: center; /* Центрирует содержимое изображения */
+}
     </style>
     <head>
         <meta charset="UTF-8">
@@ -230,7 +207,7 @@
         <h2 class="section-title">3D Модели</h2>
         <div class="row">
             <!-- Первый блок -->
-            <div class="col-md-6 col-12 mb-4">
+            <div class="col-md-6 col-12 mb-8">
                 <div class="article-button">
                     <div class="d-flex flex-column align-items-stretch">
                         <!-- Заголовок -->
@@ -241,6 +218,9 @@
                 <div id="marmoset-viewer" class="viewer"></div>
             </div>
         </div>
+        <div class="about-image">
+    <img src="images/sound_card.jpg" alt="Моё фото">
+</div>
         <script>
             var params = { autoStart: true };
             var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
@@ -251,8 +231,7 @@
             //    "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
             //    params,
             //);
-
-            var marmoset = new marmoset.WebViewer(400, 400, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
+            var marmoset = new marmoset.WebViewer(300, 300, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
 
 
             const myDivOrSomething = document.getElementById("marmoset-viewer");
@@ -261,12 +240,12 @@
             myviewer.loadScene();
 
         </script>
-                            </div>
 
+                            </div>
                             <div class="flex-fill d-flex flex-column justify-content-between">
                                 <!-- Заголовок -->
                                 <div class="flex-fill">
-                                    <h2 class="article-title text-start">Название модели: Ракета</h2>
+                                    <h2 class="article-title text-start">Название модели: Звуковая карта</h2>
                                 </div>
                                 <p class="article-description">
                                     Это модель ракеты, разработанная с использованием PBR текстур. Особенности: реалистичные отражения, детализированная поверхность и высокая оптимизация для игровых движков.
@@ -282,27 +261,45 @@
                     </div>
                 </div>
             </div>
-            <!-- Первый блок -->
-            <div class="col-md-6 col-12 mb-4">
+            <div class="col-md-6 col-12 mb-8">
                 <div class="article-button">
                     <div class="d-flex flex-column align-items-stretch">
                         <!-- Заголовок -->
                         <div class="d-flex flex-column flex-md-row align-items-stretch">
                             <!-- Marmoset Viewer -->
                             <div class="mview-container flex-fill me-md-3">
-                                <script>
-                                    var params = { width: "100%", height: "100%", autoStart: true };
-                                    marmoset.embed(
-                                        "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
-                                        params
-                                    );
-                                </script>
-                            </div>
+            <div class="viewer-wrapper">
+                <div id="marmoset-viewer" class="viewer"></div>
+            </div>
+        </div>
+        <div class="about-image">
+    <img src="images/sound_card.jpg" alt="Моё фото">
+</div>
+        <script>
+            var params = { autoStart: true };
+            var hostUrl = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
+            var hostImage = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
 
+            // Вставляем Viewer в div с ID "marmoset-viewer"
+            //marmoset.embed(
+            //    "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019",
+            //    params,
+            //);
+            var marmoset = new marmoset.WebViewer(300, 300, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
+
+
+            const myDivOrSomething = document.getElementById("marmoset-viewer");
+            myDivOrSomething.appendChild(marmoset.domRoot);
+
+            myviewer.loadScene();
+
+        </script>
+
+                            </div>
                             <div class="flex-fill d-flex flex-column justify-content-between">
                                 <!-- Заголовок -->
                                 <div class="flex-fill">
-                                    <h2 class="article-title text-start">Название модели: Ракета</h2>
+                                    <h2 class="article-title text-start">Название модели: Звуковая карта</h2>
                                 </div>
                                 <p class="article-description">
                                     Это модель ракеты, разработанная с использованием PBR текстур. Особенности: реалистичные отражения, детализированная поверхность и высокая оптимизация для игровых движков.
@@ -318,17 +315,22 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
     <style>
-            .mview-container {
-                width: 800px; /* Увеличиваем ширину до 60% родительского контейнера */
-                height: 400px; /* Высота остаётся фиксированной */
-                background: #222; /* Фон для загрузки */
-                border-radius: 10px; /* Скругление углов */
-                flex-shrink: 0; /* Предотвращает сжатие контейнера */
-        }
+.mview-container {
+    min-width: unset; /* Сбрасываем минимальную ширину */
+    flex-shrink: 0; /* Предотвращает сжатие */
+    width: 100px; /* Устанавливаем желаемую ширину */
+    height: 300px; /* Высота остаётся фиксированной */
+    background: #222; /* Фон для загрузки */
+    border-radius: 10px; /* Скругление углов */
+    overflow: hidden; /* Скрываем содержимое, выходящее за границы */
+    box-sizing: border-box; /* Учитываем паддинги и границы в ширине */
+    display: flex; /* Обеспечиваем корректное поведение содержимого */
+    margin-bottom: 10px;
+}
+
 
             .article-button {
             display: flex;
