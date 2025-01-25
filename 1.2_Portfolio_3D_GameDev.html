@@ -323,100 +323,46 @@
                 </div><!-- article-button -->
             </div><!-- col -->
         </div><!-- row -->
+        <!-- Второй ряд: 1 блок на всю ширину (col-12), внутри 4 фото в ряд -->
         <div class="row">
-            <!-- Третий блок -->
-            <div class="col-12 col-md-6 mb-4">
+            <div class="col-12">
                 <div class="article-button">
-                    <div class="d-flex flex-column align-items-stretch">
-                        <!-- Заголовок -->
-                        <div class="d-flex flex-column flex-md-row align-items-stretch">
-                            <!-- Marmoset Viewer -->
-                            <div class="mview-container flex-fill me-md-3">
-                                <div class="viewer-wrapper">
-                                    <!-- Уникальный ID первого Viewer -->
-                                    <div id="marmoset-viewer-3" class="viewer"></div>
-                                </div>
-                            </div>
-                            <div class="about-image">
-                                <img src="images/cosmonaut.jpg" alt="Моё фото">
-                            </div>
-                            <script>
-                                var params1 = { autoStart: true };
-                                var hostUrl1 = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
-                                var hostImage1 = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
+                    <h2 class="article-title">Галерея из 4 фото</h2>
 
-                                // Пример вызова
-                                var marmoset1 = new marmoset.WebViewer(300, 300, "https://cdna.artstation.com/p/assets/marmosets/attachments/042/721/122/original/video.mview?1635271019");
-                                const viewerDiv1 = document.getElementById("marmoset-viewer-3");
-                                viewerDiv1.appendChild(marmoset1.domRoot);
-
-                                // myviewer.loadScene(); // Закомментировано, т.к. myviewer не объявлен
-                            </script>
+                    <!-- Внутренняя сетка (row) для 4 картинок -->
+                    <div class="row">
+                        <!-- col-6 col-md-3 даёт 2 колонки на узком экране, 4 на md+ -->
+                        <div class="col-6 col-md-3 mb-3">
+                            <img src="https://via.placeholder.com/400x400/ff0000/ffffff?text=Photo1"
+                                 class="img-fluid"
+                                 alt="Фото 1">
                         </div>
-
-                        <div class="flex-fill d-flex flex-column justify-content-between">
-                            <!-- Заголовок -->
-                            <div class="flex-fill">
-                                <h2 class="article-title text-start">Название модели: Внешняя звуковая карта Native Instruments Komplete Audio 6</h2>
-                            </div>
-                            <p class="article-description">
-                                Особенности модели: использование карты emission заставляет индикаторы на звуковой карте естественно светиться.
-                            </p>
-                            <!-- Кнопка для перехода -->
-                            <div class="mt-auto text-end">
-                                <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
-                                    Перейти на страницу модели
-                                </a>
-                            </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <img src="https://via.placeholder.com/400x400/00ff00/ffffff?text=Photo2"
+                                 class="img-fluid"
+                                 alt="Фото 2">
                         </div>
-                    </div><!-- d-flex -->
-                </div><!-- article-button -->
-            </div><!-- col -->
-            <!-- Четвёртый блок -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="article-button">
-                    <div class="d-flex flex-column flex-md-row align-items-stretch">
-                        <!-- Marmoset Viewer -->
-                        <div class="mview-container flex-fill me-md-3">
-                            <div class="viewer-wrapper">
-                                <!-- Уникальный ID второго Viewer -->
-                                <div id="marmoset-viewer-4" class="viewer"></div>
-                            </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <img src="https://via.placeholder.com/400x400/0000ff/ffffff?text=Photo3"
+                                 class="img-fluid"
+                                 alt="Фото 3">
                         </div>
-                        <div class="about-image">
-                            <img src="images/billiard2.jpg" alt="Моё фото">
+                        <div class="col-6 col-md-3 mb-3">
+                            <img src="https://via.placeholder.com/400x400/ffff00/000000?text=Photo4"
+                                 class="img-fluid"
+                                 alt="Фото 4">
                         </div>
-                        <script>
-                            var params2 = { autoStart: true };
-                            var hostUrl2 = marmoset.hostURL = "https://hel-3d.github.io/hel-3d/";
-                            var hostImage2 = marmoset.hostImage = "https://hel-3d.github.io/hel-3d/android-chrome-192x192.png";
-
-                            var marmoset2 = new marmoset.WebViewer(300, 300, "https://cdna.artstation.com/p/assets/marmosets/attachments/077/983/934/original/scene.mview?1720868552");
-                            const viewerDiv2 = document.getElementById("marmoset-viewer-4");
-                            viewerDiv2.appendChild(marmoset2.domRoot);
-
-                            // myviewer.loadScene(); // Аналогично, нет объявленной переменной myviewer
-                        </script>
+                    </div><!-- /.row -->
+                    <div class="flex-fill">
+                        <h2 class="article-title text-start">Название модели: Бильярдный стол с комплектующими</h2>
                     </div>
-
-                    <div class="flex-fill d-flex flex-column justify-content-between">
-                        <!-- Заголовок -->
-                        <div class="flex-fill">
-                            <h2 class="article-title text-start">Название модели: Бильярдный стол с комплектующими</h2>
-                        </div>
-                        <p class="article-description">
-                            Это модель максимально оптимизировалась для игровых движков, в том числе включён дополнительный пак для интеграции в кастомные сервера GTA5.  Можно приобрести на стоке. В наборе 6 цветов ткани, 4 размера тектур, 24 предмета.
-                        </p>
-                        <!-- Кнопка для перехода -->
-                        <div class="mt-auto text-end">
-                            <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
-                                Перейти на страницу модели
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- article-button -->
-            </div><!-- col -->
-        </div><!-- row -->
+                    <p class="article-description">Описание этих 4 фоток.</p>
+                    <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
+                        Перейти на страницу модели
+                    </a>
+                </div>
+            </div><!-- /.col-12 -->
+        </div><!-- /.row -->
     </div><!-- container -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
