@@ -190,7 +190,25 @@
                     background-color: #FFF;
                     color: #000;
         }
+        .photo-square {
+            width: 300px; /* жёстко 300×300 пикселей */
+            height: 300px;
+            position: relative;
+            overflow: hidden; /* обрезаем всё, что выходит за границы */
+            background: #222; /* фон, если картинка не покрывает всё */
+        }
 
+            .photo-square img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                /* Картинка заполняет высоту 300px */
+                width: auto;
+                height: 100%;
+                object-fit: cover; /* обрезает лишнее, сохраняя пропорции */
+                object-position: center;
+            }
     </style>
 </head>
 <body>
@@ -204,19 +222,19 @@
     <!-- Главный контейнер -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
-        <p class="lead">Lead 3D Environment Artist / Game Developer</p>
-        <p>With 4 years in 3D modeling, I excel in optimizing visuals and model weights. Experienced in leading and managing modeling teams, I ensure efficient project execution.</p>
+        <p class="lead">Lead 3D Environment Artist / Developer</p>
+        <p>With 5+ years in 3D modeling, I specialize in visual optimization and efficient asset creation. Experienced in leading and mentoring 3D teams, I deliver top-quality environments and smooth project workflows.</p>
 
         <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Начальная страница</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Резюме 3D GameDev</a>
-            <a href="#" class="btn btn-disabled btn-lg">Портфолио 3D GameDev</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Мой кодинг и ресурсы</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Дневник</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Мои статьи</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Обучающий материал</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Соцсети и контакты</a>
+            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
+            <a href="#" class="btn btn-disabled btn-lg">3D GameDev Portfolio</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">My Coding & Resources</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Journal</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">My Articles</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
         </div>
     </div>
 
@@ -225,7 +243,7 @@
         <h3 class="section-title">Художественное Gamedev портфолио</h3>
         <p class="article-description">На своих последних проектах я всё больше занимаюсь руководством и всё меньше реальным 3Д моделированием. Так что сегодня я хочу показать игровые документации, 3д модели, схемы локаций и другие ресурсы относящиеся к геймдизайну и моделированию</p>
         <p class="article-description">Вы можете посмотреть мою игровую документацию по ссылке на гуглдиске </p>
-        <a href="#" class="btn btn-outline-secondary">Перейти на страницу документации</a>
+        <a href="https://drive.google.com/drive/folders/1y0lXDMeWX1xAR0PCrQZuJmXZGHHtJ6vj?usp=drive_link" class="btn btn-outline-secondary">Перейти на страницу документации</a>
 
         <h2 class="section-title">3D Модели</h2>
         <!-- Основной row, внутри два col-md-6 -->
@@ -323,46 +341,78 @@
                 </div><!-- article-button -->
             </div><!-- col -->
         </div><!-- row -->
-        <!-- Второй ряд: 1 блок на всю ширину (col-12), внутри 4 фото в ряд -->
+        <!-- Второй ряд: один блок col-12 -->
         <div class="row">
             <div class="col-12">
-                <div class="article-button">
-                    <h2 class="article-title">Галерея из 4 фото</h2>
 
-                    <!-- Внутренняя сетка (row) для 4 картинок -->
+                <!-- Ваш article-button, если нужно -->
+                <div class="article-button">
+                    <!-- Внутренняя сетка (row) для 4 «квадратных» фото -->
                     <div class="row">
-                        <!-- col-6 col-md-3 даёт 2 колонки на узком экране, 4 на md+ -->
-                        <div class="col-6 col-md-3 mb-3">
-                            <img src="https://via.placeholder.com/400x400/ff0000/ffffff?text=Photo1"
-                                 class="img-fluid"
-                                 alt="Фото 1">
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis2.jpg" alt="Фото 1">
+                            </div>
                         </div>
-                        <div class="col-6 col-md-3 mb-3">
-                            <img src="https://via.placeholder.com/400x400/00ff00/ffffff?text=Photo2"
-                                 class="img-fluid"
-                                 alt="Фото 2">
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis3.jpg" alt="Фото 2">
+                            </div>
                         </div>
-                        <div class="col-6 col-md-3 mb-3">
-                            <img src="https://via.placeholder.com/400x400/0000ff/ffffff?text=Photo3"
-                                 class="img-fluid"
-                                 alt="Фото 3">
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis4.jpg" alt="Фото 3">
+                            </div>
                         </div>
-                        <div class="col-6 col-md-3 mb-3">
-                            <img src="https://via.placeholder.com/400x400/ffff00/000000?text=Photo4"
-                                 class="img-fluid"
-                                 alt="Фото 4">
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis.jpg" alt="Фото 4">
+                            </div>
                         </div>
-                    </div><!-- /.row -->
-                    <div class="flex-fill">
-                        <h2 class="article-title text-start">Название модели: Бильярдный стол с комплектующими</h2>
-                    </div>
-                    <p class="article-description">Описание этих 4 фоток.</p>
-                    <a href="https://artstation.com/your-model-page" class="btn btn-outline-secondary">
-                        Перейти на страницу модели
-                    </a>
-                </div>
-            </div><!-- /.col-12 -->
-        </div><!-- /.row -->
+                    </div><!-- /row -->
+                    <!-- Если нужно, ещё текст или кнопка -->
+                    <h2 class="article-title">Церковь в интерьере GTA V</h2>
+                    <p class="article-description">Перейдите на страницу проекта, чтобы узнать больше</p>
+                    <a href="#" class="btn btn-outline-secondary">Перейти на страницу</a>
+                </div><!-- /article-button -->
+            </div><!-- /col-12 -->
+        </div><!-- /row -->
+        <!-- Третий ряд: один блок col-12 -->
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Ваш article-button, если нужно -->
+                <div class="article-button">
+                    <!-- Внутренняя сетка (row) для 4 «квадратных» фото -->
+                    <div class="row">
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis2.jpg" alt="Фото 1">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis3.jpg" alt="Фото 2">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis4.jpg" alt="Фото 3">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                            <div class="photo-square">
+                                <img src="images/iconostasis.jpg" alt="Фото 4">
+                            </div>
+                        </div>
+                    </div><!-- /row -->
+                    <!-- Если нужно, ещё текст или кнопка -->
+                    <h2 class="article-title">Crashed Spaceship</h2>
+                    <p class="article-description">Перейдите на страницу проекта, чтобы узнать больше</p>
+                    <a href="#" class="btn btn-outline-secondary">Перейти на страницу</a>
+                </div><!-- /article-button -->
+            </div><!-- /col-12 -->
+        </div><!-- /row -->
     </div><!-- container -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

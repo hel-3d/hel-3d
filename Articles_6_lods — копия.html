@@ -1,0 +1,655 @@
+﻿   <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статья - Название статьи</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet"> <!-- Подсветка синтаксиса Prism.js -->
+     <!-- Иконки для разных устройств -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">  
+ <style>
+
+
+        /* Основные стили */
+body {
+    margin: 0 auto; /* Центрирует сайт по горизонтали */
+    max-width: 1400px; /* Устанавливает максимальную ширину */
+    padding: 20px; /* Добавляет внутренние отступы */
+    color: #FFF;
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box; /* Учитывает отступы и рамки в общей ширине */
+}
+
+        /* Кнопка возврата */
+.back-button {
+    display: inline-flex;
+    align-items: center; /* Вертикальное выравнивание */
+    justify-content: center; /* Горизонтальное выравнивание */
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button img {
+    margin-right: 10px !important; /* Принудительно применяет отступ */
+}
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Заголовок */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFF;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+         /* Текстовые блоки */
+        p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        /* Стили для списков */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+ul li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+}
+
+ul li:before {
+    content: '';
+    display: inline-block; /* Обеспечивает, что иконка будет на одном уровне с текстом */
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-image: url('https://github.com/hel-3d/hel-3d/raw/master/ресурсы/pack_icon_punkt_c.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px; /* Расстояние от текста */
+}
+
+ul ul li:before {
+    background-image: url('https://github.com/hel-3d/hel-3d/raw/master/ресурсы/pack_icon_punkt_c.png');
+}
+
+.icon {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+    vertical-align: middle; /* Центрирование по вертикали относительно текста */
+}
+.float-image, .float-right, .float-left {
+    display: block !important;
+    margin: 20px 0 !important; /* Убираем auto и добавляем только верхний и нижний отступ */
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+.float-right, .float-left {
+    float: none !important;
+}
+
+img {
+    float: none !important;
+    display: block !important;
+    margin: 20px 0 !important; /* Только отступ сверху и снизу */
+    text-align: left; /* Убеждаемся, что текст идет по левому краю */
+}
+
+ul li img {
+    display: block !important;
+    margin: 20px 0 !important; /* Аналогично добавляем отступы */
+    text-align: left;
+}
+@media screen and (max-width: 768px) {
+    img {
+        max-width: 100%; /* Устанавливаем ширину изображения в пределах контейнера */
+        height: auto; /* Сохраняем пропорции изображения */
+        margin: 10px 0; /* Добавляем отступы сверху и снизу */
+    }
+
+    .float-image, .float-right, .float-left {
+        max-width: 100%; /* Изображение будет занимать всю ширину контейнера */
+        height: auto; /* Пропорции сохраняются */
+        float: none; /* Убираем обтекание */
+        margin: 10px 0; /* Отступы сверху и снизу */
+    }
+
+    ol, ul {
+        padding-left: 20px; /* Корректируем отступы для списков */
+    }
+
+    .container {
+        padding: 15px; /* Уменьшаем внутренние отступы контейнера */
+    }
+}
+
+
+        /* Кнопки навигации в конце статьи */
+         /* Кнопки статей */
+        .article-button {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            border: 1px solid #FFF;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #FFF;
+            min-height: 160px;
+        }
+
+        .article-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .article-button img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+            flex-shrink: 0; /* Избегает сжатия изображения */
+        }
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .article-title {
+            font-size: 1.2em;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .article-description {
+            font-size: 0.95em;
+            color: #CCC;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+            -webkit-box-orient: vertical;
+        }
+
+        /* Стили секций */
+        .section-title {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFF;
+            padding-bottom: 10px;
+        }
+
+        /* Кнопки */
+        .btn-outline-secondary {
+            border-color: #FFF;
+            color: #FFF;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+                .btn-highlighted {
+            background-color: #740315;
+            color: white;
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .btn-disabled {
+            background-color: rgba(51, 51, 51, 0.2);
+            color: #888;
+            border: 1px solid #888;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .social-btn {
+            color: #FFF;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid #FFF;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            min-width: 200px; /* Минимальная ширина кнопок */
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .social-btn:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        .form-control, .btn-primary {
+            margin-top: 10px;
+            max-width: 500px;
+        }
+
+        .contact-info .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-text, .about-image {
+            flex: 1 1 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+pre {
+    overflow-x: auto; /* Добавляет горизонтальный скролл */
+    white-space: pre; /* Отключает перенос строк */
+    word-wrap: normal; /* Убирает автоматический перенос слов */
+    padding: 10px; /* Добавляет внутренние отступы */
+    border: 1px solid #ccc; /* Лёгкая рамка вокруг */
+    border-radius: 5px; /* Скруглённые углы */
+    background-color: #2d2d2d; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    max-width: 100%; /* Ограничивает ширину */
+    box-sizing: border-box; /* Учитывает отступы в ширине */
+}
+
+        /* Подсветка кода */
+        .code-container pre[class*="language-"], .code-container code[class*="language-"] {
+            font-size: 1em;
+            line-height: 1.5;
+            background: #2D2D2D;
+            color: #FFF;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+            white-space: pre;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+    pre {
+        font-size: 0.9em; /* Уменьшаем размер шрифта */
+        padding: 10px; /* Уменьшаем отступы */
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px; /* Уменьшаем внутренние отступы */
+    }
+ /* Адаптация для мобильных устройств */
+
+    h1 {
+        font-size: 1.8em; /* Уменьшаем размер заголовка */
+        text-align: center;
+    }
+
+    .back-button {
+        padding: 8px 1px; /* Уменьшаем размер кнопок */
+        font-size: 0.9em; /* Уменьшаем шрифт кнопок */
+    }
+
+    .float-image {
+        max-width: 100%; /* Ограничиваем ширину изображений */
+        height: auto; /* Сохраняем пропорции */
+        float: none; /* Убираем обтекание */
+        margin: 10px 0; /* Добавляем отступы сверху и снизу */
+    }
+
+    ul {
+        padding-left: 20px; /* Добавляем отступ для списка */
+    }
+
+    ul li {
+        padding-left: 20px; /* Сохраняем отступ для иконок */
+        margin-left: 0; /* Убираем лишние отступы */
+        padding-left: 10px; /* Добавляем небольшой отступ */
+    }
+
+    pre {
+        font-size: 0.9em; /* Уменьшаем размер шрифта */
+        overflow-x: auto; /* Добавляем горизонтальный скролл */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+        word-wrap: break-word; /* Переносим длинные строки */
+    }
+
+    .article-button {
+        flex-direction: column; /* Размещаем содержимое кнопки вертикально */
+        align-items: center; /* Центрируем содержимое */
+        text-align: center; /* Выравниваем текст по центру */
+        padding: 10px; /* Уменьшаем отступы */
+        min-height: auto; /* Убираем минимальную высоту */
+    }
+
+    /* Сами кнопки */
+    .article-button {
+        padding: 8px; /* Уменьшаем внутренние отступы кнопок */
+        margin: 5px 0; /* Уменьшаем внешние отступы */
+    }
+
+        .article-button img {
+        margin-bottom: 5px; /* Уменьшаем отступ снизу у изображения */
+    }
+
+    /* Описание статей */
+    .article-title {
+        margin-bottom: 5px; /* Уменьшаем отступы заголовков */
+    }
+
+    .article-description {
+        margin-top: 0; /* Убираем верхние отступы у описания */
+    }
+
+    .row {
+        flex-direction: column; /* Размещаем элементы в одну колонку */
+        gap: 5px; /* Уменьшаем расстояние между элементами */
+        margin: 0; /* Убираем отступы у ряда */
+    }
+
+    .col-md-4 {
+        padding: 5px; /* Уменьшаем внутренние отступы у колонок */
+    }
+
+    /* Контейнер страницы */
+    .container {
+        padding: 5px; /* Уменьшаем общий отступ внутри контейнера */
+    }
+
+    .code-container pre {
+        margin: 5px 0; /* Уменьшаем внешние отступы кода */
+        padding: 5px; /* Уменьшаем внутренние отступы */
+    }
+}
+@media screen and (max-width: 768px) {
+    .back-button {
+        font-size: 0.9em; /* Уменьшаем размер текста кнопки */
+        padding: 8px 10px; /* Уменьшаем отступы */
+        display: block; /* Каждая кнопка на своей строке */
+        text-align: center; /* Центрируем текст */
+    }
+}
+@media screen and (max-width: 768px) {
+    .article-button {
+        flex-direction: column; /* Размещаем содержимое вертикально */
+        align-items: center; /* Центрируем содержимое */
+        text-align: center; /* Выравниваем текст */
+        padding: 20px; /* Уменьшаем внутренние отступы */
+        min-height: auto; /* Убираем фиксированную высоту */
+    }
+
+    .article-button img {
+        width: 60px; /* Уменьшаем размер изображения */
+        height: auto; /* Сохраняем пропорции */
+        margin-bottom: 0px; /* Добавляем отступ снизу */
+    }
+}
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.5em; /* Уменьшаем размер заголовка */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Уменьшаем размер подзаголовка */
+        white-space: pre-wrap; /* Разрешаем перенос строк внутри блока */
+    }
+}
+.code-container {
+    position: relative;
+    max-width: 100%;
+}
+
+.scroll-hint {
+    display: none; /* Скрываем по умолчанию */
+    background-color: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    color: #fff; /* Белый текст */
+    padding: 5px 5px; /* Внутренние отступы */
+    border-radius: 5px; /* Скруглённые углы */
+    font-size: 0.9em; /* Размер шрифта */
+    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+@media screen and (max-width: 768px) {
+    .scroll-hint {
+        display: block; /* Показываем только на мобильных */
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка возврата -->
+    <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
+
+    <!-- Заголовок статьи -->
+    <h1>Как сделать LODs (ЛОДы) с помощью Unreal Engine 5</h1>
+
+    <!-- Кнопка доната -->
+    <a href="https://yoomoney.ru/fundraise/17HENGAD7EB.250103" class="back-button">
+        Задонатить автору *
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="#ffffff" d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3m-4.4 15.55l-.1.1l-.1-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05" />
+        </svg>
+    </a>
+    <p>Лоды (или же Levels of Detail) — это технология, заключающая в упрощении 3D-моделей путем подмены их на более примитивные по мере удаление виртуальной камеры (игрока) от них. Из-за этого система становится менее загруженной и работает над обработкой тех объектов, которые находятся в пределах вашей видимости.</p>
+    <p>Каждая последующая модель имеет меньший полигонаж (количество полигонов модели) и меньший размер текстур.</p>
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_6_lods_foto/1.png" alt="Иллюстрация лодов">
+    <p>Сразу хотелось бы обозначить моё любимое использование LOD-ов. Уж не знаю, делает так ещё кто-нибудь, но я успешно применяла это в разработке, когда сроки важнее оптимизации.</p>
+    <p>Можно взять высокополигональную интерьерную модель, либо модель после скульптинга и сделать таким образом быструю ретопологию без необходимости переделывать текстуринг или развёртку. Такой подход ускоряет грубую экстренную разработку в тысячу раз и позволяет сделать минимально жизнеспособный продукт в самые кратчайшие сроки. </p>
+    <p>Unreal Engine 5 потрясающе качественно делает ЛОДы и вы даже можете использовать один из них как основную модель</p>
+    <p>Но давайте начнём</p>
+    <h3>Инструкция</h3>
+    <ol>
+        <li>
+             Подготовьте объект
+            <p>Файл от 3Ds MAX ( Если вы сохранили несколько объектов в сцене как один FBX, то импортируются они в Unreal как множество разных объектов)</p>
+            <ul>
+                <li>Вы можете обработать сразу множество объектов</li>
+                <li>Если ваша модель состоит более, чем из одного edit poly, то её раскидает в Unreal на кучу составляющих, так что предварительно соедините их в одну модель, но при присоединении укажите эти два параметра как на скрине:</li>
+            </ul>
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_6_lods_foto/2.png" alt="Иллюстрация лодов">
+        </li>
+        <li>
+            Импортируйте объект
+            <p>Просто закиньте fbx способом Drag-and-drop</p>
+</li>
+        <li>
+            Затем скачайте пример сервера с той же страницы, предварительно выставив эти настройки:
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801221914.png" alt="Настройки для скачивания">
+        </li>
+        <li>
+            Распакуйте файл <code>alt-server.zip</code>, переименуйте главную папку для удобства так, чтобы вы понимали что это за сервер, например, <strong>government</strong>.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222215.png">
+        </li>
+        <li>
+            Откройте папку <code>resources</code> и создайте там папку для ваших модов или кастомных моделей/интерьеров. Назовите её как вам нравится. Свою я назвала <strong>test</strong>.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222540.png" alt="Папка resources/test">
+        </li>
+        <li>
+            В этой папке создайте папку <code>stream</code> и два текстовых файла (блокнот): <code>resource.toml</code> и <code>stream.toml</code>.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801222750.png" alt="Создание файлов">
+        </li>
+        <li>
+            Откройте <code>resource.toml</code> и вставьте следующий текст:
+            <pre><code>type = 'dlc'
+main = 'stream.toml'
+
+client-files = [
+    'stream/*'
+]</code></pre>
+            <ul>
+                <li>Убедитесь, что файл сохранен с расширением <code>.toml</code>.</li>
+            </ul>
+        </li>
+        <li>
+            Откройте <code>stream.toml</code> и вставьте текст:
+            <pre><code>files = [ 'stream/*' ]
+
+[meta]</code></pre>
+        </li>
+        <li>
+            В папке <code>stream</code> вы можете создать удобную файловую систему или не создавать её. В любом случае все ваши файлы модов, кастомных интерьеров для стриминга будут складываться в папку <code>stream</code>.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223558.png" alt="Файлы в папке stream">
+        </li>
+        <li>
+            Откройте файл <code>index.js</code> в папке <code>resources/freeroam/server</code> и укажите координаты спавна.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801223733.png" alt="Координаты спавна">
+            <ul>
+                <li>В этом файле прописаны точки спавна вашего персонажа. Если вы знаете конкретное место, где вам нужно появиться, укажите его координаты вместо указанного там списка случайных точек спавна по умолчанию. Это сэкономит вам время на поиск нужного места.</li>
+            </ul>
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224321.png" alt="Координаты спавна">
+        </li>
+
+        <li>
+            Откройте файл <code>server.toml</code> в главной папке сервера и замените его содержимое следующим текстом:
+            <pre><code>name = 'alt:V Server'
+port = 7788
+players = 128
+# password = 'ultra-password'
+announce = false
+# token = 'YOUR_TOKEN'
+gamemode = 'Freeroam'
+website = 'example.com'
+language = 'en'
+description = 'alt:V Sample Server'
+modules = ['js-module']
+resources = [ 
+'chat',
+'freeroam',
+'test',
+]</code></pre>
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801224749.png" alt="Файлы в папке server.toml">
+            <ul>
+                <li>Если вы назвали свою папку с ресурсами не так же, как я, то поменяйте здесь на ваше название:</li>
+            </ul>
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225113.png" alt="Пример изменения названия папки">
+        <li>
+            Запустите сервер, нажав на файл <code>altv-server.exe</code> в главной папке.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225205.png" alt="Запуск сервера">
+            <ul>
+                <li>Откроется окно сервера, и если всё хорошо, то красных ошибок сервера не будет.</li>
+            </ul>
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225344.png" alt="Пример окна запущенного сервера">
+        </li>
+
+        <li>
+            Запустите AltV, который мы установили в пункте 2 этого руководства.
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225547.png" alt="Подключение к серверу">
+        </li>
+        <li>
+            Нажмите на это окно:
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225820.png" alt="Подключение к серверу">
+        </li>
+        <li>
+            Укажите в верхней графе номер сервера 127.0.0.1:7788 и нажмите "подключиться"
+            <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801225909.png" alt="Подключение к серверу">
+        </li>
+    </ol>
+
+    <p>Локальный адрес <code>127.0.0.1</code> — это специальный IP-адрес, который используется для обозначения "локальной петли" или "localhost". Этот адрес всегда указывает на сам компьютер, на котором он используется.</p>
+    <p>Когда кто-то указывает <code>127.0.0.1</code>, это означает, что он подключается к серверу, работающему на его собственном компьютере. Поэтому:</p>
+    <ul>
+        <li>Если ты указал <code>127.0.0.1</code> и порт <code>7788</code>, ты подключаешься к серверу на своем компьютере.</li>
+        <li>Другие пользователи, указавшие <code>127.0.0.1</code>, будут подключаться к своим собственным компьютерам, а не к твоему серверу.</li>
+    </ul>
+
+    <p>16. Вы создали, запустили сервер, подключились и прекрасны!</p>
+    <img src="https://github.com/hel-3d/hel-3d/raw/master/articles_foto/Articles_4_altv_foto/Pasted%20image%2020240801230647.png" alt="Успешный запуск">
+
+    <!-- Кнопки навигации по другим статьям -->
+    <div class="container">
+        <h2 class="section-title">Другие статьи по теме</h2>
+        <!-- Кнопка возврата -->
+        <a href="https://hel-3d.github.io/hel-3d/" class="back-button">Вернуться на основной сайт</a>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail1.jpg" alt="Article 1 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Как выбрать выделенный сервер</h3>
+                        <p class="article-description">Как выбрать выделенный сервер.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail2.jpg" alt="Article 2 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Топ 10 лучших хостингов 2024 2</h3>
+                        <p class="article-description">Топ 10 лучших хостингов 2024.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="#" class="article-button">
+                    <img src="link-to-thumbnail3.jpg" alt="Article 3 Thumbnail">
+                    <div class="article-content">
+                        <h3 class="article-title">Статья 3</h3>
+                        <p class="article-description">Краткое описание статьи</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Подключение библиотеки Prism.js для подсветки синтаксиса -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+</body>
+</html>
