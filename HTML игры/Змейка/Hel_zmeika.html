@@ -145,11 +145,16 @@
                         drawImageSegment(`torso_${from}`, part.x, part.y);
                     } else {
                         const turnMap = {
-                            'up_right': 'turn_8', 'up_left': 'turn_4',
-                            'down_right': 'turn_6', 'down_left': 'turn_1',
-                            'left_up': 'turn_3', 'left_down': 'turn_5',
-                            'right_up': 'turn_7', 'right_down': 'turn_2'
+                            'up_right': 'turn_7',   // 🔄 исправлено
+                            'up_left': 'turn_4',
+                            'down_right': 'turn_6',
+                            'down_left': 'turn_1',
+                            'left_up': 'turn_4',    // 🔄 исправлено
+                            'left_down': 'turn_5',
+                            'right_up': 'turn_3',   // 🔄 исправлено
+                            'right_down': 'turn_2'
                         };
+
                         const turnKey = turnMap[`${from}_${to}`];
                         drawImageSegment(turnKey, part.x, part.y);
                     }
