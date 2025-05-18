@@ -38,10 +38,10 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .btn-outline-secondary:hover {
-            background-color: #FFF;
-            color: #000;
-        }
+            .btn-outline-secondary:hover {
+                background-color: #FFF;
+                color: #000;
+            }
     </style>
 </head>
 <body>
@@ -51,32 +51,128 @@
     </div>
 
     <script>
+        // === 📦 Инициализация canvas и переменных ===
         const canvas = document.getElementById('snakeGame');
         const ctx = canvas.getContext('2d');
-        const canvasSize = 450; // Размер игрового окна
-        const gridSize = 30; // Размер клетки (450 делится нацело на 30)
-        const gridCount = canvasSize / gridSize; // Количество клеток в сетке
+        const canvasSize = 450;
+        const gridSize = 30;
+        const gridCount = canvasSize / gridSize;
 
-        let snake = [{ x: 7 * gridSize, y: 7 * gridSize }]; // Начальная позиция змейки в центре
-        let food = { x: 5 * gridSize, y: 5 * gridSize }; // Начальная позиция еды
-        let dx = gridSize; // Движение по X
-        let dy = 0; // Движение по Y
+        let dx = gridSize;
+        let dy = 0;
         let score = 0;
-        let gameInterval; // Переменная для игрового цикла
-        let isGameActive = false; // Флаг активности игры
+        let gameInterval;
+        let isGameActive = false;
 
-        // Функция для рисования прямоугольника
-        function drawRect(x, y, color) {
-            ctx.fillStyle = color;
-            ctx.fillRect(x, y, gridSize, gridSize);
+        let snake = [
+            { x: 7 * gridSize, y: 7 * gridSize },
+            { x: 6 * gridSize, y: 7 * gridSize },
+            { x: 5 * gridSize, y: 7 * gridSize }
+        ];
+
+        let food = { x: 5 * gridSize, y: 5 * gridSize };
+
+        // === 🖼️ Загрузка изображений ===
+        const images = {};
+        const imageFiles = {
+            apple: 'aple.png',
+
+            head1_up: 'head1_up.png', head1_down: 'head1_down.png', head1_left: 'head1_left.png', head1_right: 'head1_right.png',
+            head2_up: 'head2_up.png', head2_down: 'head2_down.png', head2_left: 'head2_left.png', head2_right: 'head2_right.png',
+
+            torso_up: 'torso_up.png', torso_down: 'torso_down.png', torso_left: 'torso_left.png', torso_right: 'torso_right.png',
+
+            tail_up: 'tail_up.png', tail_down: 'tail_down.png', tail_left: 'tail_left.png', tail_right: 'tail_right.png',
+
+            turn_1: 'turn_1.png', turn_2: 'turn_2.png', turn_3: 'turn_3.png', turn_4: 'turn_4.png',
+            turn_5: 'turn_5.png', turn_6: 'turn_6.png', turn_7: 'turn_7.png', turn_8: 'turn_8.png'
+        };
+
+        for (const key in imageFiles) {
+            images[key] = new Image();
+            images[key].src = './images/' + imageFiles[key];
         }
 
-        // Случайная позиция еды
+        function drawImageSegment(imageKey, x, y) {
+            const img = images[imageKey];
+            if (img.complete) {
+                ctx.drawImage(img, x, y, gridSize, gridSize);
+            } else {
+                img.onload = () => ctx.drawImage(img, x, y, gridSize, gridSize);
+            }
+        }
+
+        // === 🍏 Генерация еды ===
         function randomFoodPosition() {
             return Math.floor(Math.random() * gridCount) * gridSize;
         }
 
-        // Обновление змейки
+        // === 🧠 Определение направлений ===
+        function getDirection(a, b) {
+            if (a.x < b.x) return 'right';
+            if (a.x > b.x) return 'left';
+            if (a.y < b.y) return 'down';
+            if (a.y > b.y) return 'up';
+            return null;
+        }
+
+        // === 🐍 Отрисовка змейки ===
+        function drawSnake() {
+            for (let i = 0; i < snake.length; i++) {
+                const part = snake[i];
+
+                if (i === 0) {
+                    // Голова
+                    const next = snake[1];
+                    const dir = getDirection(part, next);
+                    const isNearApple = Math.abs(part.x - food.x) + Math.abs(part.y - food.y) === gridSize;
+                    const key = isNearApple ? `head2_${dir}` : `head1_${dir}`;
+                    drawImageSegment(key, part.x, part.y);
+
+                } else if (i === snake.length - 1) {
+                    // Хвост
+                    const prev = snake[i - 1];
+                    const dir = getDirection(part, prev);
+                    drawImageSegment(`tail_${dir}`, part.x, part.y);
+
+                } else {
+                    const prev = snake[i - 1];
+                    const next = snake[i + 1];
+                    const from = getDirection(prev, part);
+                    const to = getDirection(part, next);
+
+                    if ((from === to) && from !== null) {
+                        drawImageSegment(`torso_${from}`, part.x, part.y);
+                    } else {
+                        const turnMap = {
+                            'up_right': 'turn_8', 'up_left': 'turn_4',
+                            'down_right': 'turn_6', 'down_left': 'turn_1',
+                            'left_up': 'turn_3', 'left_down': 'turn_5',
+                            'right_up': 'turn_7', 'right_down': 'turn_2'
+                        };
+                        const turnKey = turnMap[`${from}_${to}`];
+                        drawImageSegment(turnKey, part.x, part.y);
+                    }
+                }
+            }
+        }
+
+        // === 🔁 Игровой цикл ===
+        function gameLoop() {
+            if (checkCollision()) {
+                clearInterval(gameInterval);
+                alert(`Game Over! Your score: ${score}`);
+                document.location.reload();
+                isGameActive = false;
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawImageSegment('apple', food.x, food.y);
+            drawSnake();
+            updateSnake();
+        }
+
         function updateSnake() {
             const head = { x: snake[0].x + dx, y: snake[0].y + dy };
             snake.unshift(head);
@@ -89,74 +185,38 @@
             }
         }
 
-        // Проверка столкновений
         function checkCollision() {
             const head = snake[0];
-
-            // Столкновение со стенами
-            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
-                return true;
-            }
-
-            // Столкновение с собственным телом
+            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) return true;
             for (let i = 1; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    return true;
-                }
+                if (head.x === snake[i].x && head.y === snake[i].y) return true;
             }
-
             return false;
         }
 
-        // Игровой цикл
-        function gameLoop() {
-            if (checkCollision()) {
-                clearInterval(gameInterval);
-                alert(`Game Over! Your score: ${score}`);
-                document.location.reload();
-                isGameActive = false; // Игра завершена
-                return;
-            }
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawRect(food.x, food.y, 'red');
-
-            snake.forEach(part => drawRect(part.x, part.y, 'lime'));
-
-            updateSnake();
-        }
-
-        // Управление движением змейки
+        // === 🎮 Управление ===
         document.addEventListener('keydown', event => {
-            if (isGameActive) {
-                if (event.key === 'ArrowUp' && dy === 0) {
-                    dx = 0;
-                    dy = -gridSize;
-                    event.preventDefault(); // Предотвращение скроллинга
-                } else if (event.key === 'ArrowDown' && dy === 0) {
-                    dx = 0;
-                    dy = gridSize;
-                    event.preventDefault(); // Предотвращение скроллинга
-                } else if (event.key === 'ArrowLeft' && dx === 0) {
-                    dx = -gridSize;
-                    dy = 0;
-                    event.preventDefault(); // Предотвращение скроллинга
-                } else if (event.key === 'ArrowRight' && dx === 0) {
-                    dx = gridSize;
-                    dy = 0;
-                    event.preventDefault(); // Предотвращение скроллинга
-                }
+            if (!isGameActive) return;
+            if (event.key === 'ArrowUp' && dy === 0) {
+                dx = 0; dy = -gridSize;
+            } else if (event.key === 'ArrowDown' && dy === 0) {
+                dx = 0; dy = gridSize;
+            } else if (event.key === 'ArrowLeft' && dx === 0) {
+                dx = -gridSize; dy = 0;
+            } else if (event.key === 'ArrowRight' && dx === 0) {
+                dx = gridSize; dy = 0;
             }
+            event.preventDefault();
         });
 
-        // Старт игры
+        // === ▶️ Старт ===
         document.getElementById('startSnakeGame').addEventListener('click', () => {
             if (!gameInterval) {
-                isGameActive = true; // Игра активна
+                isGameActive = true;
                 gameInterval = setInterval(gameLoop, 100);
             }
         });
+
     </script>
 </body>
 </html>
-
