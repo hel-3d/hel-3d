@@ -142,7 +142,8 @@
                     const to = getDirection(part, next);
 
                     if ((from === to) && from !== null) {
-                        drawImageSegment(`torso_${from}`, part.x, part.y);
+                        const visualDir = getDirection(part, prev); // используем визуально «обратный» вектор
+                        drawImageSegment(`torso_${visualDir}`, part.x, part.y);
                     } else {
                         const turnMap = {
                             'up_right': 'turn_8',
@@ -155,10 +156,10 @@
                             'right_down': 'turn_6'
                         };
 
-
                         const turnKey = turnMap[`${from}_${to}`];
                         drawImageSegment(turnKey, part.x, part.y);
                     }
+
                 }
             }
         }
