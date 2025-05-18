@@ -124,7 +124,7 @@
                 if (i === 0) {
                     // Голова
                     const next = snake[1];
-                    const dir = getDirection(part, next);
+                    const dir = getDirection(next, part);
                     const isNearApple = Math.abs(part.x - food.x) + Math.abs(part.y - food.y) === gridSize;
                     const key = isNearApple ? `head2_${dir}` : `head1_${dir}`;
                     drawImageSegment(key, part.x, part.y);
@@ -138,8 +138,8 @@
                 } else {
                     const prev = snake[i - 1];
                     const next = snake[i + 1];
-                    const from = getDirection(prev, part);
-                    const to = getDirection(part, next);
+                    const from = getDirection(part, prev);
+                    const to = getDirection(next, part);
 
                     if ((from === to) && from !== null) {
                         drawImageSegment(`torso_${from}`, part.x, part.y);
