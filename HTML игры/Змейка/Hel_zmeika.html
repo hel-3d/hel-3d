@@ -55,7 +55,7 @@
         const canvas = document.getElementById('snakeGame');
         const ctx = canvas.getContext('2d');
         const canvasSize = 450;
-        const gridSize = 30;
+        const gridSize = 60;
         const gridCount = canvasSize / gridSize;
 
         let dx = gridSize;
@@ -65,10 +65,11 @@
         let isGameActive = false;
 
         let snake = [
-            { x: 7 * gridSize, y: 7 * gridSize },
-            { x: 6 * gridSize, y: 7 * gridSize },
-            { x: 5 * gridSize, y: 7 * gridSize }
+            { x: 3 * gridSize, y: 3 * gridSize },
+            { x: 2 * gridSize, y: 3 * gridSize },
+            { x: 1 * gridSize, y: 3 * gridSize }
         ];
+
 
         let food = { x: 5 * gridSize, y: 5 * gridSize };
 
@@ -220,7 +221,7 @@
         document.getElementById('startSnakeGame').addEventListener('click', () => {
             if (!gameInterval) {
                 isGameActive = true;
-                gameInterval = setInterval(gameLoop, 100);
+                gameInterval = setInterval(gameLoop, 200);
             }
         });
 
