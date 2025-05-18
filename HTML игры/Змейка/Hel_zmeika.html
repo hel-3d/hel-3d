@@ -55,7 +55,7 @@
         const canvas = document.getElementById('snakeGame');
         const ctx = canvas.getContext('2d');
         const canvasSize = 450;
-        const gridSize = 60;
+        const gridSize = 30;
         const gridCount = canvasSize / gridSize;
 
         let dx = gridSize;
@@ -149,13 +149,14 @@
                         const turnMap = {
                             'up_right': 'turn_8',
                             'up_left': 'turn_3',
-                            'down_right': 'turn_2',
+                            'down_right': 'turn_7', // ← заменили
                             'down_left': 'turn_5',
-                            'left_up': 'turn_7',
+                            'left_up': 'turn_6', // ← заменили
                             'left_down': 'turn_1',
                             'right_up': 'turn_4',
-                            'right_down': 'turn_6'
+                            'right_down': 'turn_2'
                         };
+
 
                         const turnKey = turnMap[`${from}_${to}`];
                         drawImageSegment(turnKey, part.x, part.y);
