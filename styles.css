@@ -1,0 +1,495 @@
+/* Видео-фон */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Основные стили */
+body {
+    margin: 0 auto; /* Центрирует сайт по горизонтали */
+    max-width: 1400px; /* Устанавливает максимальную ширину */
+    padding: 20px; /* Добавляет внутренние отступы */
+    color: #FFF;
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box; /* Учитывает отступы и рамки в общей ширине */
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+/* Кнопки статей */
+.article-button {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: #FFF;
+    min-height: 160px;
+}
+
+    .article-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .article-button img {
+        width: 80px; /* Фиксированная ширина */
+        height: 80px; /* Фиксированная высота */
+        object-fit: cover; /* Обрезает изображение по краям, сохраняя пропорции */
+        object-position: center; /* Центрирует содержимое изображения */
+        border-radius: 10px; /* Скругленные углы */
+        margin-right: 20px; /* Отступ справа */
+        flex-shrink: 0; /* Избегает сжатия изображения */
+    }
+
+.article-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.article-title {
+    font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.article-description {
+    font-size: 0.95em;
+    color: #CCC;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+    -webkit-box-orient: vertical;
+}
+
+/* Стили секций */
+.section-title {
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 10px;
+}
+
+/* Кнопки */
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-highlighted {
+    background-color: #740315;
+    color: white;
+    box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+.social-btn {
+    color: #FFF;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 200px; /* Минимальная ширина кнопок */
+}
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    .social-btn:hover {
+        background-color: #FFF;
+        color: #000;
+    }
+
+.form-control, .btn-primary {
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.contact-info .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+.project-details {
+    background-color: rgba(30,30,30, 0.94);
+    border-radius: 15px;
+    padding: 32px 28px;
+    margin: 40px auto;
+    max-width: 820px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.project-stack {
+    margin-bottom: 16px;
+}
+
+.tag {
+    display: inline-block;
+    background: #232c3d;
+    color: #e8f0fa;
+    border-radius: 18px;
+    padding: 4px 14px;
+    margin: 4px 7px 4px 0;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+.project-description {
+    margin-bottom: 24px;
+    font-size: 1.07em;
+    color: #e2e2e2;
+    line-height: 1.7;
+}
+
+.project-features ul {
+    padding-left: 22px;
+    margin: 10px 0 22px 0;
+}
+
+.project-features li {
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #c8e3ff;
+}
+
+.project-screenshots {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.screenshot {
+    width: 90%;
+    max-width: 420px;
+    margin: 12px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.20);
+    display: block;
+}
+
+.project-code pre,
+.project-code code {
+    background: #181f2c;
+    color: #f8f8f8;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.04em;
+    overflow-x: auto;
+    margin: 0 0 30px 0;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'monospace';
+}
+
+.project-download {
+    margin: 30px 0 20px 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+    .project-download .btn {
+        min-width: 150px;
+        text-align: center;
+    }
+
+.back-to-portfolio {
+    text-align: right;
+    margin-top: 40px;
+}
+
+/* Кнопка возврата */
+.back-button {
+    display: inline-flex;
+    align-items: center; /* Вертикальное выравнивание */
+    justify-content: center; /* Горизонтальное выравнивание */
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .back-button img {
+        margin-right: 10px !important; /* Принудительно применяет отступ */
+    }
+
+    .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+/* Заголовок */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Текстовые блоки */
+p {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/* Стили для списков */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+    ul li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 10px;
+    }
+
+        ul li:before {
+            content: '';
+            display: inline-block; /* Обеспечивает, что иконка будет на одном уровне с текстом */
+            position: relative;
+            width: 16px;
+            height: 16px;
+            background-image: url('https://github.com/hel-3d/hel-3d/raw/master/ресурсы/pack_icon_punkt_c.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 8px; /* Расстояние от текста */
+        }
+
+    ul ul li:before {
+        background-image: url('https://github.com/hel-3d/hel-3d/raw/master/ресурсы/pack_icon_punkt_c.png');
+    }
+
+.icon {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+    vertical-align: middle; /* Центрирование по вертикали относительно текста */
+}
+
+.float-image, .float-right, .float-left {
+    display: block !important;
+    margin: 20px 0 !important; /* Убираем auto и добавляем только верхний и нижний отступ */
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+.float-right, .float-left {
+    float: none !important;
+}
+
+img {
+    float: none !important;
+    display: block !important;
+    margin: 20px 0 !important; /* Только отступ сверху и снизу */
+    text-align: left; /* Убеждаемся, что текст идет по левому краю */
+}
+
+ul li img {
+    display: block !important;
+    margin: 20px 0 !important; /* Аналогично добавляем отступы */
+    text-align: left;
+}
+
+pre {
+    overflow-x: auto; /* Добавляет горизонтальный скролл */
+    white-space: pre; /* Отключает перенос строк */
+    word-wrap: normal; /* Убирает автоматический перенос слов */
+    padding: 10px; /* Добавляет внутренние отступы */
+    border: 1px solid #ccc; /* Лёгкая рамка вокруг */
+    border-radius: 5px; /* Скруглённые углы */
+    background-color: #2d2d2d; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    max-width: 100%; /* Ограничивает ширину */
+    box-sizing: border-box; /* Учитывает отступы в ширине */
+}
+
+/* Подсветка кода */
+.code-container pre[class*="language-"], .code-container code[class*="language-"] {
+    font-size: 1em;
+    line-height: 1.5;
+    background: #2D2D2D;
+    color: #FFF;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== Мобильная адаптация ===== */
+@media screen and (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .float-image, .float-right, .float-left {
+        max-width: 100%;
+        height: auto;
+        float: none;
+        margin: 10px 0;
+    }
+
+    ol, ul {
+        padding-left: 20px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    pre {
+        font-size: 0.9em;
+        padding: 10px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .article-button {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        min-height: auto;
+        margin: 5px 0;
+    }
+
+        .article-button img {
+            margin-bottom: 5px;
+            width: 60px;
+            height: auto;
+        }
+
+    .article-title {
+        margin-bottom: 5px;
+    }
+
+    .article-description {
+        margin-top: 0;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 5px;
+        margin: 0;
+    }
+
+    .col-md-4 {
+        padding: 5px;
+    }
+
+    .code-container pre {
+        margin: 5px 0;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        white-space: pre-wrap;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        white-space: pre-wrap;
+    }
+
+    .back-button {
+        font-size: 0.9em;
+        padding: 8px 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .scroll-hint {
+        display: block;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}

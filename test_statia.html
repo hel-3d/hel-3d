@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Texture_script for UE5 – Elena Gusarevich (Hel)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container project-details">
+
+        <!-- Название проекта -->
+        <h1>Texture_script for UE5</h1>
+
+        <!-- Технологический стек -->
+        <div class="project-stack">
+            <strong>Tech Stack:</strong>
+            <span class="tag">python</span>
+            <span class="tag">unreal_engine_api</span>
+            <span class="tag">editorassetlibrary</span>
+            <span class="tag">materialeditinglibrary</span>
+        </div>
+
+        <!-- Краткое описание -->
+        <div class="project-description">
+            <b>Plugin for automated texture importing.</b><br>
+            This script automates asset preparation in Unreal Engine 5. It enables bulk import of texture maps, automatically organizes them into folders (creating new ones as needed), and generates a unique material for each texture set.
+        </div>
+
+        <!-- Основные функции -->
+        <div class="project-features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Auto-create folder structure for textures and materials</li>
+                <li>Bulk import of texture maps</li>
+                <li>Auto-sorting of textures into folders</li>
+                <li>Auto-generation of materials for each texture set</li>
+            </ul>
+        </div>
+
+        <!-- Пример кода -->
+        <div class="project-code code-container">
+            <h2>Code Example</h2>
+            <pre><code class="language-python">import unreal
+
+def import_textures_and_create_materials(texture_dir, material_dir):
+    # Example: imports all textures from a folder, creates materials for each
+    asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+    texture_assets = asset_tools.import_assets(texture_dir, '/Game/Textures/')
+    for texture in texture_assets:
+        mat_name = f"MAT_{texture.get_name()}"
+        material = unreal.MaterialFactoryNew()
+        asset_tools.create_asset(mat_name, material_dir, None, material)
+    print("Import and material creation complete.")
+</code></pre>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="project-download">
+            <a href="https://github.com/hel-3d/texture_script_ue5" target="_blank" class="btn btn-outline-secondary">View Source on GitHub</a>
+            <a href="downloads/texture_script_ue5.zip" class="btn btn-primary">Download ZIP</a>
+        </div>
+
+        <!-- Навигация назад -->
+        <div class="back-to-portfolio">
+            <a href="index.html" class="btn btn-outline-secondary">&larr; Back to Portfolio</a>
+        </div>
+    </div>
+</body>
+</html>
