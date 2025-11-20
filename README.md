@@ -141,9 +141,6 @@ GPT-powered generation, validation, enrichment
 </a>
 </p>
 
----
 
-<p align="center">
-  <img src="https://visitcount.itsvg.in/api?id=hel-3d&icon=9&color=0&style=flat">
-</p>
+
 
