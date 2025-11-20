@@ -125,7 +125,7 @@ GPT-powered generation, validation, enrichment
 💬 Telegram: @Hel_inst
 </p>
 <p>
-🧾 Emeil: Pdf.man.3d@gmail.com
+🧾 Email: Pdf.man.3d@gmail.com
 <p>
 </p>
 <p>
@@ -136,10 +136,11 @@ GPT-powered generation, validation, enrichment
 
 ## 💰 Donate  
 <p align="center">
-<a href="https://paypal.me/HelCode">
-<img src="https://img.shields.io/badge/PayPal-00ff88?style=for-the-badge&logo=paypal&logoColor=black">
-</a>
+  <a href="https://paypal.me/HelCode">
+    <img src="https://raw.githubusercontent.com/hel-3d/hel-3d/master/paypal.png" alt="Donate via PayPal" width="180">
+  </a>
 </p>
+
 
 
 
