@@ -137,7 +137,7 @@ GPT-powered generation, validation, enrichment
 ## 💰 Donate  
 <p align="center">
 <a href="https://paypal.me/HelCode">
-<img src="https://img.shields.io/badge/PayPal-00ff88?style=for-the-badge&logo=paypal&logoColor=white">
+<img src="https://img.shields.io/badge/PayPal-00ff88?style=for-the-badge&logo=paypal&logoColor=black">
 </a>
 </p>
 
