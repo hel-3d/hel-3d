@@ -28,7 +28,777 @@ body {
     position: relative;
     z-index: 1;
 }
+/* Layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+.lead {
+    font-size: 1.2em;
+}
+
+/* Buttons */
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.btn-highlighted {
+    background-color: #740315;
+    color: white;
+    box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+}
+
+/* About layout */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    flex-wrap: wrap;
+}
+
+.about-text {
+    width: 90%;
+    max-width: 100ch;
+    text-align: left;
+}
+
+.about-image {
+    width: 30%;
+    max-width: 300px;
+}
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+.skills-list {
+    margin-top: 1rem;
+}
+
+    .skills-list span {
+        display: inline-block;
+        padding: 4px 10px;
+        margin: 4px 6px 0 0;
+        border-radius: 999px;
+        background-color: rgba(255, 255, 255, 0.08);
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        white-space: nowrap;
+    }
+
+/* Medium screens */
+@media (max-width: 1024px) {
+    .about-text {
+        width: 70%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .lead {
+        font-size: 1em;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.left-column {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+.right-column {
+    width: 520px;
+    flex: none; /* Убираем автоматическое растяжение */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Общий стиль для .project */
+.project {
+    position: relative;
+    padding: 20px; /* Добавляем внутренние отступы */
+    margin-bottom: 20px; /* Отступ между блоками */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+}
+
+/* Десктопная версия */
+@media screen and (min-width: 769px) {
+    .project {
+        padding: 10px; /* Внутренний отступ для десктопа */
+        margin-bottom: 20px; /* Расстояние между блоками проектов */
+    }
+}
+
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+    .project {
+        padding: 10px; /* Уменьшенные внутренние отступы */
+        margin-bottom: 10px; /* Отступ между блоками */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .right-column {
+        display: none; /* Скрыть правую колонку на мобильных устройствах */
+    }
+}
+
+/* Показываем сообщение только на мобильных устройствах */
+@media screen and (max-width: 768px) {
+    .mobile-message {
+        display: block; /* Показываем на мобильных */
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 10px;
+        margin: 20px 0;
+        border-radius: 10px;
+    }
+}
+/* Общие стили для подписи */
+.project-signature {
+    word-wrap: break-word;
+    font-size: 0.85rem;
+    color: white;
+    font-style: italic;
+}
+
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+    .project-signature {
+        position: static; /* Сбрасываем абсолютное позиционирование */
+        display: block; /* Делаем элемент блочным */
+        margin-top: 10px; /* Отступ сверху */
+        text-align: left; /* Выравнивание текста */
+    }
+
+    .project .btn {
+        margin-top: 0; /* Убираем отступ сверху кнопки */
+    }
+}
+
+/* Десктопная версия */
+@media screen and (min-width: 769px) {
+
+    .project-signature {
+        position: relative; /*
+            right: 0px; /* Расположение справа */
+        font-size: 0.85rem;
+        color: white;
+        text-align: right;
+    }
+}
+
+/* Скрываем сообщение на устройствах с шириной экрана больше 768px */
+@media screen and (min-width: 769px) {
+    .mobile-message {
+        display: none; /* Скрываем на ПК */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .right-column {
+        display: flex; /* Убедитесь, что колонка видна на больших экранах */
+    }
+}
+
+
+.project {
+    position: relative; /* Это нужно для позиционирования подписи */
+    padding-bottom: 10px; /* Добавим отступ снизу для подписи */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.project-signature {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    word-wrap: break-word;
+    padding: 10px;
+    font-size: 0.85rem;
+    color: white; /* Замените на желаемый цвет */
+    text-align: right;
+    font-style: italic; /* Для красоты */
+}
+
+@media screen and (max-width: 768px) {
+    .project {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        position: relative;
+    }
+
+    /* Для мобильной версии */
+    @media screen and (max-width: 768px) {
+        .project-signature {
+            position: static; /* Сбрасываем абсолютное позиционирование */
+            margin-bottom: 15px; /* Добавьте отступ снизу для кнопки */
+            display: block; /* Делаем элемент блочным */
+            margin-top: 10px; /* Отступ сверху */
+            text-align: left; /* Выравнивание текста *
+        }
+
+        .project .btn {
+            margin-top: 0; /* Убираем отступ сверху кнопки */
+        }
+    }
+
+    /* Для десктопной версии */
+    @media screen and (min-width: 769px) {
+        .project-signature {
+            position: absolute; /* Абсолютное позиционирование */
+            bottom: 10px; /* Расположение внизу блока */
+            right: 10px; /* Расположение справа */
+            font-size: 0.85rem;
+            color: white; /* Цвет текста */
+            text-align: right; /* Выравнивание текста */
+            padding-bottom: 50px; /* Увеличьте отступ снизу для кнопки и подписи */
+        }
+
+        .project {
+            padding-bottom: 40px; /* Пространство для подписи */
+        }
+    }
+
+
+    .btn {
+        margin-top: 15px;
+        width: 100%; /* Кнопка будет занимать всю ширину */
+    }
+}
+
+li {
+    color: #999; /* Это может сделать текст серым */
+}
+
+.project h4 {
+    color: #FFF;
+    margin-bottom: 10px;
+}
+
+.project ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #CCC;
+}
+
+    .project ul li {
+        margin-bottom: 5px;
+    }
+
+.project .btn {
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 10px;
+}
+
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-highlighted {
+    background-color: #740315;
+    color: white;
+    box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+li {
+    color: #999; /* Это может сделать текст серым */
+}
+/* Кнопки статей */
+.article-button {
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    padding: 15px; /* Уменьшение внутреннего отступа */
+    border: 1px solid #FFF;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: #999999;
+    max-width: 300px; /* Ограничение ширины кнопки */
+    max-height: 80px; /* Уменьшили минимальную высоту */
+}
+
+    .article-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .article-button img {
+        width: 110px;
+        height: 50px;
+        object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+        border-radius: 10px;
+        margin-right: 15px;
+    }
+
+.article-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание текста по центру */
+    justify-content: center; /* Центрирование внутри контейнера */
+}
+
+.article-title {
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.article-description {
+    font-size: 0.95em;
+    color: #CCC;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+    -webkit-box-orient: vertical;
+}
+
+/* Стили секций */
+.section-title {
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 10px;
+}
+
+/* Кнопки */
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-highlighted {
+    background-color: #740315;
+    color: white;
+    box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+.social-btn {
+    color: #FFF;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 150px; /* Минимальная ширина кнопок */
+}
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    .social-btn:hover {
+        background-color: #999999;
+        color: #000;
+    }
+
+.form-control, .btn-primary {
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.contact-info .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 15px;
+    }
+<style >
+.project {
+    margin-bottom: 15px;
+    background-color: rgba(255,255,255,0.10);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+#tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 8px; /* Горизонтальный и вертикальный отступы между кнопками */
+    margin-bottom: 14px;
+}
+
+.filter-btn {
+    min-width: 110px; /* Одинаковая минимальная ширина */
+    height: 25px; /* Низкие, не громоздкие */
+    padding: 0 15px;
+    border-radius: 18px; /* Округлые */
+    font-size: 1em;
+    background: rgba(255,255,255,0.11);
+    border: 1.3px solid #bbb;
+    color: #fff;
+    margin-bottom: 3px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+}
+
+    .filter-btn:hover, .filter-btn.active {
+        background: #781f31;
+        color: #fff;
+        border-color: #781f31;
+        box-shadow: 0 0 10px #741a3040;
+    }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #FFF;
+        color: #000;
+    }
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn-highlighted {
+    background-color: #740315;
+    color: white;
+    box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+}
+
+/* Social buttons */
+.social-btn {
+    color: #FFF;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 150px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    .social-btn:hover {
+        background-color: #FFF;
+        color: #000;
+    }
+
+.form-control, .btn-primary {
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.contact-info .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+.project-tags {
+    font-size: 0.95em;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.project-desc {
+    margin: 5px 0 8px 0;
+    font-size: 1.07em;
+    color: #fff;
+}
+
+.icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+</style >
+.social-btn {
+    color: #FFF;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 150px; /* Минимальная ширина кнопок */
+}
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    .social-btn:hover {
+        background-color: #999999;
+        color: #000;
+    }
+
+.form-control, .btn-primary {
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.contact-info .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 15px;
+    }
 li {
     color: #999; /* Это может сделать текст серым */
 }
