@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елена Гусаревич - Резюме и Портфолио</title>
-    <!-- Подключение Bootstrap -->
+    <title>Elena Gusarevich - Python Automation Developer</title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Предзагрузка видео -->
+    <!-- Video preload -->
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
-    <!-- Иконки для разных устройств -->
+    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <style>
-        /* Видео-фон */
+        /* Background video */
         .background-video {
-            position: fixed; /* Зафиксируем видео */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Подстроить под размер экрана */
+            object-fit: cover;
             z-index: -1;
         }
 
-        /* Основные стили для контейнера */
+        /* Layout */
         body, html {
             margin: 0;
             padding: 0;
@@ -55,7 +55,7 @@
             font-size: 1.2em;
         }
 
-        /* Кнопки */
+        /* Buttons */
         .btn-outline-secondary {
             border-color: #FFF;
             color: #FFF;
@@ -81,42 +81,13 @@
             box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
         }
 
-        /* Адаптация для разрешений меньше 1024 пикселей */
-        @media (max-width: 1024px) {
-            .about-text {
-                width: 70%; /* Расширяем текст на более широких экранах */
-            }
-        }
-
-        /* Адаптация для мобильных устройств */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .lead {
-                font-size: 1em;
-            }
-
-            /* Контейнер с текстом и изображением */
-            .about-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px; /* Уменьшим промежуток */
-            }
-
-            .about-text, .about-image {
-                width: 100%; /* Максимальная ширина для мобильных */
-            }
-        }
-
-        /* Контейнер с текстом и изображением */
+        /* About layout */
         .about-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
-            padding: 20px; /* Те же отступы, что и в верхнем блоке */
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -134,57 +105,155 @@
             max-width: 300px;
         }
 
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            .about-image img {
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            }
+
+        .skills-list {
+            margin-top: 1rem;
+        }
+
+            .skills-list span {
+                display: inline-block;
+                padding: 4px 10px;
+                margin: 4px 6px 0 0;
+                border-radius: 999px;
+                background-color: rgba(255, 255, 255, 0.08);
+                font-size: 0.9rem;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                white-space: nowrap;
+            }
+
+        /* Medium screens */
+        @media (max-width: 1024px) {
+            .about-text {
+                width: 70%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .lead {
+                font-size: 1em;
+            }
+
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .about-text,
+            .about-image {
+                width: 100%;
+            }
+
+            .about-text {
+                text-align: left;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Видео в качестве фона -->
+    <!-- Background video -->
     <video autoplay muted loop playsinline class="background-video">
-        <!-- Видео для десктопов -->
         <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
-        <!-- Видео для мобильных -->
         <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
-        Ваш браузер не поддерживает видео.
+        Your browser does not support the video tag.
     </video>
 
-    <!-- Главный контейнер -->
+    <!-- Header -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
-        <p class="lead">Lead 3D Environment Artist / Game Developer</p>
-        <p>Знания: Blender, Unreal Engine, Python, Notion и другие</p>
+        <p class="lead">Python Automation Engineer | SDET | Bot Architect</p>
+        <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
 
-        <!-- Навигационные кнопки -->
+        <!-- Navigation -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="#" class="btn btn-disabled btn-lg">Home</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Portfolio</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">My Coding & Resources</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Resume</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Portfolio</a>
             <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Journal</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">My Articles</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Articles</a>
             <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contactы</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
         </div>
     </div>
 
-    <!-- Контейнер "Обо мне" -->
+    <!-- About Me -->
     <div class="container about-container">
         <div class="about-text">
-            <h2>Обо мне</h2>
-            <p>Я - старший 3D художник по окружению с более чем 4-летним опытом работы в игровой индустрии. Я работаю с различными инструментами, такими как Blender, Unreal Engine и Python, и специализируюсь на создании высококачественных игровых локаций. Моя страсть - это создание живых и детализированных миров, которые могут привлечь игроков и погрузить их в игровой процесс.</p>
-            <p>Я также занимаюсь разработкой и внедрением новых методов для оптимизации рабочих процессов, помогая командам работать быстрее и эффективнее. Я верю в постоянное развитие и обучение, и мне нравится делиться своими знаниями с другими.</p>
+            <h2>About Me</h2>
+            <p>
+                Python Automation Developer with a strong background in building bots, parsers, API integrations, and automation tools for social platforms, production processes, and data workflows.
+                I specialize in creating stable, efficient and fully autonomous systems from web scraping pipelines and Telegram/Instagram bots to backend automation services (FastAPI, Linux, Docker, Systemd).
+            </p>
+            <p>
+                Over the last years, I've delivered multiple automation solutions that streamlined workflows, removed manual operations and handled high-volume data processing. My current stack includes Python, Asyncio, FastAPI, Requests, BeautifulSoup, Selenium/Browser Automation, FFmpeg, Git, Linux, Docker, Systemd and API integrations.
+            </p>
+            <p>
+                Before moving into IT full-time, I worked as a Lead 3D Artist and Team Lead in game development, managing production pipelines, documentation, cross-department communication and technical processes.
+                This gives me a strong advantage as an automation engineer. I understand complex pipelines, production constraints, deadlines, communication between teams, and how to design tools that actually solve real problems.
+            </p>
+
+            <p>
+                Now I’m focused on Python Automation, backend integrations and tool development, and open to roles such as:
+                Python Developer · Automation Engineer · Backend Developer (Python) · API Integration Engineer · Bot Developer · Web Scraping Engineer.
+            </p>
+
+            <p>
+                I enjoy building practical tools, solving technical challenges and creating systems that work reliably at scale.
+            </p>
+
+            <h3 class="mt-4">Core Skills</h3>
+            <div class="skills-list">
+                <span>Python</span>
+                <span>Python Automation</span>
+                <span>Web Scraping</span>
+                <span>Bots (Telegram, Instagram)</span>
+                <span>API Integration</span>
+                <span>Browser Automation</span>
+                <span>FastAPI</span>
+                <span>Flask</span>
+                <span>Asyncio</span>
+                <span>REST API</span>
+                <span>Requests</span>
+                <span>BeautifulSoup</span>
+                <span>HTML Parsing</span>
+                <span>Selenium</span>
+                <span>Telegram Bot API</span>
+                <span>Instagram Graph API</span>
+                <span>JSON / XML Parsing</span>
+                <span>FFmpeg</span>
+                <span>Linux</span>
+                <span>Linux Tools</span>
+                <span>Docker</span>
+                <span>Git</span>
+                <span>Systemd</span>
+                <span>Cron</span>
+                <span>Prompt Engineering</span>
+                <span>Automation</span>
+                <span>UI Testing</span>
+                <span>Technical Documentation</span>
+                <span>Task Management</span>
+                <span>Problem Solving</span>
+            </div>
         </div>
+
         <div class="about-image">
-            <img src="https://hel-3d.github.io/hel-3d/1234.jpg" alt="Елена Гусаревич">
+            <img src="https://hel-3d.github.io/hel-3d/1234.jpg" alt="Elena Gusarevich">
         </div>
     </div>
 
-    <!-- Подключение Bootstrap скриптов -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

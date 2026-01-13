@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elena Gusarevich - Python Automation Developer - resume</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
+  <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
+  <style>
+    /* ===== Color tokens (theme) ===== */
+    :root {
+      --bg-scrim: rgba(4, 10, 18, 0.62);          /* overlay on video for readability */
+      --surface: rgba(6, 14, 26, 0.82);           /* main containers */
+      --surface-2: rgba(10, 20, 36, 0.92);        /* slightly denser panels */
+      --panel: rgba(12, 24, 46, 0.85);            /* right column */
+      --border: rgba(255, 255, 255, 0.20);
+      --border-strong: rgba(255, 255, 255, 0.85);
+
+      --text: #f4f7ff;
+      --text-muted: #c7d1e6;
+      --text-dim: #9fb0cf;
+
+      --accent: #2a74ff;                          /* calm blue accent */
+      --accent-hover: #1f5fe0;
+      --accent-glow: rgba(42, 116, 255, 0.45);
+    }
+
+    /* Video background */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* Scrim overlay above video (improves contrast for text over media) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(1200px 600px at 50% 0%,
+        rgba(42, 116, 255, 0.10),
+        rgba(0, 0, 0, 0.00) 55%),
+        var(--bg-scrim);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      max-width: 90%;
+      margin-bottom: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Global li – оставляем, но делаем менее “грязным” */
+    li { color: var(--text-dim); }
+
+    /* Article button (PDF) */
+    .article-button {
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.06);
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+      text-decoration: none;
+      color: var(--text-muted);
+      max-width: 320px;
+      max-height: 80px;
+    }
+    .article-button:hover {
+      background-color: rgba(42, 116, 255, 0.10);
+      border-color: rgba(42, 116, 255, 0.55);
+      box-shadow: 0 0 0 1px rgba(42, 116, 255, 0.25), 0 0 18px rgba(42, 116, 255, 0.20);
+    }
+    .article-button img {
+      width: 110px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-right: 15px;
+      opacity: 0.95;
+    }
+    .article-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .article-title {
+      font-size: 1em;
+      margin: 0;
+      margin-bottom: 6px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    /* Section titles (site-level) */
+    .section-title {
+      font-size: 2em;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(255,255,255,0.65);
+      padding-bottom: 10px;
+      color: var(--text);
+    }
+
+    /* Buttons */
+    .btn-outline-secondary {
+      border-color: rgba(255,255,255,0.70);
+      color: var(--text);
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+    .btn-outline-secondary:hover {
+      background-color: rgba(255,255,255,0.90);
+      color: #0b1220;
+      border-color: rgba(255,255,255,0.90);
+    }
+
+    .btn-highlighted {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 0 0 1px rgba(42, 116, 255, 0.25), 0 0 18px var(--accent-glow);
+    }
+    .btn-highlighted:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      box-shadow: 0 0 0 1px rgba(42, 116, 255, 0.25), 0 0 22px rgba(42, 116, 255, 0.55);
+    }
+
+    .btn-disabled {
+      background-color: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .social-btn {
+      color: var(--text);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.65);
+      padding: 8px;
+      border-radius: 5px;
+      transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+      min-width: 150px;
+    }
+    .social-btn img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .social-btn:hover {
+      background-color: rgba(42, 116, 255, 0.14);
+      border-color: rgba(42, 116, 255, 0.55);
+      color: var(--text);
+    }
+
+    .form-control, .btn-primary {
+      margin-top: 10px;
+      max-width: 500px;
+    }
+
+    .contact-info .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* ===== Resume scoped styles ===== */
+    #resume-container { color: var(--text-muted); }
+
+    #resume-container .resume-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    #resume-container .left-column {
+      flex: 1 1 65%;
+      min-width: 300px;
+      padding: 8px 6px;
+    }
+
+    #resume-container .right-column {
+      flex: 0 0 30%;
+      background-color: var(--panel);
+      color: var(--text-muted);
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+      max-width: 350px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #resume-container .photo {
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      background-color: #7F8C8D;
+      margin-bottom: 14px;
+      background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    #resume-container h1, #resume-container h2, #resume-container h3, #resume-container h4 { margin: 0; }
+
+    #resume-container .header h1 {
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    #resume-container .header .subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    #resume-container .contact-info {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+    #resume-container .contact-info a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed rgba(255,255,255,0.25);
+    }
+    #resume-container .contact-info a:hover {
+      color: var(--text);
+      border-bottom-color: rgba(42, 116, 255, 0.65);
+    }
+
+    #resume-container .section-title {
+      font-size: 20px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(42, 116, 255, 0.45);
+      color: var(--text);
+      text-transform: uppercase;
+      font-weight: 700;
+      position: relative;
+    }
+    #resume-container .right-column .section-title {
+      margin-top: 14px;
+      width: 100%;
+      text-align: left;
+    }
+
+    #resume-container p {
+      margin: 8px 0;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-size: 14.5px;
+    }
+
+    #resume-container .job { margin-bottom: 16px; }
+    #resume-container .job h4 {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    #resume-container .job .meta {
+      color: var(--text-dim);
+      font-style: italic;
+      margin-bottom: 6px;
+      font-size: 13.5px;
+    }
+
+    #resume-container ul { margin: 8px 0 0 18px; padding: 0; }
+
+    /* Override global li */
+    #resume-container li {
+      color: var(--text-muted) !important;
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    #resume-container .project-tech {
+      font-size: 12px;
+      color: var(--text);
+      margin-left: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(42, 116, 255, 0.12);
+      border: 1px solid rgba(42, 116, 255, 0.25);
+      padding: 2px 6px;
+      border-radius: 8px;
+      display: inline-block;
+      transform: translateY(-1px);
+    }
+
+    #resume-container .skills {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+      width: 100%;
+      text-align: left;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    #resume-container .skills li {
+      display: inline;
+      margin-right: 6px;
+      color: var(--text-muted) !important;
+    }
+    #resume-container .skills li::after { content: " •"; color: rgba(255,255,255,0.55); }
+    #resume-container .skills li:last-child::after { content: ""; }
+
+    @media screen and (max-width: 768px) {
+      #resume-container .resume-wrap { flex-direction: column; }
+      #resume-container .left-column, #resume-container .right-column { flex: 1 1 100%; max-width: 100%; }
+      #resume-container .right-column { align-items: flex-start; }
+      #resume-container .photo { width: 110px; height: 110px; margin: 0 auto 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+    <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <div class="container text-center my-5">
+    <h1 class="display-4">Elena Gusarevich (Hel)</h1>
+    <p class="lead">Python Automation Engineer | SDET | Bot Architect</p>
+    <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
+      <a href="#" class="btn btn-disabled btn-lg">Resume</a>
+      <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Portfolio</a>
+      <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Journal</a>
+      <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Articles</a>
+      <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
+      <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
+    </div>
+  </div>
+
+  <div class="container my-5" id="resume-container">
+    <a href="https://hel-3d.github.io/hel-3d/Elena_Gusarevich_Python_Automation_Engineer_Resume.pdf" download class="article-button">
+      <img src="Screen_1.png" alt="Download CV">
+      <div class="article-content">
+        <h3 class="article-title">Download My Printable Resume (PDF)</h3>
+      </div>
+    </a>
+
+    <div class="resume-wrap">
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+        <div class="header">
+          <h1>Elena Gusarevich</h1>
+          <div class="subtitle">Python Automation Engineer | SDET | Bot Architect</div>
+          <div class="contact-info">
+            <a href="mailto:Pdf.man.3d@gmail.com">Pdf.man.3d@gmail.com</a> •
+            <a href="https://www.linkedin.com/in/helena-gusarevich" target="_blank" rel="noopener">LinkedIn</a> •
+            <a href="https://github.com/hel-3d" target="_blank" rel="noopener">GitHub</a> • Remote
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 class="section-title">Professional Summary</h3>
+          <p>
+            Python Automation Engineer with <b>2+ years of commercial experience</b> in high-load systems and data extraction.
+            I specialize in solving complex engineering challenges: bypassing <b>Cloudflare/Incapsula</b>, architecting distributed Telegram bot ecosystems, and building self-healing parsing pipelines.
+            Background in technical leadership (ex-Team Lead) ensures I deliver maintainable, documented, and business-oriented code.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3 class="section-title">Work Experience</h3>
+
+          <div class="job">
+            <h4>Python Automation Engineer | Backend Developer <span style="float:right; color:rgba(255,255,255,0.65); font-weight:500;">Jan 2024 – Present</span></h4>
+            <div class="meta">Private Practice / Independent Automation Lab</div>
+            <ul>
+              <li><b>Architected High-Load Ecosystem (9,000+ users):</b> Built a cluster of 3 interconnected Telegram bots. Implemented fuzzy-matching algorithms to filter job postings from 20+ channels with &gt;80% accuracy.</li>
+              <li><b>Infrastructure Management:</b> Deployed production environments on Linux VPS using Docker containers with automated log rotation and CI/CD elements.</li>
+              <li><b>Data Engineering:</b> Developed ETL pipelines for US automotive auctions, scraping data from dynamic JS-heavy websites and PDF documents directly into structured reports.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <h4>Art Lead 3D | Senior Technical Artist <span style="float:right; color:rgba(255,255,255,0.65); font-weight:500;">Jan 2022 – Oct 2024</span></h4>
+            <div class="meta">NDA (Online PC Game) / Various Game Studios</div>
+            <ul>
+              <li><b>Automation Scripts:</b> Developed Python tools for Blender/Unreal Engine to batch-process assets, reducing manual routine by 30%.</li>
+              <li><b>Leadership:</b> Managed a cross-functional team of 15 specialists. Responsible for hiring, task estimation, and technical documentation.</li>
+            </ul>
+          </div>
+
+          <p style="font-size:13px; color:rgba(255,255,255,0.55); font-style:italic; margin-top:10px;">
+            * Prior to 2022: Successful career in Design Engineering &amp; Art Management (Full history available on LinkedIn).
+          </p>
+        </div>
+
+        <div class="section">
+          <h3 class="section-title">Key Projects</h3>
+
+          <div class="job">
+            <h4>
+              SMS Verification &amp; Anti-Bot Bypass System
+              <span class="project-tech">SeleniumBase, Manifest V3, API</span>
+              <span style="float:right; color:rgba(255,255,255,0.65); font-weight:500;">2025</span>
+            </h4>
+            <ul>
+              <li>Engineered a solution to bypass <b>Cloudflare &amp; Incapsula</b> using custom Chrome Extensions for proxy auth.</li>
+              <li>Automated registration flows on React SPAs with 99% success rate by emulating human input events.</li>
+              <li>Integrated SMS-activate APIs to solve Captchas and verify phone numbers automatically.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <h4>
+              Ritma - FemTech Product (Telegram Bot)
+              <span class="project-tech">Python, MongoDB, Docker</span>
+              <span style="float:right; color:rgba(255,255,255,0.65); font-weight:500;">2024</span>
+            </h4>
+            <ul>
+              <li>Full-cycle product development: Complex backend logic for cycle tracking (timedelta), secure partner-linking via tokens, and medical PDF report generation.</li>
+              <li>Implemented background task queue (JobQueue) for timely user notifications.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 class="section-title">Education</h3>
+          <div class="job">
+            <h4>Russian Academy of Crafts <span style="float:right; color:rgba(255,255,255,0.65); font-weight:500;">2013 – 2014</span></h4>
+            <div class="meta">Artistic Forging (Third-class Artisan)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <div class="photo"></div>
+
+        <h3 class="section-title">Technical Skills</h3>
+        <ul class="skills">
+          <li>Python 3.10+</li><li>AsyncIO</li><li>OOP</li><li>SeleniumBase (UC)</li><li>Playwright</li>
+          <li>Aiogram 3</li><li>Telethon</li><li>FastAPI</li><li>Docker</li><li>Linux (Systemd)</li>
+          <li>MongoDB</li><li>PostgreSQL</li><li>Pandas</li><li>Google Sheets API</li><li>Git</li>
+          <li>Postman</li><li>Chrome DevTools</li>
+        </ul>
+
+        <h3 class="section-title">Focus</h3>
+        <ul class="skills">
+          <li>Cloudflare/Incapsula Bypass</li><li>High-load Bots</li><li>Parsing Pipelines</li>
+          <li>ETL / Data Extraction</li><li>Automation Testing Mindset (SDET)</li>
+        </ul>
+
+        <h3 class="section-title">Links</h3>
+        <ul class="skills">
+          <li><a href="mailto:Pdf.man.3d@gmail.com" style="color: var(--text); text-decoration:none;">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/helena-gusarevich" target="_blank" rel="noopener" style="color: var(--text); text-decoration:none;">LinkedIn</a></li>
+          <li><a href="https://github.com/hel-3d" target="_blank" rel="noopener" style="color: var(--text); text-decoration:none;">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

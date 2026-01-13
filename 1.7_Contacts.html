@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елена Гусаревич - Соцсети и Контакты</title>
+    <title>Elena Gusarevich - Social & Contact</title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Video preload -->
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
-    <!-- Иконки для разных устройств -->
+    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <style>
-        /* Видео-фон */
+        /* Background video */
         .background-video {
             position: fixed;
             top: 0;
@@ -44,22 +46,17 @@
             margin-bottom: 20px;
         }
 
-        /* Кнопки */
+        /* Buttons */
         .btn-outline-secondary {
             border-color: #FFF;
             color: #FFF;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-                .btn-highlighted {
-            background-color: #740315;
-            color: white;
-            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
-        }
 
-        .btn-outline-secondary:hover {
-            background-color: #FFF;
-            color: #000;
-        }
+            .btn-outline-secondary:hover {
+                background-color: #FFF;
+                color: #000;
+            }
 
         .btn-disabled {
             background-color: rgba(51, 51, 51, 0.2);
@@ -69,6 +66,13 @@
             pointer-events: none;
         }
 
+        .btn-highlighted {
+            background-color: #740315;
+            color: white;
+            box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
+        }
+
+        /* Social buttons */
         .social-btn {
             color: #FFF;
             font-size: 1rem;
@@ -80,19 +84,21 @@
             padding: 8px;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            min-width: 150px; /* Минимальная ширина кнопок */
+            min-width: 150px;
+            margin-right: 10px;
+            margin-bottom: 10px;
         }
 
-        .social-btn img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
+            .social-btn img {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+            }
 
-        .social-btn:hover {
-            background-color: #FFF;
-            color: #000;
-        }
+            .social-btn:hover {
+                background-color: #FFF;
+                color: #000;
+            }
 
         .form-control, .btn-primary {
             margin-top: 10px;
@@ -111,112 +117,119 @@
             max-width: 500px;
         }
 
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-        }
+            .about-image img {
+                width: 100%;
+                border-radius: 15px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            }
     </style>
 </head>
 <body>
 
+    <!-- Background video -->
     <video autoplay muted loop playsinline class="background-video">
         <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
         <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
-        Ваш браузер не поддерживает видео.
+        Your browser does not support the video tag.
     </video>
 
-    <!-- Главный контейнер -->
+    <!-- Header (same as index, but Social & Contact is current page) -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
-        <p class="lead">Lead 3D Environment Artist / Developer</p>
-        <p>With 5+ years in 3D modeling, I specialize in visual optimization and efficient asset creation. Experienced in leading and mentoring 3D teams, I deliver top-quality environments and smooth project workflows.</p>
+        <p class="lead">Python Automation Developer (Bots, Parsers, AI Tools)</p>
+        <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
 
-
-        <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Portfolio</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">My Coding & Resources</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">Tech Resume</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">Automation Portfolio</a>
             <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Journal</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">My Articles</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">Articles</a>
             <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
-            <a href="#" class="btn btn-disabled btn-lg">Social & Contactы</a>
+            <a href="#" class="btn btn-disabled btn-lg">Social & Contact</a>
         </div>
     </div>
 
+    <!-- Contact section -->
     <div class="container contact-info">
         <div class="row">
             <div class="about-text">
-                <h2>Найми меня на проект</h2>
+                <h2>Hire Me for Your Project</h2>
 
-                <h4>Дополнительные ресурсы:</h4>
+                <h4>Additional Resources:</h4>
                 <div class="d-flex flex-wrap">
-                    <a href="https://www.artstation.com/yourhunger" class="social-btn" target="_blank">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/artstation.png" alt="Artstation"> Artstation
-                    </a>
-                    <a href="https://clck.ru/3EP8Gq" class="social-btn" target="_blank">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/figma.png" alt="Figma"> Figma
-                    </a>
-                    <a href="https://www.cgtrader.com/designers/i-am-fbx-man" class="social-btn" target="_blank">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/3d.png" alt="CGTrader"> CGTrader
+                    <a href="https://github.com/hel-3d" class="social-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/ios-glyphs/30/ffffff/github.png" alt="GitHub">
+                        GitHub
                     </a>
                 </div>
 
-                <h4>Контактная информация:</h4>
+                <h4>Contact Information:</h4>
                 <div class="d-flex flex-wrap">
-                    <a href="https://www.linkedin.com/in/helena-gusarevich/" class="social-btn" target="_blank">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn"> LinkedIn
+                    <a href="https://www.linkedin.com/in/helena-gusarevich/" class="social-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+                        LinkedIn
                     </a>
-                    <a href="https://t.me/Hel_inst" class="social-btn" target="_blank">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/telegram-app.png" alt="Telegram"> Telegram
+                    <a href="https://t.me/Hel_inst" class="social-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/telegram-app.png" alt="Telegram">
+                        Telegram
                     </a>
                 </div>
-                <p>Email: <a href="mailto:pdf.man.3d@gmail.com" style="color: #FFF;">pdf.man.3d@gmail.com</a></p>
+                <p>
+                    Email:
+                    <a href="mailto:pdf.man.3d@gmail.com" style="color: #FFF;">
+                        pdf.man.3d@gmail.com
+                    </a>
+                </p>
 
-                <h4>Свяжитесь со мной</h4>
+                <h4>Contact Form</h4>
                 <form action="http://89.22.229.54/send-email.php" method="POST" onsubmit="return handleSubmit(event)">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя" required>
+                        <input type="text" class="form-control" id="name" name="name"
+                               placeholder="Your name" required>
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Введите ваш email" required>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="Your email" required>
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Ваше сообщение" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="3"
+                                  placeholder="Your message" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-highlighted btn-lg">Отправить</button>
+                    <button type="submit" class="btn btn-highlighted btn-lg">Send Message</button>
                 </form>
             </div>
 
             <div class="about-image">
-                <img src="TmUz.jpg" alt="Елена Гусаревич">
+                <img src="TmUz.jpg" alt="Elena Gusarevich">
             </div>
         </div>
     </div>
 
     <script>
-    function handleSubmit(event) {
-        event.preventDefault();
-        const form = event.target;
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
 
-        fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert("Сообщение успешно отправлено!");
-                form.reset();
-            } else {
-                response.json().then(data => alert(data.error || "Ошибка при отправке сообщения."));
-            }
-        }).catch(error => {
-            alert("Произошла ошибка при отправке сообщения.");
-        });
-    }
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Your message has been sent successfully.");
+                    form.reset();
+                } else {
+                    response.json().then(data =>
+                        alert(data.error || "Error while sending the message.")
+                    );
+                }
+            }).catch(error => {
+                alert("An error occurred while sending the message.");
+            });
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
