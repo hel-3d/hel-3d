@@ -1,7 +1,7 @@
-
+п»ї
 
 #resume-container {
-    background-color: #0a0f1a;
+    background-color: #000005;
     position: relative;
     z-index: 1;
 }
@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-    background-color: rgba(10, 15, 26, 0.92);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -207,7 +207,7 @@ body, html {
 
 .right-column {
     width: 520px;
-    flex: none; /* Убираем автоматическое растяжение */
+    flex: none; /* РЈР±РёСЂР°РµРј Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ СЂР°СЃС‚СЏР¶РµРЅРёРµ */
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
@@ -215,41 +215,41 @@ body, html {
     flex-direction: column;
     align-items: center;
 }
-/* Общий стиль для .project */
+/* РћР±С‰РёР№ СЃС‚РёР»СЊ РґР»СЏ .project */
 .project {
     position: relative;
-    padding: 20px; /* Добавляем внутренние отступы */
-    margin-bottom: 20px; /* Отступ между блоками */
+    padding: 20px; /* Р”РѕР±Р°РІР»СЏРµРј РІРЅСѓС‚СЂРµРЅРЅРёРµ РѕС‚СЃС‚СѓРїС‹ */
+    margin-bottom: 20px; /* РћС‚СЃС‚СѓРї РјРµР¶РґСѓ Р±Р»РѕРєР°РјРё */
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 15px;
 }
 
-/* Десктопная версия */
+/* Р”РµСЃРєС‚РѕРїРЅР°СЏ РІРµСЂСЃРёСЏ */
 @media screen and (min-width: 769px) {
     .project {
-        padding: 10px; /* Внутренний отступ для десктопа */
-        margin-bottom: 20px; /* Расстояние между блоками проектов */
+        padding: 10px; /* Р’РЅСѓС‚СЂРµРЅРЅРёР№ РѕС‚СЃС‚СѓРї РґР»СЏ РґРµСЃРєС‚РѕРїР° */
+        margin-bottom: 20px; /* Р Р°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ Р±Р»РѕРєР°РјРё РїСЂРѕРµРєС‚РѕРІ */
     }
 }
 
-/* Мобильная версия */
+/* РњРѕР±РёР»СЊРЅР°СЏ РІРµСЂСЃРёСЏ */
 @media screen and (max-width: 768px) {
     .project {
-        padding: 10px; /* Уменьшенные внутренние отступы */
-        margin-bottom: 10px; /* Отступ между блоками */
+        padding: 10px; /* РЈРјРµРЅСЊС€РµРЅРЅС‹Рµ РІРЅСѓС‚СЂРµРЅРЅРёРµ РѕС‚СЃС‚СѓРїС‹ */
+        margin-bottom: 10px; /* РћС‚СЃС‚СѓРї РјРµР¶РґСѓ Р±Р»РѕРєР°РјРё */
     }
 }
 
 @media screen and (max-width: 768px) {
     .right-column {
-        display: none; /* Скрыть правую колонку на мобильных устройствах */
+        display: none; /* РЎРєСЂС‹С‚СЊ РїСЂР°РІСѓСЋ РєРѕР»РѕРЅРєСѓ РЅР° РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІР°С… */
     }
 }
 
-/* Показываем сообщение только на мобильных устройствах */
+/* РџРѕРєР°Р·С‹РІР°РµРј СЃРѕРѕР±С‰РµРЅРёРµ С‚РѕР»СЊРєРѕ РЅР° РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІР°С… */
 @media screen and (max-width: 768px) {
     .mobile-message {
-        display: block; /* Показываем на мобильных */
+        display: block; /* РџРѕРєР°Р·С‹РІР°РµРј РЅР° РјРѕР±РёР»СЊРЅС‹С… */
         background-color: rgba(255, 255, 255, 0.1);
         color: white;
         font-size: 1.2em;
@@ -259,7 +259,7 @@ body, html {
         border-radius: 10px;
     }
 }
-/* Общие стили для подписи */
+/* РћР±С‰РёРµ СЃС‚РёР»Рё РґР»СЏ РїРѕРґРїРёСЃРё */
 .project-signature {
     word-wrap: break-word;
     font-size: 0.85rem;
@@ -267,49 +267,49 @@ body, html {
     font-style: italic;
 }
 
-/* Мобильная версия */
+/* РњРѕР±РёР»СЊРЅР°СЏ РІРµСЂСЃРёСЏ */
 @media screen and (max-width: 768px) {
     .project-signature {
-        position: static; /* Сбрасываем абсолютное позиционирование */
-        display: block; /* Делаем элемент блочным */
-        margin-top: 10px; /* Отступ сверху */
-        text-align: left; /* Выравнивание текста */
+        position: static; /* РЎР±СЂР°СЃС‹РІР°РµРј Р°Р±СЃРѕР»СЋС‚РЅРѕРµ РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёРµ */
+        display: block; /* Р”РµР»Р°РµРј СЌР»РµРјРµРЅС‚ Р±Р»РѕС‡РЅС‹Рј */
+        margin-top: 10px; /* РћС‚СЃС‚СѓРї СЃРІРµСЂС…Сѓ */
+        text-align: left; /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ С‚РµРєСЃС‚Р° */
     }
 
     .project .btn {
-        margin-top: 0; /* Убираем отступ сверху кнопки */
+        margin-top: 0; /* РЈР±РёСЂР°РµРј РѕС‚СЃС‚СѓРї СЃРІРµСЂС…Сѓ РєРЅРѕРїРєРё */
     }
 }
 
-/* Десктопная версия */
+/* Р”РµСЃРєС‚РѕРїРЅР°СЏ РІРµСЂСЃРёСЏ */
 @media screen and (min-width: 769px) {
 
     .project-signature {
         position: relative; /*
-            right: 0px; /* Расположение справа */
+            right: 0px; /* Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ СЃРїСЂР°РІР° */
         font-size: 0.85rem;
         color: white;
         text-align: right;
     }
 }
 
-/* Скрываем сообщение на устройствах с шириной экрана больше 768px */
+/* РЎРєСЂС‹РІР°РµРј СЃРѕРѕР±С‰РµРЅРёРµ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІР°С… СЃ С€РёСЂРёРЅРѕР№ СЌРєСЂР°РЅР° Р±РѕР»СЊС€Рµ 768px */
 @media screen and (min-width: 769px) {
     .mobile-message {
-        display: none; /* Скрываем на ПК */
+        display: none; /* РЎРєСЂС‹РІР°РµРј РЅР° РџРљ */
     }
 }
 
 @media screen and (min-width: 769px) {
     .right-column {
-        display: flex; /* Убедитесь, что колонка видна на больших экранах */
+        display: flex; /* РЈР±РµРґРёС‚РµСЃСЊ, С‡С‚Рѕ РєРѕР»РѕРЅРєР° РІРёРґРЅР° РЅР° Р±РѕР»СЊС€РёС… СЌРєСЂР°РЅР°С… */
     }
 }
 
 
 .project {
-    position: relative; /* Это нужно для позиционирования подписи */
-    padding-bottom: 10px; /* Добавим отступ снизу для подписи */
+    position: relative; /* Р­С‚Рѕ РЅСѓР¶РЅРѕ РґР»СЏ РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёСЏ РїРѕРґРїРёСЃРё */
+    padding-bottom: 10px; /* Р”РѕР±Р°РІРёРј РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ РґР»СЏ РїРѕРґРїРёСЃРё */
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
 }
@@ -321,9 +321,9 @@ body, html {
     word-wrap: break-word;
     padding: 10px;
     font-size: 0.85rem;
-    color: white; /* Замените на желаемый цвет */
+    color: white; /* Р—Р°РјРµРЅРёС‚Рµ РЅР° Р¶РµР»Р°РµРјС‹Р№ С†РІРµС‚ */
     text-align: right;
-    font-style: italic; /* Для красоты */
+    font-style: italic; /* Р”Р»СЏ РєСЂР°СЃРѕС‚С‹ */
 }
 
 @media screen and (max-width: 768px) {
@@ -335,47 +335,47 @@ body, html {
         position: relative;
     }
 
-    /* Для мобильной версии */
+    /* Р”Р»СЏ РјРѕР±РёР»СЊРЅРѕР№ РІРµСЂСЃРёРё */
     @media screen and (max-width: 768px) {
         .project-signature {
-            position: static; /* Сбрасываем абсолютное позиционирование */
-            margin-bottom: 15px; /* Добавьте отступ снизу для кнопки */
-            display: block; /* Делаем элемент блочным */
-            margin-top: 10px; /* Отступ сверху */
-            text-align: left; /* Выравнивание текста *
+            position: static; /* РЎР±СЂР°СЃС‹РІР°РµРј Р°Р±СЃРѕР»СЋС‚РЅРѕРµ РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёРµ */
+            margin-bottom: 15px; /* Р”РѕР±Р°РІСЊС‚Рµ РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ РґР»СЏ РєРЅРѕРїРєРё */
+            display: block; /* Р”РµР»Р°РµРј СЌР»РµРјРµРЅС‚ Р±Р»РѕС‡РЅС‹Рј */
+            margin-top: 10px; /* РћС‚СЃС‚СѓРї СЃРІРµСЂС…Сѓ */
+            text-align: left; /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ С‚РµРєСЃС‚Р° *
         }
 
         .project .btn {
-            margin-top: 0; /* Убираем отступ сверху кнопки */
+            margin-top: 0; /* РЈР±РёСЂР°РµРј РѕС‚СЃС‚СѓРї СЃРІРµСЂС…Сѓ РєРЅРѕРїРєРё */
         }
     }
 
-    /* Для десктопной версии */
+    /* Р”Р»СЏ РґРµСЃРєС‚РѕРїРЅРѕР№ РІРµСЂСЃРёРё */
     @media screen and (min-width: 769px) {
         .project-signature {
-            position: absolute; /* Абсолютное позиционирование */
-            bottom: 10px; /* Расположение внизу блока */
-            right: 10px; /* Расположение справа */
+            position: absolute; /* РђР±СЃРѕР»СЋС‚РЅРѕРµ РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёРµ */
+            bottom: 10px; /* Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ РІРЅРёР·Сѓ Р±Р»РѕРєР° */
+            right: 10px; /* Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ СЃРїСЂР°РІР° */
             font-size: 0.85rem;
-            color: white; /* Цвет текста */
-            text-align: right; /* Выравнивание текста */
-            padding-bottom: 50px; /* Увеличьте отступ снизу для кнопки и подписи */
+            color: white; /* Р¦РІРµС‚ С‚РµРєСЃС‚Р° */
+            text-align: right; /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ С‚РµРєСЃС‚Р° */
+            padding-bottom: 50px; /* РЈРІРµР»РёС‡СЊС‚Рµ РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ РґР»СЏ РєРЅРѕРїРєРё Рё РїРѕРґРїРёСЃРё */
         }
 
         .project {
-            padding-bottom: 40px; /* Пространство для подписи */
+            padding-bottom: 40px; /* РџСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ РґР»СЏ РїРѕРґРїРёСЃРё */
         }
     }
 
 
     .btn {
         margin-top: 15px;
-        width: 100%; /* Кнопка будет занимать всю ширину */
+        width: 100%; /* РљРЅРѕРїРєР° Р±СѓРґРµС‚ Р·Р°РЅРёРјР°С‚СЊ РІСЃСЋ С€РёСЂРёРЅСѓ */
     }
 }
 
 li {
-    color: #999; /* Это может сделать текст серым */
+    color: #999; /* Р­С‚Рѕ РјРѕР¶РµС‚ СЃРґРµР»Р°С‚СЊ С‚РµРєСЃС‚ СЃРµСЂС‹Рј */
 }
 
 .project h4 {
@@ -453,13 +453,13 @@ body, html {
 }
 
 li {
-    color: #999; /* Это может сделать текст серым */
+    color: #999; /* Р­С‚Рѕ РјРѕР¶РµС‚ СЃРґРµР»Р°С‚СЊ С‚РµРєСЃС‚ СЃРµСЂС‹Рј */
 }
-/* Кнопки статей */
+/* РљРЅРѕРїРєРё СЃС‚Р°С‚РµР№ */
 .article-button {
     display: flex;
-    justify-content: center; /* Горизонтальное центрирование */
-    padding: 15px; /* Уменьшение внутреннего отступа */
+    justify-content: center; /* Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ */
+    padding: 15px; /* РЈРјРµРЅСЊС€РµРЅРёРµ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РѕС‚СЃС‚СѓРїР° */
     border: 1px solid #FFF;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -467,8 +467,8 @@ li {
     transition: background-color 0.3s, box-shadow 0.3s;
     text-decoration: none;
     color: #999999;
-    max-width: 300px; /* Ограничение ширины кнопки */
-    max-height: 80px; /* Уменьшили минимальную высоту */
+    max-width: 300px; /* РћРіСЂР°РЅРёС‡РµРЅРёРµ С€РёСЂРёРЅС‹ РєРЅРѕРїРєРё */
+    max-height: 80px; /* РЈРјРµРЅСЊС€РёР»Рё РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ */
 }
 
     .article-button:hover {
@@ -479,7 +479,7 @@ li {
     .article-button img {
         width: 110px;
         height: 50px;
-        object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+        object-fit: contain; /* РЎРѕС…СЂР°РЅСЏРµС‚ РїСЂРѕРїРѕСЂС†РёРё, РґРѕР±Р°РІР»СЏСЏ РїСѓСЃС‚РѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ */
         border-radius: 10px;
         margin-right: 15px;
     }
@@ -487,8 +487,8 @@ li {
 .article-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Выравнивание текста по центру */
-    justify-content: center; /* Центрирование внутри контейнера */
+    align-items: center; /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ С‚РµРєСЃС‚Р° РїРѕ С†РµРЅС‚СЂСѓ */
+    justify-content: center; /* Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ РІРЅСѓС‚СЂРё РєРѕРЅС‚РµР№РЅРµСЂР° */
 }
 
 .article-title {
@@ -504,11 +504,11 @@ li {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+    -webkit-line-clamp: 3; /* РћРіСЂР°РЅРёС‡РёРІР°РµС‚ РґРѕ 2 СЃС‚СЂРѕРє */
     -webkit-box-orient: vertical;
 }
 
-/* Стили секций */
+/* РЎС‚РёР»Рё СЃРµРєС†РёР№ */
 .section-title {
     font-size: 2em;
     margin-top: 40px;
@@ -517,7 +517,7 @@ li {
     padding-bottom: 10px;
 }
 
-/* Кнопки */
+/* РљРЅРѕРїРєРё */
 .btn-outline-secondary {
     border-color: #FFF;
     color: #FFF;
@@ -554,7 +554,7 @@ li {
     padding: 8px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-    min-width: 150px; /* Минимальная ширина кнопок */
+    min-width: 150px; /* РњРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РєРЅРѕРїРѕРє */
 }
 
     .social-btn img {
@@ -600,15 +600,15 @@ li {
 #tag-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 8px; /* Горизонтальный и вертикальный отступы между кнопками */
+    gap: 8px 8px; /* Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ Рё РІРµСЂС‚РёРєР°Р»СЊРЅС‹Р№ РѕС‚СЃС‚СѓРїС‹ РјРµР¶РґСѓ РєРЅРѕРїРєР°РјРё */
     margin-bottom: 14px;
 }
 
 .filter-btn {
-    min-width: 110px; /* Одинаковая минимальная ширина */
-    height: 25px; /* Низкие, не громоздкие */
+    min-width: 110px; /* РћРґРёРЅР°РєРѕРІР°СЏ РјРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° */
+    height: 25px; /* РќРёР·РєРёРµ, РЅРµ РіСЂРѕРјРѕР·РґРєРёРµ */
     padding: 0 15px;
-    border-radius: 18px; /* Округлые */
+    border-radius: 18px; /* РћРєСЂСѓРіР»С‹Рµ */
     font-size: 1em;
     background: rgba(255,255,255,0.11);
     border: 1.3px solid #bbb;
@@ -764,7 +764,7 @@ body, html {
     padding: 8px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-    min-width: 150px; /* Минимальная ширина кнопок */
+    min-width: 150px; /* РњРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РєРЅРѕРїРѕРє */
 }
 
     .social-btn img {
@@ -800,13 +800,13 @@ body, html {
         border-radius: 15px;
     }
 li {
-    color: #999; /* Это может сделать текст серым */
+    color: #999; /* Р­С‚Рѕ РјРѕР¶РµС‚ СЃРґРµР»Р°С‚СЊ С‚РµРєСЃС‚ СЃРµСЂС‹Рј */
 }
-/* Кнопки статей */
+/* РљРЅРѕРїРєРё СЃС‚Р°С‚РµР№ */
 .article-button {
     display: flex;
-    justify-content: center; /* Горизонтальное центрирование */
-    padding: 15px; /* Уменьшение внутреннего отступа */
+    justify-content: center; /* Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ */
+    padding: 15px; /* РЈРјРµРЅСЊС€РµРЅРёРµ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РѕС‚СЃС‚СѓРїР° */
     border: 1px solid #FFF;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -814,8 +814,8 @@ li {
     transition: background-color 0.3s, box-shadow 0.3s;
     text-decoration: none;
     color: #999999;
-    max-width: 300px; /* Ограничение ширины кнопки */
-    max-height: 80px; /* Уменьшили минимальную высоту */
+    max-width: 300px; /* РћРіСЂР°РЅРёС‡РµРЅРёРµ С€РёСЂРёРЅС‹ РєРЅРѕРїРєРё */
+    max-height: 80px; /* РЈРјРµРЅСЊС€РёР»Рё РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ */
 }
 
     .article-button:hover {
@@ -826,7 +826,7 @@ li {
     .article-button img {
         width: 110px;
         height: 50px;
-        object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+        object-fit: contain; /* РЎРѕС…СЂР°РЅСЏРµС‚ РїСЂРѕРїРѕСЂС†РёРё, РґРѕР±Р°РІР»СЏСЏ РїСѓСЃС‚РѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ */
         border-radius: 10px;
         margin-right: 15px;
     }
@@ -834,8 +834,8 @@ li {
 .article-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Выравнивание текста по центру */
-    justify-content: center; /* Центрирование внутри контейнера */
+    align-items: center; /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ С‚РµРєСЃС‚Р° РїРѕ С†РµРЅС‚СЂСѓ */
+    justify-content: center; /* Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ РІРЅСѓС‚СЂРё РєРѕРЅС‚РµР№РЅРµСЂР° */
 }
 
 .article-title {
@@ -851,11 +851,11 @@ li {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+    -webkit-line-clamp: 3; /* РћРіСЂР°РЅРёС‡РёРІР°РµС‚ РґРѕ 2 СЃС‚СЂРѕРє */
     -webkit-box-orient: vertical;
 }
 
-/* Стили секций */
+/* РЎС‚РёР»Рё СЃРµРєС†РёР№ */
 .section-title {
     font-size: 2em;
     margin-top: 40px;
@@ -864,7 +864,7 @@ li {
     padding-bottom: 10px;
 }
 
-/* Кнопки */
+/* РљРЅРѕРїРєРё */
 .btn-outline-secondary {
     border-color: #FFF;
     color: #FFF;
@@ -901,7 +901,7 @@ li {
     padding: 8px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-    min-width: 150px; /* Минимальная ширина кнопок */
+    min-width: 150px; /* РњРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РєРЅРѕРїРѕРє */
 }
 
     .social-btn img {
@@ -937,12 +937,12 @@ li {
         border-radius: 15px;
     }
 /* ===== Resume layout (old-style 2 columns), scoped ===== */
-/* общий стиль блока (наследует твой .container фон, скругление и т.д.) */
+/* РѕР±С‰РёР№ СЃС‚РёР»СЊ Р±Р»РѕРєР° (РЅР°СЃР»РµРґСѓРµС‚ С‚РІРѕР№ .container С„РѕРЅ, СЃРєСЂСѓРіР»РµРЅРёРµ Рё С‚.Рґ.) */
 #resume-container {
     color: #d9d9d9;
 }
 
-/* две колонки как в старом резюме */
+/* РґРІРµ РєРѕР»РѕРЅРєРё РєР°Рє РІ СЃС‚Р°СЂРѕРј СЂРµР·СЋРјРµ */
 #resume-container .resume-wrap {
     display: flex;
     flex-wrap: wrap;
@@ -971,7 +971,7 @@ li {
     align-items: center;
 }
 
-/* фото как раньше */
+/* С„РѕС‚Рѕ РєР°Рє СЂР°РЅСЊС€Рµ */
 #resume-container .photo {
     border-radius: 50%;
     width: 140px;
@@ -985,7 +985,7 @@ li {
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 
-/* Заголовки/тексты */
+/* Р—Р°РіРѕР»РѕРІРєРё/С‚РµРєСЃС‚С‹ */
 #resume-container h1,
 #resume-container h2,
 #resume-container h3,
@@ -1023,7 +1023,7 @@ li {
             text-decoration: underline;
         }
 
-/* Заголовки секций как у тебя на сайте */
+/* Р—Р°РіРѕР»РѕРІРєРё СЃРµРєС†РёР№ РєР°Рє Сѓ С‚РµР±СЏ РЅР° СЃР°Р№С‚Рµ */
 #resume-container .section-title {
     font-size: 20px;
     margin-top: 22px;
@@ -1036,7 +1036,7 @@ li {
     position: relative;
 }
 
-/* правой колонке заголовки белые */
+/* РїСЂР°РІРѕР№ РєРѕР»РѕРЅРєРµ Р·Р°РіРѕР»РѕРІРєРё Р±РµР»С‹Рµ */
 #resume-container .right-column .section-title {
     margin-top: 14px;
     width: 100%;
@@ -1074,7 +1074,7 @@ li {
     padding: 0;
 }
 
-/* важно: у тебя глобально li { color:#999 } — перебиваем внутри резюме */
+/* РІР°Р¶РЅРѕ: Сѓ С‚РµР±СЏ РіР»РѕР±Р°Р»СЊРЅРѕ li { color:#999 } вЂ” РїРµСЂРµР±РёРІР°РµРј РІРЅСѓС‚СЂРё СЂРµР·СЋРјРµ */
 #resume-container li {
     color: #cfcfcf !important;
     margin-bottom: 6px;
@@ -1082,7 +1082,7 @@ li {
     line-height: 1.55;
 }
 
-/* Тэги технологий */
+/* РўСЌРіРё С‚РµС…РЅРѕР»РѕРіРёР№ */
 #resume-container .project-tech {
     font-size: 12px;
     color: #d2d2d2;
@@ -1096,7 +1096,7 @@ li {
     transform: translateY(-1px);
 }
 
-/* списки скиллов справа — как раньше (через точки) */
+/* СЃРїРёСЃРєРё СЃРєРёР»Р»РѕРІ СЃРїСЂР°РІР° вЂ” РєР°Рє СЂР°РЅСЊС€Рµ (С‡РµСЂРµР· С‚РѕС‡РєРё) */
 #resume-container .skills {
     list-style: none;
     padding: 0;
@@ -1114,7 +1114,7 @@ li {
     }
 
         #resume-container .skills li::after {
-            content: " •";
+            content: " вЂў";
             color: #cfcfcf;
         }
 
@@ -1156,7 +1156,7 @@ html, body { height: 100%; }
   filter: brightness(0.45) saturate(0.7) contrast(1.05);
 }
 
-/* чтобы контент точно был выше видео */
+/* С‡С‚РѕР±С‹ РєРѕРЅС‚РµРЅС‚ С‚РѕС‡РЅРѕ Р±С‹Р» РІС‹С€Рµ РІРёРґРµРѕ */
 .container, #resume-container{
   position: relative;
   z-index: 1;
