@@ -1123,6 +1123,12 @@ li {
             content: "";
         }
 
+    #resume-container .resume-wrap {
+        width: 100%;
+        max-width: 1300px; /* пример, подбери под себя */
+        margin: 0 auto; /* центрируем */
+    }
+
 /* Mobile */
 @media screen and (max-width: 768px) {
     #resume-container .resume-wrap {
