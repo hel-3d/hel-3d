@@ -1,0 +1,389 @@
+<style >
+/* Видео-фон */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.45) saturate(0.7) contrast(1.05);
+}
+
+#resume-container {
+    background-color: #0a0f1a;
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: rgba(10, 15, 26, 0.92);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+li {
+    color: #999; /* Это может сделать текст серым */
+}
+/* Кнопки статей */
+.article-button {
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    padding: 15px; /* Уменьшение внутреннего отступа */
+    border: 1px solid #FFF;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: #999999;
+    max-width: 300px; /* Ограничение ширины кнопки */
+    max-height: 80px; /* Уменьшили минимальную высоту */
+}
+
+    .article-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .article-button img {
+        width: 110px;
+        height: 50px;
+        object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+        border-radius: 10px;
+        margin-right: 15px;
+    }
+
+.article-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание текста по центру */
+    justify-content: center; /* Центрирование внутри контейнера */
+}
+
+.article-title {
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.article-description {
+    font-size: 0.95em;
+    color: #CCC;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничивает до 2 строк */
+    -webkit-box-orient: vertical;
+}
+
+/* Стили секций */
+.section-title {
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 10px;
+}
+
+/* Кнопки */
+.btn-outline-secondary {
+    border-color: #FFF;
+    color: #FFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-highlighted {
+    background-color: #0f1a2e;
+    color: #d6deeb;
+    box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.btn-disabled {
+    background-color: rgba(51, 51, 51, 0.2);
+    color: #888;
+    border: 1px solid #888;
+    cursor: default;
+    pointer-events: none;
+}
+
+.social-btn {
+    color: #FFF;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 150px; /* Минимальная ширина кнопок */
+}
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    .social-btn:hover {
+        background-color: #999999;
+        color: #000;
+    }
+
+.form-control, .btn-primary {
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.contact-info .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+</style >
+
+<style >
+/* ===== Resume layout (old-style 2 columns), scoped ===== */
+/* общий стиль блока (наследует твой .container фон, скругление и т.д.) */
+#resume-container {
+    color: #d9d9d9;
+}
+
+/* две колонки как в старом резюме */
+#resume-container .resume-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+#resume-container .left-column {
+    flex: 1 1 65%;
+    min-width: 300px;
+    padding: 8px 6px;
+}
+
+#resume-container .right-column {
+    flex: 0 0 30%;
+    background-color: #0f1a2e;
+    color: #d6deeb;
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.18);
+    max-width: 350px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* фото как раньше */
+#resume-container .photo {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    background-color: #7F8C8D;
+    margin-bottom: 14px;
+    background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Заголовки/тексты */
+#resume-container h1,
+#resume-container h2,
+#resume-container h3,
+#resume-container h4 {
+    margin: 0;
+}
+
+#resume-container .header h1 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+#resume-container .header .subtitle {
+    font-size: 18px;
+    color: #cccccc;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+#resume-container .contact-info {
+    font-size: 14px;
+    color: #bdbdbd;
+    margin-bottom: 14px;
+}
+
+    #resume-container .contact-info a {
+        color: #d7d7d7;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        #resume-container .contact-info a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+/* Заголовки секций как у тебя на сайте */
+#resume-container .section-title {
+    font-size: 20px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.8);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+}
+
+/* правой колонке заголовки белые */
+#resume-container .right-column .section-title {
+    margin-top: 14px;
+    width: 100%;
+    text-align: left;
+}
+
+#resume-container p {
+    margin: 8px 0;
+    line-height: 1.6;
+    color: #d0d0d0;
+    font-size: 14.5px;
+}
+
+#resume-container .job {
+    margin-bottom: 16px;
+}
+
+    #resume-container .job h4 {
+        font-size: 15px;
+        color: #ffffff;
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 4px;
+    }
+
+    #resume-container .job .meta {
+        color: #bdbdbd;
+        font-style: italic;
+        margin-bottom: 6px;
+        font-size: 13.5px;
+    }
+
+#resume-container ul {
+    margin: 8px 0 0 18px;
+    padding: 0;
+}
+
+/* важно: у тебя глобально li { color:#999 } — перебиваем внутри резюме */
+#resume-container li {
+    color: #cfcfcf !important;
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* Тэги технологий */
+#resume-container .project-tech {
+    font-size: 12px;
+    color: #d2d2d2;
+    margin-left: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 2px 6px;
+    border-radius: 8px;
+    display: inline-block;
+    transform: translateY(-1px);
+}
+
+/* списки скиллов справа — как раньше (через точки) */
+#resume-container .skills {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+    #resume-container .skills li {
+        display: inline;
+        margin-right: 6px;
+        color: #cfcfcf !important;
+    }
+
+        #resume-container .skills li::after {
+            content: " •";
+            color: #cfcfcf;
+        }
+
+        #resume-container .skills li:last-child::after {
+            content: "";
+        }
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    #resume-container .resume-wrap {
+        flex-direction: column;
+    }
+
+    #resume-container .left-column,
+    #resume-container .right-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    #resume-container .right-column {
+        align-items: flex-start;
+    }
+
+    #resume-container .photo {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto 12px;
+    }
+}
+
+</style >

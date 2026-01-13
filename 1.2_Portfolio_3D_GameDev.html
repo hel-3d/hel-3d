@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://viewer.marmoset.co/main/marmoset.js"></script>
     <style>
         /* Видео-фон */
@@ -46,27 +47,26 @@
         }
 
         /* Кнопки статей */
-    .article-button {
-        display: flex;
-        align-items: flex-start;
+        .article-button {
+            display: flex;
+            align-items: flex-start;
             padding: 20px;
-
-        /* justify-content: center; Горизонтальное центрирование */
-        /* padding: 15px; Уменьшение внутреннего отступа */
-        border: 1px solid #FFF;
+            /* justify-content: center; Горизонтальное центрирование */
+            /* padding: 15px; Уменьшение внутреннего отступа */
+            border: 1px solid #FFF;
             border-radius: 10px;
-        margin-bottom: 20px;
-        background-color: rgba(255, 255, 255, 0.1);
-        transition: background-color 0.3s, box-shadow 0.3s;
-        text-decoration: none;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
             color: #FFF;
             min-height: 160px;
-    }
+        }
 
-        .article-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            .article-button:hover {
+                background-color: rgba(255, 255, 255, 0.2);
                 box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
+            }
 
         .article-content {
             display: flex;
@@ -90,7 +90,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-                .btn-highlighted {
+        .btn-highlighted {
             background-color: #740315;
             color: white;
             box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
@@ -158,38 +158,39 @@
             margin-bottom: 10px;
         }
 
-            .article-button {
+        .article-button {
             display: flex;
             flex-direction: column;
-                border: 1px solid #FFF; /* Граница */
-                border-radius: 10px; /* Скругление блока */
-                padding: 20px; /* Внутренние отступы */
-                background-color: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
-                color: #FFF; /* Цвет текста */
-            }
-
-            .article-title {
-                font-size: 1.2rem; /* Размер заголовка */
-                margin-bottom: 20px; /* Отступ снизу */
-                text-align: right; /* Выровнено по правому краю */
-            }
-
-            .article-description {
-                flex-grow: 1; /* Описание занимает оставшееся место */
-                font-size: 1rem; /* Размер текста */
-                margin-bottom: 20px; /* Отступ снизу */
-            }
-
-            .btn-outline-secondary {
-                border-color: #FFF;
-                color: #FFF;
-                transition: background-color 0.3s, color 0.3s;
-            }
-
-                .btn-outline-secondary:hover {
-                    background-color: #FFF;
-                    color: #000;
+            border: 1px solid #FFF; /* Граница */
+            border-radius: 10px; /* Скругление блока */
+            padding: 20px; /* Внутренние отступы */
+            background-color: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+            color: #FFF; /* Цвет текста */
         }
+
+        .article-title {
+            font-size: 1.2rem; /* Размер заголовка */
+            margin-bottom: 20px; /* Отступ снизу */
+            text-align: right; /* Выровнено по правому краю */
+        }
+
+        .article-description {
+            flex-grow: 1; /* Описание занимает оставшееся место */
+            font-size: 1rem; /* Размер текста */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        .btn-outline-secondary {
+            border-color: #FFF;
+            color: #FFF;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .btn-outline-secondary:hover {
+                background-color: #FFF;
+                color: #000;
+            }
+
         .photo-square {
             width: 300px; /* жёстко 300×300 пикселей */
             height: 300px;
@@ -222,18 +223,17 @@
     <!-- Главный контейнер -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
-        <p class="lead">Lead 3D Environment Artist / Developer</p>
-        <p>With 5+ years in 3D modeling, I specialize in visual optimization and efficient asset creation. Experienced in leading and mentoring 3D teams, I deliver top-quality environments and smooth project workflows.</p>
+        <p class="lead">Python Automation Engineer | SDET | Bot Architect</p>
+        <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
 
         <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
             <a href="#" class="btn btn-disabled btn-lg">3D GameDev Portfolio</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">My Coding & Resources</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Projects.html" class="btn btn-outline-secondary btn-lg">Projects</a>
             <a href="https://hel-3d.github.io/hel-3d/1.4_Diary.html" class="btn btn-outline-secondary btn-lg">Journal</a>
             <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">My Articles</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
             <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
         </div>
     </div>

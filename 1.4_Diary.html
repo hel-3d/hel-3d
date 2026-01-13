@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         /* Видео-фон */
         .background-video {
@@ -45,36 +46,36 @@
         }
 
         li {
-    color: #999; /* Это может сделать текст серым */
-}
+            color: #999; /* Это может сделать текст серым */
+        }
         /* Кнопки статей */
-    .article-button {
-        display: flex;
-        justify-content: center; /* Горизонтальное центрирование */
-        padding: 15px; /* Уменьшение внутреннего отступа */
-        border: 1px solid #FFF;
-        border-radius: 15px;
-        margin-bottom: 20px;
-        background-color: rgba(255, 255, 255, 0.1);
-        transition: background-color 0.3s, box-shadow 0.3s;
-        text-decoration: none;
-        color: #999999;
-        max-width: 300px; /* Ограничение ширины кнопки */
-        max-height: 80px; /* Уменьшили минимальную высоту */
-    }
-
-        .article-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        .article-button {
+            display: flex;
+            justify-content: center; /* Горизонтальное центрирование */
+            padding: 15px; /* Уменьшение внутреннего отступа */
+            border: 1px solid #FFF;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #999999;
+            max-width: 300px; /* Ограничение ширины кнопки */
+            max-height: 80px; /* Уменьшили минимальную высоту */
         }
 
-.article-button img {
-    width: 110px;
-    height: 50px;
-    object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
-    border-radius: 10px;
-    margin-right: 15px;
-}
+            .article-button:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            .article-button img {
+                width: 110px;
+                height: 50px;
+                object-fit: contain; /* Сохраняет пропорции, добавляя пустое пространство */
+                border-radius: 10px;
+                margin-right: 15px;
+            }
 
         .article-content {
             display: flex;
@@ -115,7 +116,8 @@
             color: #FFF;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-                .btn-highlighted {
+
+        .btn-highlighted {
             background-color: #740315;
             color: white;
             box-shadow: 0 0 5px #740315, 0 0 10px #740315, 0 0 15px #740315;
@@ -148,16 +150,16 @@
             min-width: 150px; /* Минимальная ширина кнопок */
         }
 
-        .social-btn img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
+            .social-btn img {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+            }
 
-        .social-btn:hover {
-            background-color: #999999;
-            color: #000;
-        }
+            .social-btn:hover {
+                background-color: #999999;
+                color: #000;
+            }
 
         .form-control, .btn-primary {
             margin-top: 10px;
@@ -176,10 +178,10 @@
             max-width: 500px;
         }
 
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-        }
+            .about-image img {
+                width: 100%;
+                border-radius: 15px;
+            }
     </style>
 </head>
 <body>
@@ -193,226 +195,250 @@
     <!-- Главный контейнер -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
-        <p class="lead">Lead 3D Environment Artist / Developer</p>
-        <p>With 5+ years in 3D modeling, I specialize in visual optimization and efficient asset creation. Experienced in leading and mentoring 3D teams, I deliver top-quality environments and smooth project workflows.</p>
+        <p class="lead">Python Automation Engineer | SDET | Bot Architect</p>
+        <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
 
         <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Resume</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.2_Portfolio_3D_GameDev.html" class="btn btn-outline-secondary btn-lg">3D GameDev Portfolio</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary btn-lg">My Coding & Resources</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.1_Resume.html" class="btn btn-outline-secondary btn-lg">Resume</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.3_Projects.html" class="btn btn-outline-secondary btn-lg">Projects</a>
             <a href="#" class="btn btn-disabled btn-lg">Journal</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.5_Articles.html" class="btn btn-outline-secondary btn-lg">My Articles</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.6_Tutorials.html" class="btn btn-outline-secondary btn-lg">Tutorials</a>
             <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
         </div>
     </div>
 
     <!-- Секция с резюме -->
     <div id="resume-container">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elena Gusarevich - Resume</title>
-    <style>
-        #resume-container body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-#resume-container .container {
-    display: flex; /* Включение flexbox для контейнера */
-    flex-wrap: wrap; /* Добавляем перенос строк, если ширины не хватает */
-    justify-content: space-between; /* Отступы между колонками */
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    max-width: 90%;
-    margin-bottom: 20px;
-}
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Elena Gusarevich - Resume</title>
+            <style>
+                #resume-container body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f4f4f4;
+                }
 
-#resume-container .left-column {
-    flex: 1 1 65%; /* Задаем размер левой колонки */
-    padding: 20px;
-    min-width: 300px; /* Минимальная ширина текста */
-}
+                #resume-container .container {
+                    display: flex; /* Включение flexbox для контейнера */
+                    flex-wrap: wrap; /* Добавляем перенос строк, если ширины не хватает */
+                    justify-content: space-between; /* Отступы между колонками */
+                    background-color: rgba(0, 0, 0, 0.8);
+                    border-radius: 15px;
+                    padding: 20px;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                    max-width: 90%;
+                    margin-bottom: 20px;
+                }
 
-#resume-container .right-column {
-    flex: 0 0 30%; /* Задаем размер правой колонки */
-    background-color: #320109;
-    color: #999999;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 15px;
-    max-width: 350px; /* Ограничение ширины */
-    min-width: 200px; /* Минимальная ширина */
-}
-        #resume-container h1, 
-        #resume-container h2, 
-        #resume-container h3 {
-            color: #999999; /* Изменен цвет на более тёмный для лучшей читаемости */
-        }
-        #resume-container .right-column h3 {
-            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
-        }
-        #resume-container .header {
-            text-align: left;
-            padding-bottom: 20px;
-        }
-        #resume-container .header h1 {
-            margin: 0;
-            font-size: 26px;
-        }
-        #resume-container .header h2 {
-            margin: 5px 0 10px 0;
-            font-size: 18px;
-            color: #999999;
-        }
-        #resume-container .contact-info {
-            font-size: 14px;
-            color: #999999;
-            margin-bottom: 20px;
-        }
-        #resume-container .contact-info a {
-            color: #999999;
-            text-decoration: none;
-        }
-        #resume-container .contact-info img {
-            vertical-align: middle;
-            margin-right: 8px;
-            width: 15px; /* Уменьшение размера иконок в 2 раза */
-            height: 15px; /* Уменьшение размера иконок в 2 раза */
-        }
-        #resume-container .section {
-            margin-bottom: 20px;
-        }
-        #resume-container .section-title {
-            font-size: 18px;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            color: #ffffff; /* Темный цвет для заголовков */
-            position: relative;
-        }
-        #resume-container .right-column .section-title {
-            color: #ffffff; /* Белый цвет для заголовков в правой колонке */
-        }
-        #resume-container .section-title:after {
-            content: "";
-            display: block;
-            width: 100%; 
-            height: 2px;
-            background-color: #8d9dab; 
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin-top: 5px; 
-        }
-        #resume-container .right-column {
-            flex: 0 0 30%;
-            background-color: #320109;
-            color: #999999;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 15px;
-            border: 1px solid #ffffff; /* Белая рамка вокруг контейнера */
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень, если требуется */
-            max-width: 350px;
-            min-width: 200px;
-}
-        }
-        #resume-container .section-content p {
-            margin: 5px 0;
-            line-height: 1.6;
-        }
-        #resume-container ul {
-            margin: 10px 0 10px 20px;
-        }
-        #resume-container ul li {
-            margin-bottom: 10px;
-        }
-        #resume-container .skills, 
-        #resume-container .achievements, 
-        #resume-container .passions {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
-            font-size: 14px;
-        }
-        #resume-container .skills li, 
-        #resume-container .achievements li, 
-        #resume-container .passions li {
-            background: none;
-            margin-bottom: 10px;
-            padding: 0;
-            border-radius: 0;
-            color: #999999;
-        }
-        #resume-container .skills {
-            margin-bottom: 20px;
-        }
-        #resume-container .skills li {
-            display: inline-block;
-            margin-right: 5px;
-        }
-        #resume-container .skills li::after {
-            content: " •";
-        }
-        #resume-container .skills li:last-child::after {
-            content: "";
-        }
-#resume-container .photo {
-    border-radius: 50%; /* Делает фото круглым */
-    width: 150px;
-    height: 150px;
-    background-color: #7F8C8D;
-    margin-bottom: 20px;
-    background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #ffffff; /* Белая рамка вокруг фото */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень */
-}
+                #resume-container .left-column {
+                    flex: 1 1 65%; /* Задаем размер левой колонки */
+                    padding: 20px;
+                    min-width: 300px; /* Минимальная ширина текста */
+                }
 
-        #resume-container .icon {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-image: url('https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=FFFFFF');
-        }
-        #resume-container .achievements li strong {
-            display: inline;
-            margin-bottom: 0;
-            padding-left: 5px;
-        }
-        #resume-container .achievements li p {
-            margin-top: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="left-column">
+                #resume-container .right-column {
+                    flex: 0 0 30%; /* Задаем размер правой колонки */
+                    background-color: #320109;
+                    color: #999999;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border-radius: 15px;
+                    max-width: 350px; /* Ограничение ширины */
+                    min-width: 200px; /* Минимальная ширина */
+                }
+
+                #resume-container h1,
+                #resume-container h2,
+                #resume-container h3 {
+                    color: #999999; /* Изменен цвет на более тёмный для лучшей читаемости */
+                }
+
+                #resume-container .right-column h3 {
+                    color: #ffffff; /* Белый цвет для заголовков в правой колонке */
+                }
+
+                #resume-container .header {
+                    text-align: left;
+                    padding-bottom: 20px;
+                }
+
+                    #resume-container .header h1 {
+                        margin: 0;
+                        font-size: 26px;
+                    }
+
+                    #resume-container .header h2 {
+                        margin: 5px 0 10px 0;
+                        font-size: 18px;
+                        color: #999999;
+                    }
+
+                #resume-container .contact-info {
+                    font-size: 14px;
+                    color: #999999;
+                    margin-bottom: 20px;
+                }
+
+                    #resume-container .contact-info a {
+                        color: #999999;
+                        text-decoration: none;
+                    }
+
+                    #resume-container .contact-info img {
+                        vertical-align: middle;
+                        margin-right: 8px;
+                        width: 15px; /* Уменьшение размера иконок в 2 раза */
+                        height: 15px; /* Уменьшение размера иконок в 2 раза */
+                    }
+
+                #resume-container .section {
+                    margin-bottom: 20px;
+                }
+
+                #resume-container .section-title {
+                    font-size: 18px;
+                    padding-bottom: 5px;
+                    margin-bottom: 10px;
+                    color: #ffffff; /* Темный цвет для заголовков */
+                    position: relative;
+                }
+
+                #resume-container .right-column .section-title {
+                    color: #ffffff; /* Белый цвет для заголовков в правой колонке */
+                }
+
+                #resume-container .section-title:after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #8d9dab;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    margin-top: 5px;
+                }
+
+                #resume-container .right-column {
+                    flex: 0 0 30%;
+                    background-color: #320109;
+                    color: #999999;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border-radius: 15px;
+                    border: 1px solid #ffffff; /* Белая рамка вокруг контейнера */
+                    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень, если требуется */
+                    max-width: 350px;
+                    min-width: 200px;
+                }
+
+                }
+
+                #resume-container .section-content p {
+                    margin: 5px 0;
+                    line-height: 1.6;
+                }
+
+                #resume-container ul {
+                    margin: 10px 0 10px 20px;
+                }
+
+                    #resume-container ul li {
+                        margin-bottom: 10px;
+                    }
+
+                #resume-container .skills,
+                #resume-container .achievements,
+                #resume-container .passions {
+                    list-style-type: none;
+                    padding: 0;
+                    text-align: left;
+                    font-size: 14px;
+                }
+
+                    #resume-container .skills li,
+                    #resume-container .achievements li,
+                    #resume-container .passions li {
+                        background: none;
+                        margin-bottom: 10px;
+                        padding: 0;
+                        border-radius: 0;
+                        color: #999999;
+                    }
+
+                #resume-container .skills {
+                    margin-bottom: 20px;
+                }
+
+                    #resume-container .skills li {
+                        display: inline-block;
+                        margin-right: 5px;
+                    }
+
+                        #resume-container .skills li::after {
+                            content: " •";
+                        }
+
+                        #resume-container .skills li:last-child::after {
+                            content: "";
+                        }
+
+                #resume-container .photo {
+                    border-radius: 50%; /* Делает фото круглым */
+                    width: 150px;
+                    height: 150px;
+                    background-color: #7F8C8D;
+                    margin-bottom: 20px;
+                    background-image: url('https://i.postimg.cc/t7dGkVYM/ava1.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    border: 1px solid #ffffff; /* Белая рамка вокруг фото */
+                    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Легкая тень */
+                }
+
+                #resume-container .icon {
+                    margin-right: 10px;
+                    width: 16px;
+                    height: 16px;
+                    display: inline-block;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-image: url('https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=FFFFFF');
+                }
+
+                #resume-container .achievements li strong {
+                    display: inline;
+                    margin-bottom: 0;
+                    padding-left: 5px;
+                }
+
+                #resume-container .achievements li p {
+                    margin-top: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="left-column">
 
 
-        </div>
+                </div>
 
-    </div>
-</body>
-</html>
+            </div>
+        </body>
+    </html>
 
-    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
