@@ -102,7 +102,7 @@ h1 {
     text-align: left;
 }
 
-.about-image {
+.about-image1 {
     width: 30%;
     max-width: 300px;
 }
@@ -953,14 +953,15 @@ li {
 #resume-container .left-column {
     flex: 1 1 65%;
     min-width: 300px;
-    padding: 8px 6px;
+    padding: 20px 20px;
+    color: rgba(255, 255, 255, 0.1);
 }
 
 #resume-container .right-column {
     flex: 0 0 30%;
     background-color: #0f1a2e;
-    color: #d6deeb;
-    padding: 18px;
+    color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
     border-radius: 15px;
     border: 1px solid #ffffff;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.18);
