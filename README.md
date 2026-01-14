@@ -110,12 +110,12 @@ GPT-powered generation, validation, enrichment
 ## 💚 **Stats**
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hel-3d&theme=chartreuse-dark&show_icons=true&hide_border=true" height="170" />
+  
   <img src="https://nirzak-streak-stats.vercel.app?user=hel-3d&theme=neon-dark&hide_border=true" height="170" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hel-3d&theme=chartreuse-dark&layout=compact&hide_border=true" height="120" />
+
 </p>
 
 ---
