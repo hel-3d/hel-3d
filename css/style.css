@@ -1201,3 +1201,45 @@ html, body { height: 100%; }
 html, body {
     background-color: #030712;
 }
+
+/* ===== Resume: download button responsive fix ===== */
+
+/* Desktop/tablet: кнопка справа, не влияет на поток */
+#resume-container .header {
+    position: relative;
+    padding-right: 340px; /* резерв под кнопку */
+}
+
+#resume-container .resume-download {
+    position: absolute;
+    top: 0; /* на уровне заголовка */
+    right: 0;
+    margin: 0 !important;
+}
+
+/* Mobile: кнопка уходит под текст и больше не ломает верстку */
+@media (max-width: 768px) {
+    #resume-container .header {
+        padding-right: 0; /* убираем резерв */
+    }
+
+    #resume-container .resume-download {
+        position: static; /* возвращаем в поток */
+        display: flex; /* сохраняем твой flex-внутренности кнопки */
+        margin: 12px 0 0 0 !important;
+        max-width: 100%; /* чтобы не вылезала за края */
+        width: 100%;
+    }
+
+        /* чуть уменьшим превью, чтобы аккуратно смотрелось */
+        #resume-container .resume-download img {
+            width: 96px;
+            height: 44px;
+        }
+
+    /* если на мобилке заголовки слишком большие — можно чуть ужать */
+    #resume-container .header h1 {
+        font-size: 26px;
+        line-height: 1.1;
+    }
+}
