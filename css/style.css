@@ -617,14 +617,7 @@ li {
     gap: 24px;
     align-items: flex-start;
 }
-/* Рабочая зона с колонками */
-.projects-layout {
-    max-width: 1200px; /* ← ТА ЖЕ ширина, что Resume */
-    margin: 0 auto; /* центр */
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-}
+
 
 
 .project {
@@ -1204,7 +1197,4 @@ html, body { height: 100%; }
 .container, #resume-container{
   position: relative;
   z-index: 1;
-}
-html, body {
-    background-color: #000005 !important;
 }
