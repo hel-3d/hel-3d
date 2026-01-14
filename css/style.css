@@ -459,6 +459,7 @@ li {
 .article-button {
     display: flex;
     justify-content: center; /* Горизонтальное центрирование */
+    margin-left: auto;
     padding: 15px; /* Уменьшение внутреннего отступа */
     border: 1px solid #FFF;
     border-radius: 15px;
@@ -589,7 +590,28 @@ li {
         width: 100%;
         border-radius: 15px;
     }
-<style >
+
+/* хедер становится "контейнером" для абсолютной кнопки */
+#resume-container .header {
+    position: relative;
+    padding-right: 340px; /* резерв под кнопку (подстрой) */
+}
+
+/* кнопка больше НЕ влияет на высоту блока */
+#resume-container .resume-download {
+    position: absolute;
+    top: 0; /* на уровень h1 */
+    right: 0; /* прижали к правому краю хедера */
+    margin: 0 !important;
+}
+
+/* если нужно точнее по линии заголовка */
+#resume-container .header h1 {
+    margin-top: 0;
+}
+
+
+
 .project {
     margin-bottom: 15px;
     background-color: rgba(255,255,255,0.10);
