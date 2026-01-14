@@ -1416,3 +1416,42 @@ li {
     margin-top: 44px; /* подстрой */
     display: block;
 }
+
+/* ============================
+   VIDEO BACKGROUND SAFE LAYER
+   Prevents white flash on load
+   ============================ */
+
+/* Базовый фон страницы — страховка */
+html, body {
+    background-color: #000005 !important;
+}
+
+/* Контейнер фона под видео */
+.video-bg-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: #000005;
+    overflow: hidden;
+}
+
+    /* Само видео */
+    .video-bg-wrapper video,
+    .background-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: transparent;
+        /* лёгкое затемнение */
+        filter: brightness(0.45) saturate(0.7) contrast(1.05);
+    }
+
+/* Контент ВСЕГДА выше видео */
+.container,
+#resume-container {
+    position: relative;
+    z-index: 1;
+}
