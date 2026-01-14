@@ -86,20 +86,47 @@
                 </p>
 
                 <h4>Contact Form</h4>
-                <form action="http://89.22.229.54/send-email.php" method="POST" onsubmit="return handleSubmit(event)">
+                <form action="https://registrar-courage-endless-cleveland.trycloudflare.com/contact"
+                      method="POST"
+                      onsubmit="return handleSubmit(event)">
+
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="name" name="name"
-                               placeholder="Your name" required>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               placeholder="Your name"
+                               required>
                     </div>
+
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email"
-                               placeholder="Your email" required>
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               placeholder="Your email"
+                               required>
                     </div>
+
                     <div class="mb-3">
-                        <textarea class="form-control" id="message" name="message" rows="3"
-                                  placeholder="Your message" required></textarea>
+                        <textarea class="form-control"
+                                  id="message"
+                                  name="message"
+                                  rows="3"
+                                  placeholder="Your message"
+                                  required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-highlighted btn-lg">Send Message</button>
+
+                    <!-- honeypot: НЕ ВЛИЯЕТ НА ДИЗАЙН -->
+                    <input type="text"
+                           name="company"
+                           tabindex="-1"
+                           autocomplete="off"
+                           style="position:absolute; left:-9999px;">
+
+                    <button type="submit" class="btn btn-highlighted btn-lg">
+                        Send Message
+                    </button>
                 </form>
             </div>
 
