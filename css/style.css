@@ -1411,3 +1411,8 @@ li {
 .project li {
     font-size: var(--fs-body) !important;
 }
+
+#about-index .about-image1 img {
+    margin-top: 44px; /* подстрой */
+    display: block;
+}
