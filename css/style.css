@@ -1198,3 +1198,6 @@ html, body { height: 100%; }
   position: relative;
   z-index: 1;
 }
+html, body {
+    background-color: #030712;
+}
