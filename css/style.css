@@ -21,15 +21,50 @@ body {
     position: relative;
     z-index: 1;
 }
-/* Layout */
-body, html {
+
+/* базовая страница */
+html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    justify-content: flex-start;
-    color: #FFF;
+    min-height: 100%;
+    background-color: #030712;
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.background-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ВИНЬЕТКА: центр гасим, края прозрачные */
+.video-vignette {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background-color: transparent !important;
+    background-image: radial-gradient( circle at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.60) 35%, rgba(0,0,0,0.20) 65%, rgba(0,0,0,0.00) 100% ) !important;
+}
+
+.page-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* весь контент поверх видео */
+.page-content {
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .container {
     background-color: rgba(0, 0, 0, 0.8);
@@ -744,7 +779,6 @@ li {
     vertical-align: middle;
 }
 
-</style >
 .social-btn {
     color: #FFF;
     font-size: 1rem;
@@ -1205,27 +1239,4 @@ html, body {
         line-height: 1.1;
     }
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    background-color: #030712;
-}
 
-/* фон-видео */
-.background-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0; /* <-- без минуса */
-    pointer-events: none;
-    filter: brightness(0.45) saturate(0.7) contrast(1.05);
-}
-
-/* весь контент выше видео */
-#resume-container, .container, .projects-layout, .about-container {
-    position: relative;
-    z-index: 1;
-}
