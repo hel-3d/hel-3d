@@ -1243,3 +1243,27 @@ html, body {
         line-height: 1.1;
     }
 }
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-color: #030712;
+}
+
+/* фон-видео */
+.background-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0; /* <-- без минуса */
+    pointer-events: none;
+    filter: brightness(0.45) saturate(0.7) contrast(1.05);
+}
+
+/* весь контент выше видео */
+#resume-container, .container, .projects-layout, .about-container {
+    position: relative;
+    z-index: 1;
+}
