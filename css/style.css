@@ -7,13 +7,6 @@
 }
 
 
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    color: #FFF;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 body {
     position: relative;
 }
@@ -33,8 +26,6 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     color: #FFF;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -172,16 +163,6 @@ h1 {
     vertical-align: middle;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    color: #FFF;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 .container {
     background-color: rgba(0, 0, 0, 0.8);
@@ -432,16 +413,6 @@ li {
     pointer-events: none;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    color: #FFF;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 .container {
     background-color: rgba(0, 0, 0, 0.8);
@@ -655,16 +626,7 @@ li {
         border-color: #781f31;
         box-shadow: 0 0 10px #741a3040;
     }
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    color: #FFF;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+
 
 .container {
     background-color: rgba(0, 0, 0, 0.8);
