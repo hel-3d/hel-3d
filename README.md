@@ -109,7 +109,9 @@ I solve complex engineering challenges:
 🌍 **Location:** Yerevan, Armenia (UTC+4) | Open to relocation
 
 ---
-
+<p align="center">
+  <img src="pixel-art-avatar.jpg" width="100" style="border-radius: 20px;">
+</p>
 <p align="center">
   <i>Building production-grade automation systems that never sleep</i>
 </p>
