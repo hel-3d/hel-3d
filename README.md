@@ -2,7 +2,7 @@
 
 **Specialization:** Anti-bot bypass systems, high-load Telegram ecosystems, production-grade web automation  
 **Impact:** 9,000+ active users across bot infrastructure | 2+ years production experience  
-🟢 **Available for remote opportunities** | Mid-level Backend/Automation Engineer | $2000+/month
+🟢 **Available for remote opportunities** | Mid-level Backend/Automation Engineer
 
 ---
 
