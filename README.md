@@ -84,7 +84,6 @@ I solve complex engineering challenges:
 ## 📊 GitHub Activity
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hel-3d&show_icons=true&theme=dark&hide_border=true&count_private=true" height="165">
   <img src="https://github-readme-streak-stats.herokuapp.com?user=hel-3d&theme=dark&hide_border=true" height="165">
 </p>
 
