@@ -99,7 +99,14 @@ I solve complex engineering challenges:
 
 ---
 
+### ⭐ Client Feedback (Upwork)
+
+<p align="center">
+  <img src="Screenshot_upwork.png" width="700">
+</p>
 ## 📫 Let's Connect
+
+---
 
 💼 **LinkedIn:** [linkedin.com/in/helena-gusarevich](https://www.linkedin.com/in/helena-gusarevich/)  
 📧 **Email:** Pdf.man.3d@gmail.com  
