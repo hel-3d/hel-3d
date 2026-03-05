@@ -102,7 +102,7 @@ I solve complex engineering challenges:
 ### ⭐⭐⭐⭐⭐ Client Feedback (Upwork)
 
 <p align="center">
-  <img src="Screenshot_upwork.png" width="700">
+  <img src="Screenshot_upwork.png" width="600">
 </p>
 ## 📫 Let's Connect
 
