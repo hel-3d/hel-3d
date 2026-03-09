@@ -1,7 +1,7 @@
 ﻿
 
 #resume-container {
-    background-color: #000005;
+    background-color: transparent;
     position: relative;
     z-index: 1;
 }
@@ -32,16 +32,6 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.background-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    pointer-events: none;
-}
-
 /* ВИНЬЕТКА: центр гасим, края прозрачные */
 .video-vignette {
     position: fixed !important;
@@ -52,10 +42,6 @@ html, body {
     background-image: radial-gradient( circle at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.60) 35%, rgba(0,0,0,0.20) 65%, rgba(0,0,0,0.00) 100% ) !important;
 }
 
-.page-content {
-    position: relative;
-    z-index: 2;
-}
 
 
 /* весь контент поверх видео */
@@ -1155,23 +1141,31 @@ li {
         margin: 0 auto 12px;
     }
 }
-html, body { height: 100%; }
-
-.background-video{
-  position: fixed;
-  inset: 0;              /* top:0; right:0; bottom:0; left:0 */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  filter: brightness(0.45) saturate(0.7) contrast(1.05);
+html, body {
+    height: 100%;
+    background-color: #030712; /* fallback до загрузки видео */
 }
 
-/* чтобы контент точно был выше видео */
-.container, #resume-container{
-  position: relative;
-  z-index: 1;
+.background-video {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    filter: brightness(0.45) saturate(0.7) contrast(1.05);
 }
+
+/* чтобы контент был поверх видео */
+.container,
+#resume-container,
+.projects-layout,
+.page-content {
+    position: relative;
+    z-index: 1;
+}
+
 html, body {
     background-color: #030712;
 }
@@ -1270,8 +1264,11 @@ html, body {
     }
 
 #reset-filters {
-    color: #000 !important;
+    color: #000;
+    background: #ddd;
+    border: 1px solid #bbb;
 }
+
 .article-wrap {
     width: 100%;
     max-width: 1100px;
