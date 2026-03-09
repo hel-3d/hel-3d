@@ -60,11 +60,10 @@
                 <div id="filters">
                     <div id="category-filters">
                         <strong>Categories:</strong>
-                        <button class="filter-btn" data-type="category" data-filter="parsers">Parsers</button>
                         <button class="filter-btn" data-type="category" data-filter="automation">Automation</button>
                         <button class="filter-btn" data-type="category" data-filter="bots">Bots</button>
                         <button class="filter-btn" data-type="category" data-filter="other">Other</button>
-
+                        <button class="filter-btn" data-type="category" data-filter="parsers">Parsers</button>
                     </div>
                     <div id="tag-filters">
                         <strong>Stack:</strong>
@@ -80,14 +79,18 @@
                         <button class="filter-btn" data-type="tag" data-filter="chrome">chrome</button>
                         <button class="filter-btn" data-type="tag" data-filter="cloudflare">cloudflare</button>
                         <button class="filter-btn" data-type="tag" data-filter="css3">css3</button>
+                        <button class="filter-btn" data-type="tag" data-filter="cybersecurity">cybersecurity</button>
+                        <button class="filter-btn" data-type="tag" data-filter="dnspython">dnspython</button>
                         <button class="filter-btn" data-type="tag" data-filter="docker">docker</button>
                         <button class="filter-btn" data-type="tag" data-filter="fastapi">fastapi</button>
                         <button class="filter-btn" data-type="tag" data-filter="fbx">fbx</button>
                         <button class="filter-btn" data-type="tag" data-filter="firebase">firebase</button>
                         <button class="filter-btn" data-type="tag" data-filter="flask">flask</button>
                         <button class="filter-btn" data-type="tag" data-filter="gemini">gemini</button>
+                        <button class="filter-btn" data-type="tag" data-filter="geoip2">geoip2</button>
                         <button class="filter-btn" data-type="tag" data-filter="github_pages">github_pages</button>
                         <button class="filter-btn" data-type="tag" data-filter="gitpython">gitpython</button>
+                        <button class="filter-btn" data-type="tag" data-filter="go">go</button>
                         <button class="filter-btn" data-type="tag" data-filter="google_sheets_api">google_sheets_api</button>
                         <button class="filter-btn" data-type="tag" data-filter="got">got</button>
                         <button class="filter-btn" data-type="tag" data-filter="gspread">gspread</button>
@@ -104,23 +107,28 @@
                         <button class="filter-btn" data-type="tag" data-filter="llm">llm</button>
                         <button class="filter-btn" data-type="tag" data-filter="marmoset_viewer">marmoset_viewer</button>
                         <button class="filter-btn" data-type="tag" data-filter="matplotlib">matplotlib</button>
+                        <button class="filter-btn" data-type="tag" data-filter="microsoft_sentinel">microsoft_sentinel</button>
                         <button class="filter-btn" data-type="tag" data-filter="mobile_automation">mobile_automation</button>
                         <button class="filter-btn" data-type="tag" data-filter="mongodb">mongodb</button>
                         <button class="filter-btn" data-type="tag" data-filter="nodejs">nodejs</button>
                         <button class="filter-btn" data-type="tag" data-filter="openai">openai</button>
+                        <button class="filter-btn" data-type="tag" data-filter="openai_api">openai_api</button>
                         <button class="filter-btn" data-type="tag" data-filter="pdf_parsing">pdf_parsing</button>
                         <button class="filter-btn" data-type="tag" data-filter="pillow">pillow</button>
                         <button class="filter-btn" data-type="tag" data-filter="playwright">playwright</button>
+                        <button class="filter-btn" data-type="tag" data-filter="postgresql">postgresql</button>
                         <button class="filter-btn" data-type="tag" data-filter="proxies">proxies</button>
                         <button class="filter-btn" data-type="tag" data-filter="pwa">pwa</button>
                         <button class="filter-btn" data-type="tag" data-filter="pyautogui">pyautogui</button>
                         <button class="filter-btn" data-type="tag" data-filter="pyinstaller">pyinstaller</button>
                         <button class="filter-btn" data-type="tag" data-filter="pymupdf">pymupdf</button>
                         <button class="filter-btn" data-type="tag" data-filter="pyperclip">pyperclip</button>
+                        <button class="filter-btn" data-type="tag" data-filter="pytest">pytest</button>
                         <button class="filter-btn" data-type="tag" data-filter="python">python</button>
                         <button class="filter-btn" data-type="tag" data-filter="python_telegram_bot">python_telegram_bot</button>
                         <button class="filter-btn" data-type="tag" data-filter="quart">quart</button>
                         <button class="filter-btn" data-type="tag" data-filter="rainmeter">rainmeter</button>
+                        <button class="filter-btn" data-type="tag" data-filter="rapidfuzz">rapidfuzz</button>
                         <button class="filter-btn" data-type="tag" data-filter="react">react</button>
                         <button class="filter-btn" data-type="tag" data-filter="requests">requests</button>
                         <button class="filter-btn" data-type="tag" data-filter="selenium">selenium</button>
@@ -132,6 +140,7 @@
                         <button class="filter-btn" data-type="tag" data-filter="telegram_bot_api">telegram_bot_api</button>
                         <button class="filter-btn" data-type="tag" data-filter="telegram_webapp_api">telegram_webapp_api</button>
                         <button class="filter-btn" data-type="tag" data-filter="telethon">telethon</button>
+                        <button class="filter-btn" data-type="tag" data-filter="threat_intelligence">threat_intelligence</button>
                         <button class="filter-btn" data-type="tag" data-filter="tkinter">tkinter</button>
                         <button class="filter-btn" data-type="tag" data-filter="ttkbootstrap">ttkbootstrap</button>
                         <button class="filter-btn" data-type="tag" data-filter="typescript">typescript</button>
@@ -145,23 +154,29 @@
                     <button id="reset-filters" class="filter-btn btn-outline-secondary">Reset Filters</button>
                 </div>
 
+                <div class="project" data-tags="cybersecurity, dnspython, geoip2, json, microsoft_sentinel, pytest, python, rapidfuzz, threat_intelligence" data-category="automation">
+                    <h4>Email Analysis Engine for Microsoft Sentinel</h4>
+                    <div class="project-tags"><strong>Stack:</strong> cybersecurity, dnspython, geoip2, json, microsoft_sentinel, pytest, python, rapidfuzz, threat_intelligence</div>
+                    <div class="project-desc">A modular Python risk-scoring engine that analyzes email metadata from Microsoft Sentinel incidents, enriches it with threat intelligence, and returns a structured phishing risk assessment.</div>
+                    <span class="hidden-tags" style="display:none">cybersecurity, dnspython, geoip2, json, microsoft_sentinel, pytest, python, rapidfuzz, threat_intelligence</span>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_email_analysis_engine_for_microsoft_sentinel.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                </div>
+
                 <div class="project" data-tags="gemini, google_sheets_api, gspread, llm, pdf_parsing, python, requests, vpic_api" data-category="parsers">
                     <h4>AI-Powered Vehicle Lead Generation Pipeline for Florida Public Notices</h4>
                     <div class="project-tags"><strong>Stack:</strong> gemini, google_sheets_api, gspread, llm, pdf_parsing, python, requests, vpic_api</div>
                     <div class="project-desc">Fully automated data pipeline extracting vehicle sale opportunities from Florida legal notices using AI and VIN validation.</div>
                     <span class="hidden-tags" style="display:none">gemini, google_sheets_api, gspread, llm, pdf_parsing, python, requests, vpic_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_aipowered_vehicle_lead_generation_pipeline_for_florida_public_notices.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_ai-powered_vehicle_lead_generation_pipeline_for_florida_public_notices.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="chrome, google_sheets_api, gspread, llm, python, selenium, vin" data-category="parsers">
                     <h4>AI Browser Parser - Vehicle Information Extraction Tool</h4>
                     <div class="project-tags"><strong>Stack:</strong> chrome, google_sheets_api, gspread, llm, python, selenium, vin</div>
                     <div class="project-desc">AI-powered browser automation tool for extracting vehicle data from DealerCenter and exporting to Google Sheets.</div>
                     <span class="hidden-tags" style="display:none">chrome, google_sheets_api, gspread, llm, python, selenium, vin</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_ai_browser_parser_vehicle_information_extraction_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_ai_browser_parser_-_vehicle_information_extraction_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="2captcha, chrome, google_sheets_api, gspread, python, selenium, vin, vpic_api" data-category="parsers">
                     <h4>VIN Parser — Multithreaded Vehicle Lookup with Google Sheets + CAPTCHA Bypass</h4>
@@ -171,7 +186,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_vin_parser_multithreaded_vehicle_lookup_with_google_sheets_captcha_bypass.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="docker, mongodb, python, python_telegram_bot" data-category="bots">
                     <h4>Telegram Car Auction Bot</h4>
                     <div class="project-tags"><strong>Stack:</strong> docker, mongodb, python, python_telegram_bot</div>
@@ -179,7 +193,6 @@
                     <span class="hidden-tags" style="display:none">docker, mongodb, python, python_telegram_bot</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_telegram_car_auction_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="2captcha, chrome, google_sheets_api, gspread, proxies, python, selenium, vin, vpic_api" data-category="parsers">
                     <h4>Insurance Policy PDF Parser / PDF Parser API Service</h4>
@@ -189,42 +202,58 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_insurance_policy_pdf_parser_pdf_parser_api_service.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="appium, chrome, google_sheets_api, gspread, json, mobile_automation, python, selenium" data-category="parsers">
                     <h4>CarLocate City Auction Parser (Mobile Anti-Bot Scraper)</h4>
                     <div class="project-tags"><strong>Stack:</strong> appium, chrome, google_sheets_api, gspread, json, mobile_automation, python, selenium</div>
                     <div class="project-desc">Mobile-based Selenium scraper for collecting VIN auction data from CarLocate across all cities with automatic Google Sheets export.</div>
                     <span class="hidden-tags" style="display:none">appium, chrome, google_sheets_api, gspread, json, mobile_automation, python, selenium</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_carlocate_city_auction_parser_mobile_antibot_scraper.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/carlocate-city-parser" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_carlocate_city_auction_parser_mobile_anti-bot_scraper.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/carlocate-city-parser" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
 
+                <div class="project" data-tags="aiogram, openai_api, python, sqlite, telegram_bot_api" data-category="bots">
+                    <h4>Telegram Promo Campaign Bot (Lunar Hare)</h4>
+                    <div class="project-tags"><strong>Stack:</strong> aiogram, openai_api, python, sqlite, telegram_bot_api</div>
+                    <div class="project-desc">A Telegram bot developed for a retail marketing campaign by Lunar Hare agency that verifies user photos and distributes personalized promo codes.</div>
+                    <span class="hidden-tags" style="display:none">aiogram, openai_api, python, sqlite, telegram_bot_api</span>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_telegram_promo_campaign_bot_lunar_hare.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/ostin_popup_bot" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                </div>
+
+                <div class="project" data-tags="go, telegram_bot_api" data-category="bots">
+                    <h4>Telegram Channel Monitoring and Alerting Service</h4>
+                    <div class="project-tags"><strong>Stack:</strong> go, telegram_bot_api</div>
+                    <div class="project-desc">A Go service bot that monitors Telegram channel subscriber growth, pushes metrics to VictoriaMetrics, and sends Telegram alerts when abnormal spikes are detected.</div>
+                    <span class="hidden-tags" style="display:none">go, telegram_bot_api</span>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_telegram_channel_monitoring_and_alerting_service.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                </div>
 
                 <div class="project" data-tags="2captcha, chrome, cloudflare, proxies, python, selenium" data-category="automation">
-                    <h4>Bot Protection & SMS Verification Automation</h4>
+                    <h4>Bot Protection &amp; SMS Verification Automation</h4>
                     <div class="project-tags"><strong>Stack:</strong> 2captcha, chrome, cloudflare, proxies, python, selenium</div>
                     <div class="project-desc">Automation system for registration and SMS verification on protected platforms.</div>
                     <span class="hidden-tags" style="display:none">2captcha, chrome, cloudflare, proxies, python, selenium</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_bot_protection_sms_verification_automation.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/automation-case-sms" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_bot_protection_sms_verification_automation.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/automation-case-sms" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="cheerio, got, nodejs, playwright" data-category="parsers">
                     <h4>Building Control Scraper</h4>
                     <div class="project-tags"><strong>Stack:</strong> cheerio, got, nodejs, playwright</div>
                     <div class="project-desc">Two independent UK building registry scrapers built as a paid technical test.</div>
                     <span class="hidden-tags" style="display:none">cheerio, got, nodejs, playwright</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_building_control_scraper.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/building-control-scraper" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_building_control_scraper.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/building-control-scraper" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="json, matplotlib, python, rainmeter" data-category="other">
                     <h4>Hel AQI Desktop Widget</h4>
                     <div class="project-tags"><strong>Stack:</strong> json, matplotlib, python, rainmeter</div>
                     <div class="project-desc">Windows desktop widget for real-time air quality monitoring.</div>
                     <span class="hidden-tags" style="display:none">json, matplotlib, python, rainmeter</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_hel_aqi_desktop_widget.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/hel-aqi-widget-win" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_hel_aqi_desktop_widget.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/hel-aqi-widget-win" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="a2e_api, image_video, python, requests" data-category="automation">
                     <h4>Video Generator for A2E API</h4>
@@ -234,78 +263,68 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_video_generator_for_a2e_api.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="langchain, langgraph, llm, openai, python" data-category="bots">
                     <h4>LangGraph Stateless Chat Bot (Tool-enabled LLM)</h4>
                     <div class="project-tags"><strong>Stack:</strong> langchain, langgraph, llm, openai, python</div>
                     <div class="project-desc">Stateless chatbot with LangGraph</div>
                     <span class="hidden-tags" style="display:none">langchain, langgraph, llm, openai, python</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_langgraph_stateless_chat_bot_toolenabled_llm.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/langgraph-timebot" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_langgraph_stateless_chat_bot_tool-enabled_llm.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/langgraph-timebot" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
 
-
-                <div class="project" data-tags="aiogram, python, telegram_bot_api, telethon" data-category="bots">
-                    <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2024-10-04_17-50-29.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">CV Parser Bot for Telegram</h4>
-                    <div class="project-tags"><strong>Stack:</strong> aiogram, python, telegram_bot_api, telethon</div>
-                    <div class="project-desc">A dual-bot system: one bot parses job postings from Telegram channels and queues them, the other publishes them in a public channel with voting buttons and external links.</div>
-                    <span class="hidden-tags" style="display:none">aiogram, python, telegram_bot_api, telethon</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_cv_parser_bot_for_telegram.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/works_gamedev" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                <div class="project" data-tags="aiogram, json, postgresql, python, telegram_bot_api, telethon, vk_api" data-category="bots">
+                    <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2024-10-04_17-50-29.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">GameDev Vacancy Distribution Bots</h4>
+                    <div class="project-tags"><strong>Stack:</strong> aiogram, json, postgresql, python, telegram_bot_api, telethon, vk_api</div>
+                    <div class="project-desc">A multi-channel job distribution system that collects GameDev vacancies from Telegram sources, publishes them to a public Telegram channel, delivers filtered posts to private subscribers, and reposts selected vacancies to VK.</div>
+                    <span class="hidden-tags" style="display:none">aiogram, json, postgresql, python, telegram_bot_api, telethon, vk_api</span>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_gamedev_vacancy_distribution_bots.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/works_gamedev" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
 
-
-                <div class="project" data-tags="docker, mongodb, python, python_telegram_bot" data-category="bots">
+                <div class="project" data-tags="docker, mongodb, python, telegram_bot_api" data-category="bots">
                     <h4>Ritma – Private Telegram Bot for Menstrual Cycle Tracking</h4>
-                    <div class="project-tags"><strong>Stack:</strong> docker, mongodb, python, python_telegram_bot</div>
+                    <div class="project-tags"><strong>Stack:</strong> docker, mongodb, python, telegram_bot_api</div>
                     <div class="project-desc">Minimalist and private Telegram bot for cycle tracking.</div>
-                    <span class="hidden-tags" style="display:none">docker, mongodb, python, python_telegram_bot</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_ritma_private_telegram_bot_for_menstrual_cycle_tracking.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://github.com/hel-3d/ritma-bot" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <span class="hidden-tags" style="display:none">docker, mongodb, python, telegram_bot_api</span>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_ritma_private_telegram_bot_for_menstrual_cycle_tracking.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://github.com/hel-3d/ritma-bot" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
-
-                <div class="project" data-tags="python, telebot, telegram_bot_api, vk_api" data-category="bots">
-                    <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2024-10-04_17-50-29.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Post Work Bot — Telegram to VK Job Reposter</h4>
-                    <div class="project-tags"><strong>Stack:</strong> python, telebot, telegram_bot_api, vk_api</div>
-                    <div class="project-desc">Bot for reposting job listings from Telegram to VK.</div>
-                    <span class="hidden-tags" style="display:none">python, telebot, telegram_bot_api, vk_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_post_work_bot_telegram_to_vk_job_reposter.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="Vk: @works_gamedev" class="btn btn-outline-secondary" target="_blank">View Online</a>
-                </div>
-
 
                 <div class="project" data-tags="image_video, instaloader, python, telebot, telegram_bot_api, yt_dlp" data-category="bots">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/dfb9997a-f06b-49a4-bd79-91dba99afe20.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Hel Media Downloader Bot</h4>
                     <div class="project-tags"><strong>Stack:</strong> image_video, instaloader, python, telebot, telegram_bot_api, yt_dlp</div>
                     <div class="project-desc">Multi-platform Telegram bot for downloading media from Instagram, TikTok, X (Twitter), and LinkedIn with group and topic support.</div>
                     <span class="hidden-tags" style="display:none">image_video, instaloader, python, telebot, telegram_bot_api, yt_dlp</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_hel_media_downloader_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/Hel_inst_bot" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_hel_media_downloader_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/Hel_inst_bot" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="python, telebot, telegram_bot_api, vk_api" data-category="bots">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2024-12-23_02-58-15.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Comix Parser Bot — VK to Telegram Reposter</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, telebot, telegram_bot_api, vk_api</div>
                     <div class="project-desc">Bot for reposting VK group content to Telegram.</div>
                     <span class="hidden-tags" style="display:none">python, telebot, telegram_bot_api, vk_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_comix_parser_bot_vk_to_telegram_reposter.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/LMK_comix" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_comix_parser_bot_vk_to_telegram_reposter.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/LMK_comix" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="python, telebot, telegram_bot_api, vk_api" data-category="bots">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2024-10-16_18-02-42.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Parser Bot Privát — Closed VK Group to Telegram Reposter</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, telebot, telegram_bot_api, vk_api</div>
                     <div class="project-desc">Bot for reposting from private VK groups to Telegram.</div>
                     <span class="hidden-tags" style="display:none">python, telebot, telegram_bot_api, vk_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_parser_bot_privát_closed_vk_group_to_telegram_reposter.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/Furrys_porn" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_parser_bot_privát_closed_vk_group_to_telegram_reposter.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/Furrys_porn" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="python, telebot, telegram_bot_api, vk_api" data-category="bots">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/998a84da-59a9-407e-86d1-b89bc8dd2cbd.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Meme Parser Bot — VK Meme Auto-Poster for Telegram</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, telebot, telegram_bot_api, vk_api</div>
                     <div class="project-desc">Bot for posting new memes from VK to Telegram.</div>
                     <span class="hidden-tags" style="display:none">python, telebot, telegram_bot_api, vk_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_meme_parser_bot_vk_meme_autoposter_for_telegram.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/norm_mem" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_meme_parser_bot_vk_meme_auto-poster_for_telegram.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/norm_mem" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="aiogram, python, telegram_bot_api, telethon" data-category="bots">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/7779b10.png" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Nuds — Guardbot + Userbot System for Private NSFW Telegram Groups</h4>
@@ -315,15 +334,14 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_nuds_guardbot_userbot_system_for_private_nsfw_telegram_groups.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="angular, firebase, html5, ionic, python, telegram_webapp_api, typescript" data-category="other">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/fb2.png" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">@TapTheDotBot — Telegram Web Game (Clicker + Builder)</h4>
                     <div class="project-tags"><strong>Stack:</strong> angular, firebase, html5, ionic, python, telegram_webapp_api, typescript</div>
                     <div class="project-desc">Mini-game in Telegram with clicker and builder mechanics.</div>
                     <span class="hidden-tags" style="display:none">angular, firebase, html5, ionic, python, telegram_webapp_api, typescript</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_tapthedotbot_telegram_web_game_clicker_builder.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/TapTheDotBot" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_tapthedotbot_telegram_web_game_clicker_builder.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/TapTheDotBot" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="linkedin_api, pyperclip, python, tkinter" data-category="automation">
                     <h4>LinkedIn Auto Messenger — GUI Mass Messaging Tool</h4>
@@ -333,7 +351,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_linkedin_auto_messenger_gui_mass_messaging_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="linkedin_api, pyperclip, python, tkinter" data-category="automation">
                     <h4>LinkedIn Auto Messenger (GUI Mass Outreach Tool)</h4>
                     <div class="project-tags"><strong>Stack:</strong> linkedin_api, pyperclip, python, tkinter</div>
@@ -341,7 +358,6 @@
                     <span class="hidden-tags" style="display:none">linkedin_api, pyperclip, python, tkinter</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_linkedin_auto_messenger_gui_mass_outreach_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="python, telethon" data-category="automation">
                     <h4>Telegram Auto Broadcaster (via Telethon)</h4>
@@ -351,24 +367,22 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_telegram_auto_broadcaster_via_telethon.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="aiogram, python, telegram_bot_api" data-category="bots">
                     <h4>Subscription Enforcement Bot</h4>
                     <div class="project-tags"><strong>Stack:</strong> aiogram, python, telegram_bot_api</div>
                     <div class="project-desc">Telegram group moderator bot that restricts messaging to subscribers only.</div>
                     <span class="hidden-tags" style="display:none">aiogram, python, telegram_bot_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_subscription_enforcement_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://t.me/@piar_vzaimnoi" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_subscription_enforcement_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://t.me/@piar_vzaimnoi" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="pyinstaller, python, telebot, tkinter, ttkbootstrap" data-category="bots">
                     <h4>Subscription Promo Bot (GUI + Auto-launch .exe)</h4>
                     <div class="project-tags"><strong>Stack:</strong> pyinstaller, python, telebot, tkinter, ttkbootstrap</div>
                     <div class="project-desc">Turnkey promo-posting bot for Telegram with a simple desktop GUI.</div>
                     <span class="hidden-tags" style="display:none">pyinstaller, python, telebot, tkinter, ttkbootstrap</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_subscription_promo_bot_gui_autolaunch_exe.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_subscription_promo_bot_gui_auto-launch_exe.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="pyinstaller, python, telebot, tkinter, ttkbootstrap, vk_api" data-category="bots">
                     <h4>VK → Telegram Parser (.exe with GUI and Autostart)</h4>
@@ -378,15 +392,13 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_vk_telegram_parser_exe_with_gui_and_autostart.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="python, telethon" data-category="automation">
-                    <h4>Telegram User Collector & Inviter from External Chats</h4>
+                    <h4>Telegram User Collector &amp; Inviter from External Chats</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, telethon</div>
                     <div class="project-desc">Dual-bot system for silently collecting and inviting active users from public Telegram groups.</div>
                     <span class="hidden-tags" style="display:none">python, telethon</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_telegram_user_collector_inviter_from_external_chats.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="pyautogui, python" data-category="automation">
                     <h4>GUI Auto Clicker for Desktop Automation</h4>
@@ -396,7 +408,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_gui_auto_clicker_for_desktop_automation.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="python, vk_api" data-category="bots">
                     <h4>VK Auto Comment Bot</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, vk_api</div>
@@ -404,7 +415,6 @@
                     <span class="hidden-tags" style="display:none">python, vk_api</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_vk_auto_comment_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="python, telethon" data-category="automation">
                     <h4>GdeAdmin — Telegram Admin Rights Scanner</h4>
@@ -414,7 +424,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_gdeadmin_telegram_admin_rights_scanner.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="python, python_telegram_bot, quart, telethon" data-category="bots">
                     <h4>MathBot with Video Rewards for Kids (Grade 2)</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, python_telegram_bot, quart, telethon</div>
@@ -423,15 +432,13 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_mathbot_with_video_rewards_for_kids_grade_2.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="python, telethon" data-category="bots">
-                    <h4>Post Bot — Categorized & Scheduled Multi-Photo Poster for Telegram</h4>
+                    <h4>Post Bot — Categorized &amp; Scheduled Multi-Photo Poster for Telegram</h4>
                     <div class="project-tags"><strong>Stack:</strong> python, telethon</div>
                     <div class="project-desc">Automated tool for posting categorized ads with delay and deduplication logic.</div>
                     <span class="hidden-tags" style="display:none">python, telethon</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_post_bot_categorized_scheduled_multiphoto_poster_for_telegram.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_post_bot_categorized_scheduled_multi-photo_poster_for_telegram.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="python, requests, vk_api" data-category="parsers">
                     <h4>Top Active VK — Competitive Audience Scraper for Engagement Analysis</h4>
@@ -441,15 +448,14 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_top_active_vk_competitive_audience_scraper_for_engagement_analysis.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="aiogram, css3, flask, html5, jinja2, python, sqlite, telethon" data-category="other">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/photo_2025-02-25_02-32-51.jpg" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">GamePulse Registration Website + Telegram Bot</h4>
                     <div class="project-tags"><strong>Stack:</strong> aiogram, css3, flask, html5, jinja2, python, sqlite, telethon</div>
                     <div class="project-desc">Cross-platform registration system for offline/online game jams and meetups.</div>
                     <span class="hidden-tags" style="display:none">aiogram, css3, flask, html5, jinja2, python, sqlite, telethon</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_gamepulse_registration_website_telegram_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="http://89.22.229.54:5000/" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_gamepulse_registration_website_telegram_bot.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="http://89.22.229.54:5000/" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="python, vk_api" data-category="automation">
                     <h4>VK Group ID Resolver</h4>
@@ -459,15 +465,13 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_vk_group_id_resolver.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="gitpython, openai, python" data-category="automation">
-                    <h4>Auto Commit & Push Tool (with GPT-Generated Messages)</h4>
+                    <h4>Auto Commit &amp; Push Tool (with GPT-Generated Messages)</h4>
                     <div class="project-tags"><strong>Stack:</strong> gitpython, openai, python</div>
                     <div class="project-desc">Command-line utility for scanning git repos and pushing commits with AI-written messages.</div>
                     <span class="hidden-tags" style="display:none">gitpython, openai, python</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_auto_commit_push_tool_with_gptgenerated_messages.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_auto_commit_push_tool_with_gpt-generated_messages.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="pillow, pymupdf, python, tkinter" data-category="other">
                     <h4>PDF to Images Converter (GUI Tool)</h4>
@@ -477,7 +481,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_pdf_to_images_converter_gui_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="pillow, python, tkinter" data-category="other">
                     <h4>Image Folder to PDF Converter (GUI Tool)</h4>
                     <div class="project-tags"><strong>Stack:</strong> pillow, python, tkinter</div>
@@ -485,7 +488,6 @@
                     <span class="hidden-tags" style="display:none">pillow, python, tkinter</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_image_folder_to_pdf_converter_gui_tool.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="fbx, python" data-category="other">
                     <h4>LOD Cleaner for FBX Models</h4>
@@ -495,33 +497,32 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_lod_cleaner_for_fbx_models.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="bootstrap, css3, github_pages, html5, javascript, marmoset_viewer" data-category="other">
                     <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/android-chrome-192x192.png" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Personal Portfolio Website with Projects, Blog, and Embedded Games</h4>
                     <div class="project-tags"><strong>Stack:</strong> bootstrap, css3, github_pages, html5, javascript, marmoset_viewer</div>
                     <div class="project-desc">Interactive resume and project showcase with HTML games and visual features.</div>
                     <span class="hidden-tags" style="display:none">bootstrap, css3, github_pages, html5, javascript, marmoset_viewer</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_personal_portfolio_website_with_projects_blog_and_embedded_games.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_personal_portfolio_website_with_projects_blog_and_embedded_games.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
 
-
                 <div class="project" data-tags="aiogram, docker, fastapi, python, react, shadcn_ui, sqlalchemy, sqlite, tailwindcss, telebot, telethon" data-category="other">
-                    <h4>VK to Telegram AutoPoster — Web API & GUI (In Progress)</h4>
+                    <h4>VK to Telegram AutoPoster — Web API &amp; GUI (In Progress)</h4>
                     <div class="project-tags"><strong>Stack:</strong> aiogram, docker, fastapi, python, react, shadcn_ui, sqlalchemy, sqlite, tailwindcss, telebot, telethon</div>
                     <div class="project-desc">Cross-platform autoposting system from VK to Telegram — with GUI and REST API.</div>
                     <span class="hidden-tags" style="display:none">aiogram, docker, fastapi, python, react, shadcn_ui, sqlalchemy, sqlite, tailwindcss, telebot, telethon</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_vk_to_telegram_autoposter_web_api_gui_in_progress.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="http://89.22.229.54:8000/docs#/default/add_channel_add_channel_post" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_vk_to_telegram_autoposter_web_api_gui_in_progress.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="http://89.22.229.54:8000/docs#/default/add_channel_add_channel_post" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
 
-
                 <div class="project" data-tags="css3, html5, javascript, pwa, web_audio_api" data-category="other">
-                    <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/icon-512.png" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Hal's Match-3 Game (HTML Game)</h4>
+                    <h4><img class="icon-circle" src="https://hel-3d.github.io/hel-3d/icons/icon-512.png" alt="icon" style="width:48px;height:48px;margin-right:7px;vertical-align:middle;">Hal&#x27;s Match-3 Game (HTML Game)</h4>
                     <div class="project-tags"><strong>Stack:</strong> css3, html5, javascript, pwa, web_audio_api</div>
                     <div class="project-desc">A fully hand-coded match-3 game using vanilla web tech, installable as a PWA.</div>
                     <span class="hidden-tags" style="display:none">css3, html5, javascript, pwa, web_audio_api</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_hals_match3_game_html_game.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_hals_match-3_game_html_game.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="css3, html5, javascript, pwa" data-category="other">
                     <h4>Hal’s Tower Defense Game</h4>
@@ -531,15 +532,14 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_hals_tower_defense_game.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="canvas_api, css3, html5, javascript" data-category="other">
                     <h4>Hal’s Snake Game (Canvas Edition)</h4>
                     <div class="project-tags"><strong>Stack:</strong> canvas_api, css3, html5, javascript</div>
                     <div class="project-desc">A clean and nostalgic Snake game built with Canvas API.</div>
                     <span class="hidden-tags" style="display:none">canvas_api, css3, html5, javascript</span>
-                    <a href="https://hel-3d.github.io/hel-3d/projects_hals_snake_game_canvas_edition.html" class="btn btn-outline-secondary" target="_blank">About Project</a> <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
+                    <a href="https://hel-3d.github.io/hel-3d/projects_hals_snake_game_canvas_edition.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
+                    <a href="https://hel-3d.github.io/hel-3d/1.3_Coding_and_Resources.html" class="btn btn-outline-secondary" target="_blank">View Online</a>
                 </div>
-
 
                 <div class="project" data-tags="python, unreal" data-category="other">
                     <h4>Texture_script for UE5</h4>
@@ -549,7 +549,6 @@
                     <a href="https://hel-3d.github.io/hel-3d/projects_texture_script_for_ue5.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
 
-
                 <div class="project" data-tags="bpy, python" data-category="other">
                     <h4>Save for Asset Libraries for Blender</h4>
                     <div class="project-tags"><strong>Stack:</strong> bpy, python</div>
@@ -557,7 +556,6 @@
                     <span class="hidden-tags" style="display:none">bpy, python</span>
                     <a href="https://hel-3d.github.io/hel-3d/projects_save_for_asset_libraries_for_blender.html" class="btn btn-outline-secondary" target="_blank">About Project</a>
                 </div>
-
 
                 <div class="project" data-tags="bpy, python" data-category="other">
                     <h4>Split and erase – Hel for Blender</h4>
@@ -604,59 +602,133 @@
             </div>
         </div>
         <script>
-            // Собираем выбранные фильтры
-            let selectedCategories = [];
+            // Одна выбранная категория (строка) + много тегов
+            let selectedCategory = "parsers"; // стартовая категория
             let selectedTags = [];
 
-            // Функция для отображения только подходящих проектов
+            // Получить категории/теги проекта
+            function getProjCats(proj) {
+                return (proj.getAttribute('data-category') || '')
+                    .split(' ')
+                    .map(x => x.trim())
+                    .filter(Boolean);
+            }
+
+            function getProjTags(proj) {
+                return (proj.getAttribute('data-tags') || '')
+                    .split(',')
+                    .map(x => x.trim())
+                    .filter(Boolean);
+            }
+
+            // Показать/скрыть проекты по фильтрам
             function filterProjects() {
                 document.querySelectorAll('.project').forEach(proj => {
-                    let projCats = (proj.getAttribute('data-category') || '').split(' ').map(x => x.trim()).filter(Boolean);
-                    let projTags = (proj.getAttribute('data-tags') || '').split(',').map(x => x.trim()).filter(Boolean);
+                    const projCats = getProjCats(proj);
+                    const projTags = getProjTags(proj);
 
-                    // Проверяем: если выбраны фильтры, проект должен подходить по всем выбранным категориям и всем тегам
-                    let matchesCategory = !selectedCategories.length || selectedCategories.every(cat => projCats.includes(cat));
-                    let matchesTag = !selectedTags.length || selectedTags.every(tag => projTags.includes(tag));
-                    if (matchesCategory && matchesTag) {
-                        proj.style.display = '';
-                    } else {
-                        proj.style.display = 'none';
-                    }
+                    const matchesCategory = !selectedCategory || projCats.includes(selectedCategory);
+                    const matchesTags = !selectedTags.length || selectedTags.every(t => projTags.includes(t));
+
+                    proj.style.display = (matchesCategory && matchesTags) ? '' : 'none';
                 });
             }
 
-            // Вешаем обработчики на кнопки фильтров
+            // Собрать множество доступных тегов для выбранной категории
+            function getAvailableTagsForSelectedCategory() {
+                const tagsSet = new Set();
+
+                document.querySelectorAll('.project').forEach(proj => {
+                    const projCats = getProjCats(proj);
+                    if (!selectedCategory || projCats.includes(selectedCategory)) {
+                        getProjTags(proj).forEach(t => tagsSet.add(t));
+                    }
+                });
+
+                return tagsSet;
+            }
+
+            // Обновить видимость кнопок тегов (Stack) под текущую категорию
+            function updateTagButtonsVisibility() {
+                const available = getAvailableTagsForSelectedCategory();
+
+                document.querySelectorAll('#tag-filters .filter-btn[data-type="tag"]').forEach(btn => {
+                    const tag = btn.getAttribute('data-filter');
+
+                    // Показываем только теги, которые реально есть у проектов выбранной категории
+                    const shouldShow = available.has(tag);
+
+                    btn.style.display = shouldShow ? '' : 'none';
+
+                    // Если тег был выбран, но в новой категории его нет — снимаем
+                    if (!shouldShow && btn.classList.contains('active')) {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Также чистим selectedTags от тех, что больше не доступны
+                selectedTags = selectedTags.filter(t => available.has(t));
+            }
+
+            // Подсветка активной категории (одиночный выбор)
+            function updateCategoryButtonsState() {
+                document.querySelectorAll('#category-filters .filter-btn[data-type="category"]').forEach(btn => {
+                    const cat = btn.getAttribute('data-filter');
+                    btn.classList.toggle('active', cat === selectedCategory);
+                });
+            }
+
+            // Снять все активные теги (когда меняем категорию)
+            function resetTags() {
+                selectedTags = [];
+                document.querySelectorAll('#tag-filters .filter-btn.active').forEach(btn => btn.classList.remove('active'));
+            }
+
+            // Инициализация обработчиков
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function () {
-                    let type = btn.getAttribute('data-type');
-                    let filter = btn.getAttribute('data-filter');
-                    btn.classList.toggle('active');
+                    const type = btn.getAttribute('data-type');
+                    const filter = btn.getAttribute('data-filter');
+
                     if (type === 'category') {
-                        if (selectedCategories.includes(filter)) {
-                            selectedCategories = selectedCategories.filter(f => f !== filter);
-                        } else {
-                            selectedCategories.push(filter);
+                        // Категория всегда одна
+                        if (selectedCategory !== filter) {
+                            selectedCategory = filter;
+                            resetTags(); // важно: чтобы не "ломать" выдачу
+                            updateCategoryButtonsState();
+                            updateTagButtonsVisibility();
+                            filterProjects();
                         }
-                    } else if (type === 'tag') {
+                        return;
+                    }
+
+                    if (type === 'tag') {
+                        // Мультивыбор тегов как раньше
+                        btn.classList.toggle('active');
+
                         if (selectedTags.includes(filter)) {
-                            selectedTags = selectedTags.filter(f => f !== filter);
+                            selectedTags = selectedTags.filter(t => t !== filter);
                         } else {
                             selectedTags.push(filter);
                         }
+
+                        filterProjects();
                     }
-                    filterProjects();
                 });
             });
 
             // Сброс фильтров
             document.getElementById('reset-filters').addEventListener('click', function () {
-                selectedCategories = [];
-                selectedTags = [];
-                document.querySelectorAll('.filter-btn.active').forEach(btn => btn.classList.remove('active'));
+                selectedCategory = "parsers"; // возвращаемся к дефолту
+                resetTags();
+                updateCategoryButtonsState();
+                updateTagButtonsVisibility();
                 filterProjects();
             });
 
-            // Стартовое состояние (все проекты показываются)
+            // Стартовое состояние: включаем Parsers и показываем теги только для неё
+            updateCategoryButtonsState();
+            updateTagButtonsVisibility();
             filterProjects();
         </script>
 
