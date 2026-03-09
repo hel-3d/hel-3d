@@ -1285,3 +1285,8 @@ html, body {
     max-width: 360px;
     margin: 0 auto;
 }
+
+#resume-container.container {
+    background-color: rgba(3, 7, 18, 0.98) !important;
+    background-image: none !important;
+}
