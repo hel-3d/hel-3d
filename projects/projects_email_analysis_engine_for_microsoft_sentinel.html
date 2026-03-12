@@ -3,11 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_email_analysis_engine_for_microsoft_sentinel</title>
+    <title>Email Analysis Engine for Microsoft Sentinel — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_email_analysis_engine_for_microsoft_sentinel</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html">https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+                    <!-- optional preview image -->
+
+                    <h1 class="project-title">Email Analysis Engine for Microsoft Sentinel</h1>
+                    <div class="project-subtitle">
+                        A modular Python engine that analyzes Microsoft Sentinel email incidents, enriches them with threat intelligence, and produces a structured phishing risk assessment.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            This was a freelance client project delivered as a standalone Python analysis engine for a Microsoft Sentinel automation pipeline. It processes normalized incident data through modular detection and enrichment stages, producing a structured risk report with score, severity, flags, recommendation, and module-level results.
+                        </p>
+                        <p>
+                            The analyzer was intentionally designed as Azure-agnostic business logic so the client team could embed it into an Azure Function and Logic App workflow without introducing cloud-specific dependencies into the core detection layer.
+                        </p>
+                        <p class="small-note mb-0">
+                            Outcome: validated end-to-end in the client’s Sentinel environment and deployed for automated incident email analysis.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">automation</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">dnspython</span>
+                                    <span class="tag-pill">python-whois</span>
+                                    <span class="tag-pill">geoip2</span>
+                                    <span class="tag-pill">rapidfuzz</span>
+                                    <span class="tag-pill">requests</span>
+                                    <span class="tag-pill">pytest</span>
+                                    <span class="tag-pill">json config</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">Freelance client project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / Backend Developer</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · Production-validated</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">2 weeks · 3 milestones</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Budget</span>
+                                <p class="mb-0">$800 fixed price</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://www.upwork.com/freelancers/hel3d"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Upwork Profile
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">email-analysis-engine/
+                    ├── README.md
+                    ├── requirements.txt
+                    ├── scoring_config.json
+                    ├── protected_domains.txt
+                    ├── analyzer/
+                    │   ├── main.py
+                    │   ├── auth_check.py
+                    │   ├── whois_lookup.py
+                    │   ├── dnsbl_check.py
+                    │   ├── geoip_lookup.py
+                    │   ├── reverse_dns.py
+                    │   ├── urlhaus_check.py
+                    │   ├── malwarebazaar.py
+                    │   ├── homoglyph_check.py
+                    │   ├── disposable_check.py
+                    │   ├── scoring_engine.py
+                    │   └── utils.py
+                    ├── data/
+                    │   └── disposable_domains.txt
+                    └── tests/
+                        ├── fixtures/
+                        ├── module tests
+                        └── integration tests</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Modular Python architecture with isolated analysis components and a single <strong>analyze()</strong> entry point.
+                            </p>
+                        </div>
+                    </div>
+                    <img src="../images/2.png" class="project-shot" alt="Project repository structure">
+
+                    <p class="small-note">
+                        Private GitHub repository showing the modular structure of the analysis engine, including analyzer modules, test suite, and configuration files.
+                    </p>
+                </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                This project was built for a cybersecurity automation workflow around Microsoft Sentinel incidents. The client handled Azure Logic App and Sentinel integration, while I designed and implemented the standalone Python analysis engine used inside that pipeline.
+            </p>
+            <p>
+                The analyzer accepts a normalized JSON payload containing sender identity, authentication results, URLs, attachment hashes, and IP metadata. It runs a set of threat intelligence and detection modules, then produces a structured risk assessment with score, severity, recommendation, flags, and module-level results.
+            </p>
+            <p>
+                This allowed the client’s Sentinel playbook to automatically analyze suspicious emails and write structured reports back into incidents.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+<div class="info-box">
+    <h3 class="h5 mb-3">Core Features</h3>
+    <ul>
+        <li>Standalone <strong>analyze()</strong> entry point that accepts JSON input and returns contract-compliant JSON output</li>
+        <li>Authentication analysis for SPF, DKIM, DMARC, CompAuth, From/MailFrom mismatch, and display-name spoofing</li>
+        <li>Threat intelligence enrichment through WHOIS, DNSBL, GeoIP/ASN, reverse DNS, URLhaus, and MalwareBazaar</li>
+        <li>SafeLinks unwrapping with proper URL decoding for Microsoft Sentinel email data</li>
+        <li>Homoglyph and typosquat detection against a configurable protected domain list</li>
+        <li>Config-driven scoring engine with external JSON weights, thresholds, recommendations, and scoring caps</li>
+        <li>Graceful timeout handling and partial-result execution when external services are unavailable</li>
+        <li>Unit and integration test suite with coverage above the required threshold (80%+)</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3 class="h5 mb-3">Responsibilities</h3>
+    <ul>
+        <li>Designed the project structure and module boundaries for a multi-stage analysis engine</li>
+        <li>Implemented analysis modules for authentication checks, threat enrichment, reputation lookups, and scoring</li>
+        <li>Built timeout-safe wrappers and graceful degradation logic for unstable external services</li>
+        <li>Created fixture-based integration tests for phishing, spoofing, clean, and new-domain scenarios</li>
+        <li>Adapted the engine to real Sentinel payload formats during live client integration</li>
+        <li>Refined parsing and scoring logic based on live integration feedback from the client’s Sentinel environment</li>
+        <li>Documented setup, configuration, API key handling, MaxMind installation, and usage</li>
+    </ul>
+</div>
+<div>
+    <img src="../images/3.png" class="project-shot" alt="Automated test suite execution">
+    <p class="small-note mb-0">
+        Automated test suite execution — 76 unit and integration tests covering the full analysis pipeline.
+    </p>
+</div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+            <p>
+                To support flexible integration, the analyzer was implemented as a pure Python engine with contract-stable JSON input and output. This kept the core detection logic independent from Azure-specific runtime code and made the system easier to test locally and maintain over time.
+            </p>
+
+            <p>
+                The engine was structured as a modular pipeline. Each check lived in its own Python module, while a central <strong>analyze()</strong> flow coordinated execution, collected results, and passed them into the scoring engine. External lookup failures never interrupted the pipeline: modules returned neutral scores on timeout or service errors while surfacing diagnostics in structured output.
+            </p>
+
+            <p>
+                During live integration, I adapted parsers to real Sentinel payload structures, including nested authentication objects and SafeLinks URL formats. These adjustments were validated against production-style samples and then covered with additional tests.
+            </p>
+
+            <p>
+                The final system included 10 analysis modules, external JSON-based scoring, offline MaxMind GeoLite2 support, abuse.ch integrations, fixture-driven testing, and coverage above 80%. By the end of the engagement, the analyzer was running successfully inside the client’s Sentinel automation pipeline and generating live incident reports.
+            </p>
+        </div>
+        <img src="../images/4.png" class="project-shot">
+
+        <p class="small-note">
+        Test coverage report for analyzer modules (87% coverage across the detection engine).
+        </p>
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Microsoft Sentinel incident data is extracted by the client-side Logic App.</li>
+                <li><strong>Step 2:</strong> The Azure Function passes normalized email metadata to the Python analyzer as JSON.</li>
+                <li><strong>Step 3:</strong> The analyzer runs authentication, domain intelligence, IP reputation, URL analysis, attachment checks, and scoring modules.</li>
+                <li><strong>Step 4:</strong> Each module returns structured output with score impact, flags, and optional error details.</li>
+                <li><strong>Step 5:</strong> The scoring engine calculates the composite 0–100 risk score and recommendation.</li>
+                <li><strong>Step 6:</strong> The result is written back to the Sentinel incident as a structured report.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> External intelligence services such as WHOIS, DNSBL, URLhaus, and MalwareBazaar can fail, rate-limit, or respond slowly.<br>
+                    <strong>Solution:</strong> I wrapped all external lookups with timeout-safe logic and graceful failure behavior so the pipeline could continue running with neutral scoring.<br>
+                    <strong>Result:</strong> The analyzer remained stable even when some services were unavailable.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Real Sentinel payloads differed from initial assumptions, especially for nested authentication fields and URL objects.<br>
+                    <strong>Solution:</strong> I adjusted parsers to support live payload structures and added tests covering those real integration cases.<br>
+                    <strong>Result:</strong> Authentication failures, SafeLinks unwrapping, and URL analysis worked correctly in production.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> The client required a Python analysis engine that could integrate into an Azure automation pipeline without tight coupling to cloud-specific SDKs.<br>
+                    <strong>Solution:</strong> I exposed the analyzer through a single <strong>analyze()</strong> entry point with contract-stable JSON input and output.<br>
+                    <strong>Result:</strong> The client integrated it into their Azure Function and Sentinel playbook with minimal friction.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Suspicious email detection needed to balance many weak and strong indicators without hardcoding rules into the codebase.<br>
+                    <strong>Solution:</strong> I implemented a configurable scoring engine driven by external JSON weights, thresholds, recommendations, and caps.<br>
+                    <strong>Result:</strong> The client could tune scoring behavior without rewriting detection modules.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The project was completed across three milestones and accepted by the client with a 5.0 review. The final engine was validated inside a live Microsoft Sentinel automation pipeline, where incident-triggered email data was analyzed automatically and written back into Sentinel as structured reports.
+            </p>
+            <p>
+                By the end of the engagement, the system was performing multi-layer email analysis across authentication validation, threat intelligence enrichment, reputation checks, URL and attachment analysis, phishing heuristics, and composite scoring. The test suite passed above the required coverage threshold, and the client confirmed that the solution was production-ready.
+            </p>
+            <p>
+                This project demonstrates my approach to building modular Python systems for production workflows: contract-driven design, strong test coverage, resilience to partial failures, and adaptability during live integration.
+            </p>
+        </div>
+
+        <div class="container mb-5">
+            <h2 class="section-title">Client Feedback</h2>
+            <div class="lead-card">
+                <img src="../images/1.png" class="project-shot" alt="Upwork client review">
+            </div>
+        </div>       
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
