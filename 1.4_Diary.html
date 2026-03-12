@@ -1,19 +1,200 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елена Гусаревич - 3Д резюме</title>
+    <title>Journal — Elena Gusarevich</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
-    <!-- Иконки для разных устройств -->
+
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
     <link rel="stylesheet" href="css/style.css">
 
+    <style>
+        .journal-page {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        .hero-card {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 32px 24px;
+            margin-top: 24px;
+            max-width: 90%;
+            margin-bottom: 28px;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+            z-index: 1;
+        }
+
+        .hero-card h1 {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .hero-card p {
+            color: #d8d8d8;
+            margin-bottom: 0;
+        }
+
+        .journal-intro {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .journal-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-bottom: 50px;
+        }
+
+        .journal-entry {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+            backdrop-filter: blur(2px);
+        }
+
+        .journal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .journal-date {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #cfd8e3;
+            font-size: 0.92rem;
+        }
+
+        .journal-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(110, 168, 254, 0.12);
+            border: 1px solid rgba(110, 168, 254, 0.25);
+            color: #b9d3ff;
+            font-size: 0.92rem;
+        }
+
+        .journal-title {
+            color: #fff;
+            font-size: 1.55rem;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .journal-entry p {
+            color: #d8d8d8;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .journal-entry p:last-child {
+            margin-bottom: 0;
+        }
+
+        .journal-image-wrap {
+            margin-top: 14px;
+        }
+
+        .journal-image {
+            width: 100%;
+            max-width: 760px;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .journal-image-caption {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .journal-entry.compact .journal-title {
+            font-size: 1.3rem;
+        }
+
+        .journal-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 10px 0 0 0;
+        }
+
+        .journal-content {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .journal-feed {
+            position: relative;
+            padding-left: 40px;
+        }
+
+            .journal-feed::before {
+                content: "";
+                position: absolute;
+                left: 14px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: rgba(255,255,255,0.12);
+            }
+
+        .journal-meta {
+            position: relative;
+        }
+
+            .journal-meta::before {
+                content: "";
+                position: absolute;
+                left: -32px;
+                top: 6px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #6ea8fe;
+                box-shadow: 0 0 8px rgba(110,168,254,0.6);
+            }
+
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 24px 18px;
+            }
+
+            .journal-entry {
+                padding: 18px;
+                border-radius: 16px;
+            }
+
+            .journal-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -24,27 +205,809 @@
     </video>
     <div class="video-vignette"></div>
 
-    <!-- Главный контейнер -->
     <div class="container text-center my-5">
         <h1 class="display-4">Elena Gusarevich (Hel)</h1>
         <p class="lead">Python Automation Engineer | SDET | Bot Architect</p>
         <p>Building bots, web scrapers and automation systems for social platforms, data workflows and internal tools.</p>
 
-        <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
             <a href="https://hel-3d.github.io/hel-3d/1.1_Resume.html" class="btn btn-outline-secondary btn-lg">Resume</a>
             <a href="https://hel-3d.github.io/hel-3d/1.3_Projects.html" class="btn btn-outline-secondary btn-lg">Projects</a>
-            <a href="#" class="btn btn-disabled btn-lg">Journal</a>
-            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-highlighted btn-lg">Social & Contact</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.5_Journal.html" class="btn btn-highlighted btn-lg">Journal</a>
+            <a href="https://hel-3d.github.io/hel-3d/1.7_Contacts.html" class="btn btn-outline-secondary btn-lg">Social & Contact</a>
         </div>
     </div>
 
-    <div class="container about-container">
-        <div class="about-text">
+    <div class="container journal-page px-3 px-md-4">
+        <div class="journal-content">
 
+            <div class="journal-intro">
+                <h1>Journal</h1>
+                <p>
+                    Short development notes, experiments, wins, tests, launches, and small milestones from my automation engineering work.
+                    This page is updated as an ongoing feed — similar to a developer log.
+                </p>
+            </div>
+
+            <div class="journal-feed">
+
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">February 6, 2026</span>
+                        <span class="journal-tag">Telegram</span>
+                        <span class="journal-tag">Development</span>
+                    </div>
+
+                    <h2 class="journal-title">Changes I made after the previous post about my job-vacancies channel</h2>
+
+                    <p>
+                        ✏️ I want to talk about what I eventually changed following my previous post about my vacancies channel.
+                    </p>
+
+                    <p>
+                        🔸 On the same day I published that post, I slightly rewrote the bot so that vacancies would arrive in my personal messages instead of directly going to the channel, with approval and delete buttons.
+                        So for the last three days I have been manually selecting the five best vacancies.
+                        In the future I’m considering delegating this to a neural network, or configuring better filters.
+                    </p>
+
+                    <p>
+                        🔸 Today I completely reorganized the architecture of the project.
+                        The goal was to avoid overloading the system with too many files, even while adding a new service, two payment systems, and integrating a PostgreSQL database into the project.
+                    </p>
+
+                    <p>
+                        Over the next few days I will be testing the system before presenting it in the channel.
+                        You can also take a look and try it here: <strong>@publisher_private_bot</strong>
+                    </p>
+
+                    <p>
+                        It is expected that the public vacancies channel will now contain only a few of the best vacancies so that it doesn’t become overloaded, but anyone who wants can continue receiving all vacancies in their private messages.
+                        Users will also be able to set their own filters for vacancies and exclusion keywords.
+                    </p>
+
+                    <p>
+                        💫 The first two weeks are a trial period. At any moment the user can purchase one month of access or a subscription, and it will be added on top of the remaining trial period.
+                    </p>
+
+                    <p>
+                        The positioning of the channel will gradually shift from an aggregator channel to a curated vacancies channel where companies can purchase placement for vacancies or resumes, plus a vacancy distribution service for job seekers.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/1.jpg" class="journal-image" alt="Vacancies channel development update">
+                    </div>
+
+                </article>
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">February 6, 2026</span>
+                        <span class="journal-tag">Telegram Bot</span>
+                        <span class="journal-tag">Product Update</span>
+                    </div>
+
+                    <h2 class="journal-title">Updates to the women’s cycle tracking bot</h2>
+
+                    <p>
+                        Hello dear ones 🧡 Update on the women’s cycle bot <strong>@RitmaOn_bot</strong>.
+                    </p>
+
+                    <p>
+                        ✨ Since my last post about this project, there have been a couple of important changes in how it works:
+                    </p>
+
+                    <p>
+                        <strong>1️⃣🔸 Added the ability to record events retroactively using a calendar.</strong><br>
+                        This includes events such as the start of menstruation, sex, and symptoms.
+                        What does this mean for the user? If you forgot or couldn’t record an event at the moment it happened,
+                        you can now add it later on the correct date.
+                        Additionally, when starting the bot you can immediately enter the dates of your last three periods.
+                        This allows the bot to calculate all cycle phases right away and notify both you and your partner.
+                    </p>
+
+                    <p>
+                        <strong>2️⃣🔸 A bug has been fixed.</strong><br>
+                        <strong>Situation:</strong><br>
+                        After New Year I started receiving phase notifications every day, even though they should only be sent once at the beginning of each phase.
+                        It took me a while to understand what was happening because technically I had already solved this case before,
+                        and the bug appeared only for me — other users did not experience it.
+                        Eventually I discovered that my ex had blocked the bot, so the database stopped recording that the notification had already been sent.
+                    </p>
+
+                    <p>
+                        <strong>Solution:</strong><br>
+                        Now the notification is first sent to the main user and recorded in the database as delivered,
+                        and only after that it is sent to the partner, where the status no longer affects the logic.
+                    </p>
+
+                    <p>
+                        <strong>3️⃣🔸 Based on the previous issue, I added an important new feature:</strong><br>
+                        a button to remove the partner and automatically generate a new invitation link,
+                        so a user can add a new partner or simply continue without one.
+                    </p>
+
+                    <p>
+                        ✨ <strong>Upcoming updates:</strong><br>
+                        I see that many of you want the ability to add multiple partners.
+                        This will be implemented in one of the future updates.
+                        Feel free to message me if you have additional feature requests :)
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/2.jpg" class="journal-image" alt="RitmaOn bot update">
+                    </div>
+
+                </article>
+
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">February 2, 2026</span>
+                        <span class="journal-tag">Gamedev</span>
+                        <span class="journal-tag">Monetization</span>
+                    </div>
+
+                    <h2 class="journal-title">Thinking about monetization of my gamedev job channels</h2>
+
+                    <p>
+                        ✏️ Today I sat down to think about monetization of my gamedev job channels.
+                    </p>
+
+                    <p>
+                        ⭐️ https://t.me/works_gamedev — 3300 members<br>
+                        ⭐️ https://vk.com/works_gamedev — 6350 members
+                    </p>
+
+                    <p>
+                        Something strange happened: when both channels doubled in size, the number of paid advertising orders almost dropped to zero.
+                        Before that there were consistently 5–6 placements per month.
+                        What makes it even more surprising is that previously most of the audience consisted of bots,
+                        while now the channels have a much more relevant live audience, views have grown significantly,
+                        and the channels are fairly well known in the Russian-speaking gamedev market.
+                        Information about paid placement (and the price) is clearly visible in the channel.
+                    </p>
+
+                    <p>
+                        I am currently trying to understand the reasons behind these changes.
+                        One possible explanation is that many people clearly see the channel as an aggregator,
+                        so they assume their vacancy will appear there for free anyway.
+                        But then the question remains: why are resume placements being purchased less often,
+                        if resumes are not posted for free at all?
+                    </p>
+
+                    <p>
+                        One idea is to limit posting to the five best vacancies per day.
+                        This would create scarcity of free posting slots in the channel.
+                        At the same time it could increase the number of views per post,
+                        since attention would no longer be spread across twenty different posts.
+                    </p>
+
+                    <p>
+                        Another idea is to introduce a personal subscription through the bot,
+                        so that people who want to receive every vacancy can get them directly in private messages as soon as they appear.
+                    </p>
+
+                    <p>
+                        ⛵️ Still thinking about it.
+                        I will gradually introduce small changes and observe how they affect the channel,
+                        user activity, and revenue.
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry compact">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">January 14, 2026</span>
+                        <span class="journal-tag">Website</span>
+                        <span class="journal-tag">Personal Brand</span>
+                    </div>
+
+                    <h2 class="journal-title">Rebuilding my website for the new field</h2>
+
+                    <p>
+                        Hello 🤩
+                        I forgot to go to sleep, but I’m going now 🔥
+                    </p>
+
+                    <p>
+                        I almost completely rebuilt this website from scratch to reflect my new professional direction.
+                    </p>
+
+                    <p>
+                        If I don’t oversleep half the day, tomorrow and the day after I’ll be filling it with up-to-date content.
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry compact">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">January 9, 2026</span>
+                        <span class="journal-tag">LinkedIn</span>
+                        <span class="journal-tag">Milestone</span>
+                    </div>
+
+                    <h2 class="journal-title">LinkedIn profile reached the top 1% in my industry</h2>
+
+                    <p>
+                        Wow!!
+                    </p>
+
+                    <p>
+                        I really did it.
+                        My LinkedIn page is now in the top 1% of profiles in my industry.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/3.jpg" class="journal-image" alt="LinkedIn top 1% industry ranking screenshot">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">January 4, 2026</span>
+                        <span class="journal-tag">LinkedIn</span>
+                        <span class="journal-tag">Career Shift</span>
+                    </div>
+
+                    <h2 class="journal-title">Working on my LinkedIn SSI and repositioning my profile</h2>
+
+                    <p>
+                        🔥 Hi everyone.
+                    </p>
+
+                    <p>
+                        You know that I’ve been actively working on my LinkedIn. (I once found a job there and now I can’t stop.)
+                        Not long before the New Year I completely changed the positioning of my profile,
+                        because I decided to finish my career in gamedev and fully move into Python parsers, automation systems, and bots.
+                    </p>
+
+                    <p>
+                        Over the past few weeks I have been working on my SSI.
+                        This is a trust metric from the LinkedIn algorithm that affects whether the platform promotes your profile and your posts.
+                        You can check your own score here:
+                        https://www.linkedin.com/sales/ssi
+                    </p>
+
+                    <p>
+                        As part of this, I started publishing technical posts once per week,
+                        talking about my personal projects and test tasks that I completed.
+                        I also began adding people from the industry I’m moving into to my network.
+                    </p>
+
+                    <p>
+                        Over four weeks this resulted in:
+                    </p>
+
+                    <p>
+                        1️⃣ SSI growth from 46% to 50%<br>
+                        2️⃣ The speed at which my posts accumulate views increased slightly but noticeably<br>
+                        3️⃣ I received two interview invitations in my private messages from hiring managers during this period<br>
+                        4️⃣ After my latest post today
+                        (https://www.linkedin.com/posts/helena-gusarevich_%D0%BA%D0%B0%D0%BA-%D1%8F-%D0%BE%D0%B1%D0%BE%D1%88%D0%BB%D0%B0-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D1%83-%D0%BE%D1%82-%D0%B1%D0%BE%D1%82%D0%BE%D0%B2-%D0%B8-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D0%BB%D0%B0-activity-7413066583268495360-J1WU),
+                        for the first time I received relevant technical comments from specialists under the post.
+                        My recommendation feed also started showing many technical posts,
+                        which means that if I see posts from my niche, people from my niche can also see my content.
+                        The algorithms seem to have calibrated,
+                        and I should start appearing in search results when people look for specialists with my profile.
+                    </p>
+
+                    <p>
+                        ⭐️ There won’t be a conclusion here.
+                        But I highly recommend paying attention to this metric when developing your account.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/4.jpg" class="journal-image" alt="LinkedIn SSI progress screenshot">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry compact">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">December 12, 2025</span>
+                        <span class="journal-tag">JavaScript</span>
+                        <span class="journal-tag">Web Scraping</span>
+                    </div>
+
+                    <h2 class="journal-title">JS parsing test project</h2>
+
+                    <p>
+                        I made a pretty fun parsing test project in JavaScript. ❤️
+                    </p>
+
+                    <p>
+                        The post about it (together with the original task description) is
+                        <a href="https://www.linkedin.com/posts/helena-gusarevich_%D0%B4%D0%B5%D0%BB%D0%B0%D0%BB%D0%B0-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%B7%D0%B8%D1%86%D0%B8%D1%8E-web-scraper-%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0-activity-7404731677333209088-REDl?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADkIoLEBp5ulEK4wCn8k6Tckv_xt6YhNy2A" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>.
+                    </p>
+
+                    <p>
+                        And the final result is available on GitHub
+                        <a href="https://github.com/hel-3d/building-control-scraper" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>. 🐱
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">December 2, 2025</span>
+                        <span class="journal-tag">Python</span>
+                        <span class="journal-tag">Rainmeter</span>
+                        <span class="journal-tag">Side Project</span>
+                    </div>
+
+                    <h2 class="journal-title">Air quality desktop widget for Windows</h2>
+
+                    <p>
+                        🙊 🔥 If you follow news from Armenia, you probably know how bad the air in Yerevan gets during winter heating season.
+                        This year it has broken all previous records.
+                    </p>
+
+                    <p>
+                        ✨ Of course I bought a respirator and a home air purifier,
+                        but you never know where inspiration will catch you and make you want to code something.
+                    </p>
+
+                    <p>
+                        🐈 So last week I built myself a desktop widget for Windows.
+                        I’m extremely happy with it and keep looking at it during the day thinking how cool it turned out.
+                    </p>
+
+                    <p>
+                        ❤️ <strong>How it works:</strong> configuration through <code>.ini</code> files,
+                        rendering with Shape meters, external data via Python scripts,
+                        and the interface itself rendered with Rainmeter.
+                    </p>
+
+                    <p>
+                        ❤️ The script fetches data directly from nearby public air-quality sensors (within about one kilometer)
+                        and passes it to the interface, while also generating graphs.
+                        Data updates every five minutes.
+                    </p>
+
+                    <p>
+                        The arrows (which I drew myself ^^) show whether the indicator is going up or down.
+                        The color of the circles reflects pollution level according to the scale.
+                        When you click on the circles, individual pollution graphs for the past day open,
+                        along with the current particle concentration values in the air with the same color markers.
+                    </p>
+
+                    <p>
+                        Rainmeter settings allow me to control how the widget behaves:
+                        edge snapping, transparency, window layer priority,
+                        and whether the widget is clickable.
+                    </p>
+
+                    <p>
+                        ❤️ I’ve also started posting some of my projects on LinkedIn,
+                        because I’m leaving gamedev and shifting my profile toward Python engineering.
+                        If you want to support it, you can like the post
+                        <a href="https://www.linkedin.com/posts/helena-gusarevich_%D0%B5%D1%81%D0%BB%D0%B8-%D0%B2%D1%8B-%D1%81%D0%BB%D0%B5%D0%B4%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D1%8F%D0%BC%D0%B8-%D0%B8%D0%B7-%D0%B0%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D0%B8-activity-7401577413316354049-wcyw?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADkIoLEBp5ulEK4wCn8k6Tckv_xt6YhNy2A"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            here
+                        </a>.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/5.jpg" class="journal-image" alt="Air quality desktop widget">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry compact">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">October 17, 2025</span>
+                        <span class="journal-tag">Python</span>
+                        <span class="journal-tag">Automation</span>
+                        <span class="journal-tag">Instagram API</span>
+                    </div>
+
+                    <h2 class="journal-title">Automating meme publishing from Telegram to Instagram</h2>
+
+                    <p>
+                        Hi 🐸
+                    </p>
+
+                    <p>
+                        ✨ I figured out the Instagram and Facebook APIs. ✨
+                    </p>
+
+                    <p>
+                        The workflow now looks like this: when single-image memes appear in my Telegram meme channel
+                        <strong>@norm_mem</strong>, the system automatically processes and publishes them to Instagram.
+                    </p>
+
+                    <p>
+                        <strong>0)</strong> When a one-image meme appears in the Telegram channel:<br>
+                        <strong>1)</strong> <code>sochr_jpgtext_bot.py</code> downloads the image and the text under the meme (if present) and adds random hashtags from a predefined list.<br>
+                        <strong>2)</strong> <code>make_instagram_video.py</code> uses <code>ffmpeg</code> to resize the media for Reels and generates a short video.<br>
+                        <strong>3)</strong> <code>publish_reels.py</code> creates a publishing container from the video and caption, queues it, posts it once per hour, and cleans up temporary files from previous processing stages.
+                    </p>
+
+                    <p>
+                        ❤️ The Instagram meme channel is
+                        <a href="https://www.instagram.com/e_g_c_m_f/?hl=ru#" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>
+                        (feel free to subscribe if you're already reading this 💋).
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">September 29, 2025</span>
+                        <span class="journal-tag">Telegram Bot</span>
+                        <span class="journal-tag">Python</span>
+                    </div>
+
+                    <h2 class="journal-title">Major update for the menstrual cycle Telegram bot</h2>
+
+                    <p>
+                        🔥 I updated my Telegram bot for menstrual cycle tracking <strong>@RitmaOn_bot</strong>.
+                    </p>
+
+                    <p><strong>⭐️ Registration and partner linking</strong></p>
+                    <ul>
+                        <li>The main user (a woman) registers through <code>/start</code>.</li>
+                        <li>She receives a unique invitation code for her partner.</li>
+                        <li>The partner registers using that link and becomes connected to the user.</li>
+                        <li>The partner only sees information about the start of new cycle phases and the moment when the user marks the beginning of a new cycle. All other data remains private for the main user.</li>
+                    </ul>
+
+                    <p><strong>⭐️ Main menu features (<code>/menu</code>)</strong></p>
+                    <ul>
+                        <li>Mark the start of menstruation for a specific date.</li>
+                        <li>Record sexual activity for the current day with options “protected” or “unprotected”.</li>
+                        <li>Add symptoms, feelings, and wellbeing notes in text format.</li>
+                        <li>View a menstrual calendar for the past year.</li>
+                    </ul>
+
+                    <p><strong>⭐️ Cycle calculation and prediction</strong></p>
+                    <ul>
+                        <li>Automatic calculation of the average menstrual cycle length.</li>
+                        <li>Detection of the current cycle phase: menstruation, follicular phase, ovulation, luteal phase, and premenstrual phase.</li>
+                    </ul>
+
+                    <p><strong>⭐️ Notifications</strong></p>
+                    <ul>
+                        <li>The bot tracks cycle phases automatically and sends notifications once per phase.</li>
+                        <li>Notifications are delivered both to the user and the partner.</li>
+                        <li>Messages include useful recommendations for each stage of the cycle, tailored separately for the user and the partner.</li>
+                        <li>Warnings about upcoming menstruation one day before it begins.</li>
+                        <li>Notifications about delays with recommendations to take a pregnancy test or consult a doctor.</li>
+                    </ul>
+
+                    <p><strong>⭐️ Reports for a gynecologist (<code>/report</code>)</strong></p>
+                    <ul>
+                        <li>An extended report covering the last 6 months, including:</li>
+                        <li>Average cycle length</li>
+                        <li>Detailed list of recent cycles</li>
+                        <li>Symptoms recorded over the last two weeks</li>
+                        <li>Statistics of sexual activity over the past three months with dates and protection status</li>
+                    </ul>
+
+                    <p><strong>⭐️ Technology stack</strong></p>
+                    <ul>
+                        <li>Telegram Bot API with <code>python-telegram-bot</code> for Telegram integration</li>
+                        <li>MongoDB running in Docker for storing users, events, and notifications</li>
+                        <li>Daily data updates and cycle calculations handled by <code>apscheduler</code></li>
+                        <li>Infrastructure running on a Linux VPS</li>
+                    </ul>
+
+                    <p>
+                        The architecture allows the bot to scale and support additional features and new users in the future.
+                    </p>
+
+                    <p>
+                        🔥 See you in the next posts 🙂 🧡
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">June 4, 2025</span>
+                        <span class="journal-tag">Python</span>
+                        <span class="journal-tag">LangGraph</span>
+                        <span class="journal-tag">Test Task</span>
+                    </div>
+
+                    <h2 class="journal-title">LangGraph TimeBot test task</h2>
+
+                    <p>
+                        🔥 Hi!
+                    </p>
+
+                    <p>
+                        🍂 Today I worked on a test task for
+                        <a href="https://hh.ru/vacancy/120877778?hhtmFrom=chat" target="_blank" rel="noopener noreferrer">
+                            this vacancy
+                        </a>.
+                    </p>
+
+                    <p>
+                        🍂 The full description of the test task is available
+                        <a href="https://moonlysouls.notion.site/Python-Test-Task-1fb203040a3580c4887ce0c021b56c37" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>.
+                    </p>
+
+                    <p>
+                        🧡 <strong>Result:</strong>
+                    </p>
+
+                    <p>
+                        The final project is available on GitHub
+                        <a href="https://github.com/hel-3d/langgraph-timebot" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>.
+                    </p>
+
+                    <p>
+                        The project fully meets the task requirements: it implements a stateless chatbot built with LangGraph,
+                        using a tool <code>get_current_time</code> that returns the current UTC time in ISO-8601 format.
+                    </p>
+
+                    <p>
+                        The bot works both in console mode via <code>python main.py</code> and through <code>langgraph dev</code>
+                        (tested in LangGraph Studio).
+                        All setup instructions, dependencies, and screenshots of the bot running
+                        (both in console and in Studio) are included in the <code>README.md</code>.
+                    </p>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">May 19, 2025</span>
+                        <span class="journal-tag">Game Dev</span>
+                        <span class="journal-tag">UI</span>
+                        <span class="journal-tag">Experiment</span>
+                    </div>
+
+                    <h2 class="journal-title">Improving the snake rendering logic</h2>
+
+                    <p>
+                        🔥 I spent the entire day drawing snake segments in Gimp and configuring the rendering logic.
+                        (The first screenshot was made in Figma.)
+                    </p>
+
+                    <p>
+                        🍁 The second screenshot shows how it used to look on my website,
+                        and the third one shows how it looks now.
+                    </p>
+
+                    <p>
+                        The snake now opens its mouth when it gets close to the apple 😊
+                    </p>
+
+                    <p>
+                        You can try the game yourself (from the desktop version of the site)
+                        <a href="https://hel-3d.github.io/hel-3d/1.3_Projects.html" target="_blank" rel="noopener noreferrer">
+                            here
+                        </a>.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/6.jpg" class="journal-image" alt="Snake rendering update screenshots">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">May 12, 2025</span>
+                        <span class="journal-tag">Automation</span>
+                        <span class="journal-tag">Telegram</span>
+                        <span class="journal-tag">Monetization</span>
+                    </div>
+
+                    <h2 class="journal-title">Reworking the architecture of my gamedev vacancies channel</h2>
+
+                    <p>
+                        😏 Good news — we can now see that my updated posting system for the vacancies channel is working.
+                        There were no vacancies in the Russian-speaking gamedev space for two days, and at first I thought my parsing system had broken.
+                    </p>
+
+                    <p>
+                        💫 I learned that 👍👎 buttons increase audience engagement,
+                        which is exactly what I need in order to increase revenue from the channel.
+                    </p>
+
+                    <p>
+                        Right now the channel has about 1500 subscribers.
+                        A sponsored post costs 1000 RUB and is purchased around 2–3 times per month,
+                        usually for the same vacancy or resume.
+                    </p>
+
+                    <p>
+                        ✳️ The main challenge is that Telegram bots cannot read channels where they are not admins.
+                        My system parses vacancies from 15 other channels across Telegram,
+                        because the original idea of the project was simple:
+                        users shouldn’t need to search across the entire platform anymore.
+                        So historically the vacancies were collected and published by a userbot.
+                    </p>
+
+                    <p>
+                        ✳️ Unfortunately, a user account cannot create buttons under posts —
+                        only the Telegram Bot API can do that.
+                        Because of this, the system now uses two bots:
+                    </p>
+
+                    <ul>
+                        <li>
+                            The first bot scans Telegram channels for vacancies and stores the text and images in a small internal database.
+                        </li>
+                        <li>
+                            The second bot checks for new entries in the database,
+                            publishes them with engagement buttons,
+                            and then removes them from the queue.
+                        </li>
+                    </ul>
+
+                    <p>
+                        ✳️ In addition to like/dislike buttons,
+                        I also added buttons for submitting a resume to my candidate database
+                        (another project of mine),
+                        as well as a button allowing users to subscribe to that database.
+                    </p>
+
+                    <p>
+                        🥰 For now I hope this won’t look like overly aggressive promotion
+                        and will instead help grow the candidate database faster
+                        while also increasing subscription traffic.
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/7.jpg" class="journal-image" alt="Vacancies channel automation architecture">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+                <!-- ENTRY START -->
+                <article class="journal-entry">
+
+                    <div class="journal-meta">
+                        <span class="journal-date">May 11, 2025</span>
+                        <span class="journal-tag">Side Projects</span>
+                        <span class="journal-tag">Python</span>
+                        <span class="journal-tag">Telegram Bots</span>
+                    </div>
+
+                    <h2 class="journal-title">A day of personal projects and experiments</h2>
+
+                    <p>
+                        🧡 Yesterday was my first day without client orders,
+                        so I decided to take a break and work on whatever came to mind — mostly my own small projects.
+                    </p>
+
+                    <p>
+                        💕 <strong>What happened during these two days:</strong>
+                    </p>
+
+                    <p>
+                        ✳️ I deployed and configured a copy of one of my parsers for my daughter Venus.
+                        It now posts Fortnite news into her channel where she occasionally shares her streams:
+                        <strong>@venera_i_hel</strong>.
+                    </p>
+
+                    <p>
+                        ✳️ I updated my vacancies bot <strong>@works_gamedev</strong>.
+                        The architecture became significantly more complex.
+                        Originally it was a userbot, but I learned that like/dislike buttons dramatically increase engagement in Telegram channels.
+                        Since userbots cannot attach buttons to posts,
+                        I ended up rebuilding the system so that multiple bots now cooperate.
+                        After successful testing I plan to write a separate post about the architecture.
+                    </p>
+
+                    <p>
+                        ✳️ I added another good meme group to my meme parser,
+                        so the content flow in my meme channel is now essentially endless:
+                        <strong>@norm_mem</strong>.
+                    </p>
+
+                    <p>
+                        ✳️ And today I built a Telegram bot for menstrual cycle tracking:
+                        <strong>@RitmaOn_bot</strong>.
+                        This one is honestly my favorite project right now.
+                    </p>
+
+                    <p>
+                        📖 <strong>Background:</strong>
+                        I always hated how apps from marketplaces treat a missed entry of the start of menstruation as a delay.
+                        Immediately the internet fills with baby product ads.
+                        I always considered this kind of health-data leakage too invasive to tolerate,
+                        so I decided to build my own solution.
+                    </p>
+
+                    <p>
+                        <strong>What the bot does:</strong>
+                    </p>
+
+                    <ul>
+                        <li>
+                            The main user registers as a woman and receives an invitation link for a partner.
+                            A person registering through that link receives the partner status.
+                        </li>
+
+                        <li>
+                            Through the <code>/menu</code> command the user can:
+                            <ul>
+                                <li>mark the start of menstruation</li>
+                                <li>record sexual activity for the day (protected or unprotected)</li>
+                                <li>log symptoms or unusual feelings</li>
+                                <li>export cycle and health data for the last three months before visiting a gynecologist</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            The bot calculates the average cycle length and predicts ovulation automatically.
+                        </li>
+
+                        <li>
+                            <strong>Key feature:</strong>
+                            the bot sends notifications at the beginning of each cycle phase.
+                            The user receives information about what to expect,
+                            while the partner receives recommendations about how to interact with the user during that phase.
+                        </li>
+
+                        <li>
+                            Because the bot has its own database,
+                            new users can easily connect to the system in the future.
+                        </li>
+                    </ul>
+
+                    <p>
+                        👻 <strong>Tech stack:</strong><br>
+                        Language: Python<br>
+                        Libraries: python-telegram-bot, pymongo, apscheduler, python-dotenv<br>
+                        Database: MongoDB (Docker)<br>
+                        Hosting: Linux VPS<br>
+                        API: Telegram Bot API
+                    </p>
+
+                    <div class="journal-image-wrap">
+                        <img src="diary_images/8.jpg" class="journal-image" alt="Personal projects and bots overview">
+                    </div>
+
+                </article>
+                <!-- ENTRY END -->
+            </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

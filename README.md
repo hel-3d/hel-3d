@@ -104,6 +104,7 @@ I solve complex engineering challenges:
 <p align="center">
   <img src="Screenshot_upwork.png" width="600">
 </p>
+
 ## 📫 Let's Connect
 
 ---
