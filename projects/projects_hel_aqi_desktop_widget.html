@@ -3,11 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_hel_aqi_desktop_widget</title>
+    <title>Hel AQI Desktop Widget — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .project-shot-card {
+            width: 50%;
+            display: block;
+            margin: 14px 0 18px 0;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_hel_aqi_desktop_widget</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_hel_aqi_desktop_widget.html">https://hel-3d.github.io/hel-3d/projects/projects_hel_aqi_desktop_widget.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+                    <!-- optional preview image -->
+
+                    <h1 class="project-title">Hel AQI Desktop Widget</h1>
+                    <div class="project-subtitle">
+                        A Windows desktop widget that monitors real-time air quality from nearby public sensors, visualizes AQI trends, and renders interactive daily graphs through Rainmeter and Python.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            Hel AQI is a personal desktop monitoring tool I built for Windows to track outdoor air quality in Yerevan in real time during the winter pollution season. The widget reads data from nearby public Sensor.Community sensors, converts particulate measurements into AQI values, and displays the current status directly on the desktop.
+                        </p>
+                        <p>
+                            The interface was implemented in Rainmeter using custom <strong>.ini</strong> configurations, Shape meters, and dynamically generated resource files. A Python script handles data collection, AQI calculation, trend detection, history storage, and graph rendering, while the widget layer presents the data in a lightweight always-visible desktop UI.
+                        </p>
+                        <p class="small-note mb-0">
+                            Outcome: a fully working personal monitoring widget with live AQI values, trend indicators, category-based color coding, and per-location 24-hour graph views.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">desktop widget</span>
+                                    <span class="tag-pill">automation</span>
+                                    <span class="tag-pill">personal tool</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">rainmeter</span>
+                                    <span class="tag-pill">matplotlib</span>
+                                    <span class="tag-pill">requests</span>
+                                    <span class="tag-pill">json</span>
+                                    <span class="tag-pill">windows</span>
+                                    <span class="tag-pill">ini config</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">Personal engineering project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / Desktop UI Builder</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · In active personal use</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">1 week</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Budget</span>
+                                <p class="mb-0">Personal project</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://github.com/hel-3d/hel-aqi-widget-win"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Download on GitHub
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">Hel_AQI/
+├── Hel_AQI.ini
+├── Hel_AQI_HomeGraph.ini
+├── Hel_AQI_VanyaGraph.ini
+├── script/
+│   ├── aq_widget.py
+│   ├── update_aqi.bat
+│   ├── run_aq_daemon.vbs
+│   ├── aq_widget_log.txt
+│   └── Hel_AQI.ini
+└── @Resources/
+    ├── aqi_data.inc
+    ├── aqi_last.json
+    ├── aqi_history.json
+    ├── aqi_graph_home.png
+    ├── aqi_graph_vanya.png
+    └── icons/
+        ├── arrow_down.png
+        ├── arrow_flat.png
+        └── arrow_up.png</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Rainmeter skin structure with Python-driven data generation, persisted AQI state, historical graph assets, and custom icon resources.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                This project was built as a practical desktop utility for monitoring air pollution in Yerevan, where winter air quality can become severely degraded during the heating season. I wanted a lightweight always-visible widget that would show current conditions without opening a browser, mobile app, or weather dashboard.
+            </p>
+            <p>
+                The system pulls PM2.5 and PM10 data from nearby public Sensor.Community sensors, converts these readings into AQI values using breakpoint-based logic, and maps the results to pollution categories and interface colors. It also compares new measurements with previous values to show trend direction through custom arrow icons.
+            </p>
+            <p>
+                The result is a compact Windows desktop widget that provides real-time awareness, historical daily charts, and quick visual interpretation of air quality conditions for multiple tracked locations.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Desktop AQI widget for Windows built with <strong>Rainmeter</strong> and Python</li>
+                        <li>Real-time polling of nearby public air quality sensors through the Sensor.Community API</li>
+                        <li>AQI calculation from PM2.5 and PM10 concentrations using breakpoint-based conversion tables</li>
+                        <li>Support for multiple tracked locations with separate labels, states, and graph views</li>
+                        <li>Color-coded status display based on AQI severity categories</li>
+                        <li>Trend arrows indicating whether the latest AQI reading is rising, falling, or unchanged</li>
+                        <li>Persistent JSON state storage for previous values and rolling 24-hour history</li>
+                        <li>Automatic generation of transparent PNG charts with <strong>matplotlib</strong> for daily AQI history</li>
+                        <li>Interactive circle click actions that open per-location graph panels inside Rainmeter</li>
+                        <li>Custom-drawn icon assets and configurable widget behavior through Rainmeter settings</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Designed the full widget concept, desktop layout, and data presentation model</li>
+                        <li>Implemented the Python data pipeline for sensor polling, AQI computation, trend comparison, and state persistence</li>
+                        <li>Built the Rainmeter UI using <strong>Shape</strong> meters, string meters, image meters, and modular <strong>.ini</strong> configuration files</li>
+                        <li>Created graph generation logic and exported chart images for Rainmeter display</li>
+                        <li>Organized the resource layer for generated variables, graphs, icons, and JSON state files</li>
+                        <li>Drew custom trend icons for the desktop interface</li>
+                        <li>Configured multi-panel navigation between the main widget and detailed graph windows</li>
+                        <li>Tested the widget in live use and refined the display for readability, color hierarchy, and quick visual scanning</li>
+                    </ul>
+                </div>
+                <div>
+                </div>
+            </div>
+            <img src="images/5.jpg" class="project-shot" alt="Hel AQI desktop widget interface">
+            <p class="small-note">
+                Main desktop widget showing AQI values for two tracked locations, severity colors, trend arrows, and a compact category scale.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+            <p>
+                The core logic was implemented in Python as a small local data-processing pipeline. The script requests particulate readings from Sensor.Community, extracts PM2.5 and PM10 values, converts them into AQI scores, and writes the processed values into Rainmeter-readable variable files.
+            </p>
+
+            <p>
+                To support trend detection and historical visualization, the widget stores both the latest state and a rolling AQI history in JSON files. Each update compares the newly calculated AQI against the previous reading, assigns an up / down / flat trend icon, and appends the current sample to a 24-hour history window.
+            </p>
+
+            <p>
+                For graph rendering, I used <strong>matplotlib</strong> in headless mode to generate transparent PNG charts that Rainmeter can display as image meters. This made it possible to keep the Rainmeter layer lightweight while still showing readable historical graphs with proper labeling and per-location coloring.
+            </p>
+
+            <p>
+                On the UI side, the desktop skin was built entirely through Rainmeter configuration files, using Shape meters for circles, scales, and panels, image meters for trend icons and graph assets, and string meters for labels and AQI values. The final result behaves like a compact desktop dashboard while remaining fully configurable through Rainmeter’s native options.
+            </p>
+
+            <p>
+                The widget refreshes automatically, supports separate graph panels for each tracked location, and is designed for daily personal use rather than as a one-off visual mockup.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> The Python updater requests sensor data for the configured locations from the Sensor.Community API.</li>
+                <li><strong>Step 2:</strong> PM2.5 and PM10 readings are extracted from the returned sensor payloads.</li>
+                <li><strong>Step 3:</strong> The script converts particulate values into AQI scores and maps them to severity categories and interface colors.</li>
+                <li><strong>Step 4:</strong> The new values are compared with the previous state to determine trend direction and update rolling history.</li>
+                <li><strong>Step 5:</strong> The script writes Rainmeter variable files and renders updated PNG graphs for each tracked location.</li>
+                <li><strong>Step 6:</strong> Rainmeter displays the refreshed widget on the desktop and opens detailed graph panels on click.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Rainmeter is strong at rendering lightweight desktop UI but is not designed for complex API handling or time-series processing.<br>
+                    <strong>Solution:</strong> I split the system into two layers: Python for external data collection, AQI calculation, history management, and chart rendering; Rainmeter for presentation only.<br>
+                    <strong>Result:</strong> The widget remained visually lightweight while still supporting dynamic live data and daily graphs.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Public air quality data sources can be inconsistent, incomplete, or tied to multiple nearby sensors.<br>
+                    <strong>Solution:</strong> I implemented logic to work with configured sensor IDs when available and otherwise select the nearest suitable sensor from the response set.<br>
+                    <strong>Result:</strong> The widget could reliably resolve usable air quality data for the tracked locations.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Historical AQI visualization needed to work inside a desktop widget environment that does not natively generate charts.<br>
+                    <strong>Solution:</strong> I used headless <strong>matplotlib</strong> rendering to export transparent PNG graphs and then displayed them inside dedicated Rainmeter graph skins.<br>
+                    <strong>Result:</strong> The system provided both real-time monitoring and readable 24-hour trend views.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Air quality values are difficult to interpret quickly if shown only as raw PM numbers.<br>
+                    <strong>Solution:</strong> I added AQI conversion, category-based color coding, trend arrows, and a compact severity scale directly into the widget interface.<br>
+                    <strong>Result:</strong> The dashboard became readable at a glance without requiring the user to interpret raw sensor values manually.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The final result is a working Windows desktop AQI dashboard that I use in everyday life to monitor outdoor pollution conditions in real time. It combines live sensor polling, AQI scoring, trend tracking, history persistence, and graph rendering in a compact desktop-friendly interface.
+            </p>
+            <p>
+                Beyond the visual side, this project demonstrates my ability to combine Python automation with a non-web UI layer, structure a small but complete data pipeline, and turn raw external measurements into an immediately understandable user-facing tool.
+            </p>
+            <p>
+                It also reflects the kind of engineering I enjoy most: practical software built for real daily use, with both technical depth and thoughtful interface design.
+            </p>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
