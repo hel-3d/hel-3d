@@ -3,11 +3,515 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_telegram_promo_campaign_bot_lunar_hare</title>
+    <title>Telegram Promo Campaign Bot (Lunar Hare) — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .project-shot-card {
+            width: 50%;
+            display: block;
+            margin: 14px 0 18px 0;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_telegram_promo_campaign_bot_lunar_hare</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_telegram_promo_campaign_bot_lunar_hare.html">https://hel-3d.github.io/hel-3d/projects/projects_telegram_promo_campaign_bot_lunar_hare.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+                    <!-- optional preview image -->
+
+                    <h1 class="project-title">Telegram Promo Campaign Bot (Lunar Hare)</h1>
+                    <div class="project-subtitle">
+                        A production-ready Telegram promo bot for an offline retail campaign, combining AI photo verification, channel subscription checks, and automated one-time promo code delivery.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            A promotional Telegram bot developed for a retail marketing campaign managed by Lunar Hare agency.
+                        </p>
+                        <p>
+                            Users enter the flow through a QR code, upload a photo from a branded campaign photobooth, pass AI-based image verification, confirm subscription to the campaign Telegram channel, and receive a one-time promo code reward.
+                        </p>
+                        <p class="small-note mb-0">
+                            The system supports batch promo-code imports, stores issued rewards in SQLite, prevents duplicate distribution, and ensures that each participant receives only one assigned code during the campaign.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">bots</span>
+                                    <span class="tag-pill">campaign automation</span>
+                                    <span class="tag-pill">ai verification</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">aiogram</span>
+                                    <span class="tag-pill">sqlite</span>
+                                    <span class="tag-pill">aiosqlite</span>
+                                    <span class="tag-pill">openai api</span>
+                                    <span class="tag-pill">httpx</span>
+                                    <span class="tag-pill">dotenv</span>
+                                    <span class="tag-pill">openpyxl</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">Freelance client project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / Backend Developer</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · Live campaign deployment</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">2–3 days initial build + final launch iteration</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Budget</span>
+                                <p class="mb-0">$330 fixed price</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://t.me/ostin_popup_bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Live Bot
+                                </a>
+
+                                <a href="https://github.com/hel-3d/promo-campaign-telegram-bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    GitHub
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">ostin_qr_bot/
+├── README.md
+├── requirements.txt
+├── .env
+├── app/
+│   ├── bot.py
+│   ├── config.py
+│   ├── db.py
+│   ├── gpt_verify.py
+│   ├── keyboards.py
+│   └── promo.py
+├── data/
+│   ├── bot.db
+│   ├── codes_10.txt
+│   ├── codes_15.txt
+│   ├── codes_20.txt
+│   └── templates/
+│       ├── gift_10.png
+│       ├── gift_15.png
+│       └── gift_20.png
+└── venv/</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Compact campaign bot architecture with Telegram flow handling, SQLite promo storage, branded asset delivery, and GPT-based image verification.
+                            </p>
+                        </div>
+                    </div>
+
+                    <img src="images/7.png" class="project-shot" alt="Project repository structure">
+
+                    <p class="small-note">
+                        Local project structure showing the Telegram bot modules, SQLite data storage, promo code files, and branded gift card templates used for the campaign.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    <div class="container mb-4">
+        <h2 class="section-title">Overview</h2>
+        <p>
+            This project was built for a retail marketing activation managed by Lunar Hare agency. Users entered the campaign by scanning a QR code placed on a physical promo stand and were then guided through the reward flow inside Telegram.
+        </p>
+        <p>
+            The bot asked the user to upload a photo from the branded campaign photobooth, verified that the image matched the expected environment, checked whether the user had subscribed to the required Telegram channel, and then issued a one-time promo code together with a matching branded reward image.
+        </p>
+        <p>
+            To support real campaign usage, the system stored assigned rewards in SQLite, prevented duplicate issuance, and made it possible to report how many promo codes had been distributed during the active promotion period.
+        </p>
+    </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Telegram bot flow launched from a QR code placed on an offline promo installation</li>
+                        <li>Step-by-step user journey with photo upload, subscription check, and reward delivery</li>
+                        <li>AI-powered photo verification to distinguish the branded photobooth from unrelated images</li>
+                        <li>Randomized promo code issuance across multiple discount tiers</li>
+                        <li>SQLite-based storage for users, verification status, issued promo code, and issue timestamp</li>
+                        <li>One reward per user logic with repeat access returning the same previously assigned promo code</li>
+                        <li>Branded gift card image delivery matched to the assigned discount tier</li>
+                        <li>Batch promo code import from campaign-provided files</li>
+                        <li>Deployment on an external server for the duration of the live activation</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Designed the full interaction flow for the campaign Telegram bot</li>
+                        <li>Implemented the bot using aiogram with callback-driven UI and FSM-based photo upload state</li>
+                        <li>Built promo code storage and issuance logic with SQLite and duplicate-protection rules</li>
+                        <li>Integrated GPT-based image verification to reduce abuse from unrelated image submissions</li>
+                        <li>Implemented subscription validation through Telegram channel membership checks</li>
+                        <li>Prepared the project for real campaign usage with branded assets, promo code batches, and deployment support</li>
+                        <li>Hosted the bot on my own external server because the client side did not have a technical deployment owner available at launch</li>
+                        <li>Provided launch support, debugging, final adjustments, and reporting readiness</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="images/3.png" class="project-shot" alt="Telegram promo bot interface and reward flow">
+                    <p class="small-note mb-0">
+                        Live bot interface showing the campaign flow, branded reward assets, and promo code delivery screens.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+            <p>
+                The bot was implemented in Python with aiogram and structured as a compact campaign service. The main flow handled Telegram commands, callback actions, photo uploads, subscription validation, and promo code delivery, while helper modules isolated configuration loading, database access, keyboard generation, promo import, and AI-based image verification.
+            </p>
+            <p>
+                User and reward data were stored in SQLite through an asynchronous data access layer. The database tracked whether a user had entered the flow, uploaded a valid photo, passed subscription verification, and already received a promo code. This made the campaign deterministic: each participant could receive only one reward, and repeated attempts returned the same previously assigned code instead of consuming a new one.
+            </p>
+            <p>
+                Promo codes were loaded from campaign-provided files and grouped by discount tier. When a user completed the flow, the bot selected an available code, assigned it to that user, marked it as used, and stored the assignment together with the timestamp and Telegram user ID. Matching branded reward images were then sent through Telegram as the final response.
+            </p>
+            <p>
+                To reduce abuse, I added GPT-based photo verification. The verification prompt was tuned to accept plausible campaign photobooth images even when partially blocked or photographed at an angle, while rejecting clearly unrelated submissions. This kept the flow user-friendly while still filtering out obvious misuse.
+            </p>
+            <p>
+                Because the client team did not have a dedicated engineer available for launch-time deployment, I hosted the bot on my own external server for the active campaign period and kept the project packaged for future reuse or extension.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> The user scans a QR code placed on the physical promo stand.</li>
+                <li><strong>Step 2:</strong> The Telegram bot starts and asks the user to upload a photo from the campaign photobooth.</li>
+                <li><strong>Step 3:</strong> The bot sends the image to the verification layer, which determines whether the photo plausibly matches the expected campaign setup.</li>
+                <li><strong>Step 4:</strong> If the photo is accepted, the user is prompted to subscribe to the required Telegram channel.</li>
+                <li><strong>Step 5:</strong> The bot checks channel membership through the Telegram API.</li>
+                <li><strong>Step 6:</strong> After successful validation, the system assigns an unused promo code from the available pool and stores the result in SQLite.</li>
+                <li><strong>Step 7:</strong> The bot sends the user a branded reward image together with the assigned promo code.</li>
+                <li><strong>Step 8:</strong> On repeat attempts, the bot does not issue a new reward and instead reminds the user of the previously assigned code.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges &amp; Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Without image validation, users could upload any random photo and still receive a campaign reward.<br>
+                    <strong>Solution:</strong> I added GPT-based image verification tuned specifically for the branded campaign photobooth environment.<br>
+                    <strong>Result:</strong> The bot could distinguish plausible campaign photos from unrelated images and significantly reduced trivial abuse.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Telegram subscription status cannot be verified unless the bot has the correct channel visibility permissions.<br>
+                    <strong>Solution:</strong> I designed the flow around Telegram membership checks and coordinated launch validation to ensure the bot had the required admin-level visibility in the campaign channel.<br>
+                    <strong>Result:</strong> Subscription confirmation became part of the automated reward flow instead of a manual moderation step.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Promo code distribution had to avoid duplicate issuance and stay consistent across multiple reward tiers.<br>
+                    <strong>Solution:</strong> I built a SQLite-backed assignment system that tracked user state, selected only unused promo codes, and persisted the assigned code for repeat access scenarios.<br>
+                    <strong>Result:</strong> Each user received only one reward, while the campaign retained a clear distribution record.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> The client side did not have a dedicated technical owner ready to deploy and support the project at launch time.<br>
+                    <strong>Solution:</strong> I deployed the bot on my own external server and stabilized the live version there for the active campaign period.<br>
+                    <strong>Result:</strong> The campaign could launch on schedule without waiting for separate infrastructure setup.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The bot was completed and launched as a working campaign tool for a real retail activation. It supported the full promo journey: QR entry, photo upload, image verification, subscription confirmation, promo code assignment, and branded reward delivery.
+            </p>
+            <p>
+                By the end of the engagement, the solution was running on a live external server, issuing promo codes from prepared campaign pools, storing assignment history in the database, and preventing duplicate reward claims. The client also confirmed that the project could be shown in portfolio materials with Lunar Hare agency attribution.
+            </p>
+            <p>
+                This project demonstrates my ability to build compact production-ready Python systems for real-world marketing workflows: fast delivery, practical deployment, AI-assisted verification, stateful reward logic, and stable handling of client-side operational constraints.
+            </p>
+        </div>
+
+        <div class="container mb-5">
+            <div class="lead-card">
+                <p>
+                    The bot was approved for live use in the campaign and deployed for the active promotional period. After launch, the client also requested visibility into issued promo code counts and weekly follow-up reporting.
+                </p>
+                <p class="mb-0">
+                    Portfolio mention was explicitly allowed with Lunar Hare agency attribution and without direct brand tagging in social media posts.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
