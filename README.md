@@ -1,6 +1,6 @@
-# Elena Gusarevich | Python Backend Engineer
+# Elena Gusarevich | Python Automation Engineer
 
-**Specialization:** Anti-bot bypass systems, high-load Telegram ecosystems, production-grade web automation  
+**Specialization:** Anti-bot systems, scraping pipelines, and production-grade automation systems  
 **Impact:** 9,000+ active users across bot infrastructure | 2+ years production experience  
 🟢 **Available for remote opportunities** | Mid-level Backend/Automation Engineer
 
@@ -8,11 +8,12 @@
 
 ## 💼 What I Do
 
-Python Backend Engineer with **2 years of commercial experience** in automation systems and data extraction.
+Python Automation Engineer with **2+ years of commercial experience** building production-grade systems for data extraction, backend automation, and high-load processing.
 
 I solve complex engineering challenges:
+- **Security automation:** Built a phishing analysis engine for Microsoft Sentinel with threat intelligence and risk scoring
 - **Anti-bot systems:** Bypassing Cloudflare/Incapsula with 99% success rate
-- **High-load architecture:** Building fault-tolerant bot ecosystems serving 9,000+ users
+- **High-load systems:** Building fault-tolerant automation systems serving 9,000+ users
 - **Production scraping:** Self-healing ETL pipelines processing 1,000+ records/day
 
 **Background:** Ex-Team Lead with leadership experience, ensuring maintainable and business-oriented code.
@@ -23,7 +24,7 @@ I solve complex engineering challenges:
 
 **Core:** Python 3.10+, AsyncIO, OOP  
 **Automation:** SeleniumBase (UC Mode), Playwright, Selenium, Appium  
-**Bots & APIs:** Aiogram 3, Telethon, FastAPI, python-telegram-bot  
+**Backend & APIs:** FastAPI, Aiogram 3, Telethon, python-telegram-bot   
 **Infrastructure:** Docker, Linux (Systemd), MongoDB, PostgreSQL  
 **Data Processing:** Pandas, Google Sheets API, JSON/XML, PyPDF2  
 **AI Integration:** OpenAI API, LangChain, LangGraph, Gemini API  
@@ -32,6 +33,12 @@ I solve complex engineering challenges:
 ---
 
 ## 🚀 Featured Projects
+
+### 🛡 Email Analysis Engine (Microsoft Sentinel)
+**Problem:** Need automated phishing analysis in security incidents  
+**Solution:** Modular Python engine with authentication checks, threat intelligence, and scoring  
+**Impact:** Used in production security workflow for automated incident analysis  
+**Tech:** Python, APIs, WHOIS, DNSBL, GeoIP, URLhaus, MalwareBazaar
 
 ### [🔐 SMS Verification & Anti-Bot Bypass System](https://github.com/hel-3d/automation-case-sms)
 **Problem:** Automated registration blocked by Cloudflare and Incapsula  
@@ -43,7 +50,7 @@ I solve complex engineering challenges:
 
 ### [🤖 High-Load Telegram Bot Ecosystem](https://t.me/works_gamedev)
 **Problem:** Manual job posting distribution across 20+ Telegram channels  
-**Solution:** Cluster of 3 interconnected bots with fuzzy-matching algorithm  
+**Solution:** Distributed automation system with Telegram as interface layer 
 **Impact:** 9,000+ active users | 80%+ filtering accuracy | Zero downtime  
 **Tech:** Python, Aiogram 3, Telethon, MongoDB, Docker, systemd
 
@@ -57,7 +64,7 @@ I solve complex engineering challenges:
 
 ---
 
-### [💚 Ritma - Privacy-First Health Tech Bot](https://github.com/hel-3d/ritma-bot)
+### [💚 Ritma - Automation Backend System (Health Tech)](https://github.com/hel-3d/ritma-bot)
 **Problem:** Period tracking apps sell user data to advertisers  
 **Solution:** End-to-end private Telegram bot with partner linking and medical reporting  
 **Impact:** Production deployment | Full cycle product development  
@@ -120,5 +127,5 @@ I solve complex engineering challenges:
   <img src="pixel-art-avatar.jpg" width="100" style="border-radius: 20px;">
 </p>
 <p align="center">
-  <i>Building production-grade automation systems that never sleep</i>
+  <i>Building production-grade automation systems that work reliably under real-world conditions</i>
 </p>

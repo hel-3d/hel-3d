@@ -3,11 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_bot_protection_sms_verification_automation</title>
+    <title>Automation Case Study: Registration & SMS Verification Pipelines — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .project-shot-card {
+            width: 50%;
+            display: block;
+            margin: 14px 0 18px 0;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .full-width-shot {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_bot_protection_sms_verification_automation</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_bot_protection_sms_verification_automation.html">https://hel-3d.github.io/hel-3d/projects/projects_bot_protection_sms_verification_automation.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+                    <!-- optional preview image -->
+
+                    <h1 class="project-title">Automation Case Study: Registration & SMS Verification Pipelines</h1>
+                    <div class="project-subtitle">
+                        Automation system for bypassing anti-bot protections and handling full-cycle SMS verification flows with proxy auth, captcha solving, and resilient retry logic.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            A technical automation project focused on real-world web interaction challenges: dynamic forms, anti-bot protection, proxy authentication, captcha solving, and SMS verification pipelines.
+                        </p>
+                        <p>
+                            The project consists of two independent automation scenarios: a React-based registration flow and a full-cycle phone verification system with external API integrations.
+                        </p>
+                        <p class="small-note mb-0">
+                            The solution demonstrates production-level handling of unstable flows, including retry logic, debugging artifacts, and resilience to failures during multi-step verification processes.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">automation</span>
+                                    <span class="tag-pill">web automation</span>
+                                    <span class="tag-pill">anti-bot</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">selenium</span>
+                                    <span class="tag-pill">seleniumbase</span>
+                                    <span class="tag-pill">undetected chromedriver</span>
+                                    <span class="tag-pill">requests</span>
+                                    <span class="tag-pill">dotenv</span>
+                                    <span class="tag-pill">proxy (manifest v3)</span>
+                                    <span class="tag-pill">rucaptcha api</span>
+                                    <span class="tag-pill">corecluster api</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">Technical assessment / portfolio project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / SDET</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · Portfolio case study</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">1,5 days implementation</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Budget</span>
+                                <p class="mb-0">Paid test + portfolio project</p>
+                            </div>
+
+                            <div class="project-actions">
+
+                                <a href="https://github.com/hel-3d/automation-case-sms"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    GitHub
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">automation-case-sms/
+├── README.md
+├── requirements.txt
+├── .env
+├── task_1_xtrm/
+│   └── registration.py
+├── task_2_poisondrop/
+│   └── sms_verifier.py
+└── assets/</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Two independent automation tasks covering dynamic registration flows and a full SMS verification pipeline with captcha solving, proxy auth, and failure diagnostics.
+                            </p>
+
+
+
+
+                            <img src="images/7.jpg" class="project-shot" alt="Project repository structure">
+
+                            <p class="small-note mb-0">
+                                Local project structure showing the two automation tasks, supporting assets, and environment-based configuration used in the repository.
+                            </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                This project was developed as part of a technical assessment that turned into a more realistic automation challenge than the original brief suggested.
+            </p>
+            <p>
+                The first task focused on automating registration inside a dynamic web application with anti-bot protection and non-trivial frontend behavior. The second task required building a complete SMS verification flow: getting a virtual number, entering it into the site, solving captcha, waiting for the OTP, and completing the login or registration process.
+            </p>
+            <p>
+                The final result is a compact but strong automation case study showing how I approach unstable browser flows, external service integrations, and production-style diagnostics.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Automation of a dynamic registration form in a React-based web application</li>
+                        <li>Full-cycle SMS verification flow: number acquisition, captcha solving, OTP polling, and code entry</li>
+                        <li>Browser automation with Selenium and SeleniumBase in undetected mode</li>
+                        <li>Proxy authentication through a runtime-generated Chrome Extension (Manifest V3)</li>
+                        <li>Integration with RuCaptcha for text captcha solving</li>
+                        <li>Integration with CoreCluster API for virtual phone numbers and SMS status polling</li>
+                        <li>Retry logic for unstable steps such as captcha refresh, SMS waiting, and number reuse failures</li>
+                        <li>Automatic debug artifact saving with screenshots and HTML dumps on failure</li>
+                        <li>Environment-based configuration for API keys, proxy credentials, and secrets</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Designed the full automation approach for both tasks</li>
+                        <li>Implemented browser-side interaction logic for dynamic frontend elements</li>
+                        <li>Handled anti-bot obstacles using UC mode and browser-level adjustments</li>
+                        <li>Built a custom proxy auth solution instead of relying on manual browser setup</li>
+                        <li>Integrated external services for captcha solving and SMS delivery</li>
+                        <li>Added diagnostic logging and artifact capture for faster debugging</li>
+                        <li>Structured the project as a reusable portfolio case with clear setup and execution flow</li>
+                    </ul>
+                </div>
+
+                <div class="full-width-shot">
+                    <h3 class="h5 mb-3">Task 1: XTRM Registration</h3>
+                    <p>
+                        This flow automates registration in a dynamic React-based web application. The main challenge was not just filling the fields, but triggering the correct frontend behavior through the expected input and change events.
+                    </p>
+
+                    <div class="project-shot-card">
+                        <img src="images/demo_xtrm_2.jpg" class="project-shot" alt="XTRM registration form automation">
+                    </div>
+
+                    <div class="project-shot-card">
+                        <img src="images/demo_xtrm_1.jpg" class="project-shot" alt="XTRM verification email sent screen">
+                    </div>
+
+                    <p class="small-note mb-0">
+                        Screenshots of the automated form filling process for the XTRM registration flow.
+                    </p>
+                </div>
+                <div class="full-width-shot">
+                    <h3 class="h5 mb-3">Task 2: SMS Verification Pipeline</h3>
+                    <p>
+                        This scenario automates account creation with phone verification, including authenticated proxy usage, captcha solving, SMS polling, and final OTP submission.
+                    </p>
+
+                    <div class="project-shot-card">
+                        <img src="images/demo_sms_log_1.png" class="project-shot" alt="PoisonDrop SMS verification flow">
+                    </div>
+
+                    <div class="project-shot-card">
+                        <img src="images/demo_sms_log_3.jpg" class="project-shot" alt="SMS verification logs and OTP handling">
+                    </div>
+
+                    <p class="small-note mb-0">
+                        Log output showing number acquisition, captcha solving, SMS waiting, and successful code entry.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+            <p>
+                The project is split into two automation flows. The first one targets a registration process on a dynamic web application and focuses on correctly interacting with frontend-controlled inputs. Instead of relying only on standard typing, the solution uses JavaScript-based input handling so that the application receives the expected change and input events.
+            </p>
+            <p>
+                The second flow is a more complete verification pipeline built around Selenium. It requests a virtual phone number through CoreCluster, enters it into the website, solves a captcha through RuCaptcha, waits for the incoming SMS code, and then submits the received OTP back into the interface.
+            </p>
+            <p>
+                Proxy authentication is handled through a dynamically generated Chrome Extension using Manifest V3, allowing the script to work with authenticated HTTP proxies without manual setup. This keeps the execution self-contained and easier to reproduce across environments.
+            </p>
+            <p>
+                For resilience and debugging, the script saves screenshots and HTML snapshots whenever something breaks. It also logs the outcome of each phone attempt and includes retry-oriented logic around captcha fetching, number acquisition, and SMS polling so the flow can continue operating even when external services behave inconsistently.
+            </p>
+            <p>
+                Sensitive configuration such as API keys and proxy credentials is stored in environment variables, keeping the code reusable and safer to share as a portfolio repository.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Launch browser automation with Selenium or SeleniumBase depending on the target flow.</li>
+                <li><strong>Step 2:</strong> Configure anti-bot-resistant browser behavior and authenticated proxy access.</li>
+                <li><strong>Step 3:</strong> For the registration task, fill dynamic fields in a way that triggers the correct frontend events.</li>
+                <li><strong>Step 4:</strong> For the SMS task, request a virtual phone number through CoreCluster API.</li>
+                <li><strong>Step 5:</strong> Submit the number into the target website and proceed to captcha verification.</li>
+                <li><strong>Step 6:</strong> Send captcha to RuCaptcha, poll for the answer, and submit the solved text.</li>
+                <li><strong>Step 7:</strong> Poll the SMS provider until the verification code becomes available.</li>
+                <li><strong>Step 8:</strong> Enter the OTP into the site and complete the flow.</li>
+                <li><strong>Step 9:</strong> On any failure, save screenshots and HTML dumps into artifacts for investigation.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges &amp; Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Standard Selenium input often does not trigger the frontend logic correctly in React-based forms.<br>
+                    <strong>Solution:</strong> I used JavaScript-based field filling to trigger the expected input and change events instead of relying only on default typing.<br>
+                    <strong>Result:</strong> The registration flow behaved like a real user session and passed the frontend validation logic reliably.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> The target flows included anti-bot protection and unstable browser-side behavior.<br>
+                    <strong>Solution:</strong> I used SeleniumBase in UC mode for the registration scenario and tuned the browser automation setup to reduce basic bot-detection signals.<br>
+                    <strong>Result:</strong> The automation became much more stable on protected pages than with a plain Selenium setup.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Authenticated proxy usage is awkward to manage in standard Selenium sessions.<br>
+                    <strong>Solution:</strong> I generated a Chrome Extension at runtime using Manifest V3 to inject proxy configuration and credentials automatically.<br>
+                    <strong>Result:</strong> The verification flow ran with authenticated proxies without manual browser setup.
+                </li>
+                <li>
+                    <strong>Challenge:</strong> Captcha solving and SMS delivery are both external dependencies and can fail or respond slowly.<br>
+                    <strong>Solution:</strong> I added retry-oriented logic for captcha refresh, number acquisition, and SMS polling, plus automatic screenshots and HTML dumps on failure.<br>
+                    <strong>Result:</strong> The pipeline became easier to debug and much more resilient to flaky third-party services.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The project resulted in two working automation flows: one for dynamic web registration and one for full-cycle SMS verification with proxy auth, captcha solving, and OTP handling.
+            </p>
+            <p>
+                Beyond the technical assessment itself, it became a strong portfolio case showing practical automation engineering: handling anti-bot measures, integrating external APIs, stabilizing unreliable steps, and designing workflows that are easier to debug when something breaks.
+            </p>
+            <p>
+                It also demonstrates the overlap between automation QA and backend-style integration work, where the goal is not just to click through a page, but to make a full verification pipeline work reliably under real conditions.
+            </p>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
