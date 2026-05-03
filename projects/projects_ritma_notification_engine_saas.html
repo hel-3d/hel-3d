@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Analysis Engine for Microsoft Sentinel — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .project-shot-card {
+            width: 50%;
+            display: block;
+            margin: 14px 0 18px 0;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            align-items: start;
+        }
+
+            .screenshot-grid .project-shot {
+                margin: 0;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        @media (max-width: 900px) {
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+                    <!-- optional preview image -->
+
+                    <h1 class="project-title">Ritma — Cycle Tracking SaaS with Partner-Aware Notifications</h1>
+
+                    <div class="project-subtitle">
+                        A privacy-first backend system that models biological cycles, computes probabilistic phases, and delivers context-aware notifications to both users and their partners — without exposing sensitive data or relying on external analytics platforms.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            This project started as a simple Telegram bot to track menstrual cycle events. It worked — but the architecture was tightly coupled, state was implicit, and business logic was scattered across handlers.
+                        </p>
+                        <p>
+                            I rebuilt it as a SaaS-style backend system with explicit domain boundaries: cycle modeling, event storage, notification orchestration, and partner-aware delivery. The goal was not to add features, but to make the system to make the system deterministic, modular, and consistent under real-world data.
+                        </p>
+                        <p>
+                            The current system supports multi-partner relationships, customizable notification templates, phase-based logic, and strict separation between core business logic and delivery adapters.
+                        </p>
+                        <p class="small-note mb-0">
+                            Outcome: a production-ready architecture that behaves deterministically under real-world data inconsistencies and supports controlled feature expansion without breaking existing flows.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">automation</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">asyncio</span>
+                                    <span class="tag-pill">telegram-bot</span>
+                                    <span class="tag-pill">mongodb</span>
+                                    <span class="tag-pill">pytest</span>
+                                    <span class="tag-pill">domain architecture</span>
+                                    <span class="tag-pill">event modeling</span>
+                                    <span class="tag-pill">background workers</span>
+                                    <span class="tag-pill">privacy-first</span>
+                                    <span class="tag-pill">notification engine</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">My project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / Backend Developer</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · Production-validated</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">2 weeks · 4 milestones</p>
+                                <p class="mb-0">
+                                    5 iterations · architecture → SaaS → UX → notifications → stability
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Engineering Metrics</span>
+                                <p class="mb-0">
+                                    784 tests · 91% coverage · 16s runtime
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Architecture</span>
+                                <p class="mb-0">
+                                    Clean architecture · Use cases layer · Repository pattern · Adapter isolation
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Core Features</span>
+                                <p class="mb-0">
+                                    Multi-partner model · Phase-based notifications · Custom message templates
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Data Safety</span>
+                                <p class="mb-0">
+                                    Isolated user data · Soft-delete model · Controlled access per recipient
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Design Decisions</span>
+                                <p class="mb-0">
+                                    Stateless worker · Idempotent notifications · Timezone-safe logic
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Reliability</span>
+                                <p class="mb-0">
+                                    Failure-safe sending · Retry-ready architecture · No duplicate notifications
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Scalability</span>
+                                <p class="mb-0">
+                                    Async processing · Background workers · Ready for queue integration
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Product Surface</span>
+                                <p class="mb-0">
+                                    Telegram menus · Calendar input · Doctor report · Partner management · Custom notifications
+                                </p>
+                            </div>
+                            <div class="meta-block">
+                                <span class="meta-label">Data Model</span>
+                                <p class="mb-0">
+                                    Events / Notifications / Partner links / Preferences / Templates
+                                </p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Guarantees</span>
+                                <p class="mb-0">
+                                    No duplicate periods · No duplicate notifications · Consistent partner state · Idempotent writes
+                                </p>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://t.me/RitmaOn_bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Open Telegram Bot
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">ritma/
+├── .gitignore
+├── README.md
+├── config.py
+├── pytest.ini
+├── requirements.txt
+├── requirements-dev.txt
+│
+├── adapters/
+│   ├── __init__.py
+│   └── telegram/
+│       ├── __init__.py
+│       ├── bot.py
+│       ├── helpers.py
+│       ├── i18n.py
+│       ├── keyboards.py
+│       └── handlers/
+│           ├── __init__.py
+│           ├── backfill.py
+│           ├── calendar.py
+│           ├── delete_events.py
+│           ├── events.py
+│           ├── menu.py
+│           ├── onboarding.py
+│           ├── pairing.py
+│           ├── partners.py
+│           ├── privacy.py
+│           ├── report.py
+│           ├── start.py
+│           ├── timezone.py
+│           └── when.py
+│
+├── core/
+│   ├── __init__.py
+│   ├── accounts.py
+│   ├── cycle.py
+│   ├── day_key.py
+│   ├── events.py
+│   ├── notifications.py
+│   ├── pairing.py
+│   ├── recipients.py
+│   ├── templates.py
+│   ├── time.py
+│   └── use_cases/
+│       ├── __init__.py
+│       ├── create_event.py
+│       ├── invites.py
+│       └── notify.py
+│
+├── db/
+│   ├── __init__.py
+│   ├── connection.py
+│   ├── indexes.py
+│   └── repositories/
+│       ├── __init__.py
+│       ├── events_repo.py
+│       ├── invites_repo.py
+│       ├── message_templates_repo.py
+│       ├── notifications_repo.py
+│       ├── partner_links_repo.py
+│       ├── privacy_repo.py
+│       ├── recipient_preferences_repo.py
+│       └── users_repo.py
+│
+├── locales/
+│   ├── en.json
+│   ├── es.json
+│   └── ru.json
+│
+├── workers/
+│   ├── __init__.py
+│   └── notify_worker.py
+│
+└── tests/
+    ├── __init__.py
+    ├── conftest.py
+    │
+    ├── adapters/
+    │   └── telegram/
+    │       ├── test_delete_events.py
+    │       ├── test_handlers.py
+    │       ├── test_keyboards.py
+    │       ├── test_onboarding.py
+    │       ├── test_partners.py
+    │       ├── test_privacy.py
+    │       ├── test_report.py
+    │       ├── test_start.py
+    │       ├── test_timezone.py
+    │       └── test_when.py
+    │
+    ├── core/
+    │   ├── test_create_event.py
+    │   ├── test_cycle.py
+    │   ├── test_day_key.py
+    │   ├── test_events.py
+    │   ├── test_invites.py
+    │   ├── test_notifications.py
+    │   ├── test_notify.py
+    │   ├── test_pairing.py
+    │   ├── test_recipients.py
+    │   └── test_templates.py
+    │
+    ├── db/
+    │   ├── test_events_repo.py
+    │   ├── test_indexes.py
+    │   ├── test_invites_repo.py
+    │   ├── test_message_templates_repo.py
+    │   ├── test_notifications_repo.py
+    │   ├── test_partner_links_repo.py
+    │   ├── test_privacy_repo.py
+    │   ├── test_recipient_preferences_repo.py
+    │   └── test_users_repo.py
+    │
+    └── workers/
+        └── test_notify_worker.py</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Domain-driven separation between core logic, delivery adapters, persistence layer, and background workers.
+                            </p>
+                        </div>
+                    </div>
+                    <img src="images/8.jpg" class="project-shot" alt="Project repository structure">
+
+                    <p class="small-note">
+                        Private repository structure showing isolated Telegram adapters, domain logic, repositories, background workers, and a dedicated test suite.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0 mt-4">
+            <h2 class="section-title">Telegram Product Flow</h2>
+
+            <p>
+                The current delivery adapter is Telegram, but the interaction model is designed as a product flow rather than a command-only bot. Users can navigate cycle predictions, calendar actions, doctor reports, partner management, and settings through structured menus.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">User Actions</h3>
+                    <ul>
+                        <li>Add or delete cycle-related events</li>
+                        <li>Check predicted next period</li>
+                        <li>Open calendar-based input flows</li>
+                        <li>Generate a doctor-oriented summary report</li>
+                        <li>Manage settings and privacy actions</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Partner Actions</h3>
+                    <ul>
+                        <li>Create invite links for partners</li>
+                        <li>See who is subscribed to notifications</li>
+                        <li>Disable or remove partner access</li>
+                        <li>Customize notification text per partner</li>
+                        <li>Control which phase notifications a partner receives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="screenshot-grid mt-3">
+                <img src="images/10.jpg"
+                     class="project-shot"
+                     alt="Ritma Telegram bot main menu">
+
+                <img src="images/11.jpg"
+                     class="project-shot"
+                     alt="Ritma Telegram bot calendar input">
+
+                <img src="images/12.jpg"
+                     class="project-shot"
+                     alt="Ritma Telegram bot partner management menu">
+            </div>
+
+            <p class="small-note">
+                Telegram UI showing the live product flow: main menu, calendar input, and partner-aware notification controls.
+            </p>
+        </div>
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                Ritma is not just a tracker — it is a behavioral system built around time-based biological events. Instead of storing static data, it models temporal sequences and derives phases, predictions, and interaction patterns from them.
+            </p>
+            <p>
+                The system ingests discrete events (cycle starts, symptoms, interactions), builds an evolving timeline, and computes derived states such as current phase, predicted ovulation window, and expected next cycle.
+            </p>
+            <p>
+                These states are then used to drive a notification system that adapts both content and delivery targets based on user configuration and partner relationships.
+            </p>
+            <p>
+                Unlike typical single-user trackers, the system models multi-actor interactions. Each account can have multiple linked recipients (partners), each with independent notification preferences and message customization. This transforms the system from a personal tracker into a multi-recipient communication layer.
+            </p>
+            <p>
+                A key design constraint was to avoid notification fatigue. The system never sends repeated daily reminders. Instead, notifications are emitted strictly on phase transitions, ensuring that each message represents a meaningful change in state.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Event-driven cycle modeling based on real user input rather than fixed schedules</li>
+                        <li>Phase calculation engine using probabilistic cycle length instead of static assumptions</li>
+                        <li>Partner-aware notification system with per-recipient preferences and filtering</li>
+                        <li>Multi-layer message resolution: default → global → per-partner override</li>
+                        <li>Background worker that emits notifications only on phase transitions (no spam)</li>
+                        <li>Soft-delete model for events with strict filtering to prevent ghost data in calculations</li>
+                        <li>Contract-stable core logic independent from Telegram adapter</li>
+                        <li>Test coverage across core logic, repositories, and worker flows</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Redesigned MVP architecture into modular SaaS backend</li>
+                        <li>Separated domain logic from transport layer (Telegram)</li>
+                        <li>Built notification orchestration with state tracking and anti-duplication logic</li>
+                        <li>Designed MongoDB schema and indexes for multi-entity relationships</li>
+                        <li>Implemented safe data handling and minimized sensitive exposure</li>
+                        <li>Refactored legacy flows to eliminate inconsistent data reads</li>
+                        <li>Built test suite covering edge cases and real-world data inconsistencies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+            <p>
+                Conceptually, the notification engine behaves as a state machine. Each account has an implicit state defined by its current cycle phase, and the system reacts only to state transitions. This allows the system to remain idempotent across repeated worker executions and eliminates the need for complex scheduling logic.
+            </p>
+            <p>
+                Message resolution follows a multi-layer override model. Each notification is resolved by checking for a partner-specific override, then a global override, and finally falling back to a safe default template. This allows high flexibility without breaking baseline behavior.
+            </p>
+
+            <p>
+                Data consistency was a critical challenge. Soft-deleted events initially leaked into calculations because different parts of the system used separate data access paths. Some relied on helper-level queries, others on repository abstractions. This led to subtle inconsistencies where deleted events still influenced cycle predictions.
+            </p>
+
+            <p>
+                The issue was resolved by enforcing all reads through repository-level queries with strict filtering rules and eliminating duplicate access patterns. This ensured that business logic operates on a single, consistent view of the data.
+            </p>
+
+            <p>
+                The system is designed to tolerate imperfect data. Cycle calculations use recent intervals and avoid overfitting to historical outliers. Predictions are expressed as ranges rather than точные даты, reflecting real-world variability.
+            </p>
+            <img src="images/9.jpg" class="project-shot" alt="Project repository structure">
+
+            <p class="small-note">
+                Test and coverage output showing 784 passing tests and 91% coverage across core logic, repositories, and workers.
+            </p>
+            <p>
+                Idempotency is a core requirement of the system. Notifications are generated with deterministic keys, ensuring that repeated executions of the worker do not produce duplicates. This makes the system safe to rerun, retry, or scale horizontally without introducing inconsistent behavior.
+            </p>
+            <p>
+                The system is extensively tested across all layers: domain logic, repositories, and background workers. Tests cover not only expected flows but also edge cases derived from real-world data inconsistencies, ensuring stable behavior under imperfect input conditions.
+            </p>
+            <p>
+                Although currently delivered via Telegram, the system is not tied to it. The bot acts as a thin adapter layer. All core logic is transport-agnostic, making it possible to extend the system to web or other messaging platforms without rewriting business logic.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Inconsistent data due to soft-deleted events appearing in calculations.<br>
+                    <strong>Solution:</strong> Centralized filtering in repository layer and removed legacy helper-based access.<br>
+                    <strong>Result:</strong> Deterministic and correct cycle calculations.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Notification spam caused by naive daily execution.<br>
+                    <strong>Solution:</strong> Introduced phase-transition-based emission with persisted state tracking.<br>
+                    <strong>Result:</strong> Notifications only fire when meaningful state changes occur.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Conflicting message templates between global and per-partner customization.<br>
+                    <strong>Solution:</strong> Redesigned database index to include recipient scope and implemented layered resolution logic.<br>
+                    <strong>Result:</strong> Predictable override hierarchy without data conflicts.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> MVP architecture tightly coupled business logic to Telegram handlers.<br>
+                    <strong>Solution:</strong> Extracted domain logic into core modules and introduced adapter pattern.<br>
+                    <strong>Result:</strong> System became extensible to other platforms without rewriting logic.
+                </li>
+            </ul>
+        </div>
+        <div class="container mb-4">
+            <h2 class="section-title">Development Timeline</h2>
+
+            <p>
+                The system was not built in a single pass. It evolved through several iterations, each focusing on a specific layer: architecture, data model, notifications, and user interaction flows.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v1.0 — Architecture Foundation</h3>
+                    <ul>
+                        <li>Core architecture separated from Telegram handlers</li>
+                        <li>Initial domain model (users, events)</li>
+                        <li>Repository layer introduced</li>
+                        <li>Baseline test coverage</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v2.0 — SaaS Model</h3>
+                    <ul>
+                        <li>Multi-user and multi-recipient structure</li>
+                        <li>Partner links and invite system</li>
+                        <li>Recipient preferences and isolation</li>
+                        <li>Full data model stabilization</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v2.1 — UX Layer</h3>
+                    <ul>
+                        <li>Telegram menu redesign</li>
+                        <li>Partner management UI</li>
+                        <li>Doctor report generation</li>
+                        <li>Improved interaction flows</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v3.0 — Notification Engine</h3>
+                    <ul>
+                        <li>Phase-based notification system</li>
+                        <li>Idempotent notification keys</li>
+                        <li>Privacy-safe deletion logic</li>
+                        <li>Custom user and partner messages</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v4.0 — Stability & Coverage</h3>
+                    <ul>
+                        <li>Onboarding flow implemented</li>
+                        <li>Edge-case handling for real data</li>
+                        <li>Expanded test coverage to 90%+</li>
+                        <li>Worker reliability improvements</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v5.0 — Runtime & Deployment</h3>
+                    <ul>
+                        <li>System deployed as a continuously running service</li>
+                        <li>Worker and bot operate as separate runtime components</li>
+                        <li>Deterministic behavior under real user data</li>
+                        <li>Ready for migration to API / multi-channel delivery</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="small-note mt-3">
+                Each version focused on a specific system layer, allowing controlled growth without breaking existing behavior.
+            </p>
+        </div>
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The system evolved from a single-file Telegram bot into a modular backend capable of handling multi-actor interactions, probabilistic state modeling, and controlled notification flows.
+            </p>
+
+            <p>
+                It now supports real-world usage scenarios without breaking under inconsistent data, avoids notification spam, and provides a foundation for future extensions such as web interfaces or additional communication channels.
+            </p>
+
+        </div>
+        <div class="container mb-4">
+            <div class="lead-card text-center">
+
+                <h2 class="section-title">Try the Product</h2>
+
+                <p>
+                    The system is live and can be tested through the Telegram interface.
+                    You can explore the full flow — from event tracking to partner-aware notifications.
+                </p>
+
+                <div class="project-actions justify-content-center">
+                    <a href="https://t.me/RitmaOn_bot"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open Ritma Bot
+                    </a>
+                </div>
+
+                <p class="small-note mt-3">
+                    No installation required — works directly in Telegram.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
