@@ -1,40 +1,53 @@
-# Elena Gusarevich | Python Automation Engineer
+# Elena Gusarevich | Python Backend Developer / Python Automation Engineer
 
 **Specialization:** Anti-bot systems, scraping pipelines, and production-grade automation systems  
-**Impact:** 9,000+ active users across bot infrastructure | 2+ years production experience  
-🟢 **Available for remote opportunities** | Mid-level Backend/Automation Engineer
+**Impact:** 9,000+ active users across bot infrastructure
+🟢 **Available for remote opportunities**
 
 ---
 
 ## 💼 What I Do
 
-Python Automation Engineer with **2+ years of commercial experience** building production-grade systems for data extraction, backend automation, and high-load processing.
+Python Backend Developer / Python Automation Engineer focused on backend automation, security workflows, API integrations, scraping infrastructure, and production Python systems.
 
-I solve complex engineering challenges:
-- **Security automation:** Built a phishing analysis engine for Microsoft Sentinel with threat intelligence and risk scoring
-- **Anti-bot systems:** Bypassing Cloudflare/Incapsula with 99% success rate
-- **High-load systems:** Building fault-tolerant automation systems serving 9,000+ users
-- **Production scraping:** Self-healing ETL pipelines processing 1,000+ records/day
+Experienced in building modular backend services, async processing pipelines, threat intelligence enrichment workflows, anti-bot automation, and resilient analytics systems.
 
-**Background:** Ex-Team Lead with leadership experience, ensuring maintainable and business-oriented code.
+Recently delivered Microsoft Sentinel automation projects involving MSTICPy, KQL orchestration, Azure ML notebooks, cross-domain correlation, Isolation Forest anomaly detection, SHAP explainability, and incident automation workflows.
+
+Strong in API debugging, HTTP session analysis, clean architecture, maintainable business logic, and production-ready automation solutions.
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Technical Skills
 
-**Core:** Python 3.10+, AsyncIO, OOP  
-**Automation:** SeleniumBase (UC Mode), Playwright, Selenium, Appium  
-**Backend & APIs:** FastAPI, Aiogram 3, Telethon, python-telegram-bot   
-**Infrastructure:** Docker, Linux (Systemd), MongoDB, PostgreSQL  
-**Data Processing:** Pandas, Google Sheets API, JSON/XML, PyPDF2  
-**AI Integration:** OpenAI API, LangChain, LangGraph, Gemini API  
-**Tools:** Git, Postman, Chrome DevTools (Network Analysis)
+Experienced in building backend automation systems, analytics pipelines, data-processing workflows, and production-ready orchestration for integration-heavy applications.
+
+### Core
+Python 3.10+, AsyncIO, OOP, Clean Architecture
+### HTTP & APIs
+requests, httpx, REST APIs, sessions, cookies, headers
+### Automation
+SeleniumBase (UC Mode), Playwright, browser automation, scraping infrastructure, HTTP session debugging
+### Languages
+Python, SQL, JavaScript
+### Backend
+FastAPI, REST APIs, async workers, service layer architecture, repository pattern, background jobs
+### Security & Threat Intelligence
+MSTICPy, WHOIS, DNSBL, GeoIP, URLhaus, MalwareBazaar
+### Analytics
+pandas, Plotly, SHAP, Isolation Forest, merge_asof
+### Analytics & Automation
+anomaly detection, structured analytics, data processing, risk scoring, decision workflows
+### Cloud & Infrastructure
+Docker, Linux, Systemd, Azure ML, MongoDB, PostgreSQL
+### Testing
+pytest, pytest-asyncio, pytest-cov, integration testing
 
 ---
 
 ## 🚀 Featured Projects
 
-### 🛡 Email Analysis Engine (Microsoft Sentinel)
+### 🛡 [Email Analysis Engine (Microsoft Sentinel)](https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html)
 **Problem:** Need automated phishing analysis in security incidents  
 **Solution:** Modular Python engine with authentication checks, threat intelligence, and scoring  
 **Impact:** Used in production security workflow for automated incident analysis  
@@ -64,11 +77,11 @@ I solve complex engineering challenges:
 
 ---
 
-### [💚 Ritma - Automation Backend System (Health Tech)](https://github.com/hel-3d/ritma-bot)
-**Problem:** Period tracking apps sell user data to advertisers  
-**Solution:** End-to-end private Telegram bot with partner linking and medical reporting  
-**Impact:** Production deployment | Full cycle product development  
-**Tech:** Python, python-telegram-bot, MongoDB, Docker, pytz, JobQueue
+### [💚 Ritma — SaaS-Style Notification Backend](https://hel-3d.github.io/hel-3d/projects/projects_ritma_notification_engine_saas.html)
+**Problem:** Existing cycle tracking apps often compromise privacy, lack flexible notification logic, and are difficult to extend into scalable multi-platform systems.
+**Solution:** Rebuilt an MVP into a modular SaaS-style backend platform with repository pattern, service layer, isolated adapters, background workers, and timezone-safe event modeling.
+**Impact:** Production deployment | 784 automated tests | 91% test coverage | Partner-aware notification system with customizable delivery logic and async processing architecture
+**Tech:** Python, AsyncIO, MongoDB, pytest, Docker, repository pattern, background workers
 
 ---
 
