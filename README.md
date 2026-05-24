@@ -130,7 +130,7 @@ pytest, pytest-asyncio, pytest-cov, integration testing
 ---
 
 💼 **LinkedIn:** [linkedin.com/in/helena-gusarevich](https://www.linkedin.com/in/helena-gusarevich/)  
-📧 **Email:** Pdf.man.3d@gmail.com  
+📧 **Email:** hel.async.dev@gmail.com  
 💬 **Telegram:** @Hel_inst  
 🌐 **Portfolio:** [hel-3d.github.io/hel-3d](https://hel-3d.github.io/hel-3d/)  
 🌍 **Location:** Yerevan, Armenia (UTC+4) | Open to relocation
