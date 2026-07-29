@@ -3,11 +3,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_hel_media_downloader_bot</title>
+    <title>Hel_inst_bot — Social Media Content Downloader for Telegram</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        .project-cover {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .mode-number {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.14);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_hel_media_downloader_bot</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_hel_media_downloader_bot.html">https://hel-3d.github.io/hel-3d/projects/projects_hel_media_downloader_bot.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../1.3_Projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+
+                    <h1 class="project-title">Hel_inst_bot — Unified Social Media Content Downloader for Telegram</h1>
+
+                    <div class="project-subtitle">
+                        A multi-platform Telegram bot that turns social-media links into directly viewable photos, videos, carousels, and post text — inside private chats or group conversations.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            Hel_inst_bot helps people share content from Instagram, TikTok, YouTube, X, LinkedIn, and Facebook without forcing friends to leave Telegram, register on another platform, open a blocked website, or use a VPN.
+                        </p>
+                        <p>
+                            From the user's perspective, the workflow is intentionally simple: send a link and receive the media directly in Telegram. Behind that interaction is a platform-aware extraction layer that handles different post formats, authentication methods, cookie formats, media limits, captions, albums, and frequently changing social-network behavior.
+                        </p>
+                        <p>
+                            The bot supports two interaction modes: direct use in a private conversation and automatic link processing inside a group where the bot is added as an administrator.
+                        </p>
+                        <p class="small-note mb-0">
+                            Product goal: replace inconvenient social-media links with content that can be watched, read, and forwarded immediately without leaving the current Telegram conversation.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">automation</span>
+                                    <span class="tag-pill">media processing</span>
+                                    <span class="tag-pill">telegram bot</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">telegram bot api</span>
+                                    <span class="tag-pill">yt-dlp</span>
+                                    <span class="tag-pill">gallery-dl</span>
+                                    <span class="tag-pill">instaloader</span>
+                                    <span class="tag-pill">requests</span>
+                                    <span class="tag-pill">cookies</span>
+                                    <span class="tag-pill">media extraction</span>
+                                    <span class="tag-pill">windows automation</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">My project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Automation Engineer / Backend Developer</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Active · Continuously maintained</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Interaction Modes</span>
+                                <p class="mb-0">Private chat · Group administrator mode</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Supported Platforms</span>
+                                <p class="mb-0">Instagram · TikTok · YouTube · X · LinkedIn · Facebook</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Supported Content</span>
+                                <p class="mb-0">Photos · Videos · Carousels · Stories · Shorts · Mixed posts · Text</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Architecture</span>
+                                <p class="mb-0">Platform-specific handlers · Shared Telegram delivery layer · Cookie/session adapters</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Operations</span>
+                                <p class="mb-0">Start · Stop · Restart scripts · Local statistics · Admin broadcast</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Core Value</span>
+                                <p class="mb-0">View and forward social-media content without leaving Telegram</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://t.me/Hel_inst_bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Open Telegram Bot
+                                </a>
+
+                                <a href="https://github.com/hel-3d/hel-inst-bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    GitHub
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">hel_inst_bot/
+├── hel_inst_bot.py
+├── instagram_handler.py
+├── tiktok_handler.py
+├── youtube_handler.py
+├── x_handler.py
+├── linkedin_handler.py
+├── facebook_handler.py
+│
+├── cookies/
+│   ├── instagram_cookies.json
+│   └── converted_cookies.txt
+│
+├── data/
+│   ├── users.json
+│   ├── groups.json
+│   └── statistics.json
+│
+├── requirements.txt
+├── .env
+├── .env.example
+├── README.md
+│
+├── bat.bat
+├── restart_bot.bat
+├── stop_bot.bat
+└── run.vbs</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                Each social network is isolated in its own handler, while Telegram interaction, administration, statistics, and process management remain centralized.
+                            </p>
+                        </div>
+                    </div>
+
+                    <img src="data:image/png;base64,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" class="project-shot" alt="Hel_inst_bot Telegram profile">
+
+                    <p class="small-note">
+                        The recognizable Hel_inst_bot identity is preserved across the Telegram product and the portfolio presentation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Two Interaction Modes</h2>
+
+            <p>
+                The bot was designed for both individual use and ongoing group conversations. The same extraction engine is used in both cases, while Telegram routing and response behavior depend on the chat context.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">1</span>Private Chat</h3>
+                    <ul>
+                        <li>The user opens a direct conversation with Hel_inst_bot</li>
+                        <li>A social-media link is sent as a regular message</li>
+                        <li>The bot detects the platform and extracts the available content</li>
+                        <li>Videos, photos, albums, and publication text are returned directly in Telegram</li>
+                        <li>The user can also open the bot statistics from the interface</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">2</span>Group Administrator</h3>
+                    <ul>
+                        <li>Hel_inst_bot is added to a Telegram group as an administrator</li>
+                        <li>Members continue using the group normally and paste links into the conversation</li>
+                        <li>The bot recognizes supported URLs and publishes the extracted media in the same chat</li>
+                        <li>Friends can watch and forward the content without opening the original platform</li>
+                        <li>The workflow removes disruptive links from active group discussions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Supported Platforms</h2>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">📸 Instagram</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Photo carousels</li>
+                        <li>Mixed posts with photos and videos</li>
+                        <li>Reels</li>
+                        <li>Stories</li>
+                        <li>Regular video posts</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🎵 TikTok</h3>
+                    <ul>
+                        <li>Video extraction</li>
+                        <li>Direct delivery to Telegram</li>
+                        <li>Link normalization and platform detection</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">▶️ YouTube</h3>
+                    <ul>
+                        <li>Regular videos up to 10 minutes</li>
+                        <li>YouTube Shorts</li>
+                        <li>Format selection suitable for Telegram delivery</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🐦 X (Twitter)</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Publication text</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">💼 LinkedIn</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Publication text</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">📘 Facebook</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Content delivery without opening Facebook</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+
+            <p>
+                Hel_inst_bot is a unified content extraction layer placed between Telegram and multiple social networks. Instead of building a separate user workflow for every platform, the bot accepts a URL, determines its source, delegates extraction to the corresponding handler, and returns a normalized Telegram-ready result.
+            </p>
+
+            <p>
+                This normalization is important because every source behaves differently. Instagram may contain a carousel with mixed media, X and LinkedIn may combine publication text with attachments, YouTube requires duration and format checks, and Stories may depend on an authenticated session.
+            </p>
+
+            <p>
+                The bot hides these differences from the user. A person does not need to know whether a post is processed through yt-dlp, gallery-dl, Instaloader, a direct request, or an authenticated session. The public contract remains the same: send a link and receive viewable content.
+            </p>
+
+            <p>
+                The project is continuously maintained because social-media platforms frequently change markup, access rules, redirect behavior, authentication requirements, and downloadable formats. Its architecture therefore favors isolated handlers and replaceable extraction strategies instead of one tightly coupled parser.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Automatic platform detection from incoming Telegram messages</li>
+                        <li>Independent handlers for six social networks</li>
+                        <li>Support for videos, photos, carousels, Stories, Shorts, mixed posts, and text</li>
+                        <li>Telegram album delivery for multi-file publications</li>
+                        <li>Caption and text handling within Telegram message limitations</li>
+                        <li>Private-chat and group-administrator workflows</li>
+                        <li>Cookie-based authentication for restricted content flows</li>
+                        <li>Local statistics and administrator broadcast capabilities</li>
+                        <li>Windows scripts for starting, stopping, and restarting the bot</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Designed the Telegram interaction and routing layer</li>
+                        <li>Implemented and maintained platform-specific media handlers</li>
+                        <li>Integrated multiple extraction libraries and fallback paths</li>
+                        <li>Added support for new content types without breaking existing flows</li>
+                        <li>Handled Telegram media-group, file-size, caption, and text constraints</li>
+                        <li>Built cookie conversion and authenticated-session workflows</li>
+                        <li>Created local process-management scripts for reliable daily operation</li>
+                        <li>Documented setup, environment configuration, cookies, and administration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+
+            <p>
+                Incoming messages are first classified by URL pattern. The router selects a platform handler and passes it the source link together with the Telegram chat context. Each handler is responsible for obtaining a normalized result: downloadable files, publication text, source metadata, and any platform-specific errors.
+            </p>
+
+            <p>
+                This design prevents Instagram-specific cookie logic or YouTube format selection from leaking into the Telegram layer. It also allows a single platform implementation to be fixed or replaced without destabilizing the rest of the bot.
+            </p>
+
+            <p>
+                Media extraction uses several tools because no single library handles every platform and publication type reliably. yt-dlp is suitable for many video sources, gallery-dl helps with image collections and carousels, Instaloader supports Instagram-specific authenticated flows, and direct requests are used where a simpler path is more stable.
+            </p>
+
+            <p>
+                Cookies are treated as an operational adapter rather than hard-coded application state. Browser-exported cookies can be converted into the Netscape format expected by command-line downloaders. This is especially important for Instagram, where anonymous requests, account restrictions, and session requirements can change over time.
+            </p>
+
+            <p>
+                Telegram delivery has its own constraints. A publication may contain more files than fit comfortably in one response, captions have length limits, and text posts need to remain readable even when attachments are present. The delivery layer therefore separates media grouping from text sending and chooses the appropriate Telegram method for each normalized result.
+            </p>
+
+            <p>
+                The bot also includes local operational tooling for Windows. Start, stop, and restart scripts make it possible to recover the service without manually finding processes, while the VBS launcher allows background startup without leaving a terminal window open.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges & Solutions</h2>
+
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Every social network exposes media differently and changes behavior independently.<br>
+                    <strong>Solution:</strong> Isolated each platform in a dedicated handler with a shared normalized output contract.<br>
+                    <strong>Result:</strong> Platform-specific fixes can be released without rewriting the Telegram workflow.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Instagram publications include photos, videos, mixed carousels, Reels, and Stories with different access requirements.<br>
+                    <strong>Solution:</strong> Combined multiple extraction strategies and authenticated cookie/session support.<br>
+                    <strong>Result:</strong> One user action can retrieve a much wider range of Instagram content types.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Browser cookies and downloader cookies use incompatible formats.<br>
+                    <strong>Solution:</strong> Added conversion from exported JSON cookies to Netscape cookie files.<br>
+                    <strong>Result:</strong> Session refresh became a repeatable maintenance operation instead of a manual rewrite.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Telegram has separate rules for files, albums, captions, and long publication text.<br>
+                    <strong>Solution:</strong> Built a delivery layer that chooses between single media, media groups, captions, and follow-up text messages.<br>
+                    <strong>Result:</strong> Complex posts remain readable and forwardable inside Telegram.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> A bot used in active groups must not require every member to open a private chat first.<br>
+                    <strong>Solution:</strong> Added group-administrator mode with link detection directly in group messages.<br>
+                    <strong>Result:</strong> The bot becomes part of the conversation rather than a separate utility.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Local background processes can remain active after code updates and block a clean restart.<br>
+                    <strong>Solution:</strong> Added dedicated start, stop, restart, and hidden-launch scripts.<br>
+                    <strong>Result:</strong> Updating and recovering the bot became predictable on Windows.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Development Evolution</h2>
+
+            <p>
+                The project grew from an Instagram-focused utility into a multi-platform Telegram media service. Each stage expanded either the supported content surface or the reliability of daily operation.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 1 — Instagram Utility</h3>
+                    <ul>
+                        <li>Direct Instagram link processing</li>
+                        <li>Photo and video delivery</li>
+                        <li>Basic Telegram interaction</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 2 — Complex Instagram Content</h3>
+                    <ul>
+                        <li>Carousels and mixed posts</li>
+                        <li>Reels and Stories</li>
+                        <li>Session and cookie support</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 3 — Multi-Platform Expansion</h3>
+                    <ul>
+                        <li>TikTok and Facebook handlers</li>
+                        <li>X media and post text</li>
+                        <li>Platform detection and routing</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 4 — YouTube & LinkedIn</h3>
+                    <ul>
+                        <li>YouTube videos and Shorts</li>
+                        <li>Ten-minute duration guard</li>
+                        <li>LinkedIn media and publication text</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 5 — Operations</h3>
+                    <ul>
+                        <li>Start, stop, and restart scripts</li>
+                        <li>Background launch on Windows</li>
+                        <li>Cookie conversion workflow</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Stage 6 — Product Administration</h3>
+                    <ul>
+                        <li>User and group statistics</li>
+                        <li>Administrator broadcast</li>
+                        <li>Updated setup and maintenance documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+
+            <p>
+                Hel_inst_bot evolved from a single-platform downloader into a unified Telegram content gateway for six social networks.
+            </p>
+
+            <p>
+                Users can now share photos, videos, carousels, Stories, Shorts, and post text without interrupting the conversation or requiring every participant to have access to the original platform.
+            </p>
+
+            <p>
+                From an engineering perspective, the project demonstrates practical integration work under unstable external conditions: multiple parsers, authenticated sessions, platform-specific fallbacks, Telegram API limitations, content normalization, and local service operations.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <div class="lead-card text-center">
+                <h2 class="section-title">Try Hel_inst_bot</h2>
+
+                <p>
+                    Send a supported social-media link in a private conversation, or add the bot as an administrator to a Telegram group and use links directly inside the chat.
+                </p>
+
+                <div class="project-actions justify-content-center">
+                    <a href="https://t.me/Hel_inst_bot"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open Hel_inst_bot
+                    </a>
+                </div>
+
+                <p class="small-note mt-3">
+                    No separate application is required — the entire workflow stays inside Telegram.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
