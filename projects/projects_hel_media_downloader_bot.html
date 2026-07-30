@@ -243,7 +243,7 @@
 
                     <div class="lead-card">
                         <p>
-                            Hel_inst_bot helps people share content from Instagram, TikTok, YouTube, X, LinkedIn, and Facebook without forcing friends to leave Telegram, register on another platform, open a blocked website, or use a VPN.
+                            Hel_inst_bot helps people share content from Instagram, TikTok, YouTube, X, LinkedIn, Facebook, Reddit, Threads, Pinterest, Bluesky, Vimeo, Twitch Clips and Imgur, without forcing friends to leave Telegram, register on another platform, open a blocked website, or use a VPN.
                         </p>
                         <p>
                             From the user's perspective, the workflow is intentionally simple: send a link and receive the media directly in Telegram. Behind that interaction is a platform-aware extraction layer that handles different post formats, authentication methods, cookie formats, media limits, captions, albums, and frequently changing social-network behavior.
@@ -304,12 +304,12 @@
 
                             <div class="meta-block">
                                 <span class="meta-label">Supported Platforms</span>
-                                <p class="mb-0">Instagram · TikTok · YouTube · X · LinkedIn · Facebook</p>
+                                <p class="mb-0">Instagram · TikTok · YouTube · X · LinkedIn · Facebook · Reddit · Threads · Pinterest · Bluesky · Vimeo · Twitch Clips · Imgur</p>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Supported Content</span>
-                                <p class="mb-0">Photos · Videos · Carousels · Stories · Shorts · Mixed posts · Text</p>
+                                <p class="mb-0">Photos · Videos · Carousels · Stories · Shorts · Mixed posts · GIFs · Albums · Text</p>
                             </div>
 
                             <div class="meta-block">
@@ -362,6 +362,13 @@
 ├── x_handler.py
 ├── linkedin_handler.py
 ├── facebook_handler.py
+├── reddit_handler.py
+├── threads_handler.py
+├── pinterest_handler.py
+├── bluesky_handler.py
+├── vimeo_handler.py
+├── twitch_handler.py
+├── imgur_handler.py
 │
 ├── cookies/
 │   ├── instagram_cookies.json
@@ -489,6 +496,62 @@
                         <li>Content delivery without opening Facebook</li>
                     </ul>
                 </div>
+                <div class="info-box">
+                    <h3 class="h5 mb-3">👽 Reddit</h3>
+                    <ul>
+                        <li>Videos</li>
+                        <li>Photos</li>
+                        <li>GIFs</li>
+                        <li>Galleries</li>
+                        <li>Publication text</li>
+                    </ul>
+                </div>       
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🧵 Threads</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Publication text</li>
+                    </ul>
+                </div>        
+                <div class="info-box">
+                    <h3 class="h5 mb-3">📌 Pinterest</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Pin description</li>
+                    </ul>
+                </div>                
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🦋 Bluesky</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Videos</li>
+                        <li>Publication text</li>
+                    </ul>
+                </div>         
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🎬 Vimeo</h3>
+                    <ul>
+                        <li>Videos up to 10 minutes</li>
+                    </ul>
+                </div>  
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🟣 Twitch Clips</h3>
+                    <ul>
+                        <li>Twitch clips</li>
+                        <li>Videos up to 10 minutes</li>
+                    </ul>
+                </div> 
+                <div class="info-box">
+                    <h3 class="h5 mb-3">🖼 Imgur</h3>
+                    <ul>
+                        <li>Photos</li>
+                        <li>Albums</li>
+                        <li>GIFs</li>
+                        <li>Videos</li>
+                    </ul>
+                </div>                                    
             </div>
         </div>
 
@@ -520,7 +583,7 @@
                     <h3 class="h5 mb-3">Core Features</h3>
                     <ul>
                         <li>Automatic platform detection from incoming Telegram messages</li>
-                        <li>Independent handlers for six social networks</li>
+                        <li>Independent handlers for thirteen social-media platforms.</li>
                         <li>Support for videos, photos, carousels, Stories, Shorts, mixed posts, and text</li>
                         <li>Telegram album delivery for multi-file publications</li>
                         <li>Caption and text handling within Telegram message limitations</li>
@@ -676,6 +739,13 @@
                         <li>User and group statistics</li>
                         <li>Administrator broadcast</li>
                         <li>Updated setup and maintenance documentation</li>
+                        <li>Added Reddit support</li>
+                        <li>Added Threads support</li>
+                        <li>Added Pinterest support</li>
+                        <li>Added Bluesky support</li>
+                        <li>Added Vimeo support</li>
+                        <li>Added Twitch Clips support</li>
+                        <li>Added Imgur support</li>
                     </ul>
                 </div>
             </div>
