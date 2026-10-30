@@ -279,6 +279,8 @@
                                     <span class="tag-pill">cookies</span>
                                     <span class="tag-pill">media extraction</span>
                                     <span class="tag-pill">windows automation</span>
+                                    <span class="tag-pill">cursor & claude code</span>
+                                    <span class="tag-pill">ai-assisted maintenance</span>                                    
                                 </div>
                             </div>
 
@@ -591,6 +593,7 @@
                         <li>Cookie-based authentication for restricted content flows</li>
                         <li>Local statistics and administrator broadcast capabilities</li>
                         <li>Windows scripts for starting, stopping, and restarting the bot</li>
+                        <li>AI-assisted reverse-engineering pipeline (Cursor/Claude Code) for rapid parser patching when upstream platforms alter their internal DOM signatures or API schemas</li>
                     </ul>
                 </div>
 
@@ -677,6 +680,13 @@
                     <strong>Solution:</strong> Added dedicated start, stop, restart, and hidden-launch scripts.<br>
                     <strong>Result:</strong> Updating and recovering the bot became predictable on Windows.
                 </li>
+
+                <li>
+                <strong>Challenge:</strong> Social networks (Instagram, TikTok, X) frequently change internal API payloads and obfuscate frontend markup, causing sudden extractor failures.<br>
+                <strong>Solution:</strong> Streamlined maintenance workflow using Claude Code and Cursor to inspect raw DOM snapshots and debug session headers, combined with automated pytest mock suites.<br>
+                <strong>Result:</strong> Fix turnaround time was reduced from days to under 30 minutes without downtime for unaffected handlers.
+                </li>
+                                
             </ul>
         </div>
 
@@ -754,9 +764,7 @@
         <div class="container mb-4">
             <h2 class="section-title">Result</h2>
 
-            <p>
-                Hel_inst_bot evolved from a single-platform downloader into a unified Telegram content gateway for six social networks.
-            </p>
+            <p>Hel_inst_bot evolved from a single-platform downloader into a unified Telegram content gateway for thirteen social networks and media platforms.</p>
 
             <p>
                 Users can now share photos, videos, carousels, Stories, Shorts, and post text without interrupting the conversation or requiring every participant to have access to the original platform.
