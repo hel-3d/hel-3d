@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Analysis Engine for Microsoft Sentinel — Elena Gusarevich</title>
+    <title>Ritma — Cycle Tracking & Notifications | Elena Gusarevich</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -202,6 +202,21 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.30);
         }
 
+        .architecture-diagram-card {
+            margin: 24px 0;
+            padding: 24px;
+            overflow-x: auto;
+            color: #e5e7eb;
+            background: #111318;
+            border: 1px solid #30343d;
+            border-radius: 12px;
+        }
+
+        .architecture-diagram-card h3 {
+            margin: 0 0 20px;
+            color: #f3f4f6;
+        }
+
         @media (max-width: 900px) {
             .project-title {
                 font-size: 1.9rem;
@@ -225,6 +240,9 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
             align-items: start;
+        }
+        .info-grid-full {
+            grid-template-columns: 1fr;
         }
 
             .screenshot-grid .project-shot {
@@ -281,6 +299,7 @@
                     </div>
 
                     <div class="project-side-grid">
+                        <!-- Левая колонка: короткая информация о проекте -->
                         <div class="meta-card">
                             <div class="meta-block">
                                 <span class="meta-label">Category</span>
@@ -302,238 +321,331 @@
                                     <span class="tag-pill">background workers</span>
                                     <span class="tag-pill">privacy-first</span>
                                     <span class="tag-pill">notification engine</span>
+                                    <span class="tag-pill">fastapi-gateway</span>
+                                    <span class="tag-pill">hexagonal-architecture</span>
+                                    <span class="tag-pill">android-client</span>
+                                    <span class="tag-pill">telegram-adapter</span>
+                                    <span class="tag-pill">account-merging</span>
                                 </div>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Project Type</span>
-                                <p class="mb-0">My project</p>
+                                <p class="mb-0">Independent project</p>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Role</span>
-                                <p class="mb-0">Python Automation Engineer / Backend Developer</p>
+                                <p class="mb-0">Sole creator, developer, and maintainer</p>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Status</span>
-                                <p class="mb-0">Completed · Production-validated</p>
-                            </div>
-
-                            <div class="meta-block">
-                                <span class="meta-label">Timeline</span>
-                                <p class="mb-0">2 weeks · 4 milestones</p>
                                 <p class="mb-0">
-                                    5 iterations · architecture → SaaS → UX → notifications → stability
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Engineering Metrics</span>
-                                <p class="mb-0">
-                                    784 tests · 91% coverage · 16s runtime
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Architecture</span>
-                                <p class="mb-0">
-                                    Clean architecture · Use cases layer · Repository pattern · Adapter isolation
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Core Features</span>
-                                <p class="mb-0">
-                                    Multi-partner model · Phase-based notifications · Custom message templates
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Data Safety</span>
-                                <p class="mb-0">
-                                    Isolated user data · Soft-delete model · Controlled access per recipient
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Design Decisions</span>
-                                <p class="mb-0">
-                                    Stateless worker · Idempotent notifications · Timezone-safe logic
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Reliability</span>
-                                <p class="mb-0">
-                                    Failure-safe sending · Retry-ready architecture · No duplicate notifications
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Scalability</span>
-                                <p class="mb-0">
-                                    Async processing · Background workers · Ready for queue integration
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Product Surface</span>
-                                <p class="mb-0">
-                                    Telegram menus · Calendar input · Doctor report · Partner management · Custom notifications
-                                </p>
-                            </div>
-                            <div class="meta-block">
-                                <span class="meta-label">Data Model</span>
-                                <p class="mb-0">
-                                    Events / Notifications / Partner links / Preferences / Templates
+                                    Live in production on Google Play and Telegram · Regularly updated
                                 </p>
                             </div>
 
-                            <div class="meta-block">
-                                <span class="meta-label">Guarantees</span>
-                                <p class="mb-0">
-                                    No duplicate periods · No duplicate notifications · Consistent partner state · Idempotent writes
-                                </p>
-                            </div>
                             <div class="project-actions">
-                                <a href="https://t.me/RitmaOn_bot"
-                                   class="btn btn-outline-secondary"
-                                   target="_blank"
-                                   rel="noopener noreferrer">
-                                    Open Telegram Bot
+                                <a href="https://play.google.com/store/apps/details?id=com.ritma.app"
+                                target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                                style="display: inline-flex; align-items: center; gap: 8px;">
+                                    <span>Google Play Store</span>
                                 </a>
 
-                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
-                                   class="btn btn-outline-secondary"
-                                   target="_blank"
-                                   rel="noopener noreferrer">
-                                    LinkedIn
+                                <a href="https://t.me/RitmaOn_bot"
+                                target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                                style="display: inline-flex; align-items: center; gap: 8px;">
+                                    <span>Telegram Adapter</span>
+                                </a>
+
+                                <a href="https://ritmacalendar.com/"
+                                target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                                style="display: inline-flex; align-items: center; gap: 8px;">
+                                    <span>Official Web &amp; Privacy</span>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="info-box arch-card">
+                        <div class="project-details">
+                        <div class="info-grid info-grid-full">
+                            <div class="info-box">
+                                <h3 class="h5 mb-3">System Design</h3>
+                                <ul class="mb-0">
+                                    <li><strong>Architecture:</strong> Clean architecture · Use cases layer · Repository pattern · Adapter isolation</li>
+                                    <li><strong>Core Features:</strong> Multi-partner model · Phase-based notifications · Custom message templates</li>
+                                    <li><strong>Data Model:</strong> Events / Notifications / Partner links / Preferences / Templates</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h3 class="h5 mb-3">Data &amp; Reliability</h3>
+                                <ul class="mb-0">
+                                    <li><strong>Data Safety:</strong> Isolated user data · Soft-delete model · Controlled access per recipient</li>
+                                    <li><strong>Reliability:</strong> Failure-safe sending · Retry-ready architecture · No duplicate notifications</li>
+                                    <li><strong>Scalability:</strong> Async processing · Background workers · Ready for queue integration</li>
+                                    <li><strong>Sync &amp; Identity:</strong> Zero-Auth (Anonymous-first) · Bidirectional Timeline Merge</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h3 class="h5 mb-3">Delivery &amp; Quality</h3>
+                                <ul class="mb-0">
+                                    <li><strong>Engineering Metrics:</strong> 784 tests · 91% coverage · 16s runtime</li>
+                                    <li><strong>Localization:</strong> 3 Languages (EN · ES · RU)</li>
+                                </ul>
+                            </div>
+                            </div>
+
                             <h3 class="h5 mb-3">Architecture</h3>
 
-                            <pre class="code-block">ritma/
-├── .gitignore
-├── README.md
-├── config.py
-├── pytest.ini
-├── requirements.txt
-├── requirements-dev.txt
-│
-├── adapters/
-│   ├── __init__.py
-│   └── telegram/
-│       ├── __init__.py
-│       ├── bot.py
-│       ├── helpers.py
-│       ├── i18n.py
-│       ├── keyboards.py
-│       └── handlers/
-│           ├── __init__.py
-│           ├── backfill.py
-│           ├── calendar.py
-│           ├── delete_events.py
-│           ├── events.py
-│           ├── menu.py
-│           ├── onboarding.py
-│           ├── pairing.py
-│           ├── partners.py
-│           ├── privacy.py
-│           ├── report.py
-│           ├── start.py
-│           ├── timezone.py
-│           └── when.py
-│
-├── core/
-│   ├── __init__.py
-│   ├── accounts.py
-│   ├── cycle.py
-│   ├── day_key.py
-│   ├── events.py
-│   ├── notifications.py
-│   ├── pairing.py
-│   ├── recipients.py
-│   ├── templates.py
-│   ├── time.py
-│   └── use_cases/
-│       ├── __init__.py
-│       ├── create_event.py
-│       ├── invites.py
-│       └── notify.py
-│
-├── db/
-│   ├── __init__.py
-│   ├── connection.py
-│   ├── indexes.py
-│   └── repositories/
-│       ├── __init__.py
-│       ├── events_repo.py
-│       ├── invites_repo.py
-│       ├── message_templates_repo.py
-│       ├── notifications_repo.py
-│       ├── partner_links_repo.py
-│       ├── privacy_repo.py
-│       ├── recipient_preferences_repo.py
-│       └── users_repo.py
-│
-├── locales/
-│   ├── en.json
-│   ├── es.json
-│   └── ru.json
-│
-├── workers/
-│   ├── __init__.py
-│   └── notify_worker.py
-│
-└── tests/
-    ├── __init__.py
-    ├── conftest.py
-    │
-    ├── adapters/
-    │   └── telegram/
-    │       ├── test_delete_events.py
-    │       ├── test_handlers.py
-    │       ├── test_keyboards.py
-    │       ├── test_onboarding.py
-    │       ├── test_partners.py
-    │       ├── test_privacy.py
-    │       ├── test_report.py
-    │       ├── test_start.py
-    │       ├── test_timezone.py
-    │       └── test_when.py
-    │
-    ├── core/
-    │   ├── test_create_event.py
-    │   ├── test_cycle.py
-    │   ├── test_day_key.py
-    │   ├── test_events.py
-    │   ├── test_invites.py
-    │   ├── test_notifications.py
-    │   ├── test_notify.py
-    │   ├── test_pairing.py
-    │   ├── test_recipients.py
-    │   └── test_templates.py
-    │
-    ├── db/
-    │   ├── test_events_repo.py
-    │   ├── test_indexes.py
-    │   ├── test_invites_repo.py
-    │   ├── test_message_templates_repo.py
-    │   ├── test_notifications_repo.py
-    │   ├── test_partner_links_repo.py
-    │   ├── test_privacy_repo.py
-    │   ├── test_recipient_preferences_repo.py
-    │   └── test_users_repo.py
-    │
-    └── workers/
-        └── test_notify_worker.py</pre>
+                            <div class="info-box">
+                                <details>
+                                    <summary class="h5 mb-3">📁 Ritma repository structure</summary>
 
-                            <p class="small-note mt-3 mb-0">
-                                Domain-driven separation between core logic, delivery adapters, persistence layer, and background workers.
-                            </p>
+                                    <pre class="code-block">ritma/
+        ├── .env.example
+        ├── .gitignore
+        ├── ANDROID_ARCHITECTURE.md
+        ├── ANDROID_UI_FILES.md
+        ├── AUTH_RECOVERY_SETUP.md
+        ├── FILES_INCLUDED.txt
+        ├── PATCH_README.txt
+        ├── README.md
+        ├── config.py
+        ├── pytest.ini
+        ├── requirements-dev.txt
+        ├── requirements.txt
+        │
+        ├── adapters/
+        │   ├── __init__.py
+        │   ├── http/
+        │   │   ├── __init__.py
+        │   │   ├── app.py
+        │   │   ├── dependencies.py
+        │   │   ├── email_delivery.py
+        │   │   ├── schemas.py
+        │   │   ├── services.py
+        │   │   └── routes/
+        │   │       ├── __init__.py
+        │   │       ├── account_deletion.py
+        │   │       ├── auth.py
+        │   │       ├── dashboard.py
+        │   │       ├── events.py
+        │   │       ├── linking.py
+        │   │       ├── me.py
+        │   │       ├── recovery_auth.py
+        │   │       └── report.py
+        │   │
+        │   └── telegram/
+        │       ├── __init__.py
+        │       ├── bot.py
+        │       ├── helpers.py
+        │       ├── i18n.py
+        │       ├── keyboards.py
+        │       └── handlers/
+        │           ├── __init__.py
+        │           ├── backfill.py
+        │           ├── calendar.py
+        │           ├── delete_events.py
+        │           ├── events.py
+        │           ├── menu.py
+        │           ├── onboarding.py
+        │           ├── pairing.py
+        │           ├── partners.py
+        │           ├── privacy.py
+        │           ├── report.py
+        │           ├── start.py
+        │           ├── timezone.py
+        │           └── when.py
+        │
+        ├── android/
+        │   ├── .gitignore
+        │   ├── README.md
+        │   ├── build.gradle.kts
+        │   ├── gradle.properties
+        │   ├── settings.gradle.kts
+        │   ├── gradle/
+        │   │   └── wrapper/
+        │   │       └── gradle-wrapper.properties
+        │   └── app/
+        │       ├── build.gradle.kts
+        │       ├── proguard-rules.pro
+        │       └── src/
+        │           ├── debug/
+        │           │   └── AndroidManifest.xml
+        │           └── main/
+        │               ├── AndroidManifest.xml
+        │               ├── java/
+        │               │   └── com/ritma/app/
+        │               │       ├── LocaleUtils.kt
+        │               │       ├── MainActivity.kt
+        │               │       ├── RitmaApp.kt
+        │               │       ├── data/
+        │               │       │   ├── ApiClient.kt
+        │               │       │   └── SessionStore.kt
+        │               │       ├── model/
+        │               │       │   └── Models.kt
+        │               │       └── ui/
+        │               │           ├── auth/
+        │               │           │   ├── AuthScreen.kt
+        │               │           │   └── EmailRecoveryScreen.kt
+        │               │           ├── components/
+        │               │           │   └── UiHelpers.kt
+        │               │           ├── dashboard/
+        │               │           │   └── DashboardScreen.kt
+        │               │           ├── events/
+        │               │           │   ├── AddEventDialogs.kt
+        │               │           │   └── EventsScreen.kt
+        │               │           ├── profile/
+        │               │           │   ├── AppLockScreen.kt
+        │               │           │   └── ProfileScreen.kt
+        │               │           ├── report/
+        │               │           │   └── ReportScreen.kt
+        │               │           └── theme/
+        │               │               └── RitmaTheme.kt
+        │               └── res/
+        │                   ├── drawable/
+        │                   │   ├── ic_launcher_background.xml
+        │                   │   └── ic_launcher_foreground.png
+        │                   ├── mipmap-anydpi-v26/
+        │                   │   └── ic_launcher.xml
+        │                   ├── mipmap-hdpi/
+        │                   │   └── ic_launcher.png
+        │                   ├── mipmap-mdpi/
+        │                   │   └── ic_launcher.png
+        │                   ├── mipmap-xhdpi/
+        │                   │   └── ic_launcher.png
+        │                   ├── mipmap-xxhdpi/
+        │                   │   └── ic_launcher.png
+        │                   ├── mipmap-xxxhdpi/
+        │                   │   └── ic_launcher.png
+        │                   ├── values/
+        │                   │   ├── plurals.xml
+        │                   │   ├── strings.xml
+        │                   │   └── styles.xml
+        │                   ├── values-es/
+        │                   │   ├── plurals.xml
+        │                   │   └── strings.xml
+        │                   └── values-ru/
+        │                       ├── plurals.xml
+        │                       └── strings.xml
+        │
+        ├── core/
+        │   ├── __init__.py
+        │   ├── accounts.py
+        │   ├── cycle.py
+        │   ├── day_key.py
+        │   ├── events.py
+        │   ├── notifications.py
+        │   ├── pairing.py
+        │   ├── recipients.py
+        │   ├── reporting.py
+        │   ├── templates.py
+        │   ├── time.py
+        │   └── use_cases/
+        │       ├── __init__.py
+        │       ├── account_linking.py
+        │       ├── create_event.py
+        │       ├── invites.py
+        │       └── notify.py
+        │
+        ├── db/
+        │   ├── __init__.py
+        │   ├── connection.py
+        │   ├── indexes.py
+        │   └── repositories/
+        │       ├── __init__.py
+        │       ├── account_link_tokens_repo.py
+        │       ├── account_merge_repo.py
+        │       ├── android_auth_repo.py
+        │       ├── events_repo.py
+        │       ├── invites_repo.py
+        │       ├── message_templates_repo.py
+        │       ├── notifications_repo.py
+        │       ├── partner_links_repo.py
+        │       ├── privacy_repo.py
+        │       ├── recipient_preferences_repo.py
+        │       ├── recovery_auth_repo.py
+        │       └── users_repo.py
+        │
+        ├── locales/
+        │   ├── en.json
+        │   ├── es.json
+        │   └── ru.json
+        │
+        ├── tests/
+        │   ├── __init__.py
+        │   ├── conftest.py
+        │   ├── adapters/
+        │   │   ├── http/
+        │   │   │   ├── test_linking.py
+        │   │   │   └── test_services.py
+        │   │   └── telegram/
+        │   │       ├── test_delete_events.py
+        │   │       ├── test_handlers.py
+        │   │       ├── test_keyboards.py
+        │   │       ├── test_onboarding.py
+        │   │       ├── test_partners.py
+        │   │       ├── test_privacy.py
+        │   │       ├── test_report.py
+        │   │       ├── test_start.py
+        │   │       ├── test_timezone.py
+        │   │       └── test_when.py
+        │   ├── core/
+        │   │   ├── test_account_linking.py
+        │   │   ├── test_create_event.py
+        │   │   ├── test_cycle.py
+        │   │   ├── test_day_key.py
+        │   │   ├── test_events.py
+        │   │   ├── test_invites.py
+        │   │   ├── test_notifications.py
+        │   │   ├── test_notify.py
+        │   │   ├── test_pairing.py
+        │   │   ├── test_recipients.py
+        │   │   └── test_templates.py
+        │   ├── db/
+        │   │   ├── test_account_merge_repo.py
+        │   │   ├── test_android_auth_repo.py
+        │   │   ├── test_events_repo.py
+        │   │   ├── test_indexes.py
+        │   │   ├── test_invites_repo.py
+        │   │   ├── test_message_templates_repo.py
+        │   │   ├── test_notifications_repo.py
+        │   │   ├── test_partner_links_repo.py
+        │   │   ├── test_privacy_repo.py
+        │   │   ├── test_recipient_preferences_repo.py
+        │   │   └── test_users_repo.py
+        │   └── workers/
+        │       └── test_notify_worker.py
+        │
+        └── workers/
+            ├── __init__.py
+            └── notify_worker.py</pre>
+                            </details>
                         </div>
-                    </div>
-                    <img src="images/8.jpg" class="project-shot" alt="Project repository structure">
 
-                    <p class="small-note">
-                        Private repository structure showing isolated Telegram adapters, domain logic, repositories, background workers, and a dedicated test suite.
-                    </p>
+                        <p>
+                            Ritma combines a native Android app and a Telegram bot with a shared backend. The Android app communicates with the service through a FastAPI HTTP API, while the bot handles interactions inside Telegram.
+                        </p>
+
+                        <p>
+                            The backend is organized into HTTP and Telegram adapters, business modules and use cases, and a MongoDB repository layer. This structure supports shared workflows for cycle events, account linking, reports, and notifications across both clients.
+                        </p>
+
+                        <p>
+                            The API and Telegram bot run as separate services. A background worker prepares and sends scheduled notifications, and Nginx routes incoming API traffic to the local FastAPI service.
+                        </p>
+
+                        <p>
+                            In the server configuration observed on October 23, 2026, MongoDB ran in a Docker container and its host port was bound to loopback. This describes the inspected configuration at that time.
+                        </p>
+                        <img src="images/8.jpg" class="project-shot" alt="Project repository structure">
+
+                        <p class="small-note">
+                            Private repository structure showing isolated Telegram adapters, domain logic, repositories, background workers, and a dedicated test suite.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -585,6 +697,66 @@
             <p class="small-note">
                 Telegram UI showing the live product flow: main menu, calendar input, and partner-aware notification controls.
             </p>
+
+            <section class="section" id="android-product-surface">
+            <div class="section-header">
+                <div class="section-tag">Cross-Platform Delivery</div>
+                <h2 class="section-title">Android Client & Store Release</h2>
+                <p class="section-subtitle">
+                Validation of Hexagonal Architecture: core business logic remained untouched when adding a standalone mobile frontend alongside the Telegram interface.
+                </p>
+            </div>
+
+            <!-- Store Metadata Card -->
+            <div class="app-store-card" style="display: flex; gap: 24px; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+                <!-- App Icon Placeholder -->
+                <div class="app-icon-wrap" style="flex-shrink: 0; width: 88px; height: 88px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15);">
+                <img src="images/13.jpg" alt="Ritma App Icon" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'88\' height=\'88\' fill=\'%23a34062\'><rect width=\'88\' height=\'88\' rx=\'20\'/><circle cx=\'44\' cy=\'44\' r=\'16\' fill=\'%23fff\'/></svg>'">
+                </div>
+                <div class="app-store-info">
+                <h3 style="margin: 0 0 6px 0; font-size: 1.3rem;">Ritma — Cycle & Symptoms Tracker</h3>
+                <div style="color: #a0a0a0; font-size: 0.9rem; margin-bottom: 8px;">Package: <code>com.ritma.app</code> | Developer: Elena Gusarevich (Hel)</div>
+                <p style="margin: 0; font-size: 0.92rem; line-height: 1.5;">
+                    Published on Google Play. Features anonymous-first device sessions, client-side encryption options, localized health logging, and bidirectional synchronization with Telegram accounts.
+                </p>
+                </div>
+            </div>
+
+            <!-- Android Screenshots Grid -->
+            <div class="screenshot-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/14.jpg" alt="Cycle dashboard and next-period forecast" style="width: 100%; height: auto; display: block;" onerror="this.style.height='380px'; this.style.display='flex'; this.style.background='#1c1b22';">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Cycle dashboard and next-period forecast</div>
+                </div>
+
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/15.jpg" alt="Event entry with date, protection status, and note" style="width: 100%; height: auto; display: block;" onerror="this.style.height='380px'; this.style.display='flex'; this.style.background='#1c1b22';">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Event entry with date, protection status, and note</div>
+                </div>
+
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/16.jpg" alt="Shareable cycle summary with recent events" style="width: 100%; height: auto; display: block;" onerror="this.style.height='380px'; this.style.display='flex'; this.style.background='#1c1b22';">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Shareable cycle summary with recent events</div>
+                </div>
+
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/17.jpg" alt="Cycle and event history with delete controls" style="width: 100%; height: auto; display: block;" onerror="this.style.height='380px'; this.style.display='flex'; this.style.background='#1c1b22';">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Cycle and event history with delete controls</div>
+                </div>
+
+            </div>
+
+            <!-- Store Listing Snapshot Placeholder -->
+            <div class="store-listing-preview" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-top: 16px;">
+                <!-- PLACEHOLDER: Скриншот страницы в Google Play Console / Store -->
+                <img src="images/18.jpg" alt="Ritma app listing on Google Play" style="width: 100%; height: auto; display: block;" onerror="this.style.display='none';">
+                <div style="padding: 12px; background: rgba(255,255,255,0.02); font-size: 0.85rem; color: #888; text-align: center;">
+                Verified production deployment: Google Play Policy compliance, target SDK requirements, and active public endpoints at <a href="https://ritmacalendar.com" target="_blank" style="color: #c47291;">ritmacalendar.com</a>.
+                </div>
+            </div>
+            </section>
+
         </div>
         <div class="container mb-4">
             <h2 class="section-title">Overview</h2>
@@ -639,6 +811,49 @@
 
         <div class="container mb-4">
             <h2 class="section-title">Technical Details</h2>
+            <div class="architecture-diagram-card">
+
+                <h3 style="margin-top: 32px;">System Architecture</h3>
+                <div class="mermaid">
+                    %%{init: {"theme": "dark"}}%%
+                    flowchart TB
+                        Android["Android app<br/>ApiClient · SessionStore · UI"]
+                        TelegramUser["Telegram user"]
+                        Bot["Telegram bot<br/>aiogram handlers"]
+                        API["FastAPI<br/>auth · events · dashboard · reports<br/>linking · deletion · recovery"]
+                        UseCases["Use cases<br/>create_event · account_linking<br/>notify · invites"]
+                        Domain["Business modules<br/>cycle · events · notifications<br/>pairing · recipients · reporting · templates"]
+                        Repos["MongoDB repositories<br/>users · events · tokens · merges<br/>notifications · preferences · …"]
+                        Mongo[("MongoDB")]
+                        Worker["Notification worker<br/>workers/notify_worker.py"]
+                        TelegramAPI["Telegram Bot API"]
+                        Email["Email code delivery<br/>adapters/http/email_delivery.py"]
+
+                        Android -->|"HTTPS / JSON / session"| API
+                        TelegramUser --> Bot
+
+                        API -->|"Event creation and account linking"| UseCases
+                        API -->|"Some routes access repositories directly"| Repos
+
+                        Bot -->|"Some flows"| UseCases
+                        Bot -->|"Some handlers access repositories directly"| Repos
+
+                        UseCases --> Domain
+                        UseCases --> Repos
+
+                        Worker -->|"Notification planning"| UseCases
+                        Worker --> Repos
+                        Worker -->|"Send notifications"| TelegramAPI
+
+                        Repos --> Mongo
+                        API -. "Email codes and account recovery" .-> Email
+
+                        Android -. "Requests a linking URL" .-> API
+                        API -. "Link token" .-> Repos
+                        Bot -. " /start with token" .-> UseCases
+                        UseCases -. "Account checks and merge" .-> Repos
+                </div>
+            </div>
             <p>
                 Conceptually, the notification engine behaves as a state machine. Each account has an implicit state defined by its current cycle phase, and the system reacts only to state transitions. This allows the system to remain idempotent across repeated worker executions and eliminates the need for complex scheduling logic.
             </p>
@@ -671,6 +886,20 @@
             <p>
                 Although currently delivered via Telegram, the system is not tied to it. The bot acts as a thin adapter layer. All core logic is transport-agnostic, making it possible to extend the system to web or other messaging platforms without rewriting business logic.
             </p>
+
+            <div class="technical-card" style="margin-top: 24px; padding: 24px; background: rgba(255,255,255,0.02); border-left: 4px solid #c47291; border-radius: 8px;">
+            <h3 style="margin-top: 0;">Multi-Channel Timeline Merge & Privacy Architecture</h3>
+            <p>
+                A critical architectural challenge arose when enabling users to operate both via the Android app and the Telegram bot without mandatory registration:
+            </p>
+            <ul style="padding-left: 20px; line-height: 1.6; color: #ccc;">
+                <li><strong>Zero-Knowledge Anonymous Entry:</strong> Users start logging events immediately on Android without email or phone number. A local cryptographically random identifier bounds the initial dataset.</li>
+                <li><strong>Deterministic Timeline Merging:</strong> When linking a Telegram account to an existing mobile installation, the backend triggers an atomic merge use-case. It re-indexes historical events, validates deduplication keys (<code>user_id + event_type + day_key</code>), and consolidates the active cycle state machine without dropping records.</li>
+                <li><strong>GDPR & Right-to-be-Forgotten:</strong> Built-in cascades completely purge timelines, active partner linkages, and notification queues across both adapters upon user request, supported by formal privacy endpoints at <a href="https://ritmacalendar.com" target="_blank" style="color: #c47291;">ritmacalendar.com</a>.</li>
+                <li><strong>Biometric App Shielding:</strong> Architecture prepared for local biometric and PIN gatekeeping on app resume without storing sensitive passcodes on the server.</li>
+            </ul>
+            </div>
+
         </div>
 
         <div class="container mb-4">
@@ -761,10 +990,20 @@
                 <div class="info-box">
                     <h3 class="h5 mb-3">v5.0 — Runtime & Deployment</h3>
                     <ul>
-                        <li>System deployed as a continuously running service</li>
-                        <li>Worker and bot operate as separate runtime components</li>
-                        <li>Deterministic behavior under real user data</li>
-                        <li>Ready for migration to API / multi-channel delivery</li>
+                        <li>Deployed the backend as continuously running services</li>
+                        <li>Separated the API, Telegram bot, and notification worker into runtime components</li>
+                        <li>Improved handling of real-world data and notification flows</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v5.1 — Android & Multi-Client Delivery</h3>
+                    <ul>
+                        <li>Released the native Android app on Google Play (<code>com.ritma.app</code>)</li>
+                        <li>Added a FastAPI REST API for Android app features</li>
+                        <li>Implemented Telegram account linking and account-data merging</li>
+                        <li>Added email sign-in and account recovery flows</li>
+                        <li>Localized the Android and Telegram interfaces in English, Spanish, and Russian</li>
                     </ul>
                 </div>
             </div>
@@ -815,5 +1054,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark'
+        });
+    </script>
 </body>
 </html>
