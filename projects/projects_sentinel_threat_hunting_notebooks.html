@@ -270,7 +270,7 @@
                             My service-principal access was not enough to execute cells against the tenant myself, so the client ran each milestone end-to-end in Azure ML. That shaped the engineering: every notebook had to run correctly on the first attempt in an environment I could not reach — with sparse data, a threat-intel platform that was not deployed yet, and query schemas that arrived during the project.
                         </p>
                         <p class="small-note mb-0">
-                            Outcome: three integration-ready notebooks delivered in two milestones, validated by the client in Azure ML. Analysts change parameters in a single cell, review interactive kill-chain timelines and anomaly tables, and escalate confirmed findings to Sentinel incidents in one step.
+                            Outcome: both milestones passed the client's review in Azure ML on the first submission, with one minor working-directory fix. Analysts change parameters in a single cell, review interactive kill-chain timelines and anomaly tables, and escalate confirmed findings to Sentinel incidents in one step.
                         </p>
                     </div>
 
@@ -312,7 +312,7 @@
 
                             <div class="meta-block">
                                 <span class="meta-label">Project Type</span>
-                                <p class="mb-0">Freelance client project · Confidential client</p>
+                                <p class="mb-0">Freelance client project via Upwork · Confidential client</p>
                             </div>
 
                             <div class="meta-block">
@@ -322,12 +322,12 @@
 
                             <div class="meta-block">
                                 <span class="meta-label">Status</span>
-                                <p class="mb-0">Completed · Validated by the client in Azure ML</p>
+                                <p class="mb-0">Completed · Both milestones approved on first submission</p>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Timeline</span>
-                                <p class="mb-0">~1.5 weeks · 2 milestones · 38 commits</p>
+                                <p class="mb-0">May 2026 · 2 milestones · Milestone 1 delivered a day before the deadline</p>
                             </div>
 
                             <div class="meta-block">
@@ -352,7 +352,7 @@
                             </div>
 
                             <p class="small-note mt-3 mb-0">
-                                Private client repository. Code is not published; architecture and approach are shown with the client's permission.
+                                Private repository shared with the client. Code is not published; architecture and approach are shown with the client's permission.
                             </p>
                         </div>
 
@@ -396,10 +396,10 @@
                             <h3 class="h5 mb-3">Delivery &amp; Quality</h3>
                             <ul class="mb-0">
                                 <li><strong>Scope:</strong> 3 notebooks · 31 notebook cells · 1 shared library reused via <code>%run</code></li>
-                                <li><strong>Acceptance:</strong> 35 formal acceptance criteria across NB-00, NB-06 and NB-01, checked by the client in Azure ML</li>
+                                <li><strong>Acceptance:</strong> 35 formal acceptance criteria across NB-00, NB-06 and NB-01, checked by the client in Azure ML — all three notebooks passed on first submission, no revision rounds used</li>
                                 <li><strong>Self-checks:</strong> smoke tests for MISP failure, enrichment contract, cache speed and Sentinel connectivity</li>
                                 <li><strong>Resilience:</strong> every cell runs on empty data, without MISP, without a VirusTotal key, and on telemetry too small to train</li>
-                                <li><strong>Security:</strong> no credentials or workspace IDs in code · client-owned repository · 38 per-cell commits</li>
+                                <li><strong>Security:</strong> no credentials or workspace IDs in code · private repository · 38 per-cell commits</li>
                             </ul>
                         </div>
                         </div>
@@ -550,12 +550,12 @@
                         <li>Implemented the full Python layer of all three notebooks against a cell-by-cell specification</li>
                         <li>Designed the shared-library structure and the contract between NB-00 and analysis notebooks</li>
                         <li>Studied the Azure ML and Sentinel environment and the client's workspace setup</li>
-                        <li>Separated client-owned KQL into query modules with placeholder fallbacks</li>
+                        <li>Separated the client's KQL into query modules with placeholder fallbacks</li>
                         <li>Built defensive schema handling so every cell runs on empty or partial data</li>
                         <li>Wrote smoke tests that map directly to the acceptance criteria</li>
                         <li>Integrated the client's validated live query schemas once they were available</li>
-                        <li>Fixed issues reported from the client's runs in Azure ML</li>
-                        <li>Followed the client's security rules: no credentials in code, client-owned repository, a commit after each working cell</li>
+                        <li>Applied the client's feedback from validation runs in Azure ML</li>
+                        <li>Followed the client's security rules: no credentials in code, a private repository, a commit after each working cell</li>
                         <li>Documented setup, environment variables and the notebook execution order</li>
                     </ul>
                 </div>
@@ -681,7 +681,7 @@
                 </li>
 
                 <li>
-                    <strong>Challenge:</strong> The project had strict confidentiality rules: credentials provided by the client, a client-owned repository, and compute that could be recycled without warning.<br>
+                    <strong>Challenge:</strong> The project had strict confidentiality rules: credentials provided by the client, code kept in a private repository, and compute that could be recycled without warning.<br>
                     <strong>Solution:</strong> All secrets come from environment variables, configuration files and caches are excluded from Git, and work was committed after each working cell.<br>
                     <strong>Result:</strong> 38 commits with a clear per-cell history and no credentials or workspace identifiers in the code.
                 </li>
@@ -693,7 +693,7 @@
 
             <div class="info-grid">
                 <div class="info-box">
-                    <h3 class="h5 mb-3">Milestone 1 — Shared Library &amp; Correlation</h3>
+                    <h3 class="h5 mb-3">Milestone 1 — Shared Library &amp; Correlation · May 2026</h3>
                     <ul class="mb-0">
                         <li>Project skeleton, environment template and Git rules</li>
                         <li>NB-00: connection, KQL runner, incidents, TI chain, cache, smoke tests</li>
@@ -702,7 +702,7 @@
                 </div>
 
                 <div class="info-box">
-                    <h3 class="h5 mb-3">Milestone 2 — Anomaly Detection</h3>
+                    <h3 class="h5 mb-3">Milestone 2 — Anomaly Detection · May 2026</h3>
                     <ul class="mb-0">
                         <li>NB-01: telemetry loading and feature engineering</li>
                         <li>Data-volume guard, Isolation Forest training and risk scoring</li>
@@ -721,8 +721,9 @@
                 <div class="info-box">
                     <h3 class="h5 mb-3">Client Validation in Azure ML</h3>
                     <ul class="mb-0">
-                        <li>Client runs of each milestone against the acceptance criteria</li>
-                        <li>Fixes for the notebook import workflow and working directory in Azure ML</li>
+                        <li>The client generated test activity across all four stages with a test VM and mailbox, then ran each milestone against the acceptance criteria</li>
+                        <li>One working-directory fix for running NB-06 interactively in Azure ML</li>
+                        <li>Both milestones approved; NB-01 ran on 117,000+ real telemetry rows</li>
                     </ul>
                 </div>
             </div>
@@ -734,11 +735,21 @@
                 The client received a working threat-hunting notebook suite on its Azure development tenant: one shared library and two analysis notebooks that analysts operate through parameters and review cells, without writing Python. Investigations that previously required pivoting across three Defender consoles become a single run that ends in an interactive timeline and, if confirmed, a Sentinel incident.
             </p>
             <p>
-                Each notebook stays usable when data is missing — no events, no MISP, no VirusTotal key, too little telemetry to train — and always explains what it skipped instead of failing.
+                Each notebook stays usable when data is missing — no events, no MISP, no VirusTotal key, too little telemetry to train — and always explains what it skipped instead of failing. This was confirmed on real data: in the client's run NB-01 loaded 32,631 process, 84,564 network and 541 logon events, found only 25 accounts — below the 50-account minimum — and correctly skipped training with a clear message instead of producing misleading results.
             </p>
             <p>
-                From an engineering perspective, the project shows how I work in security tooling: building to a strict specification and acceptance criteria, questioning the specification where it was wrong, writing code that runs correctly in an environment I could not access directly, and treating partial failure and sparse data as normal operating conditions.
+                From an engineering perspective, the project shows how I work in security tooling: building to a strict specification and acceptance criteria, catching where the specification's example was wrong, writing code that runs correctly in an environment I could not access directly, and treating partial failure and sparse data as normal operating conditions.
             </p>
+        </div>
+
+        <div class="container mb-5">
+            <h2 class="section-title">Client Feedback</h2>
+            <div class="lead-card">
+                <p class="mb-2">
+                    “That completes the full engagement — NB-00, NB-06, and NB-01 all passing. Thank you for the solid work throughout; the code quality and error handling have been consistently good.”
+                </p>
+                <p class="small-note mb-0">— Client, after final validation in Azure ML</p>
+            </div>
         </div>
 
     </div>
