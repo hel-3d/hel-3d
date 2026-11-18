@@ -10,21 +10,99 @@
             background-color: transparent;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         #game-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 8px;
             background-color: transparent;
         }
 
+        #score-board {
+            display: flex;
+            justify-content: space-between;
+            width: 450px;
+            margin-bottom: 6px;
+        }
+
+        #score-board span {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #score-board span.bump {
+            display: inline-block;
+            animation: bump 0.25s;
+        }
+
+        @keyframes bump {
+            50% { transform: scale(1.35); color: #ffe14d; }
+        }
+
+        #board-wrap {
+            position: relative;
+        }
+
         canvas {
+            display: block;
             border: 5px solid #333;
             border-radius: 15px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/fon.png') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../shared/fon2.png?v=2') no-repeat center center;
             background-size: contain;
+            touch-action: none;
+        }
+
+        canvas.shake {
+            animation: shake 0.45s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            15% { transform: translate(-6px, 3px) rotate(-.6deg); }
+            30% { transform: translate(6px, -3px) rotate(.6deg); }
+            45% { transform: translate(-5px, -2px); }
+            60% { transform: translate(5px, 2px); }
+            75% { transform: translate(-2px, 1px); }
+        }
+
+        #overlay {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 450px;
+            height: 450px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.62);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        #overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #overlay-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #ffe14d;
+            text-shadow: 0 0 10px #ff7a00, 0 0 20px #ff3b3b, 2px 2px 0 #000;
+        }
+
+        #overlay-score {
+            font-size: 22px;
+            font-weight: bold;
         }
 
         iframe {
@@ -46,7 +124,18 @@
 </head>
 <body>
     <div id="game-container">
-        <canvas id="snakeGame" width="450" height="450"></canvas>
+        <div id="score-board">
+            <span id="score">Score: 0</span>
+            <span id="speed">Speed: 1/4</span>
+        </div>
+        <div id="board-wrap">
+            <canvas id="snakeGame" width="450" height="450"></canvas>
+            <div id="overlay">
+                <div id="overlay-title">Game Over</div>
+                <div id="overlay-score"></div>
+                <button id="playAgain" class="btn btn-outline-secondary">Play again</button>
+            </div>
+        </div>
         <button id="startSnakeGame" class="btn btn-outline-secondary" style="margin-top: 10px;">Start</button>
     </div>
 
@@ -58,25 +147,77 @@
         const gridSize = 30;
         const gridCount = canvasSize / gridSize;
 
-        let dx = gridSize;
-        let dy = 0;
+        // Скорость (мс на шаг). Три небольших ускорения: каждое примерно на 10%
+        const SPEEDS = [200, 180, 162, 146];
+        const APPLES_PER_LEVEL = 5;
+
+        // Золотое яблоко
+        const GOLD_LIFETIME = 5000;   // мс
+        const GOLD_CHANCE = 0.2;      // шанс появления после обычного яблока
+        const GOLD_POINTS = 5;
+
+        let snake = [];
+        let dir = { x: gridSize, y: 0 };
+        let dirQueue = [];        // очередь нажатий: быстрые повороты не теряются и не убивают змейку
+        let food = null;
+        let golden = null;        // { x, y, ms, spawnAt }
+        let foodSpawnAt = 0;
         let score = 0;
-        let gameInterval;
-        let isGameActive = false;
+        let eaten = 0;
+        let level = 0;
+        let state = 'idle';       // idle | running | paused | dead
+        let tickTimer = null;
+        let chain = 0;            // серия яблок, съеденных быстро одно за другим
+        let lastEatAt = 0;
 
-        let snake = [
-            { x: 3 * gridSize, y: 3 * gridSize },
-            { x: 2 * gridSize, y: 3 * gridSize },
-            { x: 1 * gridSize, y: 3 * gridSize }
-        ];
+        let particles = [];
+        let floaters = [];
+        let banner = null;
+        let deathAnim = null;
 
+        // === 🔊 Звуки (общие файлы лежат в games/shared) ===
+        const startSound = new Audio('../shared/start.wav');
+        const goodSound = new Audio('../shared/good.wav');
+        goodSound.preservesPitch = false;
+        goodSound.mozPreservesPitch = false;
+        goodSound.webkitPreservesPitch = false;
 
-        let food = { x: 5 * gridSize, y: 5 * gridSize };
+        function playSound(sound, rate = 1) {
+            try {
+                sound.pause();
+                sound.currentTime = 0;
+                sound.playbackRate = rate;
+                const p = sound.play();
+                if (p && p.catch) p.catch(() => {});
+            } catch (e) {}
+        }
+
+        // Короткий звук поражения, генерируется кодом (без файла)
+        function playDeathSound() {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                const ac = new AC();
+                const osc = ac.createOscillator();
+                const gain = ac.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(320, ac.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(60, ac.currentTime + 0.7);
+                gain.gain.setValueAtTime(0.18, ac.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.75);
+                osc.connect(gain);
+                gain.connect(ac.destination);
+                osc.start();
+                osc.stop(ac.currentTime + 0.8);
+                osc.onended = () => ac.close();
+            } catch (e) {}
+        }
 
         // === 🖼️ Загрузка изображений ===
         const images = {};
         const imageFiles = {
             apple: 'aple.png',
+            apple_gold: 'aple_gold.png',
 
             head1_up: 'head1_up.png', head1_down: 'head1_down.png', head1_left: 'head1_left.png', head1_right: 'head1_right.png',
             head2_up: 'head2_up.png', head2_down: 'head2_down.png', head2_left: 'head2_left.png', head2_right: 'head2_right.png',
@@ -96,16 +237,26 @@
 
         function drawImageSegment(imageKey, x, y) {
             const img = images[imageKey];
-            if (img.complete) {
+            if (img && img.complete && img.naturalWidth) {
                 ctx.drawImage(img, x, y, gridSize, gridSize);
-            } else {
-                img.onload = () => ctx.drawImage(img, x, y, gridSize, gridSize);
             }
         }
 
-        // === 🍏 Генерация еды ===
-        function randomFoodPosition() {
-            return Math.floor(Math.random() * gridCount) * gridSize;
+        // === 🍏 Еда ===
+        // Случайная свободная клетка (не на змейке и не на других яблоках). null, если поле заполнено
+        function randomFreeCell() {
+            const free = [];
+            for (let cx = 0; cx < gridCount; cx++) {
+                for (let cy = 0; cy < gridCount; cy++) {
+                    const x = cx * gridSize, y = cy * gridSize;
+                    if (snake.some(p => p.x === x && p.y === y)) continue;
+                    if (food && food.x === x && food.y === y) continue;
+                    if (golden && golden.x === x && golden.y === y) continue;
+                    free.push({ x, y });
+                }
+            }
+            if (free.length === 0) return null;
+            return free[Math.floor(Math.random() * free.length)];
         }
 
         // === 🧠 Определение направлений ===
@@ -118,23 +269,26 @@
         }
 
         // === 🐍 Отрисовка змейки ===
-        function drawSnake() {
+        // isVisible(i) нужен для анимации смерти: сегменты исчезают по одному
+        function drawSnake(isVisible) {
             for (let i = 0; i < snake.length; i++) {
+                if (isVisible && !isVisible(i)) continue;
                 const part = snake[i];
 
                 if (i === 0) {
                     // Голова
                     const next = snake[1];
-                    const dir = getDirection(next, part);
-                    const isNearApple = Math.abs(part.x - food.x) + Math.abs(part.y - food.y) === gridSize;
-                    const key = isNearApple ? `head2_${dir}` : `head1_${dir}`;
+                    const dirName = getDirection(next, part);
+                    const near = (a) => a && Math.abs(part.x - a.x) + Math.abs(part.y - a.y) === gridSize;
+                    const isNearApple = near(food) || near(golden);
+                    const key = isNearApple ? `head2_${dirName}` : `head1_${dirName}`;
                     drawImageSegment(key, part.x, part.y);
 
                 } else if (i === snake.length - 1) {
                     // Хвост
                     const prev = snake[i - 1];
-                    const dir = getDirection(part, prev);
-                    drawImageSegment(`tail_${dir}`, part.x, part.y);
+                    const dirName = getDirection(part, prev);
+                    drawImageSegment(`tail_${dirName}`, part.x, part.y);
 
                 } else {
                     const prev = snake[i - 1];
@@ -157,75 +311,459 @@
                             'right_down': 'turn_3'
                         };
 
-
                         const turnKey = turnMap[`${from}_${to}`];
                         drawImageSegment(turnKey, part.x, part.y);
                     }
-
                 }
             }
         }
 
-        // === 🔁 Игровой цикл ===
-        function gameLoop() {
-            if (checkCollision()) {
-                clearInterval(gameInterval);
-                alert(`Game Over! Your score: ${score}`);
-                document.location.reload();
-                isGameActive = false;
+        // === ✨ Эффекты ===
+        function burst(x, y, color, count = 14, power = 1) {
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = (60 + Math.random() * 110) * power;
+                const life = 450 + Math.random() * 350;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 30,
+                    life, max: life,
+                    size: 2.5 + Math.random() * 2.5,
+                    color
+                });
+            }
+        }
+
+        function addFloater(text, x, y, color) {
+            floaters.push({ text, x, y, start: performance.now(), color });
+        }
+
+        function showBanner(text) {
+            banner = { text, start: performance.now() };
+        }
+
+        function shakeBoard() {
+            canvas.classList.remove('shake');
+            void canvas.offsetWidth;
+            canvas.classList.add('shake');
+        }
+
+        function easeOutBack(t) {
+            const c1 = 1.70158, c3 = c1 + 1;
+            return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+        }
+
+        function drawApple(imgKey, x, y, now, spawnAt, glow) {
+            const age = now - spawnAt;
+            const appear = age < 300 ? Math.max(0, easeOutBack(age / 300)) : 1;
+            const pulse = 1 + 0.05 * Math.sin(now / 180);
+            const img = images[imgKey];
+            if (!img || !img.complete || !img.naturalWidth) return;
+            ctx.save();
+            if (glow) {
+                ctx.shadowColor = glow;
+                ctx.shadowBlur = 16;
+            }
+            ctx.translate(x + gridSize / 2, y + gridSize / 2);
+            ctx.scale(appear * pulse, appear * pulse);
+            ctx.drawImage(img, -gridSize / 2, -gridSize / 2, gridSize, gridSize);
+            ctx.restore();
+        }
+
+        // === 🎞️ Отрисовка кадра (идёт всё время, плавно рисует эффекты) ===
+        let lastFrame = performance.now();
+
+        function frame(now) {
+            const dt = Math.min(50, now - lastFrame);
+            lastFrame = now;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (food) drawApple('apple', food.x, food.y, now, foodSpawnAt);
+
+            if (golden) {
+                const blinkOff = golden.ms < 1500 && Math.floor(now / 120) % 2 === 0;
+                if (!blinkOff) {
+                    drawApple('apple_gold', golden.x, golden.y, now, golden.spawnAt, '#ffd23b');
+                    // кольцо таймера вокруг золотого яблока
+                    ctx.save();
+                    ctx.strokeStyle = '#ffd23b';
+                    ctx.lineWidth = 3;
+                    ctx.shadowColor = '#ff9d00';
+                    ctx.shadowBlur = 8;
+                    ctx.beginPath();
+                    ctx.arc(golden.x + gridSize / 2, golden.y + gridSize / 2, gridSize * 0.66,
+                        -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (golden.ms / GOLD_LIFETIME));
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            // Змейка (при смерти: мигает, потом рассыпается по сегментам)
+            if (deathAnim) {
+                const t = now - deathAnim.start;
+                const isVisible = (i) => {
+                    if (t < 360) return Math.floor(t / 90) % 2 === 0;
+                    return i >= (t - 360) / deathAnim.step;
+                };
+                for (let i = 0; i < snake.length; i++) {
+                    if (!isVisible(i) && !deathAnim.burst[i] && t >= 360) {
+                        deathAnim.burst[i] = true;
+                        burst(snake[i].x + gridSize / 2, snake[i].y + gridSize / 2, '#3bff6a', 10, 1.1);
+                    }
+                }
+                drawSnake(isVisible);
+                if (!deathAnim.done && t > 360 + snake.length * deathAnim.step + 350) {
+                    deathAnim.done = true;
+                    showOverlay('Game Over');
+                }
+            } else {
+                drawSnake();
+            }
+
+            // Частицы
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.life -= dt;
+                if (p.life <= 0) { particles.splice(i, 1); continue; }
+                p.vy += 260 * dt / 1000;
+                p.x += p.vx * dt / 1000;
+                p.y += p.vy * dt / 1000;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, p.life / p.max);
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = 8;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size * (0.4 + 0.6 * p.life / p.max), 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            // Всплывающие очки
+            for (let i = floaters.length - 1; i >= 0; i--) {
+                const f = floaters[i];
+                const k = (now - f.start) / 900;
+                if (k >= 1) { floaters.splice(i, 1); continue; }
+                ctx.save();
+                ctx.globalAlpha = k < 0.2 ? k / 0.2 : 1 - (k - 0.2) / 0.8;
+                ctx.font = 'bold 22px Arial';
+                ctx.textAlign = 'center';
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#000';
+                ctx.fillStyle = f.color;
+                const y = f.y - 10 - 50 * k;
+                ctx.strokeText(f.text, f.x, y);
+                ctx.fillText(f.text, f.x, y);
+                ctx.restore();
+            }
+
+            // Баннер ("Faster!", "Golden apple!")
+            if (banner) {
+                const k = (now - banner.start) / 1100;
+                if (k >= 1) {
+                    banner = null;
+                } else {
+                    const scale = k < 0.3 ? 0.3 + 0.85 * (k / 0.3) : 1.15 - 0.15 * ((k - 0.3) / 0.7);
+                    ctx.save();
+                    ctx.globalAlpha = k < 0.3 ? k / 0.3 : 1 - (k - 0.3) / 0.7;
+                    ctx.translate(canvasSize / 2, canvasSize / 2 - 60 * k);
+                    ctx.scale(scale, scale);
+                    ctx.font = '900 34px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.lineWidth = 5;
+                    ctx.strokeStyle = '#000';
+                    ctx.shadowColor = '#ff7a00';
+                    ctx.shadowBlur = 16;
+                    ctx.strokeText(banner.text, 0, 0);
+                    ctx.fillStyle = '#ffe14d';
+                    ctx.fillText(banner.text, 0, 0);
+                    ctx.restore();
+                }
+            }
+
+            // Пауза
+            if (state === 'paused') {
+                ctx.save();
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+                ctx.fillRect(0, 0, canvasSize, canvasSize);
+                ctx.font = '900 40px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#fff';
+                ctx.fillText('Paused', canvasSize / 2, canvasSize / 2);
+                ctx.restore();
+            }
+
+            requestAnimationFrame(frame);
+        }
+
+        // === 🔁 Игровой шаг ===
+        function tick() {
+            if (state !== 'running') return;
+
+            if (dirQueue.length) dir = dirQueue.shift();
+
+            const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+            const eatsFood = food && head.x === food.x && head.y === food.y;
+            const eatsGold = golden && head.x === golden.x && head.y === golden.y;
+            const grows = eatsFood || eatsGold;
+
+            // Хвост освобождает клетку на этом шаге, если змейка не растёт
+            const body = grows ? snake : snake.slice(0, -1);
+            const hit = head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize ||
+                body.some(p => p.x === head.x && p.y === head.y);
+
+            if (hit) {
+                die();
                 return;
             }
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawImageSegment('apple', food.x, food.y);
-            drawSnake();
-            updateSnake();
-        }
-
-        function updateSnake() {
-            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
             snake.unshift(head);
+            if (!grows) snake.pop();
 
-            if (head.x === food.x && head.y === food.y) {
-                score++;
-                food = { x: randomFoodPosition(), y: randomFoodPosition() };
-            } else {
-                snake.pop();
+            if (eatsGold) eatGolden(head);
+            if (eatsFood) eatFood(head);
+
+            if (golden) {
+                golden.ms -= SPEEDS[level];
+                if (golden.ms <= 0) {
+                    burst(golden.x + gridSize / 2, golden.y + gridSize / 2, '#ffd23b', 8, 0.6);
+                    golden = null;
+                }
+            }
+
+            if (state === 'running') tickTimer = setTimeout(tick, SPEEDS[level]);
+        }
+
+        function eatRate(isGolden) {
+            const now = performance.now();
+            chain = (now - lastEatAt < 3500) ? chain + 1 : 1;
+            lastEatAt = now;
+            // Чем быстрее яблоки друг за другом, тем выше тон звука
+            if (isGolden) return Math.min(1.25 + chain * 0.06, 1.9);
+            return Math.min(1 + (chain - 1) * 0.08, 1.6);
+        }
+
+        function addScore(points) {
+            score += points;
+            updateScoreBoard();
+        }
+
+        function eatFood(pos) {
+            const cx = pos.x + gridSize / 2, cy = pos.y + gridSize / 2;
+            playSound(goodSound, eatRate(false));
+            burst(cx, cy, '#ff3b3b', 14);
+            addFloater('+1', cx, pos.y, '#fff');
+            addScore(1);
+            eaten++;
+
+            food = null;
+            food = randomFreeCell();
+            foodSpawnAt = performance.now();
+            if (!food) { win(); return; }
+
+            if (!golden && Math.random() < GOLD_CHANCE) {
+                const cell = randomFreeCell();
+                if (cell) golden = { x: cell.x, y: cell.y, ms: GOLD_LIFETIME, spawnAt: performance.now() };
+            }
+            checkLevelUp();
+        }
+
+        function eatGolden(pos) {
+            const cx = pos.x + gridSize / 2, cy = pos.y + gridSize / 2;
+            playSound(goodSound, eatRate(true));
+            burst(cx, cy, '#ffd23b', 26, 1.4);
+            addFloater(`+${GOLD_POINTS}`, cx, pos.y, '#ffd23b');
+            showBanner('Golden apple!');
+            addScore(GOLD_POINTS);
+            eaten++;
+            golden = null;
+            checkLevelUp();
+        }
+
+        function checkLevelUp() {
+            const newLevel = Math.min(SPEEDS.length - 1, Math.floor(eaten / APPLES_PER_LEVEL));
+            if (newLevel > level) {
+                level = newLevel;
+                showBanner('Faster!');
+                updateScoreBoard();
             }
         }
 
-        function checkCollision() {
-            const head = snake[0];
-            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) return true;
-            for (let i = 1; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) return true;
-            }
-            return false;
+        function updateScoreBoard() {
+            const el = document.getElementById('score');
+            el.textContent = `Score: ${score}`;
+            el.classList.remove('bump');
+            void el.offsetWidth;
+            el.classList.add('bump');
+            document.getElementById('speed').textContent = `Speed: ${level + 1}/${SPEEDS.length}`;
         }
+
+        // === 💀 Конец игры ===
+        function die() {
+            state = 'dead';
+            clearTimeout(tickTimer);
+            playDeathSound();
+            shakeBoard();
+            deathAnim = {
+                start: performance.now(),
+                burst: new Array(snake.length).fill(false),
+                step: Math.min(50, 1100 / snake.length),
+                done: false
+            };
+            startBtn.textContent = 'Start';
+        }
+
+        function win() {
+            state = 'dead';
+            clearTimeout(tickTimer);
+            for (let i = 0; i < 40; i++) {
+                burst(Math.random() * canvasSize, Math.random() * canvasSize, '#ffd23b', 4, 1);
+            }
+            showOverlay('You win!');
+            startBtn.textContent = 'Start';
+        }
+
+        function showOverlay(title) {
+            document.getElementById('overlay-title').textContent = title;
+            document.getElementById('overlay-score').textContent = `Score: ${score}`;
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        function hideOverlay() {
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // === ▶️ Управление состоянием игры ===
+        const startBtn = document.getElementById('startSnakeGame');
+
+        function resetGame() {
+            snake = [
+                { x: 3 * gridSize, y: 3 * gridSize },
+                { x: 2 * gridSize, y: 3 * gridSize },
+                { x: 1 * gridSize, y: 3 * gridSize }
+            ];
+            dir = { x: gridSize, y: 0 };
+            dirQueue = [];
+            score = 0;
+            eaten = 0;
+            level = 0;
+            chain = 0;
+            lastEatAt = 0;
+            golden = null;
+            particles = [];
+            floaters = [];
+            banner = null;
+            deathAnim = null;
+            food = null;
+            food = randomFreeCell();
+            foodSpawnAt = performance.now();
+            hideOverlay();
+            updateScoreBoard();
+        }
+
+        function startGame(withSound) {
+            clearTimeout(tickTimer);
+            resetGame();
+            state = 'running';
+            startBtn.textContent = 'Pause';
+            if (withSound) playSound(startSound);
+            tickTimer = setTimeout(tick, SPEEDS[0]);
+        }
+
+        function pauseGame() {
+            if (state !== 'running') return;
+            clearTimeout(tickTimer);
+            state = 'paused';
+            startBtn.textContent = 'Resume';
+        }
+
+        function resumeGame() {
+            if (state !== 'paused') return;
+            state = 'running';
+            startBtn.textContent = 'Pause';
+            tickTimer = setTimeout(tick, SPEEDS[level]);
+        }
+
+        function canRestart() {
+            return state === 'idle' || (state === 'dead' && (!deathAnim || deathAnim.done));
+        }
+
+        let firstStart = true;
+        function startOrToggle() {
+            if (state === 'running') pauseGame();
+            else if (state === 'paused') resumeGame();
+            else if (canRestart()) {
+                startGame(firstStart);
+                firstStart = false;
+            }
+        }
+
+        startBtn.addEventListener('click', () => {
+            startOrToggle();
+            startBtn.blur();   // чтобы пробел не нажимал кнопку повторно
+        });
+        document.getElementById('playAgain').addEventListener('click', () => {
+            if (canRestart()) startGame(false);
+            document.getElementById('playAgain').blur();
+        });
 
         // === 🎮 Управление ===
+        function queueDir(nx, ny) {
+            if (state !== 'running') return;
+            const last = dirQueue.length ? dirQueue[dirQueue.length - 1] : dir;
+            if (nx === last.x && ny === last.y) return;     // то же направление
+            if (nx === -last.x && ny === -last.y) return;   // разворот на 180° запрещён
+            if (dirQueue.length < 2) dirQueue.push({ x: nx, y: ny });
+        }
+
+        const keyDirs = {
+            ArrowUp: [0, -gridSize], KeyW: [0, -gridSize],
+            ArrowDown: [0, gridSize], KeyS: [0, gridSize],
+            ArrowLeft: [-gridSize, 0], KeyA: [-gridSize, 0],
+            ArrowRight: [gridSize, 0], KeyD: [gridSize, 0]
+        };
+
         document.addEventListener('keydown', event => {
-            if (!isGameActive) return;
-            if (event.key === 'ArrowUp' && dy === 0) {
-                dx = 0; dy = -gridSize;
-            } else if (event.key === 'ArrowDown' && dy === 0) {
-                dx = 0; dy = gridSize;
-            } else if (event.key === 'ArrowLeft' && dx === 0) {
-                dx = -gridSize; dy = 0;
-            } else if (event.key === 'ArrowRight' && dx === 0) {
-                dx = gridSize; dy = 0;
-            }
-            event.preventDefault();
-        });
-
-        // === ▶️ Старт ===
-        document.getElementById('startSnakeGame').addEventListener('click', () => {
-            if (!gameInterval) {
-                isGameActive = true;
-                gameInterval = setInterval(gameLoop, 200);
+            if (keyDirs[event.code]) {
+                event.preventDefault();
+                queueDir(...keyDirs[event.code]);
+            } else if (event.code === 'Space' || event.code === 'Enter') {
+                event.preventDefault();
+                if (!event.repeat) startOrToggle();
             }
         });
 
+        // Свайпы на телефоне
+        let touchStart = null;
+        canvas.addEventListener('touchstart', e => {
+            const t = e.changedTouches[0];
+            touchStart = { x: t.clientX, y: t.clientY };
+            e.preventDefault();
+        }, { passive: false });
+        canvas.addEventListener('touchend', e => {
+            if (!touchStart) return;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - touchStart.x;
+            const dy = t.clientY - touchStart.y;
+            touchStart = null;
+            if (Math.max(Math.abs(dx), Math.abs(dy)) < 25) return;
+            if (Math.abs(dx) > Math.abs(dy)) queueDir(dx > 0 ? gridSize : -gridSize, 0);
+            else queueDir(0, dy > 0 ? gridSize : -gridSize);
+            e.preventDefault();
+        }, { passive: false });
+
+        // Если вкладку свернули, ставим игру на паузу
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) pauseGame();
+        });
+
+        // === 🚀 Запуск: показываем стартовое поле ===
+        resetGame();
+        requestAnimationFrame(frame);
     </script>
 </body>
 </html>

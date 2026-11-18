@@ -10,8 +10,8 @@ let busy = false;     // блокировка ввода, пока идут ан
 let lastSwap = [];    // клетки, которые игрок поменял последним ходом
 
 // ---------- Звуки ----------
-const startSound = new Audio('images/start.wav');
-const goodSound = new Audio('images/good.wav');
+const startSound = new Audio('../shared/start.wav');
+const goodSound = new Audio('../shared/good.wav');
 goodSound.preservesPitch = false;
 goodSound.mozPreservesPitch = false;
 goodSound.webkitPreservesPitch = false;
@@ -323,14 +323,14 @@ function addScore(matchLength) {
 
 function updateScoreBoard() {
     const el = document.getElementById('score');
-    el.textContent = `Очки: ${score}`;
+    el.textContent = `Score: ${score}`;
     el.classList.remove('bump');
     void el.offsetWidth; // перезапуск анимации
     el.classList.add('bump');
 }
 
 function updateMoves() {
-    document.getElementById('moves').textContent = `Ходы: ${moves}`;
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
 }
 
 // ---------- Удаление, гравитация и эффекты ----------
@@ -476,7 +476,7 @@ function showFloatingText(cell, text, color) {
     anim.onfinish = () => el.remove();
 }
 
-const comboWords = ['', '', 'Комбо x2!', 'Отлично! x3', 'Супер! x4', 'Невероятно! x5', 'ЛЕГЕНДА! x6'];
+const comboWords = ['', '', 'Combo x2!', 'Great! x3', 'Awesome! x4', 'Incredible! x5', 'LEGENDARY! x6'];
 
 function showBanner(text) {
     const container = document.getElementById('game-container');
@@ -581,7 +581,7 @@ function showHint() {
 
 // Если ходов не осталось, перемешиваем кристаллы (бомбы остаются на своих местах)
 function reshuffle() {
-    showBanner('Нет ходов — перемешиваем!');
+    showBanner('No moves left. Shuffling!');
     do {
         for (let r = 0; r < boardSize; r++) {
             for (let c = 0; c < boardSize; c++) {

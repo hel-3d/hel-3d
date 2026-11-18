@@ -1,7 +1,7 @@
 {
   "name": "Hal's Match-3 Game",
   "short_name": "Match-3",
-  "description": "Увлекательная игра Match-3",
+  "description": "A fun Match-3 game",
   "icons": [
     {
       "src": "images/icon-192.png",

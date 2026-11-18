@@ -6,7 +6,6 @@ const urlsToCache = [
   "/script.js",
   "/images/red1.gif",
   "/images/blue1.gif",
-  "/images/good.wav",
 ];
 
 // Устанавливаем service worker и кэшируем файлы
