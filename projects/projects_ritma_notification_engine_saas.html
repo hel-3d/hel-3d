@@ -288,10 +288,13 @@
                             This project started as a simple Telegram bot to track menstrual cycle events. It worked — but the architecture was tightly coupled, state was implicit, and business logic was scattered across handlers.
                         </p>
                         <p>
-                            I rebuilt it as a SaaS-style backend system with explicit domain boundaries: cycle modeling, event storage, notification orchestration, and partner-aware delivery. The goal was not to add features, but to make the system to make the system deterministic, modular, and consistent under real-world data.
+                            I rebuilt it as a SaaS-style backend system with explicit domain boundaries: cycle modeling, event storage, notification orchestration, and partner-aware delivery. The goal was not to add features, but to make the system deterministic, modular, and consistent under real-world data.
                         </p>
                         <p>
                             The current system supports multi-partner relationships, customizable notification templates, phase-based logic, and strict separation between core business logic and delivery adapters.
+                        </p>
+                        <p>
+                            The native Android client adds a cycle calendar and daily check-ins (mood, energy, desire and feelings), and works offline-first: records made without a connection are kept in an encrypted on-device queue and delivered exactly once when the connection returns.
                         </p>
                         <p class="small-note mb-0">
                             Outcome: a production-ready architecture that behaves deterministically under real-world data inconsistencies and supports controlled feature expansion without breaking existing flows.
@@ -324,6 +327,11 @@
                                     <span class="tag-pill">fastapi-gateway</span>
                                     <span class="tag-pill">hexagonal-architecture</span>
                                     <span class="tag-pill">android-client</span>
+                                    <span class="tag-pill">kotlin</span>
+                                    <span class="tag-pill">jetpack-compose</span>
+                                    <span class="tag-pill">offline-first</span>
+                                    <span class="tag-pill">workmanager</span>
+                                    <span class="tag-pill">android-keystore</span>
                                     <span class="tag-pill">telegram-adapter</span>
                                     <span class="tag-pill">account-merging</span>
                                 </div>
@@ -342,7 +350,7 @@
                             <div class="meta-block">
                                 <span class="meta-label">Status</span>
                                 <p class="mb-0">
-                                    Live in production on Google Play and Telegram · Regularly updated
+                                    Live in production on Google Play (Android 1.2.0) and Telegram · Regularly updated
                                 </p>
                             </div>
 
@@ -373,8 +381,8 @@
                                 <h3 class="h5 mb-3">System Design</h3>
                                 <ul class="mb-0">
                                     <li><strong>Architecture:</strong> Clean architecture · Use cases layer · Repository pattern · Adapter isolation</li>
-                                    <li><strong>Core Features:</strong> Multi-partner model · Phase-based notifications · Custom message templates</li>
-                                    <li><strong>Data Model:</strong> Events / Notifications / Partner links / Preferences / Templates</li>
+                                    <li><strong>Core Features:</strong> Multi-partner model · Phase-based notifications · Custom message templates · Cycle calendar · Daily check-ins</li>
+                                    <li><strong>Data Model:</strong> Events / Day states / Notifications / Partner links / Preferences / Templates</li>
                                 </ul>
                             </div>
 
@@ -382,16 +390,16 @@
                                 <h3 class="h5 mb-3">Data &amp; Reliability</h3>
                                 <ul class="mb-0">
                                     <li><strong>Data Safety:</strong> Isolated user data · Soft-delete model · Controlled access per recipient</li>
-                                    <li><strong>Reliability:</strong> Failure-safe sending · Retry-ready architecture · No duplicate notifications</li>
+                                    <li><strong>Reliability:</strong> Failure-safe sending · Retry-ready architecture · No duplicate notifications · Idempotent event creation</li>
                                     <li><strong>Scalability:</strong> Async processing · Background workers · Ready for queue integration</li>
-                                    <li><strong>Sync &amp; Identity:</strong> Zero-Auth (Anonymous-first) · Bidirectional Timeline Merge</li>
+                                    <li><strong>Sync &amp; Identity:</strong> Zero-Auth (Anonymous-first) · Bidirectional Timeline Merge · Offline-first Android sync</li>
                                 </ul>
                             </div>
 
                             <div class="info-box">
                                 <h3 class="h5 mb-3">Delivery &amp; Quality</h3>
                                 <ul class="mb-0">
-                                    <li><strong>Engineering Metrics:</strong> 784 tests · 91% coverage · 16s runtime</li>
+                                    <li><strong>Engineering Metrics:</strong> 965 backend tests · 87 Android unit tests · 90% coverage of core, repository and worker layers · ~15s backend runtime</li>
                                     <li><strong>Localization:</strong> 3 Languages (EN · ES · RU)</li>
                                 </ul>
                             </div>
@@ -431,6 +439,7 @@
         │   │       ├── account_deletion.py
         │   │       ├── auth.py
         │   │       ├── dashboard.py
+        │   │       ├── day_state.py
         │   │       ├── events.py
         │   │       ├── linking.py
         │   │       ├── me.py
@@ -465,76 +474,101 @@
         │   ├── build.gradle.kts
         │   ├── gradle.properties
         │   ├── settings.gradle.kts
-        │   ├── gradle/
-        │   │   └── wrapper/
-        │   │       └── gradle-wrapper.properties
-        │   └── app/
-        │       ├── build.gradle.kts
-        │       ├── proguard-rules.pro
-        │       └── src/
-        │           ├── debug/
-        │           │   └── AndroidManifest.xml
-        │           └── main/
-        │               ├── AndroidManifest.xml
-        │               ├── java/
-        │               │   └── com/ritma/app/
-        │               │       ├── LocaleUtils.kt
-        │               │       ├── MainActivity.kt
-        │               │       ├── RitmaApp.kt
-        │               │       ├── data/
-        │               │       │   ├── ApiClient.kt
-        │               │       │   └── SessionStore.kt
-        │               │       ├── model/
-        │               │       │   └── Models.kt
-        │               │       └── ui/
-        │               │           ├── auth/
-        │               │           │   ├── AuthScreen.kt
-        │               │           │   └── EmailRecoveryScreen.kt
-        │               │           ├── components/
-        │               │           │   └── UiHelpers.kt
-        │               │           ├── dashboard/
-        │               │           │   └── DashboardScreen.kt
-        │               │           ├── events/
-        │               │           │   ├── AddEventDialogs.kt
-        │               │           │   └── EventsScreen.kt
-        │               │           ├── profile/
-        │               │           │   ├── AppLockScreen.kt
-        │               │           │   └── ProfileScreen.kt
-        │               │           ├── report/
-        │               │           │   └── ReportScreen.kt
-        │               │           └── theme/
-        │               │               └── RitmaTheme.kt
-        │               └── res/
-        │                   ├── drawable/
-        │                   │   ├── ic_launcher_background.xml
-        │                   │   └── ic_launcher_foreground.png
-        │                   ├── mipmap-anydpi-v26/
-        │                   │   └── ic_launcher.xml
-        │                   ├── mipmap-hdpi/
-        │                   │   └── ic_launcher.png
-        │                   ├── mipmap-mdpi/
-        │                   │   └── ic_launcher.png
-        │                   ├── mipmap-xhdpi/
-        │                   │   └── ic_launcher.png
-        │                   ├── mipmap-xxhdpi/
-        │                   │   └── ic_launcher.png
-        │                   ├── mipmap-xxxhdpi/
-        │                   │   └── ic_launcher.png
-        │                   ├── values/
-        │                   │   ├── plurals.xml
-        │                   │   ├── strings.xml
-        │                   │   └── styles.xml
-        │                   ├── values-es/
-        │                   │   ├── plurals.xml
-        │                   │   └── strings.xml
-        │                   └── values-ru/
-        │                       ├── plurals.xml
-        │                       └── strings.xml
+        │   ├── app/
+        │   │   ├── build.gradle.kts
+        │   │   ├── proguard-rules.pro
+        │   │   └── src/
+        │   │       ├── debug/
+        │   │       │   └── AndroidManifest.xml
+        │   │       ├── main/
+        │   │       │   ├── AndroidManifest.xml
+        │   │       │   ├── java/
+        │   │       │   │   └── com/ritma/app/
+        │   │       │   │       ├── LocaleUtils.kt
+        │   │       │   │       ├── MainActivity.kt
+        │   │       │   │       ├── RitmaApp.kt
+        │   │       │   │       ├── data/
+        │   │       │   │       │   ├── ApiClient.kt
+        │   │       │   │       │   ├── AppCache.kt
+        │   │       │   │       │   ├── DayStateOffline.kt
+        │   │       │   │       │   ├── OfflineCache.kt
+        │   │       │   │       │   ├── OfflineQueue.kt
+        │   │       │   │       │   ├── Outbox.kt
+        │   │       │   │       │   ├── OutboxKeystore.kt
+        │   │       │   │       │   ├── OutboxSender.kt
+        │   │       │   │       │   ├── OutboxUploadWorker.kt
+        │   │       │   │       │   ├── SessionStore.kt
+        │   │       │   │       │   └── TimezoneCheck.kt
+        │   │       │   │       ├── model/
+        │   │       │   │       │   └── Models.kt
+        │   │       │   │       └── ui/
+        │   │       │   │           ├── auth/
+        │   │       │   │           │   ├── AuthScreen.kt
+        │   │       │   │           │   └── EmailRecoveryScreen.kt
+        │   │       │   │           ├── calendar/
+        │   │       │   │           │   └── CycleCalendar.kt
+        │   │       │   │           ├── components/
+        │   │       │   │           │   ├── TimezoneUi.kt
+        │   │       │   │           │   └── UiHelpers.kt
+        │   │       │   │           ├── dashboard/
+        │   │       │   │           │   └── DashboardScreen.kt
+        │   │       │   │           ├── daystate/
+        │   │       │   │           │   └── DayStateEditor.kt
+        │   │       │   │           ├── events/
+        │   │       │   │           │   ├── AddEventDialogs.kt
+        │   │       │   │           │   ├── EventsScreen.kt
+        │   │       │   │           │   └── PendingEvents.kt
+        │   │       │   │           ├── profile/
+        │   │       │   │           │   ├── AppLockScreen.kt
+        │   │       │   │           │   └── ProfileScreen.kt
+        │   │       │   │           ├── report/
+        │   │       │   │           │   └── ReportScreen.kt
+        │   │       │   │           └── theme/
+        │   │       │   │               └── RitmaTheme.kt
+        │   │       │   └── res/
+        │   │       │       ├── drawable/
+        │   │       │       │   ├── ic_launcher_background.xml
+        │   │       │       │   └── ic_launcher_foreground.png
+        │   │       │       ├── mipmap-anydpi-v26/
+        │   │       │       │   └── ic_launcher.xml
+        │   │       │       ├── mipmap-hdpi/
+        │   │       │       │   └── ic_launcher.png
+        │   │       │       ├── mipmap-mdpi/
+        │   │       │       │   └── ic_launcher.png
+        │   │       │       ├── mipmap-xhdpi/
+        │   │       │       │   └── ic_launcher.png
+        │   │       │       ├── mipmap-xxhdpi/
+        │   │       │       │   └── ic_launcher.png
+        │   │       │       ├── mipmap-xxxhdpi/
+        │   │       │       │   └── ic_launcher.png
+        │   │       │       ├── values-es/
+        │   │       │       │   ├── plurals.xml
+        │   │       │       │   └── strings.xml
+        │   │       │       ├── values-ru/
+        │   │       │       │   ├── plurals.xml
+        │   │       │       │   └── strings.xml
+        │   │       │       └── values/
+        │   │       │           ├── plurals.xml
+        │   │       │           ├── strings.xml
+        │   │       │           └── styles.xml
+        │   │       └── test/
+        │   │           └── java/
+        │   │               └── com/ritma/app/
+        │   │                   └── data/
+        │   │                       ├── AppCacheTest.kt
+        │   │                       ├── DayStateOfflineTest.kt
+        │   │                       ├── OutboxSenderTest.kt
+        │   │                       ├── OutboxTest.kt
+        │   │                       └── TimezoneCheckTest.kt
+        │   └── gradle/
+        │       └── wrapper/
+        │           └── gradle-wrapper.properties
         │
         ├── core/
         │   ├── __init__.py
         │   ├── accounts.py
         │   ├── cycle.py
+        │   ├── cycle_calendar.py
         │   ├── day_key.py
         │   ├── events.py
         │   ├── notifications.py
@@ -559,6 +593,7 @@
         │       ├── account_link_tokens_repo.py
         │       ├── account_merge_repo.py
         │       ├── android_auth_repo.py
+        │       ├── day_states_repo.py
         │       ├── events_repo.py
         │       ├── invites_repo.py
         │       ├── message_templates_repo.py
@@ -577,14 +612,20 @@
         ├── tests/
         │   ├── __init__.py
         │   ├── conftest.py
+        │   ├── test_future_dates.py
         │   ├── adapters/
         │   │   ├── http/
+        │   │   │   ├── test_day_state.py
+        │   │   │   ├── test_events_idempotency.py
         │   │   │   ├── test_linking.py
+        │   │   │   ├── test_recovery_auth.py
         │   │   │   └── test_services.py
         │   │   └── telegram/
+        │   │       ├── test_bot.py
         │   │       ├── test_delete_events.py
         │   │       ├── test_handlers.py
         │   │       ├── test_keyboards.py
+        │   │       ├── test_menu.py
         │   │       ├── test_onboarding.py
         │   │       ├── test_partners.py
         │   │       ├── test_privacy.py
@@ -594,8 +635,10 @@
         │   │       └── test_when.py
         │   ├── core/
         │   │   ├── test_account_linking.py
+        │   │   ├── test_account_linking_flow.py
         │   │   ├── test_create_event.py
         │   │   ├── test_cycle.py
+        │   │   ├── test_cycle_calendar.py
         │   │   ├── test_day_key.py
         │   │   ├── test_events.py
         │   │   ├── test_invites.py
@@ -607,6 +650,8 @@
         │   ├── db/
         │   │   ├── test_account_merge_repo.py
         │   │   ├── test_android_auth_repo.py
+        │   │   ├── test_connection.py
+        │   │   ├── test_day_states_repo.py
         │   │   ├── test_events_repo.py
         │   │   ├── test_indexes.py
         │   │   ├── test_invites_repo.py
@@ -638,7 +683,11 @@
                         </p>
 
                         <p>
-                            In the server configuration observed on October 23, 2026, MongoDB ran in a Docker container and its host port was bound to loopback. This describes the inspected configuration at that time.
+                            The Android client is offline-first. Every record gets a client-generated ID and is first written to an encrypted on-device queue (AES-GCM with a key held in the Android Keystore). It is sent straight away when possible; otherwise it waits and is delivered later, including by a WorkManager job when the app is closed. The API stores the ID under a unique index, so a retried request returns the original record instead of creating a duplicate. The last loaded data is cached in encrypted form, so the app opens and stays usable without a connection.
+                        </p>
+
+                        <p>
+                            In the server configuration observed on October 23, 2026, MongoDB ran in a Docker container and its host port was bound to loopback. This describes the inspected configuration at that time. Since November 2026, MongoDB also requires authentication, the services connect with a dedicated least-privilege database user, and SSH access to the host is key-only.
                         </p>
                         <img src="images/8.jpg" class="project-shot" alt="Project repository structure">
 
@@ -653,7 +702,7 @@
             <h2 class="section-title">Telegram Product Flow</h2>
 
             <p>
-                The current delivery adapter is Telegram, but the interaction model is designed as a product flow rather than a command-only bot. Users can navigate cycle predictions, calendar actions, doctor reports, partner management, and settings through structured menus.
+                Telegram remains a first-class client next to the Android app. Its interaction model is designed as a product flow rather than a command-only bot. Users can navigate cycle predictions, calendar actions, doctor reports, partner management, and settings through structured menus.
             </p>
 
             <div class="info-grid">
@@ -717,7 +766,7 @@
                 <h3 style="margin: 0 0 6px 0; font-size: 1.3rem;">Ritma — Cycle & Symptoms Tracker</h3>
                 <div style="color: #a0a0a0; font-size: 0.9rem; margin-bottom: 8px;">Package: <code>com.ritma.app</code> | Developer: Elena Gusarevich (Hel)</div>
                 <p style="margin: 0; font-size: 0.92rem; line-height: 1.5;">
-                    Published on Google Play. Features anonymous-first device sessions, client-side encryption options, localized health logging, and bidirectional synchronization with Telegram accounts.
+                    Published on Google Play. Features anonymous-first device sessions, email sign-in with password recovery, an optional PIN / biometric app lock, offline-first logging with encrypted on-device storage, a cycle calendar with daily check-ins, and bidirectional synchronization with Telegram accounts.
                 </p>
                 </div>
             </div>
@@ -747,6 +796,45 @@
 
             </div>
 
+            <div class="info-grid" style="margin-bottom: 24px;">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Cycle Calendar &amp; Daily Check-ins</h3>
+                    <ul class="mb-0">
+                        <li>Month view in History with switchable layers: phases, mood, energy and desire</li>
+                        <li>Forecast shown only up to the next expected period, marked as a prediction</li>
+                        <li>Daily check-in on the home screen: mood, energy and desire on 1–5 scales, plus feelings</li>
+                        <li>Any past day can be filled in or corrected from the calendar; future days are blocked</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Offline-First Logging</h3>
+                    <ul class="mb-0">
+                        <li>Records and check-ins made offline are saved in an encrypted queue, bound to the account</li>
+                        <li>Sent on app start, on reconnect, after each save, and in the background via WorkManager</li>
+                        <li>"Waiting to be sent" list; unsent records can be deleted with confirmation</li>
+                        <li>The app opens offline with the last loaded data instead of an error screen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New Android screenshots (add the files, then uncomment):
+            <div class="screenshot-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/19.jpg" alt="Cycle calendar with phase and mood layers" style="width: 100%; height: auto; display: block;">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Cycle calendar with phase and mood layers</div>
+                </div>
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/20.jpg" alt="Daily check-in: mood, energy, desire and feelings" style="width: 100%; height: auto; display: block;">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Daily check-in: mood, energy, desire and feelings</div>
+                </div>
+                <div class="screenshot-item" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #121214;">
+                    <img src="images/21.jpg" alt="Records waiting to be sent while offline" style="width: 100%; height: auto; display: block;">
+                    <div style="padding: 10px; font-size: 0.82rem; text-align: center; color: #bbb;">Records waiting to be sent while offline</div>
+                </div>
+            </div>
+            -->
+
             <!-- Store Listing Snapshot Placeholder -->
             <div class="store-listing-preview" style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-top: 16px;">
                 <!-- PLACEHOLDER: Скриншот страницы в Google Play Console / Store -->
@@ -764,7 +852,7 @@
                 Ritma is not just a tracker — it is a behavioral system built around time-based biological events. Instead of storing static data, it models temporal sequences and derives phases, predictions, and interaction patterns from them.
             </p>
             <p>
-                The system ingests discrete events (cycle starts, symptoms, interactions), builds an evolving timeline, and computes derived states such as current phase, predicted ovulation window, and expected next cycle.
+                The system ingests discrete events (cycle starts, symptoms, interactions) and optional daily check-ins (mood, energy, desire), builds an evolving timeline, and computes derived states such as current phase, predicted ovulation window, and expected next cycle.
             </p>
             <p>
                 These states are then used to drive a notification system that adapts both content and delivery targets based on user configuration and partner relationships.
@@ -791,6 +879,8 @@
                         <li>Soft-delete model for events with strict filtering to prevent ghost data in calculations</li>
                         <li>Contract-stable core logic independent from Telegram adapter</li>
                         <li>Test coverage across core logic, repositories, and worker flows</li>
+                        <li>Native Android client with a cycle calendar, daily check-ins and an optional PIN / biometric lock</li>
+                        <li>Offline-first sync: encrypted on-device queue, idempotent API writes, background delivery via WorkManager</li>
                     </ul>
                 </div>
 
@@ -804,6 +894,8 @@
                         <li>Implemented safe data handling and minimized sensitive exposure</li>
                         <li>Refactored legacy flows to eliminate inconsistent data reads</li>
                         <li>Built test suite covering edge cases and real-world data inconsistencies</li>
+                        <li>Designed and built the Android client (Kotlin, Jetpack Compose) end to end, including its offline storage and sync</li>
+                        <li>Deployed, secured and maintain the production server (systemd services, Nginx, MongoDB in Docker)</li>
                     </ul>
                 </div>
             </div>
@@ -817,19 +909,19 @@
                 <div class="mermaid">
                     %%{init: {"theme": "dark"}}%%
                     flowchart TB
-                        Android["Android app<br/>ApiClient · SessionStore · UI"]
+                        Android["Android app<br/>Compose UI · ApiClient · SessionStore<br/>encrypted outbox · offline cache · WorkManager"]
                         TelegramUser["Telegram user"]
-                        Bot["Telegram bot<br/>aiogram handlers"]
-                        API["FastAPI<br/>auth · events · dashboard · reports<br/>linking · deletion · recovery"]
+                        Bot["Telegram bot<br/>python-telegram-bot handlers"]
+                        API["FastAPI<br/>auth · events · dashboard · reports<br/>calendar · day state · linking · deletion · recovery"]
                         UseCases["Use cases<br/>create_event · account_linking<br/>notify · invites"]
                         Domain["Business modules<br/>cycle · events · notifications<br/>pairing · recipients · reporting · templates"]
-                        Repos["MongoDB repositories<br/>users · events · tokens · merges<br/>notifications · preferences · …"]
+                        Repos["MongoDB repositories<br/>users · events · day states · tokens · merges<br/>notifications · preferences · …"]
                         Mongo[("MongoDB")]
                         Worker["Notification worker<br/>workers/notify_worker.py"]
                         TelegramAPI["Telegram Bot API"]
                         Email["Email code delivery<br/>adapters/http/email_delivery.py"]
 
-                        Android -->|"HTTPS / JSON / session"| API
+                        Android -->|"HTTPS / JSON / session<br/>idempotent client IDs"| API
                         TelegramUser --> Bot
 
                         API -->|"Event creation and account linking"| UseCases
@@ -870,7 +962,7 @@
             </p>
 
             <p>
-                The system is designed to tolerate imperfect data. Cycle calculations use recent intervals and avoid overfitting to historical outliers. Predictions are expressed as ranges rather than точные даты, reflecting real-world variability.
+                The system is designed to tolerate imperfect data. Cycle calculations use recent intervals and avoid overfitting to historical outliers. Predictions are expressed as ranges rather than exact dates, reflecting real-world variability.
             </p>
             <img src="images/9.jpg" class="project-shot" alt="Project repository structure">
 
@@ -878,13 +970,13 @@
                 Test and coverage output showing 784 passing tests and 91% coverage across core logic, repositories, and workers.
             </p>
             <p>
-                Idempotency is a core requirement of the system. Notifications are generated with deterministic keys, ensuring that repeated executions of the worker do not produce duplicates. This makes the system safe to rerun, retry, or scale horizontally without introducing inconsistent behavior.
+                Idempotency is a core requirement of the system. Notifications are generated with deterministic keys, ensuring that repeated executions of the worker do not produce duplicates. This makes the system safe to rerun, retry, or scale horizontally without introducing inconsistent behavior. The same principle extends to the clients: event creation accepts a client-generated ID, so a retry after a lost response returns the original record instead of creating a second one.
             </p>
             <p>
                 The system is extensively tested across all layers: domain logic, repositories, and background workers. Tests cover not only expected flows but also edge cases derived from real-world data inconsistencies, ensuring stable behavior under imperfect input conditions.
             </p>
             <p>
-                Although currently delivered via Telegram, the system is not tied to it. The bot acts as a thin adapter layer. All core logic is transport-agnostic, making it possible to extend the system to web or other messaging platforms without rewriting business logic.
+                The system is delivered through both Telegram and a native Android app, and is tied to neither: the bot and the HTTP API act as thin adapter layers. All core logic is transport-agnostic, which is what allowed the Android client to be added without rewriting business logic, and keeps the door open for web or other messaging platforms.
             </p>
 
             <div class="technical-card" style="margin-top: 24px; padding: 24px; background: rgba(255,255,255,0.02); border-left: 4px solid #c47291; border-radius: 8px;">
@@ -896,7 +988,8 @@
                 <li><strong>Zero-Knowledge Anonymous Entry:</strong> Users start logging events immediately on Android without email or phone number. A local cryptographically random identifier bounds the initial dataset.</li>
                 <li><strong>Deterministic Timeline Merging:</strong> When linking a Telegram account to an existing mobile installation, the backend triggers an atomic merge use-case. It re-indexes historical events, validates deduplication keys (<code>user_id + event_type + day_key</code>), and consolidates the active cycle state machine without dropping records.</li>
                 <li><strong>GDPR & Right-to-be-Forgotten:</strong> Built-in cascades completely purge timelines, active partner linkages, and notification queues across both adapters upon user request, supported by formal privacy endpoints at <a href="https://ritmacalendar.com" target="_blank" style="color: #c47291;">ritmacalendar.com</a>.</li>
-                <li><strong>Biometric App Shielding:</strong> Architecture prepared for local biometric and PIN gatekeeping on app resume without storing sensitive passcodes on the server.</li>
+                <li><strong>Biometric App Shielding:</strong> Optional PIN / biometric lock on app resume, handled by the device (BiometricPrompt and the system credential screen); no passcode is stored by the app or the server.</li>
+                <li><strong>Encrypted Offline Storage:</strong> Unsent records and the last loaded data are encrypted with AES-GCM under Android Keystore keys, excluded from backups, and bound to the account. An unreadable file is set aside rather than overwritten.</li>
             </ul>
             </div>
 
@@ -927,6 +1020,24 @@
                     <strong>Challenge:</strong> MVP architecture tightly coupled business logic to Telegram handlers.<br>
                     <strong>Solution:</strong> Extracted domain logic into core modules and introduced adapter pattern.<br>
                     <strong>Result:</strong> System became extensible to other platforms without rewriting logic.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> A request that reached the server but lost its response on a weak connection created a second record when the app retried.<br>
+                    <strong>Solution:</strong> Client-generated IDs stored under a unique partial index; a repeated request returns the record created by the first attempt.<br>
+                    <strong>Result:</strong> Exactly-once event creation, verified with a simulated lost response against the real API.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The open app and the background WorkManager job could send the same offline queue at the same time.<br>
+                    <strong>Solution:</strong> A single queue instance per app process and an exclusive send lock shared by both senders.<br>
+                    <strong>Result:</strong> Every queued record is delivered once, covered by a concurrent-sender test.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Past-dated entries made in the bot landed one day early for users west of UTC, because a bare date was treated as UTC midnight.<br>
+                    <strong>Solution:</strong> Picked days are converted to local noon in the user's time zone, and the same rule rejects days that have not come yet.<br>
+                    <strong>Result:</strong> Correct day keys in every time zone, covered by tests across seven time zones.
                 </li>
             </ul>
         </div>
@@ -1006,6 +1117,18 @@
                         <li>Localized the Android and Telegram interfaces in English, Spanish, and Russian</li>
                     </ul>
                 </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">v5.2 — Offline-First Android &amp; Daily Check-ins</h3>
+                    <ul>
+                        <li>Cycle calendar with phase, mood, energy and desire layers</li>
+                        <li>Daily check-ins: mood, energy, desire and feelings</li>
+                        <li>Offline-first logging: encrypted on-device queue, idempotent API, background sync</li>
+                        <li>App opens offline with the last loaded data</li>
+                        <li>Optional PIN / biometric app lock and password reset by email</li>
+                        <li>Time zone change prompt; future-dated events rejected in the app, API and bot</li>
+                    </ul>
+                </div>
             </div>
 
             <p class="small-note mt-3">
@@ -1019,7 +1142,7 @@
             </p>
 
             <p>
-                It now supports real-world usage scenarios without breaking under inconsistent data, avoids notification spam, and provides a foundation for future extensions such as web interfaces or additional communication channels.
+                It now supports real-world usage scenarios without breaking under inconsistent data, avoids notification spam, and provides a foundation for future extensions such as web interfaces or additional communication channels. With the offline-first Android client, users can keep logging without a connection, and every record is delivered exactly once when it returns.
             </p>
 
         </div>
@@ -1029,7 +1152,7 @@
                 <h2 class="section-title">Try the Product</h2>
 
                 <p>
-                    The system is live and can be tested through the Telegram interface.
+                    The system is live and can be tested through the Telegram interface or the Android app.
                     You can explore the full flow — from event tracking to partner-aware notifications.
                 </p>
 
@@ -1040,10 +1163,16 @@
                        rel="noopener noreferrer">
                         Open Ritma Bot
                     </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ritma.app"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Get it on Google Play
+                    </a>
                 </div>
 
                 <p class="small-note mt-3">
-                    No installation required — works directly in Telegram.
+                    The bot needs no installation — it works directly in Telegram.
                 </p>
 
             </div>
