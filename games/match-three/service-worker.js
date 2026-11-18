@@ -1,12 +1,12 @@
-const CACHE_NAME = "match3-cache-v1";
+const CACHE_NAME = "match3-cache-v2";
 const urlsToCache = [
   "/",
   "/index.html",
   "/styles.css",
   "/script.js",
-  "/images/red1.png",  // и другие изображения
-  "/images/blue1.png",
-  // добавь все необходимые ресурсы игры
+  "/images/red1.gif",
+  "/images/blue1.gif",
+  "/images/good.wav",
 ];
 
 // Устанавливаем service worker и кэшируем файлы
