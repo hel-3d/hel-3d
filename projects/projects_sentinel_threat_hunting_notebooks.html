@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Hunting Notebook Suite for Microsoft Sentinel &amp; XDR — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .side-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .mode-number {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.14);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
+        .stage-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 4px;
+        }
+
+        .stage-table th,
+        .stage-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: #d8d8d8;
+            vertical-align: top;
+        }
+
+        .stage-table th {
+            color: #aaa;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        .architecture-diagram-card {
+            margin: 24px 0;
+            padding: 24px;
+            overflow-x: auto;
+            color: #e5e7eb;
+            background: #111318;
+            border: 1px solid #30343d;
+            border-radius: 12px;
+        }
+
+        .architecture-diagram-card h3 {
+            margin: 0 0 20px;
+            color: #f3f4f6;
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .info-grid,
+            .info-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+
+                    <h1 class="project-title">Threat Hunting Notebook Suite for Microsoft Sentinel &amp; XDR</h1>
+
+                    <div class="project-subtitle">
+                        A Python notebook layer for Azure Machine Learning that connects to Microsoft Sentinel, enriches indicators through three threat-intelligence sources, reconstructs Email → Endpoint → Cloud kill chains across Microsoft Defender products, and detects anomalous endpoint behaviour with an explainable Isolation Forest model.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            A security team running a proof of concept on an Azure development tenant wanted analysts to hunt threats in Jupyter notebooks instead of pivoting by hand between Defender for Office 365, Defender for Endpoint and Defender for Cloud Apps. The client owned the security side — Sentinel configuration, data connectors and every KQL query — and needed someone to build the entire Python layer on top of it.
+                        </p>
+                        <p>
+                            I delivered three notebooks against a detailed cell-by-cell specification with formal acceptance criteria. <strong>NB-00</strong> is a shared library imported by every other notebook: Sentinel connection, a guarded KQL runner, incident creation and a prioritised IOC-enrichment chain (MISP → Microsoft Threat Intelligence → VirusTotal). <strong>NB-06</strong> correlates a suspicious email with the click, the process it started and the cloud activity that followed, then maps each step to MITRE ATT&amp;CK. <strong>NB-01</strong> learns normal endpoint behaviour with Isolation Forest and explains every flagged account with SHAP.
+                        </p>
+                        <p>
+                            My service-principal access was not enough to execute cells against the tenant myself, so the client ran each milestone end-to-end in Azure ML. That shaped the engineering: every notebook had to run correctly on the first attempt in an environment I could not reach — with sparse data, a threat-intel platform that was not deployed yet, and query schemas that arrived during the project.
+                        </p>
+                        <p class="small-note mb-0">
+                            Outcome: three integration-ready notebooks delivered in two milestones, validated by the client in Azure ML. Analysts change parameters in a single cell, review interactive kill-chain timelines and anomaly tables, and escalate confirmed findings to Sentinel incidents in one step.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">cybersecurity</span>
+                                    <span class="tag-pill">threat hunting</span>
+                                    <span class="tag-pill">data analysis</span>
+                                    <span class="tag-pill">machine learning</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">jupyter</span>
+                                    <span class="tag-pill">azure machine learning</span>
+                                    <span class="tag-pill">microsoft sentinel</span>
+                                    <span class="tag-pill">msticpy</span>
+                                    <span class="tag-pill">kql</span>
+                                    <span class="tag-pill">azure-identity</span>
+                                    <span class="tag-pill">azure-mgmt-securityinsight</span>
+                                    <span class="tag-pill">pandas</span>
+                                    <span class="tag-pill">merge_asof</span>
+                                    <span class="tag-pill">scikit-learn</span>
+                                    <span class="tag-pill">isolation forest</span>
+                                    <span class="tag-pill">shap</span>
+                                    <span class="tag-pill">plotly</span>
+                                    <span class="tag-pill">pymisp</span>
+                                    <span class="tag-pill">virustotal api v3</span>
+                                    <span class="tag-pill">joblib</span>
+                                    <span class="tag-pill">mitre att&amp;ck</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">Freelance client project · Confidential client</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Python Developer — full Python layer of the notebook suite</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Completed · Validated by the client in Azure ML</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Timeline</span>
+                                <p class="mb-0">~1.5 weeks · 2 milestones · 38 commits</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Engagement</span>
+                                <p class="mb-0">Fixed-price contract</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://www.upwork.com/freelancers/hel3d"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Upwork Profile
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+
+                            <p class="small-note mt-3 mb-0">
+                                Private client repository. Code is not published; architecture and approach are shown with the client's permission.
+                            </p>
+                        </div>
+
+                        <div class="side-stack">
+                        <div class="info-box">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">sentinel-threat-hunting-notebooks/
+├── README.md
+├── requirements.txt
+├── .env.example
+├── .gitignore
+├── notebooks/
+│   ├── NB-00_shared_utils.ipynb
+│   ├── NB-01_isolation_forest_anomaly_detection.ipynb
+│   └── NB-06_cross_domain_correlation.ipynb
+└── queries/
+    ├── msft_ti_queries.py
+    ├── nb01_queries.py
+    └── nb06_queries.py</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                NB-00 holds all connection, authentication and enrichment code and is loaded by the other notebooks with <code>%run</code>. Client-provided KQL lives in separate query modules, so analysts can update a query without touching notebook logic. Credentials come only from environment variables.
+                            </p>
+                        </div>
+
+                        <div class="info-box">
+                            <h3 class="h5 mb-3">Data Sources</h3>
+                            <div class="tag-list">
+                                <span class="tag-pill">Defender for Office 365</span>
+                                <span class="tag-pill">Safe Links</span>
+                                <span class="tag-pill">Defender for Endpoint</span>
+                                <span class="tag-pill">Defender for Cloud Apps</span>
+                                <span class="tag-pill">Microsoft Threat Intelligence</span>
+                                <span class="tag-pill">MISP</span>
+                                <span class="tag-pill">VirusTotal</span>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h3 class="h5 mb-3">Delivery &amp; Quality</h3>
+                            <ul class="mb-0">
+                                <li><strong>Scope:</strong> 3 notebooks · 31 notebook cells · 1 shared library reused via <code>%run</code></li>
+                                <li><strong>Acceptance:</strong> 35 formal acceptance criteria across NB-00, NB-06 and NB-01, checked by the client in Azure ML</li>
+                                <li><strong>Self-checks:</strong> smoke tests for MISP failure, enrichment contract, cache speed and Sentinel connectivity</li>
+                                <li><strong>Resilience:</strong> every cell runs on empty data, without MISP, without a VirusTotal key, and on telemetry too small to train</li>
+                                <li><strong>Security:</strong> no credentials or workspace IDs in code · client-owned repository · 38 per-cell commits</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Three Notebooks</h2>
+
+            <div class="info-grid info-grid-3">
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">00</span>Shared Utility Library</h3>
+                    <ul class="mb-0">
+                        <li>MSTICPy connection to the Sentinel workspace</li>
+                        <li><code>run_kql()</code> with a time-range guard; never raises on empty results</li>
+                        <li><code>create_sentinel_incident()</code> through the Azure Security Insights SDK</li>
+                        <li><code>enrich_ioc()</code>: MISP → Microsoft TI → VirusTotal, in strict order</li>
+                        <li>Disk-cached VirusTotal lookups for the free-tier rate limit</li>
+                        <li>Smoke tests that print PASS per acceptance criterion</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">06</span>Cross-Domain Correlation</h3>
+                    <ul class="mb-0">
+                        <li>Four-stage trace: email → click → process → cloud activity</li>
+                        <li>Time-bounded joins per account with <code>merge_asof()</code></li>
+                        <li>Unified kill-chain table with MITRE ATT&amp;CK mapping</li>
+                        <li>MISP campaign correlation by sender domain</li>
+                        <li>Interactive Plotly timeline per affected account</li>
+                        <li>Analyst review and one-step incident creation</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">01</span>Anomaly Detection</h3>
+                    <ul class="mb-0">
+                        <li>Process, network and logon telemetry from Defender for Endpoint</li>
+                        <li>Nine behavioural features per device + account</li>
+                        <li>Data-volume guard before any model training</li>
+                        <li>Isolation Forest with a normalised 0–1 risk score</li>
+                        <li>SHAP explanations: top three reasons per flagged account</li>
+                        <li>Colour-coded results table and incident escalation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                In a Microsoft security stack the evidence of a single attack is split across several products. The phishing email is in Defender for Office 365, the click is in Safe Links, the malicious process is in Defender for Endpoint, and the data access that follows is in Defender for Cloud Apps. Connecting them means running a query in each console and matching accounts and timestamps by hand.
+            </p>
+            <p>
+                The notebook suite automates that pivot inside Azure Machine Learning. Every notebook begins by loading NB-00, so authentication, KQL execution, threat-intel enrichment and incident creation are implemented once and reused. Notebooks NB-06 and NB-01 contain only analysis logic: the brief required that no authentication or query-provider code appear in them, and they are verified by searching for those class names.
+            </p>
+            <p>
+                Each analysis notebook follows the same analyst workflow. All tunable parameters — look-back window, correlation tolerance, contamination rate, thresholds — sit in the first cell. The notebook loads data, builds a result, shows it as an interactive chart or a styled table, and ends with a review cell where the analyst lists confirmed accounts and adds notes. The final cell turns each confirmed finding into a Sentinel incident with the evidence written into its description.
+            </p>
+            <p>
+                The development tenant contained very little real security data. The brief was explicit that empty stages are not defects and that what is assessed is code quality, error handling and correct join logic. The code therefore treats “no data” as a normal state at every step rather than as an exception.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Cross-Domain Kill Chain (NB-06)</h2>
+
+            <p>
+                NB-06 starts from suspicious emails and follows what happened to the same account next. Each stage is pulled with its own KQL query and linked to the previous one only if it occurred within a configurable time window (60 minutes by default).
+            </p>
+
+            <div class="info-box mb-3">
+                <table class="stage-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Product</th>
+                            <th>Table</th>
+                            <th>Linked by</th>
+                            <th>MITRE ATT&amp;CK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 · Suspicious email</td>
+                            <td>Defender for Office 365</td>
+                            <td><code>EmailEvents</code></td>
+                            <td>Delivered, not blocked or junked</td>
+                            <td>T1566 Phishing</td>
+                        </tr>
+                        <tr>
+                            <td>2 · URL click</td>
+                            <td>Safe Links</td>
+                            <td><code>UrlClickEvents</code></td>
+                            <td>Same <code>NetworkMessageId</code> as a stage-1 email</td>
+                            <td>T1204 User Execution</td>
+                        </tr>
+                        <tr>
+                            <td>3 · Device process</td>
+                            <td>Defender for Endpoint</td>
+                            <td><code>DeviceProcessEvents</code></td>
+                            <td>Same account, started within the window after a click</td>
+                            <td>T1059 Command Interpreter</td>
+                        </tr>
+                        <tr>
+                            <td>4 · Cloud activity</td>
+                            <td>Defender for Cloud Apps</td>
+                            <td><code>CloudAppEvents</code></td>
+                            <td>Same account, within the window after a linked process</td>
+                            <td>T1530 Data from Cloud Storage</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                All linked events are combined into one kill-chain table with a fixed schema — account, stage, label, timestamp, readable description, MITRE stage and technique, and the original row. Accounts that match fewer stages than <code>MIN_STAGE_THRESHOLD</code> are filtered out, and a summary shows stages matched, first seen and last seen per account. Each remaining account gets its own interactive timeline, colour-coded by stage, with the event description and technique on hover.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Shared notebook library with Sentinel connection through MSTICPy and <code>DefaultAzureCredential</code></li>
+                        <li>KQL runner returning pandas DataFrames, with a configurable maximum time range</li>
+                        <li>Incident creation in Sentinel through the Azure Security Insights management SDK</li>
+                        <li>Three-source IOC enrichment with strict priority and a uniform <code>{source, matched, details}</code> result</li>
+                        <li>MISP integration that activates automatically once credentials are set and fails with a single warning until then</li>
+                        <li>VirusTotal API v3 fallback for IPs, domains, URLs and file hashes, cached on disk with joblib</li>
+                        <li>Four-stage cross-product correlation with per-account, time-bounded <code>merge_asof()</code> joins</li>
+                        <li>MITRE ATT&amp;CK stage mapping and MISP campaign correlation around the first email</li>
+                        <li>Isolation Forest anomaly detection over engineered behavioural features</li>
+                        <li>SHAP explanations converted into readable reasons such as <em>“unique_remote_ips=14.00 (2.3x avg)”</em></li>
+                        <li>Interactive Plotly timelines, colour-coded pandas tables and analyst review cells</li>
+                        <li>Incidents generated from analyst-confirmed findings with full evidence in the description</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Implemented the full Python layer of all three notebooks against a cell-by-cell specification</li>
+                        <li>Designed the shared-library structure and the contract between NB-00 and analysis notebooks</li>
+                        <li>Studied the Azure ML and Sentinel environment and the client's workspace setup</li>
+                        <li>Separated client-owned KQL into query modules with placeholder fallbacks</li>
+                        <li>Built defensive schema handling so every cell runs on empty or partial data</li>
+                        <li>Wrote smoke tests that map directly to the acceptance criteria</li>
+                        <li>Integrated the client's validated live query schemas once they were available</li>
+                        <li>Fixed issues reported from the client's runs in Azure ML</li>
+                        <li>Followed the client's security rules: no credentials in code, client-owned repository, a commit after each working cell</li>
+                        <li>Documented setup, environment variables and the notebook execution order</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+
+            <div class="architecture-diagram-card">
+                <h3>System Architecture</h3>
+                <div class="mermaid">
+                    %%{init: {"theme": "dark"}}%%
+                    flowchart TB
+                        subgraph AML["Azure Machine Learning"]
+                            NB06["NB-06<br/>Cross-domain correlation"]
+                            NB01["NB-01<br/>Isolation Forest + SHAP"]
+                            NB00["NB-00 shared library<br/>run_kql · enrich_ioc<br/>create_sentinel_incident"]
+                            Q["queries/*.py<br/>client-provided KQL"]
+                        end
+
+                        subgraph MS["Microsoft Sentinel / Log Analytics"]
+                            MDO["MDO<br/>EmailEvents · UrlClickEvents"]
+                            MDE["MDE<br/>Process · Network · Logon"]
+                            MDCA["MDCA<br/>CloudAppEvents"]
+                            TI["Microsoft TI<br/>indicators"]
+                            INC["Sentinel incidents"]
+                        end
+
+                        MISP[("MISP")]
+                        VT["VirusTotal API v3<br/>joblib disk cache"]
+                        Analyst["Analyst review<br/>confirmed accounts"]
+
+                        NB06 -->|"%run"| NB00
+                        NB01 -->|"%run"| NB00
+                        Q --> NB06
+                        Q --> NB01
+                        NB00 -->|"MSTICPy QueryProvider"| MDO
+                        NB00 --> MDE
+                        NB00 --> MDCA
+                        NB00 -->|"1. MISP"| MISP
+                        NB00 -->|"2. Microsoft TI"| TI
+                        NB00 -->|"3. fallback"| VT
+                        NB06 --> Analyst
+                        NB01 --> Analyst
+                        Analyst -->|"create_sentinel_incident()"| INC
+                </div>
+            </div>
+
+            <p>
+                <code>run_kql()</code> is the only path to data in the suite. It defaults to the last 24 hours, raises a readable <code>ValueError</code> when the requested window is longer than the allowed maximum, and returns an empty DataFrame on zero results or a failed query instead of raising. Every stage of every notebook can therefore be written as “load, then check if empty”, without its own error handling around the data source.
+            </p>
+            <p>
+                <code>enrich_ioc()</code> asks the sources in a fixed order and stops at the first match. MISP is the client's own intelligence and goes first. Microsoft Threat Intelligence is queried through client-provided KQL templates, with IOC values quoted and escaped before formatting. VirusTotal is called only when neither returns anything. The VirusTotal function is wrapped in <code>joblib.Memory</code>, so a repeated lookup is answered from disk in under 50 ms and does not spend the free-tier quota. Each source failure is caught inside its own step, so one unavailable service never hides the others.
+            </p>
+            <p>
+                In NB-06 every stage DataFrame is normalised before it is used: missing expected columns are added as empty, timestamps are parsed as UTC with invalid values coerced, and account names are lower-cased so that the same user matches across products. Both sides of every <code>merge_asof()</code> are cleaned of missing keys and sorted by timestamp immediately before the join — <code>merge_asof()</code> does not fail on unsorted input, it silently returns wrong matches.
+            </p>
+            <p>
+                NB-01 builds one feature row per device and account: process count, distinct process names, average command-line length, network events, distinct remote IPs, share of connections to high ports, logon count, share of activity outside working hours and number of devices per account. Missing tables mean zero activity, not unknown. Features are standardised, the model is trained only if the data-volume guard allows it, and decision scores are rescaled to a 0–1 risk score. SHAP values for each flagged account are turned into its three strongest reasons, each compared with the population average.
+            </p>
+            <p>
+                Incident descriptions are generated from the analysis rather than written by hand: stages observed, first and last event, MITRE techniques, MISP correlation result, a timestamped event list and the analyst's notes for kill chains; risk score, SHAP reasons and all feature values for anomalies.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> The analyst opens NB-06 or NB-01 in Azure ML and adjusts parameters in the first cell only.</li>
+                <li><strong>Step 2:</strong> The notebook loads NB-00, which reads credentials from the environment and connects to the Sentinel workspace.</li>
+                <li><strong>Step 3:</strong> Client-provided KQL queries are executed through <code>run_kql()</code> with a time window derived from the look-back parameter.</li>
+                <li><strong>Step 4:</strong> NB-06 links email, click, process and cloud events per account; NB-01 builds behavioural features and scores them with Isolation Forest.</li>
+                <li><strong>Step 5:</strong> Results are enriched with MITRE mapping, MISP campaign data or SHAP explanations.</li>
+                <li><strong>Step 6:</strong> The analyst reviews interactive timelines or the colour-coded anomaly table and lists confirmed findings.</li>
+                <li><strong>Step 7:</strong> The last cell creates a Sentinel incident for each confirmed finding, with the evidence in its description.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges &amp; Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> The specification's example join used <code>direction='forward'</code> with process events on the left. In <code>merge_asof()</code> that links each process to a click that happens <em>after</em> it — the reverse of the attack sequence.<br>
+                    <strong>Solution:</strong> Kept the process (and cloud) events on the left and used <code>direction='backward'</code>, so each event is matched to the most recent click (or process) of the same account within the tolerance window; unmatched rows are dropped.<br>
+                    <strong>Result:</strong> The acceptance check holds: a process 30 minutes after a click is linked, one 90 minutes after is not, and nothing is linked backwards in time.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> I could not execute cells against the tenant myself — the client ran every milestone in Azure ML — so a failure would only surface after a full review round.<br>
+                    <strong>Solution:</strong> Wrote smoke tests that print PASS per acceptance criterion, kept every cell runnable with placeholder or empty queries, and isolated client-specific values in environment variables and query modules.<br>
+                    <strong>Result:</strong> The client could check each criterion directly from cell output, and integrating the validated live queries later required only schema adjustments, not rewrites.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The development tenant had little data; any stage could come back empty, and an empty stage must not stop the ones after it.<br>
+                    <strong>Solution:</strong> Normalised every stage to its expected schema and added fallbacks: with no clicks, processes are linked directly to email recipients; with no linked processes, cloud events are kept for accounts already seen upstream.<br>
+                    <strong>Result:</strong> All stages run whichever query returns nothing, and the kill-chain table always has its full column set, even when empty.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> MISP was not deployed when development started, but the code for it had to be ready and the notebooks could never crash because of it.<br>
+                    <strong>Solution:</strong> A dedicated <code>MISPUnavailableError</code>, raised when credentials are missing or the server is unreachable, with a module-level flag so the warning is printed only once per session.<br>
+                    <strong>Result:</strong> MISP turns on automatically once its URL and key are set; until then enrichment and campaign correlation continue with the other sources and a single message.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The VirusTotal free tier allows only a few requests per minute, and analysts often enrich the same indicators repeatedly.<br>
+                    <strong>Solution:</strong> VirusTotal is the last source in the chain and its lookups are cached on disk with joblib.<br>
+                    <strong>Result:</strong> A repeated lookup returns in under 50 ms without spending quota.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The shared KQL runner caps queries at seven days by default, while anomaly detection needs a 14-day behavioural baseline.<br>
+                    <strong>Solution:</strong> NB-01 passes its look-back as the allowed maximum explicitly instead of weakening the default guard.<br>
+                    <strong>Result:</strong> Accidental wide queries stay blocked across the suite, while the model gets the baseline it needs.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> On sparse telemetry Isolation Forest flags almost everything or nothing, which would mislead an analyst.<br>
+                    <strong>Solution:</strong> A data-volume guard runs before training: below 50 accounts the notebook stops with an explanation, below 200 it warns. Later cells check whether a model exists, and a SHAP failure is caught so the results table still renders.<br>
+                    <strong>Result:</strong> The notebook never presents results from a model trained on too little data.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The project had strict confidentiality rules: credentials provided by the client, a client-owned repository, and compute that could be recycled without warning.<br>
+                    <strong>Solution:</strong> All secrets come from environment variables, configuration files and caches are excluded from Git, and work was committed after each working cell.<br>
+                    <strong>Result:</strong> 38 commits with a clear per-cell history and no credentials or workspace identifiers in the code.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Development Timeline</h2>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Milestone 1 — Shared Library &amp; Correlation</h3>
+                    <ul class="mb-0">
+                        <li>Project skeleton, environment template and Git rules</li>
+                        <li>NB-00: connection, KQL runner, incidents, TI chain, cache, smoke tests</li>
+                        <li>NB-06: four correlation stages, kill-chain table, MISP, timelines, review, incidents</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Milestone 2 — Anomaly Detection</h3>
+                    <ul class="mb-0">
+                        <li>NB-01: telemetry loading and feature engineering</li>
+                        <li>Data-volume guard, Isolation Forest training and risk scoring</li>
+                        <li>SHAP explanations, styled review table, incident creation</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Integration — Live Schemas</h3>
+                    <ul class="mb-0">
+                        <li>Validated Microsoft TI, NB-06 and NB-01 KQL queries added by the client</li>
+                        <li>Notebooks aligned with the real column names returned by the tenant</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Client Validation in Azure ML</h3>
+                    <ul class="mb-0">
+                        <li>Client runs of each milestone against the acceptance criteria</li>
+                        <li>Fixes for the notebook import workflow and working directory in Azure ML</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The client received a working threat-hunting notebook suite on its Azure development tenant: one shared library and two analysis notebooks that analysts operate through parameters and review cells, without writing Python. Investigations that previously required pivoting across three Defender consoles become a single run that ends in an interactive timeline and, if confirmed, a Sentinel incident.
+            </p>
+            <p>
+                Each notebook stays usable when data is missing — no events, no MISP, no VirusTotal key, too little telemetry to train — and always explains what it skipped instead of failing.
+            </p>
+            <p>
+                From an engineering perspective, the project shows how I work in security tooling: building to a strict specification and acceptance criteria, questioning the specification where it was wrong, writing code that runs correctly in an environment I could not access directly, and treating partial failure and sparse data as normal operating conditions.
+            </p>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark'
+        });
+    </script>
+</body>
+</html>

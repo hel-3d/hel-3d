@@ -257,6 +257,9 @@
                         <p>
                             The project consists of two independent automation scenarios: a React-based registration flow and a full-cycle phone verification system with external API integrations.
                         </p>
+                        <p>
+                            It started as a paid test task. After it, the company engaged me for two more paid working days, during which the SMS verification pipeline was run against the live site and completed phone-verified registrations end to end.
+                        </p>
                         <p class="small-note mb-0">
                             The solution demonstrates production-level handling of unstable flows, including retry logic, debugging artifacts, and resilience to failures during multi-step verification processes.
                         </p>
@@ -290,7 +293,7 @@
 
                             <div class="meta-block">
                                 <span class="meta-label">Project Type</span>
-                                <p class="mb-0">Technical assessment / portfolio project</p>
+                                <p class="mb-0">Paid technical assessment, followed by a short paid engagement</p>
                             </div>
 
                             <div class="meta-block">
@@ -300,17 +303,17 @@
 
                             <div class="meta-block">
                                 <span class="meta-label">Status</span>
-                                <p class="mb-0">Completed · Portfolio case study</p>
+                                <p class="mb-0">Completed · Public repository</p>
                             </div>
 
                             <div class="meta-block">
                                 <span class="meta-label">Timeline</span>
-                                <p class="mb-0">1,5 days implementation</p>
+                                <p class="mb-0">Dec 2025 – Jan 2026 · test task + 2 days of paid work</p>
                             </div>
 
                             <div class="meta-block">
-                                <span class="meta-label">Budget</span>
-                                <p class="mb-0">Paid test + portfolio project</p>
+                                <span class="meta-label">Engagement</span>
+                                <p class="mb-0">Paid test task, then 2 paid working days</p>
                             </div>
 
                             <div class="project-actions">
@@ -319,7 +322,7 @@
                                    class="btn btn-outline-secondary"
                                    target="_blank"
                                    rel="noopener noreferrer">
-                                    GitHub
+                                    GitHub Repository
                                 </a>
 
                                 <a href="https://www.linkedin.com/in/helena-gusarevich/"
@@ -329,6 +332,10 @@
                                     LinkedIn
                                 </a>
                             </div>
+
+                            <p class="small-note mt-3 mb-0">
+                                Both tasks are published as an open repository with setup instructions and screenshots. API keys and proxy credentials are read from environment variables.
+                            </p>
                         </div>
                         <div class="info-box arch-card">
                             <h3 class="h5 mb-3">Architecture</h3>
@@ -345,15 +352,6 @@
 
                             <p class="small-note mt-3 mb-0">
                                 Two independent automation tasks covering dynamic registration flows and a full SMS verification pipeline with captcha solving, proxy auth, and failure diagnostics.
-                            </p>
-
-
-
-
-                            <img src="images/7.jpg" class="project-shot" alt="Project repository structure">
-
-                            <p class="small-note mb-0">
-                                Local project structure showing the two automation tasks, supporting assets, and environment-based configuration used in the repository.
                             </p>
 
                     </div>
@@ -516,6 +514,28 @@
             <p>
                 It also demonstrates the overlap between automation QA and backend-style integration work, where the goal is not just to click through a page, but to make a full verification pipeline work reliably under real conditions.
             </p>
+            <p>
+                During the paid working days the pipeline ran against the live site: it acquired numbers, passed captcha, received OTP codes and completed registrations, while every attempt was logged with its phone number, outcome and failure reason for review.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <div class="lead-card text-center">
+                <h2 class="section-title">View the Code</h2>
+
+                <p>
+                    Both automation tasks are available in a public GitHub repository, with setup instructions, an environment template and screenshots of each flow.
+                </p>
+
+                <div class="project-actions justify-content-center">
+                    <a href="https://github.com/hel-3d/automation-case-sms"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open automation-case-sms on GitHub
+                    </a>
+                </div>
+            </div>
         </div>
 
 
