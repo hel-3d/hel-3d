@@ -1,137 +1,120 @@
-# Elena Gusarevich | Python Backend Developer / Python Automation Engineer
+# Elena Gusarevich | Python Backend & Automation Engineer
 
-**Specialization:** Anti-bot systems, scraping pipelines, and production-grade automation systems  
-**Impact:** 9,000+ active users across bot infrastructure
-🟢 **Available for remote opportunities**
+**Focus:** cloud security automation, backend services, scraping & anti-bot pipelines, Telegram infrastructure  
+**Impact:** 10,800+ subscribers across bot-driven channels · 100+ users of my own SaaS · production Microsoft Sentinel workflows  
+🟢 **Available for remote contracts** · Uruguay (UTC−3)
 
 ---
 
 ## 💼 What I Do
 
-Python Backend Developer / Python Automation Engineer focused on backend automation, security workflows, API integrations, scraping infrastructure, and production Python systems.
+I build production-grade Python systems: asynchronous backend services, cloud security pipelines, data-extraction infrastructure and automation that keeps working when real-world data and third-party services don't.
 
-Experienced in building modular backend services, async processing pipelines, threat intelligence enrichment workflows, anti-bot automation, and resilient analytics systems.
+- **Security automation on Microsoft Azure** — Sentinel and Defender XDR analytics, KQL, MSTICPy, threat-intelligence enrichment, incident automation
+- **Backend services** — FastAPI, SQLAlchemy, PostgreSQL, Kafka, async workers, clean architecture (Ports & Adapters)
+- **Scraping & anti-bot automation** — SeleniumBase UC Mode, Playwright, proxy authentication, CAPTCHA and SMS verification flows
+- **Telegram products** — bots, userbots, paid subscriptions with Telegram Stars, multi-channel distribution
 
-Recently delivered Microsoft Sentinel automation projects involving MSTICPy, KQL orchestration, Azure ML notebooks, cross-domain correlation, Isolation Forest anomaly detection, SHAP explainability, and incident automation workflows.
-
-Strong in API debugging, HTTP session analysis, clean architecture, maintainable business logic, and production-ready automation solutions.
+I care about deterministic behaviour, idempotent processing, graceful degradation and test coverage — and I use AI-augmented development (Claude Code, Cursor) to move fast without lowering the bar.
 
 ---
 
 ## 💼 Work Experience
 
+### Python Security & Cloud Automation Engineer — Private Practice
+**Nov 2026 – Present** · Remote · Contract (B2B)
+
+- **Detection fine-tuning:** offline Python analytics pipeline that ingests, normalizes and evaluates historical Microsoft Sentinel and Defender XDR telemetry, ranks noisy rules and validates candidate exclusions against malicious overlap.
+- **Threat hunting automation:** cross-domain correlation notebooks in Azure ML with MSTICPy and KQL, multi-source IoC enrichment (MISP, VirusTotal) and incident creation.
+
 ### Python Backend Developer — QLAN
-**Jun 2026 – Present**
+**Jun 2026 – Oct 2026** · Remote · Full-time
 
-Python Backend Developer working on a production media processing and social-platform data extraction system.
-
-- **Backend Development:** Develop and maintain backend services for automated media processing, metadata extraction, and statistics collection across social media platforms.
-- **Data Processing:** Build asynchronous backend services and data-processing pipelines using FastAPI, SQLAlchemy, PostgreSQL, Kafka, and Alembic.
-- **Infrastructure:** Work with Docker, Kubernetes, Helm, Linux, MinIO/S3, and distributed worker infrastructure.
-- **Production Reliability:** Focus on production reliability, fault tolerance, graceful recovery, and maintainability.
+- Asynchronous backend services and data-processing pipelines for automated media extraction across social platforms (FastAPI, SQLAlchemy, PostgreSQL, Kafka).
+- Containerized microservice infrastructure with Docker, Kubernetes, Helm, Linux and MinIO/S3.
+- Focus on production reliability, graceful error recovery and maintainability.
 
 ### Python Automation Engineer | Backend Developer — Private Practice
-**Jan 2024 – Jun 2026**
+**Jan 2024 – Jun 2026** · Remote · Contract
 
-- **Backend Automation:** Built automation systems for data extraction, API integrations, background processing, and structured reporting.
-- **Scraping & Anti-Bot Systems:** Developed scraping and browser automation workflows for dynamic websites, protected flows, and API-based data extraction.
-- **HTTP/API Debugging:** Investigated complex request issues involving sessions, cookies, headers, payload structure, redirects, and browser-vs-script differences.
-- **Infrastructure:** Deployed and maintained Linux VPS environments using Docker, Systemd services, background workers, and MongoDB/PostgreSQL storage.
-- **Architecture:** Designed and developed modular Python systems with repository patterns, service layers, async workers, idempotent processing, and automated test coverage.
+- **Security automation:** modular phishing analysis engine for Microsoft Sentinel incident response with multi-source reputation checks and deterministic risk scoring.
+- **Bot ecosystem:** distributed system of Telegram bots (Aiogram, Telethon) with fuzzy deduplication, content filtering, paid subscriptions and Linux/Docker deployment.
+- **Anti-bot automation:** browser automation pipelines with SeleniumBase UC Mode and runtime-generated Chrome extensions for authenticated proxies.
+- **SaaS backend:** Ritma, a privacy-first FemTech platform with Telegram and Android clients.
+- **Data engineering:** ETL pipelines for US automotive auction data from dynamic websites and PDFs into Excel and Google Sheets.
+
+### Art Lead 3D | Senior Environment Artist — NDA Online PC Game
+**Mar 2024 – Oct 2024**
+
+- Led a cross-functional team of 15 specialists: production workflows, technical documentation, estimation and delivery schedules.
+- Built Python automation tools for Blender and Unreal Engine.
 
 ---
 
 ## 🛠 Technical Skills
 
-Experienced in building backend automation systems, analytics pipelines, data-processing workflows, asynchronous services, and production-ready distributed systems for integration-heavy applications.
-
-### Core
-Python 3.10+, AsyncIO, OOP, Clean Architecture
-
-### Backend
-FastAPI, SQLAlchemy, Alembic, REST APIs, async workers, service layer architecture, repository pattern, background jobs
-
-### HTTP & APIs
-requests, httpx, REST APIs, sessions, cookies, headers
-
-### Automation
-SeleniumBase (UC Mode), Playwright, browser automation, scraping infrastructure, HTTP session debugging
-
-### Data & Messaging
-PostgreSQL, MongoDB, Kafka, ETL pipelines, data processing, asynchronous processing
-
-### Cloud & Infrastructure
-Docker, Kubernetes, Helm, Linux, Systemd, MinIO/S3, Azure ML
-
-### Languages
-Python, SQL, JavaScript, Kotlin
-
-### Mobile
-Android, Gradle
-
-### Security & Threat Intelligence
-MSTICPy, WHOIS, DNSBL, GeoIP, URLhaus, MalwareBazaar
-
-### Analytics
-pandas, Plotly, SHAP, Isolation Forest, merge_asof
-
-### Analytics & Automation
-anomaly detection, structured analytics, risk scoring, decision workflows
-
-### Testing
-pytest, pytest-asyncio, pytest-cov, integration testing
+| Area | Tools |
+| :--- | :--- |
+| **Core** | Python 3.10+, AsyncIO, OOP, Clean Architecture |
+| **Backend** | FastAPI, SQLAlchemy, Alembic, REST APIs, async workers, service layer, repository pattern |
+| **Data & Messaging** | PostgreSQL, MongoDB, Kafka, Redis, ETL pipelines, background jobs |
+| **Cloud & DevOps** | Microsoft Azure, Azure Functions, Azure ML, Docker, Kubernetes, Helm, Linux, Systemd, CI/CD |
+| **Microsoft Security** | Microsoft Sentinel, Defender XDR, KQL (Kusto), MSTICPy, Threat Hunting, MITRE ATT&CK |
+| **Threat Intelligence** | MISP, VirusTotal API, Abuse.ch, URLhaus, MalwareBazaar, WHOIS, DNSBL, GeoIP |
+| **Analytics & ML** | pandas, Plotly, SHAP, Isolation Forest, `merge_asof`, Streamlit, risk scoring |
+| **Automation & Web** | SeleniumBase (UC Mode), Playwright, scraping infrastructure, session handling |
+| **Telegram** | Aiogram 3, Telethon, python-telegram-bot, Telegram Stars payments |
+| **Mobile** | Kotlin, Jetpack Compose, Android, WorkManager |
+| **Testing & AI** | pytest, pytest-asyncio, pytest-cov (90%+), Claude Code, Cursor, LLM validation |
+| **Languages** | Python, SQL, Bash, Kotlin, JavaScript, basic Go |
 
 ---
 
 ## 🚀 Featured Projects
 
-### 🛡 [Email Analysis Engine (Microsoft Sentinel)](https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html)
-**Problem:** Need automated phishing analysis in security incidents  
-**Solution:** Modular Python engine with authentication checks, threat intelligence, and scoring  
-**Impact:** Used in production security workflow for automated incident analysis  
-**Tech:** Python, APIs, WHOIS, DNSBL, GeoIP, URLhaus, MalwareBazaar
+Full case studies live in my [portfolio](https://hel-3d.github.io/hel-3d/projects.html).
 
-### 🧠 Microsoft Sentinel Threat Hunting Notebooks
-**Problem:** Need scalable analytics and correlation workflows for Microsoft Sentinel and XDR threat hunting.  
-**Solution:** Python analytics components running in Azure ML with KQL orchestration, threat intelligence enrichment, cross-domain correlation, and anomaly detection.  
-**Impact:** Resilient threat hunting workflows with automated enrichment, cross-domain attack correlation, Isolation Forest anomaly detection, SHAP explainability, and analyst-oriented risk scoring.  
-**Tech:** Python, MSTICPy, pandas, Azure ML, SHAP, Isolation Forest, KQL
+### 🧠 [Threat Hunting Notebook Suite for Microsoft Sentinel & XDR](https://hel-3d.github.io/hel-3d/projects/projects_sentinel_threat_hunting_notebooks.html)
+**Problem:** Analysts traced attacks by hand across three Defender consoles.  
+**Solution:** Azure ML notebooks that correlate Email > Endpoint > Cloud events per account with time-bounded `merge_asof()` joins, map them to MITRE ATT&CK, enrich IoCs (MISP > Microsoft TI > VirusTotal) and detect anomalies with Isolation Forest + SHAP.  
+**Impact:** Both milestones approved by the client on first submission; validated on 117,000+ real telemetry events.  
+**Tech:** Python, Azure ML, MSTICPy, KQL, pandas, scikit-learn, SHAP, Plotly, PyMISP
 
-### [💚 Ritma — Cross-Platform Notification Platform](https://hel-3d.github.io/hel-3d/projects/projects_ritma_notification_engine_saas.html)
-**Problem:** Existing cycle tracking apps often compromise privacy, lack flexible notification logic, and are difficult to extend into scalable multi-platform systems.  
-**Solution:** Rebuilt an MVP into a modular backend platform with repository pattern, service layer, isolated adapters, background workers, and timezone-safe event modeling.  
-**Impact:** 784 automated tests | 91% test coverage | Partner-aware notification system with customizable delivery logic and async processing architecture  
-**Tech:** Python, AsyncIO, MongoDB, Docker, Kotlin, Android, repository pattern, background workers
+### 🛡 [Email Analysis Engine for Microsoft Sentinel](https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html)
+**Problem:** Suspicious emails in Sentinel incidents needed automated phishing analysis.  
+**Solution:** Azure-agnostic Python engine with SPF/DKIM/DMARC checks, WHOIS, DNSBL, GeoIP, SafeLinks unwrapping, homoglyph detection, URLhaus/MalwareBazaar and config-driven scoring.  
+**Impact:** Deployed in the client's Sentinel automation pipeline · 87% test coverage · 5.0 Upwork review  
+**Tech:** Python, Azure Functions, Logic Apps, dnspython, geoip2, rapidfuzz, pytest
 
-### [🔐 SMS Verification & Anti-Bot Bypass System](https://github.com/hel-3d/automation-case-sms)
-**Problem:** Automated registration blocked by Cloudflare and Incapsula  
-**Solution:** Custom Chrome Extension for proxy authentication + human behavior emulation  
-**Impact:** 99% success rate on React SPAs with dynamic protection  
-**Tech:** SeleniumBase (UC Mode), Manifest V3, RuCaptcha API, Proxy rotation
+### 💚 [Ritma — Privacy-First Cycle Tracking SaaS & Android App](https://hel-3d.github.io/hel-3d/projects/projects_ritma_notification_engine_saas.html)
+**Problem:** Cycle trackers rarely respect privacy or support partner-aware notifications.  
+**Solution:** Hexagonal backend with shared use cases behind a FastAPI gateway and a Telegram adapter; native offline-first Android client with an encrypted outbox and idempotent sync.  
+**Impact:** Live on [Google Play](https://play.google.com/store/apps/details?id=com.ritma.app) and [Telegram](https://t.me/RitmaOn_bot) · 965 backend + 87 Android tests · 90% coverage · EN/ES/RU  
+**Tech:** Python, FastAPI, AsyncIO, MongoDB, Docker, Kotlin, Jetpack Compose, WorkManager
 
-### [🤖 High-Load Telegram Bot Ecosystem](https://t.me/works_gamedev)
-**Problem:** Manual job posting distribution across 20+ Telegram channels  
-**Solution:** Distributed automation system with Telegram as interface layer 
-**Impact:** 9,000+ active users | 80%+ filtering accuracy | Zero downtime  
-**Tech:** Python, Aiogram 3, Telethon, MongoDB, Docker, systemd
+### 🤖 [GameDev Vacancy Distribution Bots](https://hel-3d.github.io/hel-3d/projects/projects_gamedev_vacancy_distribution_bots.html)
+**Problem:** GameDev vacancies are scattered across dozens of noisy Telegram channels.  
+**Solution:** Telethon ingestion with filtering and fuzzy deduplication, moderated publishing, and a paid personal feed with keyword filters and Telegram Stars subscriptions.  
+**Impact:** 5,300+ subscribers on [Telegram](https://t.me/works_gamedev) · 5,500+ members on [VK](https://vk.ru/works_gamedev)  
+**Tech:** Python, Aiogram 3, Telethon, PostgreSQL, asyncpg, Telegram Stars
 
-### [🚗 AI-Powered Vehicle Data Pipeline](https://github.com/hel-3d/carlocate-city-parser)
-**Problem:** Extracting vehicle auction data from protected websites and PDFs  
-**Solution:** Multi-stage ETL with AI extraction, VIN validation, and mobile browser emulation  
-**Impact:** Automated processing of 1,000+ records/day | Bypassed CAPTCHA protection  
-**Tech:** Python, Gemini API, Playwright, Appium, NHTSA VPIC API, Google Sheets
+### 📥 [Hel_inst_bot — Social Media Downloader for Telegram](https://hel-3d.github.io/hel-3d/projects/projects_hel_media_downloader_bot.html)
+**Problem:** Sharing social-media content in Telegram means sending links people can't open.  
+**Solution:** Platform-specific handlers with a shared delivery layer for 13 platforms, in private chats and as a group administrator.  
+**Impact:** Live at [@Hel_inst_bot](https://t.me/Hel_inst_bot) · continuously maintained  
+**Tech:** Python, Telegram Bot API, yt-dlp, gallery-dl, Instaloader
 
-### [📥 Multi-Platform Media Downloader Bot](https://t.me/Hel_inst_bot)
-**Problem:** Users need unified tool for downloading from Instagram, TikTok, X, LinkedIn  
-**Solution:** Modular handler architecture with smart fallback chain (yt-dlp → API → metadata)  
-**Impact:** Active production bot with media group support and broadcast system  
-**Tech:** Python, pyTelegramBotAPI, Instaloader, yt-dlp, Selenium
+### 🔐 [Registration & SMS Verification Automation](https://hel-3d.github.io/hel-3d/projects/projects_bot_protection_sms_verification_automation.html)
+**Problem:** Automating registration on protected React SPAs with phone verification.  
+**Solution:** SeleniumBase UC Mode, JavaScript-driven React inputs, runtime Manifest V3 proxy extension, RuCaptcha and CoreCluster OTP polling with failure artifacts.  
+**Impact:** Paid test task followed by paid work on the live pipeline · [open repository](https://github.com/hel-3d/automation-case-sms)  
+**Tech:** Python, Selenium, SeleniumBase, RuCaptcha API, CoreCluster API
 
-### [🧠 LangGraph Chatbot with Tool Calling](https://github.com/hel-3d/langgraph-timebot)
-**Problem:** Need stateless AI assistant with function execution  
-**Solution:** LangGraph state machine with OpenAI tool integration  
-**Impact:** Foundation for AI-assisted automation tools  
-**Tech:** Python, LangGraph, LangChain, OpenAI GPT-4o, Pydantic
+### 🎯 [Telegram Promo Campaign Bot (Lunar Hare)](https://hel-3d.github.io/hel-3d/projects/projects_telegram_promo_campaign_bot_lunar_hare.html)
+**Problem:** An offline retail activation needed abuse-resistant reward delivery.  
+**Solution:** QR > photo upload > AI photo verification > channel subscription check > one-time promo code.  
+**Impact:** Ran live for the campaign on my own server · [open repository](https://github.com/hel-3d/promo-campaign-telegram-bot)  
+**Tech:** Python, aiogram, SQLite, OpenAI API
 
 ---
 
@@ -143,13 +126,13 @@ pytest, pytest-asyncio, pytest-cov, integration testing
 
 ---
 
-## 💡 What Makes Me Different
+## 💡 How I Work
 
-✅ **Production mindset:** Every project designed for fault tolerance, logging, and restart safety  
-✅ **Anti-bot expertise:** Deep knowledge of browser automation, CAPTCHA solving, and proxy management  
-✅ **Full-stack approach:** From Selenium scripts to Dockerized microservices with MongoDB  
-✅ **Technical leadership:** 5+ years managing teams and documenting complex systems  
-✅ **Business-oriented:** Focus on metrics, uptime, and scalable architecture
+✅ **Production mindset** — idempotent processing, restart safety, logging and graceful degradation by default  
+✅ **Specification-driven** — I build to acceptance criteria, and flag where the spec itself is wrong  
+✅ **Tested** — up to 90%+ coverage on core logic, with tests built from real-world edge cases  
+✅ **Security-aware** — no secrets in code, least-privilege access, privacy-first data handling  
+✅ **Leadership background** — led a 15-person cross-functional team before moving into engineering
 
 ---
 
@@ -159,15 +142,16 @@ pytest, pytest-asyncio, pytest-cov, integration testing
   <img src="Screenshot_upwork.png" width="600">
 </p>
 
-## 📫 Let's Connect
-
 ---
+
+## 📫 Let's Connect
 
 💼 **LinkedIn:** [linkedin.com/in/helena-gusarevich](https://www.linkedin.com/in/helena-gusarevich/)  
 📧 **Email:** hel.async.dev@gmail.com  
-💬 **Telegram:** @Hel_inst  
+💬 **Telegram:** [@Hel_inst](https://t.me/Hel_inst)  
 🌐 **Portfolio:** [hel-3d.github.io/hel-3d](https://hel-3d.github.io/hel-3d/)  
-🌍 **Location:** Yerevan, Armenia (UTC+4) | Open to relocation
+📄 **Resume:** [PDF](https://hel-3d.github.io/hel-3d/Elena_Gusarevich_Python_Automation_Engineer_Resume.pdf)  
+🌍 **Location:** Uruguay (UTC−3) · Remote worldwide
 
 ---
 <p align="center">
