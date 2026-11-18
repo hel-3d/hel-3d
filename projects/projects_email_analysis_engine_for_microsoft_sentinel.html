@@ -327,29 +327,29 @@
                             <h3 class="h5 mb-3">Architecture</h3>
 
                             <pre class="code-block">email-analysis-engine/
-                    ├── README.md
-                    ├── requirements.txt
-                    ├── scoring_config.json
-                    ├── protected_domains.txt
-                    ├── analyzer/
-                    │   ├── main.py
-                    │   ├── auth_check.py
-                    │   ├── whois_lookup.py
-                    │   ├── dnsbl_check.py
-                    │   ├── geoip_lookup.py
-                    │   ├── reverse_dns.py
-                    │   ├── urlhaus_check.py
-                    │   ├── malwarebazaar.py
-                    │   ├── homoglyph_check.py
-                    │   ├── disposable_check.py
-                    │   ├── scoring_engine.py
-                    │   └── utils.py
-                    ├── data/
-                    │   └── disposable_domains.txt
-                    └── tests/
-                        ├── fixtures/
-                        ├── module tests
-                        └── integration tests</pre>
+├── README.md
+├── requirements.txt
+├── scoring_config.json
+├── protected_domains.txt
+├── analyzer/
+│   ├── main.py
+│   ├── auth_check.py
+│   ├── whois_lookup.py
+│   ├── dnsbl_check.py
+│   ├── geoip_lookup.py
+│   ├── reverse_dns.py
+│   ├── urlhaus_check.py
+│   ├── malwarebazaar.py
+│   ├── homoglyph_check.py
+│   ├── disposable_check.py
+│   ├── scoring_engine.py
+│   └── utils.py
+├── data/
+│   └── disposable_domains.txt
+└── tests/
+    ├── fixtures/
+    ├── module tests
+    └── integration tests</pre>
 
                             <p class="small-note mt-3 mb-0">
                                 Modular Python architecture with isolated analysis components and a single <strong>analyze()</strong> entry point.

@@ -3,11 +3,717 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects_gamedev_vacancy_distribution_bots</title>
+    <title>GameDev Vacancy Distribution Bots — Elena Gusarevich</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <style>
+        .project-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-hero {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-main {
+            flex: 1 1 680px;
+        }
+
+        .project-side {
+            flex: 1 1 620px;
+        }
+
+        .project-side-grid {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.35);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            color: #f2f2f2;
+            margin: 0;
+        }
+
+        .arch-card {
+            height: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .project-side-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+        }
+
+        .project-title {
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 18px;
+        }
+
+        .meta-card {
+            background-color: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .meta-block {
+            margin-bottom: 18px;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #f2f2f2;
+            font-size: 0.92rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .lead-card {
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-box {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-page p,
+        .project-page li {
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+
+        .project-page ul {
+            padding-left: 1.2rem;
+        }
+
+        .project-shot {
+            width: 100%;
+            border-radius: 16px;
+            margin: 14px 0 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+        }
+
+        .back-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .small-note {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+        }
+
+        .mode-number {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.14);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
+        .architecture-diagram-card {
+            margin: 24px 0;
+            padding: 24px;
+            overflow-x: auto;
+            color: #e5e7eb;
+            background: #111318;
+            border: 1px solid #30343d;
+            border-radius: 12px;
+        }
+
+        .architecture-diagram-card h3 {
+            margin: 0 0 20px;
+            color: #f3f4f6;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            align-items: start;
+        }
+
+        .screenshot-grid .project-shot {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .project-title {
+                font-size: 1.9rem;
+            }
+
+            .project-hero {
+                flex-direction: column;
+            }
+
+            .project-side {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+
+            .info-grid,
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>projects_gamedev_vacancy_distribution_bots</h1>
-    <p>This page was auto-generated from portfolio_block.html.</p>
-    <p>Source URL: <a href="https://hel-3d.github.io/hel-3d/projects/projects_gamedev_vacancy_distribution_bots.html">https://hel-3d.github.io/hel-3d/projects/projects_gamedev_vacancy_distribution_bots.html</a></p>
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
+        <source src="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+
+    <div class="page-content project-page py-4 px-3 px-md-4">
+
+        <div class="back-row">
+            <a href="../projects.html" class="btn btn-outline-secondary">← Back to Projects</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Main Page</a>
+        </div>
+
+        <div class="container mb-4">
+            <div class="project-hero">
+                <div class="project-main">
+
+                    <h1 class="project-title">GameDev Vacancy Distribution Bots — Job Aggregator with Moderation and Paid Personal Feeds</h1>
+
+                    <div class="project-subtitle">
+                        A Telegram service that collects game-industry vacancies from 14 public channels in real time, cleans and deduplicates them, publishes curated posts to a 5,300+ subscriber Telegram channel and a 5,500+ member VK community, and delivers keyword-filtered vacancies to paying subscribers through a private bot.
+                    </div>
+
+                    <div class="lead-card">
+                        <p>
+                            GameDev job postings in Telegram are scattered across dozens of channels, mixed with résumés, course ads, giveaways and cross-promotion. Following all of them by hand is noisy, and the same vacancy is often reposted in several places.
+                        </p>
+                        <p>
+                            I built a four-process system around that problem. A Telethon userbot listens to the source channels and turns every new post into a clean queue item. A public publisher bot sends each item to an administrator for one-tap moderation and then posts it to the <strong>@works_gamedev</strong> channel with voting buttons. A private bot sells access through <strong>Telegram Stars</strong> and lets each subscriber define include and exclude keywords, while a separate private publisher delivers only the matching vacancies to their direct messages.
+                        </p>
+                        <p>
+                            In a later hardening pass I moved all secrets to environment variables, made publishing and payments idempotent, and replaced fragile text-cleaning logic that could corrupt usernames and links inside vacancies.
+                        </p>
+                        <p>
+                            The curated stream feeds an audience of more than 10,000 people: <strong>5,300+</strong> subscribers of the Telegram channel and <strong>5,500+</strong> members of the VK community <em>Работа Вакансии GameDev</em>, both filled by this parser.
+                        </p>
+                        <p class="small-note mb-0">
+                            Outcome: one ingestion pipeline feeding two independent products — a moderated public channel and a monetized personal vacancy feed — without duplicate posts, double-charged subscriptions or queues blocked by inactive users.
+                        </p>
+                    </div>
+
+                    <div class="project-side-grid">
+                        <div class="meta-card">
+                            <div class="meta-block">
+                                <span class="meta-label">Category</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">bots</span>
+                                    <span class="tag-pill">automation</span>
+                                    <span class="tag-pill">content aggregation</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Stack</span>
+                                <div class="tag-list">
+                                    <span class="tag-pill">python</span>
+                                    <span class="tag-pill">asyncio</span>
+                                    <span class="tag-pill">telethon</span>
+                                    <span class="tag-pill">aiogram 3</span>
+                                    <span class="tag-pill">postgresql</span>
+                                    <span class="tag-pill">asyncpg</span>
+                                    <span class="tag-pill">telegram stars</span>
+                                    <span class="tag-pill">fuzzywuzzy</span>
+                                    <span class="tag-pill">python-dotenv</span>
+                                    <span class="tag-pill">pytest</span>
+                                    <span class="tag-pill">file-based queues</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Project Type</span>
+                                <p class="mb-0">My project</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Role</span>
+                                <p class="mb-0">Sole creator, developer, and maintainer</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Status</span>
+                                <p class="mb-0">Active · Public channels and private bot in operation</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Audience</span>
+                                <p class="mb-0">5,300+ Telegram subscribers · 5,500+ VK community members</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Components</span>
+                                <p class="mb-0">Channel parser · Public publisher · Private bot · Private publisher · Trial-expiry broadcast</p>
+                            </div>
+
+                            <div class="meta-block">
+                                <span class="meta-label">Monetization</span>
+                                <p class="mb-0">14-day free trial · 300 ⭐ for one month · 250 ⭐/month auto-renewing subscription</p>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="https://t.me/works_gamedev"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Telegram Channel
+                                </a>
+
+                                <a href="https://vk.ru/works_gamedev"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    VK Community
+                                </a>
+
+                                <a href="https://t.me/publisher_private_bot"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Private Bot
+                                </a>
+
+                                <a href="https://github.com/hel-3d/gamedev_job_parser"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    GitHub
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/helena-gusarevich/"
+                                   class="btn btn-outline-secondary"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-box arch-card">
+                            <h3 class="h5 mb-3">Architecture</h3>
+
+                            <pre class="code-block">gamedev_job_parser/
+├── README.md
+├── requirements.txt
+├── .env.example
+├── run_parser.py
+├── app/
+│   ├── config.py
+│   ├── cv_parser.py
+│   ├── text_utils.py
+│   ├── publisher_bot.py
+│   ├── private_bot.py
+│   ├── publisher_private.py
+│   ├── send_expired_trial_broadcast.py
+│   └── db.py
+├── data/
+│   ├── queue_channel/
+│   ├── queue_channel_photos/
+│   ├── queue_private/
+│   ├── queue_private_photos/
+│   └── temp_photos/
+└── tests/
+    └── test_text_utils.py</pre>
+
+                            <p class="small-note mt-3 mb-0">
+                                One ingestion module feeds two file-based queues. Each queue is consumed by its own independent publisher, while subscriptions, filters and payments live in PostgreSQL.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Screenshots (add the files, then uncomment):
+                    <div class="screenshot-grid mt-4">
+                        <img src="images/22.jpg" class="project-shot" alt="Vacancy post in the @works_gamedev channel with voting buttons">
+                        <img src="images/23.jpg" class="project-shot" alt="Administrator moderation message with Publish and Reject buttons">
+                        <img src="images/24.jpg" class="project-shot" alt="Private bot menu with filters, status and Telegram Stars payment">
+                    </div>
+                    <p class="small-note">
+                        Public channel post, moderation flow, and the private subscriber bot.
+                    </p>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Two Delivery Channels</h2>
+
+            <p>
+                Every vacancy accepted by the parser is written to two independent queues. The same content therefore reaches two different audiences, each with its own delivery rules, pace and failure handling.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">1</span>Public Channels · 10,800+ Readers</h3>
+                    <ul class="mb-0">
+                        <li>The publisher bot checks its queue every 30 minutes and sends up to five new items to the administrator</li>
+                        <li>Each item arrives with <strong>✅ Publish</strong> and <strong>❌ Reject</strong> buttons</li>
+                        <li>Approved vacancies are posted to the channel with 👍 / 👎 voting, one vote per user</li>
+                        <li>Posts also carry links for adding a résumé and opening a candidate database</li>
+                        <li>The same curated vacancies fill the 5,500+ member VK community <em>Работа Вакансии GameDev</em></li>
+                        <li>Unmoderated items older than seven days are cleaned up automatically</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3"><span class="mode-number">2</span>Private Personal Feed</h3>
+                    <ul class="mb-0">
+                        <li>Users start a one-time 14-day trial or pay with Telegram Stars</li>
+                        <li>Each subscriber sets include keywords (e.g. <em>unity, 3d artist, qa</em>) and exclude keywords (e.g. <em>casino, nft, web3</em>)</li>
+                        <li>The private publisher checks its queue every five minutes and sends matching vacancies straight to DMs</li>
+                        <li>No include keywords means “send me everything”, minus the excluded words</li>
+                        <li>A status screen shows trial, paid period, access end date and auto-renewal state</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                The system is built as a pipeline of small, independent processes connected through files and a database rather than one large bot. The parser does not know how vacancies will be published, and the publishers do not know where vacancies came from. This makes it possible to restart, change or pause one part without touching the others.
+            </p>
+            <p>
+                Ingestion runs on a Telegram user account through Telethon, because bots cannot read arbitrary public channels. On start-up the parser resolves each configured channel, skips the ones that no longer exist, and subscribes to new messages from the rest. Only posts published on the current day (Moscow time) are processed, so a reconnect does not flood the queues with old vacancies.
+            </p>
+            <p>
+                Before a post is queued it goes through several filters: high-confidence markers of non-vacancy content (résumés, “looking for a job”, giveaways, free courses, game jams), removal of known cross-promotion lines from source channels, a minimum-length check, and fuzzy duplicate detection against the last 300 accepted posts. Photos are downloaded once and copied into each queue so the two publishers can delete their own copies independently.
+            </p>
+            <p>
+                The private side turns the same stream into a paid product. Access is a combination of a one-time trial and paid periods; payments are made in Telegram Stars, either as a single month or as a native Telegram auto-renewing subscription that the user can cancel from the bot menu.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">What I Built</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Core Features</h3>
+                    <ul>
+                        <li>Real-time vacancy ingestion from 14 GameDev, CG and Unity job channels via a Telethon userbot</li>
+                        <li>Content filtering: non-vacancy markers, promo-line removal, minimum length, same-day check</li>
+                        <li>Fuzzy duplicate detection (Levenshtein ratio ≥ 90) against a persisted cache of recent posts</li>
+                        <li>Recovery of hidden Telegram text-url links so “Apply here” labels keep their real URLs</li>
+                        <li>Dual file-based queues with atomic writes and source metadata (channel, message id, URL)</li>
+                        <li>Admin moderation flow with one-tap Publish / Reject buttons</li>
+                        <li>Public channel posts with one-vote-per-user like/dislike counters</li>
+                        <li>Private bot with trial, one-off and auto-renewing Telegram Stars payments</li>
+                        <li>Per-user include and exclude keyword filters stored in PostgreSQL</li>
+                        <li>Personal DM delivery with per-recipient tracking inside each queue item</li>
+                        <li>One-time “trial expired” broadcast with flood-control handling</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="h5 mb-3">Responsibilities</h3>
+                    <ul>
+                        <li>Designed the multi-process architecture and the queue contract between components</li>
+                        <li>Built the Telethon ingestion layer and the vacancy-cleaning rules</li>
+                        <li>Implemented both publishers with Telegram length-limit and media fallbacks</li>
+                        <li>Designed the PostgreSQL schema for users, access periods, filters and payment receipts</li>
+                        <li>Integrated Telegram Stars invoices, subscriptions and cancellation</li>
+                        <li>Made publishing and payment processing idempotent</li>
+                        <li>Moved secrets, IDs and runtime paths into configuration; separated runtime data from code</li>
+                        <li>Wrote tests for URL and punctuation handling in vacancy text</li>
+                        <li>Run and moderate the public channel and support subscribers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Technical Details</h2>
+
+            <div class="architecture-diagram-card">
+                <h3>System Architecture</h3>
+                <div class="mermaid">
+                    %%{init: {"theme": "dark"}}%%
+                    flowchart LR
+                        Sources["14 public job channels<br/>GameDev · CG · Unity · VR/AR"]
+                        Parser["cv_parser.py<br/>Telethon userbot<br/>filter · clean · dedupe"]
+                        QC[("queue_channel/<br/>JSON + photos")]
+                        QP[("queue_private/<br/>JSON + photos")]
+                        PubBot["publisher_bot.py<br/>every 30 min"]
+                        Admin["Administrator<br/>Publish / Reject"]
+                        Channel["@works_gamedev<br/>post + votes"]
+                        PrivPub["publisher_private.py<br/>every 5 min"]
+                        PrivBot["private_bot.py<br/>trial · Stars · filters"]
+                        DB[("PostgreSQL<br/>users · receipts")]
+                        Users["Subscribers<br/>DM feed"]
+                        VK["VK community<br/>Работа Вакансии GameDev"]
+
+                        Sources --> Parser
+                        Parser --> QC
+                        Parser --> QP
+                        QC --> PubBot
+                        PubBot --> Admin
+                        Admin -->|"approve"| PubBot
+                        PubBot --> Channel
+                        Channel -. "same curated stream" .-> VK
+                        QP --> PrivPub
+                        PrivPub -->|"active recipients + filters"| DB
+                        PrivPub --> Users
+                        Users <--> PrivBot
+                        PrivBot --> DB
+                </div>
+            </div>
+
+            <p>
+                Queue items are plain JSON files named by timestamp, source channel id and message id. They carry the cleaned text, an optional photo path and source metadata. Every write goes to a temporary file first and is then moved into place with <code>os.replace</code>, so a crash in the middle of a write never leaves a half-written item for a publisher to read.
+            </p>
+            <p>
+                The public publisher treats a queue file as a small state machine. A <code>_review_sent</code> flag prevents the same item from being sent to the administrator twice. After the channel post succeeds, the returned Telegram message id is written into the file <em>before</em> anything else happens — attaching the vote keyboard, saving votes, deleting the photo. If any of those secondary steps fail, the next run sees the stored message id and only finishes the cleanup instead of posting the vacancy again.
+            </p>
+            <p>
+                The private publisher loads the list of active recipients from PostgreSQL once per run and walks through the queue. Each item keeps a <code>delivered_to</code> list. Recipients whose filters do not match are marked as handled without a message; recipients who blocked the bot are marked inactive in the database. An item is deleted only when every current recipient has been handled, and partially delivered items are saved back so the next run continues where the previous one stopped.
+            </p>
+            <p>
+                Access is computed as the later of <code>trial_until</code> and <code>paid_until</code>. A new payment extends access from whichever of the two ends later, so paying during a trial adds the month on top of the remaining trial days. Every payment is first checked against the expected payload, currency (<code>XTR</code>) and amount, then recorded in a <code>payment_receipts</code> table keyed by Telegram's charge id inside a transaction with a row lock on the user.
+            </p>
+            <p>
+                Telegram's limits are handled explicitly in both publishers. If a photo caption is too long, the vacancy is sent as a text message; if the text itself is too long, it is trimmed to a safe length with a visible marker; if the photo cannot be sent, the post falls back to text only. Raw URLs in vacancies are converted into safe HTML links labeled “ссылка”, with all other text HTML-escaped.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Architecture / Workflow</h2>
+            <ul>
+                <li><strong>Step 1:</strong> The Telethon client resolves the configured job channels and subscribes to their new messages.</li>
+                <li><strong>Step 2:</strong> A new post is checked for today's date, its hidden links are restored, and Markdown is converted to plain text.</li>
+                <li><strong>Step 3:</strong> Posts with non-vacancy markers, empty text or two lines or fewer are skipped; known promo lines are removed.</li>
+                <li><strong>Step 4:</strong> The cleaned text gets the channel signature and is compared with recent posts for fuzzy duplicates.</li>
+                <li><strong>Step 5:</strong> The vacancy is written atomically to both queues, with a separate copy of the photo for each.</li>
+                <li><strong>Step 6:</strong> The public publisher sends new items to the administrator; approved ones are posted to @works_gamedev with voting buttons.</li>
+                <li><strong>Step 7:</strong> The private publisher matches each item against every active subscriber's keywords and sends it to their DMs.</li>
+                <li><strong>Step 8:</strong> Users manage trial, payment, auto-renewal and filters through the private bot; access data lives in PostgreSQL.</li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Challenges &amp; Solutions</h2>
+            <ul>
+                <li>
+                    <strong>Challenge:</strong> Removing source-channel ads with global <code>text.replace()</code> on short fragments such as “@for” sometimes cut pieces out of usernames, e-mails and application links inside real vacancies.<br>
+                    <strong>Solution:</strong> Replaced substring deletion with line-level rules: only whole lines that start with a known promo phrase, or promo lines that contain a known channel URL, are dropped.<br>
+                    <strong>Result:</strong> Contact details and application links in vacancies stay intact.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Many vacancies hide the application link behind text like “Apply here”. Reading only the visible text lost the URL completely.<br>
+                    <strong>Solution:</strong> Rebuilt Telegram text-url entities into Markdown and converted them to “label: url” before queuing.<br>
+                    <strong>Result:</strong> Every forwarded vacancy keeps a working link to apply.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> A period or closing bracket right after a URL was captured as part of the link, producing broken addresses.<br>
+                    <strong>Solution:</strong> Split trailing punctuation from URLs, keeping closing brackets only when they are balanced inside the URL itself; covered the cases with tests.<br>
+                    <strong>Result:</strong> Links such as <code>…/job.</code> and <code>…/a_(b)</code> are both rendered correctly.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> If attaching the vote keyboard failed after a successful channel post, a retry published the same vacancy again.<br>
+                    <strong>Solution:</strong> Persist the Telegram message id in the queue file immediately after sending and treat all later steps as resumable cleanup.<br>
+                    <strong>Result:</strong> Publishing is idempotent; a failed run never creates a duplicate post.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Telegram can deliver the same <code>successful_payment</code> update more than once, which could extend a subscription twice.<br>
+                    <strong>Solution:</strong> Validate payload, currency and amount, and record each charge id in a receipts table with <code>ON CONFLICT DO NOTHING</code> inside a transaction.<br>
+                    <strong>Result:</strong> Each payment extends access exactly once.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> A subscriber who blocked the bot never received the message, so the queue item was never considered delivered and stayed in the queue forever.<br>
+                    <strong>Solution:</strong> Treat a blocked chat as handled and mark the user inactive in the database.<br>
+                    <strong>Result:</strong> The private queue drains normally and inactive users no longer cost a request on every run.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The “trial expired” notice was sent again to the same users every time the script ran.<br>
+                    <strong>Solution:</strong> Added an <code>expired_notice_sent_at</code> column, set only after a successful send and reset when a trial starts.<br>
+                    <strong>Result:</strong> Each user gets the offer once; the script is safe to rerun.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Every queued post ends with the same channel footer. Fuzzy deduplication compared full texts, so two unrelated short vacancies scored around 90 — exactly the duplicate threshold — and a real vacancy could be dropped. After a restart, cached posts (stored on one line) also scored lower against fresh ones.<br>
+                    <strong>Solution:</strong> Deduplication now compares only the vacancy body, with the footer removed and whitespace normalized.<br>
+                    <strong>Result:</strong> In a test pair of different short vacancies the score fell from 90 to 22, while true reposts still match after a restart.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Private keyword filters were matched against the post <em>including</em> the footer, so an include word like “геймдев” matched every vacancy and an exclude word like “канал” silently blocked all of them.<br>
+                    <strong>Solution:</strong> Moved the footer into a shared constant and matched filters against the vacancy text only.<br>
+                    <strong>Result:</strong> Subscribers receive exactly what their keywords describe.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> The private publisher sent messages to all subscribers back to back with no flood-control handling, and an item could be retried forever for a user who kept failing for reasons other than blocking the bot.<br>
+                    <strong>Solution:</strong> Added a small delay between sends, a wait-and-retry on Telegram's <code>RetryAfter</code>, and expiry of undeliverable items after three days.<br>
+                    <strong>Result:</strong> Delivery stays within Telegram's rate limits and the private queue cannot grow without bound.
+                </li>
+
+                <li>
+                    <strong>Challenge:</strong> Tokens and IDs were hard-coded, runtime files were created relative to the current directory, and the publisher used a Linux-only lock that crashed on Windows.<br>
+                    <strong>Solution:</strong> Moved configuration to <code>.env</code>, anchored all runtime paths under <code>data/</code>, and made the process lock optional where <code>fcntl</code> is unavailable.<br>
+                    <strong>Result:</strong> The repository contains no secrets and every component starts the same way on Windows and Linux.
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mb-4">
+            <h2 class="section-title">Result</h2>
+            <p>
+                The project turned a noisy set of public job channels into two curated products: a moderated public channel for the GameDev community and a paid personal feed that delivers only the vacancies a subscriber actually cares about.
+            </p>
+            <p>
+                Both products are fed by the same ingestion pipeline, but each publisher can fail, restart or be changed independently. The hardening pass made the system safe to rerun: no duplicate posts, no double-counted payments, no repeated notices, and no queues held up by users who left.
+            </p>
+            <p>
+                Today the pipeline feeds a combined audience of more than 10,800 people across Telegram and VK, in addition to the paid personal feed.
+            </p>
+            <p>
+                From an engineering perspective, the project shows end-to-end ownership of a small Telegram product: userbot ingestion, text processing under messy real-world input, file-based queues with idempotent consumers, a relational access model, and native in-app payments.
+            </p>
+        </div>
+
+        <div class="container mb-4">
+            <div class="lead-card text-center">
+                <h2 class="section-title">Try It</h2>
+
+                <p>
+                    Follow the Telegram channel or the VK community for moderated GameDev vacancies, or open the private bot to start a free 14-day trial and set up your own keyword filters.
+                </p>
+
+                <div class="project-actions justify-content-center">
+                    <a href="https://t.me/works_gamedev"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open @works_gamedev
+                    </a>
+                    <a href="https://vk.ru/works_gamedev"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open VK Community
+                    </a>
+                    <a href="https://t.me/publisher_private_bot"
+                       class="btn btn-outline-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Open Private Bot
+                    </a>
+                </div>
+
+                <p class="small-note mt-3">
+                    Everything works inside Telegram — no separate app or registration is needed.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark'
+        });
+    </script>
 </body>
 </html>
