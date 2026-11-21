@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elena Gusarevich - Python Automation Engineer - Resume</title>
+    <title>Elena Gusarevich - Python Backend &amp; Automation Engineer - Resume</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123.mp4" as="video">
     <link rel="preload" href="https://hel-3d.github.io/hel-3d/123_mobile_optimized.mp4" as="video">
@@ -14,8 +14,275 @@
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="stylesheet" href="css/style.css">
 
-        </head >
-        <body >
+    <style>
+        /* ===== Resume sheet: mirrors the PDF layout ===== */
+        .cv-actions {
+            max-width: 860px;
+            margin: 0 auto 16px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-sheet {
+            max-width: 860px;
+            margin: 0 auto 48px;
+            padding: 56px 64px 60px;
+            background: rgba(12, 14, 20, 0.82);
+            color: #d8d8d8;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 18px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            font-family: "Segoe UI", "Segoe UI Variable", Calibri, "Helvetica Neue", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-sheet a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .cv-sheet a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        .cv-header {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .cv-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        .cv-role {
+            font-size: 21px;
+            font-weight: 500;
+            color: #b8c4d6;
+            margin: 4px 0 8px;
+        }
+
+        .cv-contacts {
+            font-size: 14px;
+            color: #f2f2f2;
+        }
+
+        .cv-contacts a {
+            font-weight: 600;
+        }
+
+        .cv-contacts .cv-dot {
+            color: #7d8794;
+            margin: 0 8px;
+        }
+
+        .cv-contacts .cv-location {
+            color: #9ea7b3;
+        }
+
+        /* Sections */
+        .cv-section {
+            margin-top: 18px;
+        }
+
+        .cv-section-title {
+            font-size: 15.5px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #dbe4f0;
+            margin: 0 0 8px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid rgba(219, 228, 240, 0.55);
+        }
+
+        .cv-sheet p {
+            margin: 0;
+            color: #d8d8d8;
+        }
+
+        /* Skills grid */
+        .cv-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 28px;
+            row-gap: 6px;
+            font-size: 14px;
+        }
+
+        .cv-skills b {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Jobs & projects */
+        .cv-entry {
+            margin-top: 12px;
+        }
+
+        .cv-entry:first-of-type {
+            margin-top: 6px;
+        }
+
+        .cv-entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .cv-entry-title {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .cv-entry-date {
+            font-weight: 600;
+            color: #c9d3e0;
+            white-space: nowrap;
+        }
+
+        .cv-company {
+            font-style: italic;
+            font-size: 16px;
+            color: #b8c4d6;
+        }
+
+        .cv-meta {
+            font-size: 14px;
+            color: #9ea7b3;
+        }
+
+        .cv-intro {
+            margin-top: 4px !important;
+        }
+
+        .cv-tech {
+            font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+            font-size: 12.5px;
+            color: #9ea7b3;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+
+        .cv-sheet ul {
+            margin: 4px 0 0;
+            padding-left: 22px;
+        }
+
+        .cv-sheet li {
+            margin: 2px 0;
+            color: #d8d8d8;
+        }
+
+        .cv-sheet li b {
+            color: #ffffff;
+        }
+
+        .cv-sheet code {
+            color: inherit;
+            font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+            font-size: 0.9em;
+        }
+
+        .cv-sheet li::marker {
+            color: #9ea7b3;
+        }
+
+        .cv-note {
+            margin-top: 10px !important;
+            font-size: 14px;
+            font-style: italic;
+            color: #9ea7b3 !important;
+        }
+
+        .cv-edu-sub {
+            color: #d8d8d8;
+        }
+
+        @media (max-width: 760px) {
+            .cv-sheet {
+                padding: 32px 22px 36px;
+                font-size: 14.5px;
+            }
+
+            .cv-name {
+                font-size: 28px;
+            }
+
+            .cv-role {
+                font-size: 18px;
+            }
+
+            .cv-skills {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-entry-head {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .cv-tech {
+                display: block;
+                margin-left: 0;
+            }
+        }
+
+        @media print {
+            .background-video,
+            .video-vignette,
+            .site-header,
+            .cv-actions {
+                display: none !important;
+            }
+
+            body {
+                background: #ffffff !important;
+            }
+
+            .cv-sheet {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-width: none;
+                background: #ffffff;
+                border: none;
+                backdrop-filter: none;
+                color: #000000;
+            }
+
+            .cv-name { color: #1e293b; }
+            .cv-role, .cv-company { color: #334155; }
+            .cv-contacts { color: #0f172a; }
+            .cv-contacts .cv-dot { color: #595959; }
+            .cv-contacts .cv-location, .cv-meta, .cv-tech, .cv-note { color: #475569 !important; }
+            .cv-section-title { color: #1e293b; border-bottom-color: #1e293b; }
+            .cv-sheet p, .cv-sheet li, .cv-edu-sub, .cv-sheet li::marker { color: #000000; }
+            .cv-entry-title, .cv-skills b, .cv-sheet li b { color: #0f172a; }
+            .cv-entry-date { color: #1e293b; }
+
+            /* keep the desktop layout on paper */
+            .cv-skills { grid-template-columns: 1fr 1fr !important; }
+            .cv-entry-head { flex-direction: row !important; gap: 16px !important; }
+            .cv-tech { display: inline !important; margin-left: 10px !important; }
+            .cv-sheet { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
 
     <video autoplay muted loop playsinline class="background-video">
         <source src="https://hel-3d.github.io/hel-3d/123.mp4" type="video/mp4" media="(min-width: 769px)">
@@ -23,305 +290,208 @@
         Your browser does not support the video tag.
     </video>
     <div class="video-vignette"></div>
-        <!-- Главный контейнер -->
-    <div class="container text-center my-5">
+
+    <!-- Главный контейнер -->
+    <div class="container text-center my-5 site-header">
         <h1 class="display-4"> Elena Gusarevich (Hel)</h1>
-        <p class="lead">Python Automation Engineer | Scraping, APIs &amp; Anti-Bot Systems</p>
-        <p>Building production-grade automation systems for data workflows, scraping pipelines, and backend integrations.</p>
+        <p class="lead">Python Backend &amp; Automation Engineer</p>
         <!-- Навигационные кнопки -->
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg"> Home</a>
-            <a href="#" class="btn btn-disabled btn-lg"> Resume</a>
+            <a href="https://hel-3d.github.io/hel-3d/index.html" class="btn btn-outline-secondary btn-lg">Home</a>
+            <a href="#" class="btn btn-disabled btn-lg">Resume</a>
             <a href="https://hel-3d.github.io/hel-3d/projects.html" class="btn btn-outline-secondary btn-lg">Projects</a>
-            <a href="https://hel-3d.github.io/hel-3d/journal.html" class="btn btn-outline-secondary btn-lg"> Journal</a>
-            <a href="https://hel-3d.github.io/hel-3d/contact.html" class="btn btn-highlighted btn-lg"> Social & Contact</a>
+            <a href="https://hel-3d.github.io/hel-3d/journal.html" class="btn btn-outline-secondary btn-lg">Journal</a>
+            <a href="https://hel-3d.github.io/hel-3d/contact.html" class="btn btn-highlighted btn-lg">Social &amp; Contact</a>
         </div>
     </div>
 
-        <div class="container my-5" id="resume-container" >
+    <div class="cv-actions">
+        <a href="https://hel-3d.github.io/hel-3d/Elena_Gusarevich_Python_Automation_Engineer_Resume.pdf"
+           class="btn btn-outline-secondary"
+           download>
+            Download Resume (PDF)
+        </a>
+    </div>
 
+    <main class="cv-sheet">
 
-        <div class="resume-wrap">
-            <!-- LEFT COLUMN -->
-            <div class="left-column">
-                <div class="header">
-                    <h1>Elena Gusarevich</h1>
-                    <div class="subtitle">Python Backend Developer / Python Automation Engineer</div>
-                    <div class="contact-info">
-                        <a href="mailto:hel.async.dev@gmail.com">hel.async.dev@gmail.com</a> •
-                        <a href="https://www.linkedin.com/in/helena-gusarevich" target="_blank">LinkedIn</a> •
-                        <a href="https://github.com/hel-3d" target="_blank">GitHub</a> •
-                        Remote
-                    </div>
+        <header class="cv-header">
+            <h1 class="cv-name">Elena Gusarevich</h1>
+            <div class="cv-role">Python Backend &amp; Automation Engineer</div>
+            <div class="cv-contacts">
+                <a href="mailto:hel.async.dev@gmail.com">hel.async.dev@gmail.com</a><span class="cv-dot">•</span><a href="https://www.linkedin.com/in/helena-gusarevich/" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="cv-dot">•</span><a href="https://github.com/hel-3d" target="_blank" rel="noopener noreferrer">GitHub</a><span class="cv-dot">•</span><a href="https://hel-3d.github.io/hel-3d/" target="_blank" rel="noopener noreferrer">My site</a>
+                <span class="cv-location"><span class="cv-dot" style="margin-right:2px;">•</span>Remote Worldwide (UTC-3, Uruguay)</span>
+            </div>
+        </header>
 
-                    <a href="https://hel-3d.github.io/hel-3d/Elena_Gusarevich_Python_Automation_Engineer_Resume.pdf"
-                    download
-                    class="article-button resume-download">
-                        <img src="Screen_1.png" alt="Download CV">
-                        <div class="article-content">
-                            <h3 class="article-title">Download Resume (PDF)</h3>
-                        </div>
-                    </a>
+        <section class="cv-section">
+            <h2 class="cv-section-title">Professional Summary</h2>
+            <p>
+                Python Backend &amp; Automation Engineer focused on building production-grade services, cloud security pipelines, and high-concurrency data systems. Experienced in developing asynchronous architectures, API gateways, scraping ecosystems, and automated Microsoft Sentinel analytics. Strong in clean architecture (Ports &amp; Adapters), deterministic validation, integration testing (91%+ coverage), and AI-augmented development (Claude Code, Cursor).
+            </p>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">Technical Skills</h2>
+            <div class="cv-skills">
+                <div><b>Core:</b> Python 3.10+, AsyncIO, OOP, Clean Architecture</div>
+                <div><b>Backend:</b> FastAPI, SQLAlchemy, Alembic, REST APIs, async workers, service layer, repository pattern</div>
+
+                <div><b>Data &amp; Messaging:</b> PostgreSQL, MongoDB, Kafka, ETL pipelines, Redis, background jobs</div>
+                <div><b>Cloud &amp; DevOps:</b> Microsoft Azure, Azure Functions, Docker, Kubernetes, Helm, Linux, Systemd, CI/CD</div>
+
+                <div><b>Microsoft Security:</b> Microsoft Sentinel, Microsoft Defender XDR, KQL (Kusto), MSTICPy, Threat Hunting, MITRE ATT&amp;CK</div>
+                <div><b>Threat Intelligence:</b> MISP, VirusTotal API, Abuse.ch, URLhaus, MalwareBazaar, WHOIS, DNSBL, GeoIP</div>
+
+                <div><b>Automation &amp; Web:</b> SeleniumBase (UC Mode), Playwright, scraping infrastructure, anti-bot bypass, session handling</div>
+                <div><b>Analytics &amp; ML:</b> pandas, Plotly, SHAP, Isolation Forest, merge_asof, Streamlit, risk scoring</div>
+
+                <div><b>Testing &amp; AI:</b> pytest, pytest-asyncio, pytest-cov (91%+), Claude Code, Cursor, LLM validation</div>
+                <div><b>Languages:</b> Python, SQL, Bash, JavaScript, basic Go</div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">Work Experience</h2>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span class="cv-entry-title">Python Security &amp; Cloud Automation Engineer</span>
+                    <span class="cv-entry-date">Nov 2026 – Present</span>
                 </div>
-
-                <div class="section">
-                    <h3 class="section-title">Professional Summary</h3>
-                    <p>Python Backend Developer / Python Automation Engineer focused on backend automation, security workflows, API integrations, scraping infrastructure, and production Python systems.</p>
-                    <p>Experienced in building modular backend services, async processing pipelines, threat intelligence enrichment workflows, anti-bot automation, and resilient analytics systems.</p>
-                    <p>Recently delivered Microsoft Sentinel automation projects involving MSTICPy, KQL orchestration, Azure ML notebooks, cross-domain correlation, Isolation Forest anomaly detection, SHAP explainability, and incident automation workflows.</p>
-                    <p>Strong in API debugging, HTTP session analysis, clean architecture, maintainable business logic, and production-ready automation solutions.</p>
-                </div>
-
-                <div class="section">
-                    <h3 class="section-title">Core Expertise</h3>
-                    <p>Backend Development, Python Automation, Security Automation, API Debugging, HTTP Session Analysis, Distributed Systems, ETL Pipelines, Threat Intelligence Enrichment, Incident Automation, Async Processing, Background Workers, Integration Testing, Structured Analytics, Scraping Infrastructure, and Production Infrastructure.</p>
-                </div>
-
-                <div class="section">
-                    <h3 class="section-title">Technical Skills</h3>
-                    <p>Experienced in building backend automation systems, analytics pipelines, data-processing workflows,
-                        asynchronous services, and production-ready distributed systems for integration-heavy applications.</p>
-
-                    <ul>
-                        <li><b>Core:</b> Python 3.10+, AsyncIO, OOP, Clean Architecture</li>
-
-                        <li><b>Backend:</b> FastAPI, SQLAlchemy, Alembic, REST APIs,
-                            async workers, service layer architecture, repository pattern, background jobs</li>
-
-                        <li><b>HTTP &amp; APIs:</b> requests, httpx, REST APIs,
-                            sessions, cookies, headers</li>
-
-                        <li><b>Automation:</b> SeleniumBase (UC Mode), Playwright,
-                            browser automation, scraping infrastructure, HTTP session debugging</li>
-
-                        <li><b>Data &amp; Messaging:</b> PostgreSQL, MongoDB, Kafka,
-                            ETL pipelines, data processing, asynchronous processing</li>
-
-                        <li><b>Cloud &amp; Infra:</b> Docker, Kubernetes, Helm, Linux,
-                            Systemd, MinIO/S3, Azure ML</li>
-
-                        <li><b>Languages:</b> Python, SQL, JavaScript, Kotlin</li>
-
-                        <li><b>Mobile:</b> Android, Gradle</li>
-
-                        <li><b>Security &amp; TI:</b> MSTICPy, WHOIS, DNSBL, GeoIP,
-                            URLhaus, MalwareBazaar</li>
-
-                        <li><b>Analytics:</b> pandas, Plotly, SHAP,
-                            Isolation Forest, merge_asof</li>
-
-                        <li><b>Analytics &amp; Automation:</b> anomaly detection,
-                            structured analytics, risk scoring, decision workflows</li>
-
-                        <li><b>Testing:</b> pytest, pytest-asyncio, pytest-cov,
-                            integration testing</li>
-                    </ul>
-                </div>
-
-                <div class="section">
-                    <h3 class="section-title">Work Experience</h3>
-
-                    <div class="job">
-                        <h4>Python Backend Developer <span style="float:right; color:#b0b0b0; font-weight:500;">Jun 2026 – Present</span></h4>
-                        <div class="meta">QLAN</div>
-
-                        <div style="margin: 8px 0 10px; color: #d6d6d6;">
-                            Python Backend Developer working on a production media processing and social-platform data extraction system.
-                        </div>
-
-                        <ul>
-                            <li><b>Backend Development:</b> Develop and maintain backend services for automated media processing, metadata extraction, and statistics collection across social media platforms.</li>
-                            <li><b>Data Processing:</b> Build asynchronous backend services and data-processing pipelines using FastAPI, SQLAlchemy, PostgreSQL, Kafka, and Alembic.</li>
-                            <li><b>Infrastructure:</b> Work with Docker, Kubernetes, Helm, Linux, MinIO/S3, and distributed worker infrastructure.</li>
-                            <li><b>Production Reliability:</b> Focus on production reliability, fault tolerance, graceful recovery, and maintainability.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>Python Automation Engineer | Backend Developer <span style="float:right; color:#b0b0b0; font-weight:500;">Jan 2024 – Jun 2026</span></h4>
-                        <div class="meta">Private Practice</div>
-                        <ul>
-                            <li><b>Backend Automation:</b> Built automation systems for data extraction, API integrations, background processing, and structured reporting.</li>
-                            <li><b>Scraping &amp; Anti-Bot Systems:</b> Developed scraping and browser automation workflows for dynamic websites, protected flows, and API-based data extraction.</li>
-                            <li><b>HTTP/API Debugging:</b> Investigated complex request issues involving sessions, cookies, headers, payload structure, redirects, and browser-vs-script differences.</li>
-                            <li><b>Infrastructure:</b> Deployed and maintained Linux VPS environments using Docker, Systemd services, background workers, and MongoDB/PostgreSQL storage.</li>
-                            <li><b>Architecture:</b> Designed and developed modular Python systems with repository patterns, service layers, async workers, idempotent processing, and automated test coverage.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>Email Analysis Engine for Microsoft Sentinel <span class="project-tech">Python, Threat Intelligence, APIs, pytest</span> <span style="float:right; color:#b0b0b0; font-weight:500;">2026</span></h4>
-                        <ul>
-                            <li>Delivered a modular phishing analysis engine for Microsoft Sentinel incident automation.</li>
-                            <li>Integrated WHOIS, DNSBL, GeoIP, reverse DNS, URLhaus, MalwareBazaar, homoglyph detection, and structured scoring.</li>
-                            <li>Built contract-stable JSON input/output, graceful timeout handling, external JSON scoring config, and production-ready reporting.</li>
-                            <li>Validated the engine in a real security automation workflow with unit and integration test coverage above the required threshold.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>Threat Hunting Notebooks for Microsoft Sentinel &amp; XDR <span class="project-tech">Python, MSTICPy, pandas, Azure ML, SHAP</span> <span style="float:right; color:#b0b0b0; font-weight:500;">2026</span></h4>
-                        <ul>
-                            <li>Implemented Python analytics layers for Microsoft Sentinel and XDR threat hunting notebooks in Azure ML environments.</li>
-                            <li>Built KQL orchestration utilities, Sentinel incident automation, MISP integrations, VirusTotal caching, and threat enrichment workflows.</li>
-                            <li>Developed cross-domain attack correlation pipelines across email, endpoint, Safe Links, and cloud activity using pandas merge_asof().</li>
-                            <li>Implemented AI-assisted anomaly detection workflows using Isolation Forest, SHAP explainability, and analyst-oriented risk scoring systems.</li>
-                            <li>Designed resilient notebook flows with graceful handling of sparse telemetry, unavailable services, and partial-stage failures.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>Art Lead 3D | Senior Technical Artist <span style="float:right; color:#b0b0b0; font-weight:500;">Jan 2022 – Oct 2024</span></h4>
-                        <div class="meta">NDA Online PC Game / Game Studios</div>
-                        <ul>
-                            <li><b>Automation Scripts:</b> Developed Python tools for Blender and Unreal Engine to batch-process assets and reduce manual production work.</li>
-                            <li><b>Leadership:</b> Managed a cross-functional team of 15 specialists, including hiring, task estimation, documentation, and delivery control.</li>
-                            <li><b>Technical Pipeline:</b> Improved production workflows between artists, designers, and technical teams.</li>
-                        </ul>
-                    </div>
-
-                    <p style="font-size:13px; color:#a9a9a9; font-style:italic; margin-top:10px;">
-                        * Prior to 2022: Successful career in Design Engineering &amp; Art Management. Full history available on LinkedIn.
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h3 class="section-title">Key Projects</h3>
-
-                    <div class="job">
-                        <h4>Ritma - Cross-Platform Notification Platform <span class="project-tech">Python, AsyncIO, MongoDB, Docker, Kotlin, Android</span> <span style="float:right; color:#b0b0b0; font-weight:500;">2026</span></h4>
-                        <ul>
-                            <li>Rebuilt an MVP into a modular backend platform with repository pattern, service layer, isolated adapters, and background workers.</li>
-                            <li>Implemented timezone-safe event modeling, notification orchestration, partner-aware flows, custom messaging logic, recipient preferences, and phase-based delivery rules.</li>
-                            <li>Designed an adapter-based architecture supporting multiple client and messaging interfaces, with idempotent processing across asynchronous workflows.</li>
-                            <li>Built an Android adapter in Kotlin and released the application on Google Play, extending the backend platform to a production mobile client.</li>
-                            <li>Maintained a comprehensive automated test suite with 784 tests and 91% test coverage.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>SMS Verification &amp; Anti-Bot Bypass System <span class="project-tech">SeleniumBase, Manifest V3, API, Proxy Auth</span> <span style="float:right; color:#b0b0b0; font-weight:500;">2025</span></h4>
-                        <ul>
-                            <li>Engineered a browser automation solution for protected registration flows using SeleniumBase UC Mode and custom Chrome extensions.</li>
-                            <li>Handled proxy authentication, CAPTCHA-solving services, SMS verification APIs, and React SPA input events.</li>
-                            <li>Improved automation reliability by emulating realistic browser behavior and debugging request/session issues.</li>
-                        </ul>
-                    </div>
-
-                    <div class="job">
-                        <h4>Microsoft Sentinel Threat Hunting Notebooks <span class="project-tech">Python, MSTICPy, Azure ML, pandas</span> <span style="float:right; color:#b0b0b0; font-weight:500;">2026</span></h4>
-                        <ul>
-                            <li>Built Python analytics components for Microsoft Sentinel XDR threat hunting workflows in Azure ML.</li>
-                            <li>Implemented cross-domain correlation, KQL utilities, threat intelligence enrichment, and anomaly-detection support tooling.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3 class="section-title">Education</h3>
-                    <div class="job">
-                        <h4>Russian Academy of Crafts <span style="float:right; color:#b0b0b0; font-weight:500;">2013 – 2014</span></h4>
-                        <div class="meta">Artistic Forging (Third-class Artisan)</div>
-                    </div>
-                    <p>Additional self-directed specialization in Python backend development, automation engineering, scraping systems, API integrations, Linux infrastructure, and production automation.</p>
-                </div>
+                <div class="cv-company">Private Practice / Independent Contractor</div>
+                <div class="cv-meta">Remote (Global Clients) · Based in Uruguay · Contract (B2B)</div>
+                <p class="cv-intro">Developing enterprise cloud security analytics, automation pipelines, and deterministic AI validation engines on Microsoft Azure.</p>
+                <ul>
+                    <li><b>Detection Fine-Tuning:</b> Engineering an offline Python analytics pipeline to ingest, normalize, and evaluate historical Microsoft Sentinel and Defender XDR telemetry, ranking noisy rules and validating candidate exclusions against malicious overlap.</li>
+                    <li><b>Threat Hunting Automation:</b> Developing cross-domain correlation notebooks in Azure ML via MSTICPy and KQL, automating multi-source IoC enrichment (MISP, VirusTotal) and incident creation.</li>
+                </ul>
             </div>
 
-            <!-- RIGHT COLUMN -->
-            <div class="right-column">
-            <div class="photo" style="background-image: url('TmUz.jpg'); background-position: center 30%;"></div>
-
-                <h3 class="section-title">Technical Skills</h3>
-                <ul class="skills">
-                    <li>Python 3.10+</li>
-                    <li>AsyncIO</li>
-                    <li>OOP</li>
-                    <li>Clean Architecture</li>
-                    <li>FastAPI</li>
-                    <li>SQLAlchemy</li>
-                    <li>Alembic</li>
-                    <li>REST APIs</li>
-                    <li>requests</li>
-                    <li>httpx</li>
-                    <li>sessions</li>
-                    <li>cookies</li>
-                    <li>headers</li>
-                    <li>SeleniumBase (UC Mode)</li>
-                    <li>Playwright</li>
-                    <li>browser automation</li>
-                    <li>scraping infrastructure</li>
-                    <li>HTTP session debugging</li>
-                    <li>SQL</li>
-                    <li>JavaScript</li>
-                    <li>Kotlin</li>
-                    <li>Android</li>
-                    <li>Gradle</li>
-                    <li>async workers</li>
-                    <li>service layer architecture</li>
-                    <li>repository pattern</li>
-                    <li>background jobs</li>
-                    <li>PostgreSQL</li>
-                    <li>MongoDB</li>
-                    <li>Kafka</li>
-                    <li>ETL pipelines</li>
-                    <li>data processing</li>
-                    <li>asynchronous processing</li>
-                    <li>Docker</li>
-                    <li>Kubernetes</li>
-                    <li>Helm</li>
-                    <li>Linux</li>
-                    <li>Systemd</li>
-                    <li>MinIO/S3</li>
-                    <li>Azure ML</li>
-                    <li>MSTICPy</li>
-                    <li>WHOIS</li>
-                    <li>DNSBL</li>
-                    <li>GeoIP</li>
-                    <li>URLhaus</li>
-                    <li>MalwareBazaar</li>
-                    <li>pandas</li>
-                    <li>Plotly</li>
-                    <li>SHAP</li>
-                    <li>Isolation Forest</li>
-                    <li>merge_asof</li>
-                    <li>anomaly detection</li>
-                    <li>structured analytics</li>
-                    <li>risk scoring</li>
-                    <li>decision workflows</li>
-                    <li>pytest</li>
-                    <li>pytest-asyncio</li>
-                    <li>pytest-cov</li>
-                    <li>integration testing</li>
-                </ul>
-
-                <h3 class="section-title">Core Expertise</h3>
-                <ul class="skills">
-                    <li>Backend Development</li>
-                    <li>Python Automation</li>
-                    <li>Security Automation</li>
-                    <li>API Debugging</li>
-                    <li>HTTP Session Analysis</li>
-                    <li>Distributed Systems</li>
-                    <li>ETL Pipelines</li>
-                    <li>Threat Intelligence Enrichment</li>
-                    <li>Incident Automation</li>
-                    <li>Async Processing</li>
-                    <li>Background Workers</li>
-                    <li>Integration Testing</li>
-                    <li>Structured Analytics</li>
-                    <li>Scraping Infrastructure</li>
-                    <li>Production Infrastructure</li>
-                </ul>
-
-                <h3 class="section-title">Links</h3>
-                <ul class="skills">
-                    <li><a href="mailto:hel.async.dev@gmail.com" style="color:#ffffff; text-decoration:none;">Email</a></li>
-                    <li><a href="https://www.linkedin.com/in/helena-gusarevich" target="_blank" rel="noopener" style="color:#ffffff; text-decoration:none;">LinkedIn</a></li>
-                    <li><a href="https://github.com/hel-3d" target="_blank" rel="noopener" style="color:#ffffff; text-decoration:none;">GitHub</a></li>
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span class="cv-entry-title">Python Backend Developer</span>
+                    <span class="cv-entry-date">Jun 2026 – Oct 2026</span>
+                </div>
+                <div class="cv-company">QLAN</div>
+                <div class="cv-meta">Remote · Full-time</div>
+                <ul>
+                    <li>Developed asynchronous backend services and data-processing pipelines for automated media extraction across social platforms using FastAPI, SQLAlchemy, PostgreSQL, and Kafka.</li>
+                    <li>Managed containerized microservices infrastructure using Docker, Kubernetes, Helm, Linux, and MinIO/S3.</li>
+                    <li>Focused on production reliability, graceful error recovery, and system maintainability.</li>
                 </ul>
             </div>
-        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" > </script >
-        </body >
-        </html >
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span class="cv-entry-title">Python Automation Engineer | Backend Developer</span>
+                    <span class="cv-entry-date">Jan 2024 – Jun 2026</span>
+                </div>
+                <div class="cv-company">Private Practice</div>
+                <div class="cv-meta">Remote · Contract</div>
+                <ul>
+                    <li><b>Security Automation:</b> Built a modular phishing analysis engine for Microsoft Sentinel incident response workflows, implementing multi-source reputation checks and deterministic risk scoring.</li>
+                    <li><b>Distributed Bot Ecosystem:</b> Designed and maintained a distributed ecosystem of 3 Telegram bots using Aiogram and Telethon, serving 9,000+ users across 20+ channels. Implemented fuzzy-matching algorithms, automated content filtering, rate limiting, and Linux/Docker-based deployment.</li>
+                    <li><b>Anti-Bot Automation:</b> Engineered hybrid scraping pipelines using SeleniumBase UC Mode and custom Chrome extensions for protected registration and verification workflows, achieving a reported 99% success rate in the tested automation scenarios.</li>
+                    <li><b>SaaS Backend:</b> Designed and developed Ritma, a privacy-focused FemTech platform with MongoDB storage, complex timezone-aware date logic, notification workflows, and PDF report generation.</li>
+                    <li><b>Data Engineering:</b> Developed automated ETL pipelines for US automotive auction data, extracting information from dynamic websites and PDF documents and transforming it into structured datasets using Excel and Google Sheets API integrations.</li>
+                </ul>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span class="cv-entry-title">Art Lead 3D | Senior Environment Artist</span>
+                    <span class="cv-entry-date">March 2024 – Oct 2024</span>
+                </div>
+                <div class="cv-company">NDA Online PC Game / Game Studio</div>
+                <ul>
+                    <li>Led a cross-functional team of 15 specialists, coordinating production workflows, technical documentation, task estimation, and delivery schedules.</li>
+                    <li>Developed Python automation tools for Blender and Unreal Engine, batch-processing assets and streamlining repetitive production tasks.</li>
+                </ul>
+            </div>
+
+            <p class="cv-note">* Transitioned from 3D production and technical art into Python automation and backend engineering, building on a background in technical workflows, process optimization, and team leadership.</p>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">Key Projects</h2>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span><span class="cv-entry-title">AI-Assisted Detection Fine-Tuning Engine</span><span class="cv-tech">Python, pandas, Streamlit, Microsoft Sentinel, Defender XDR, Pytest</span></span>
+                    <span class="cv-entry-date">2026</span>
+                </div>
+                <ul>
+                    <li>Developed an offline Python analytics engine evaluating historical Sentinel and Defender XDR telemetry across rules, events, alerts, and incident outcomes.</li>
+                    <li>Built deterministic ranking algorithms and entity profiling to generate narrowly scoped tuning exclusions while calculating historical alert impact.</li>
+                    <li>Engineered safety verification algorithms to detect malicious overlap and flag inconclusive outcomes, preventing accidental alert suppression.</li>
+                    <li>Designed an interactive Streamlit review workspace with grounded AI explanations (Anthropic/OpenAI) and strict prompt-injection defenses.</li>
+                </ul>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span><a class="cv-entry-title" href="https://hel-3d.github.io/hel-3d/projects/projects_sentinel_threat_hunting_notebooks.html" target="_blank" rel="noopener noreferrer">Threat Hunting &amp; Cross-Domain Correlation Suite</a><span class="cv-tech">Python, Azure ML, MSTICPy, KQL, pandas, Plotly, Isolation Forest, SHAP</span></span>
+                    <span class="cv-entry-date">2026</span>
+                </div>
+                <ul>
+                    <li>Implemented the Python analytics layer for Microsoft Sentinel threat hunting notebooks operating inside Azure ML workspaces.</li>
+                    <li>Automated cross-domain attack correlation across email (MDO), endpoint processes (MDE), and cloud apps (MDCA) using time-bounded merge_asof() joins mapped to MITRE ATT&amp;CK.</li>
+                    <li>Built custom anomaly detection pipelines using Isolation Forest, accompanied by SHAP explainability and interactive Plotly timelines.</li>
+                    <li>Integrated multi-source IoC enrichment (MISP, VirusTotal API, Microsoft TI) with joblib disk caching and automated Sentinel incident creation.</li>
+                </ul>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span><a class="cv-entry-title" href="https://hel-3d.github.io/hel-3d/projects/projects_email_analysis_engine_for_microsoft_sentinel.html" target="_blank" rel="noopener noreferrer">Python Email Analysis Engine for Microsoft Sentinel</a><span class="cv-tech">Python, Azure Functions, Azure Logic Apps, Threat Intel, Pytest</span></span>
+                    <span class="cv-entry-date">2025–2026</span>
+                </div>
+                <ul>
+                    <li>Designed a modular Python email security engine with contract-stable JSON input/output for automated Microsoft Sentinel incident workflows.</li>
+                    <li>Implemented multi-vector analysis: SPF/DKIM/DMARC checks, WHOIS domain age, DNSBL lookups, SafeLinks unwrapping, homoglyph detection, and MalwareBazaar verification.</li>
+                    <li>Built a configurable deterministic risk scoring engine with structured security flags, timeout fallbacks, and comprehensive unit/integration test suites.</li>
+                </ul>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span><a class="cv-entry-title" href="https://hel-3d.github.io/hel-3d/projects/projects_ritma_notification_engine_saas.html" target="_blank" rel="noopener noreferrer">Ritma - Privacy-First SaaS Platform &amp; Mobile App</a><span class="cv-tech">Python, FastAPI, AsyncIO, MongoDB, Docker, Kotlin, Android</span></span>
+                    <span class="cv-entry-date">2026</span>
+                </div>
+                <ul>
+                    <li>Architected a modular SaaS backend following Clean Architecture (Ports &amp; Adapters, Repository pattern) with idempotent background workers.</li>
+                    <li>Implemented partner-aware notification orchestration, timezone-safe event state machines, and medical report generation without external tracking.</li>
+                    <li>Published the mobile client on Google Play (<a href="https://play.google.com/store/apps/details?id=com.ritma.app" target="_blank" rel="noopener noreferrer"><code>com.ritma.app</code></a>) and maintained an automated test suite with <b>784 tests and 91% coverage</b>.</li>
+                </ul>
+            </div>
+
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span><a class="cv-entry-title" href="https://hel-3d.github.io/hel-3d/projects/projects_bot_protection_sms_verification_automation.html" target="_blank" rel="noopener noreferrer">Enterprise Scraping &amp; Anti-Bot Bypass System</a><span class="cv-tech">Python, SeleniumBase UC Mode, Manifest V3, WebSockets, Proxies</span></span>
+                    <span class="cv-entry-date">2025</span>
+                </div>
+                <ul>
+                    <li>Engineered high-reliability browser automation pipelines bypassing enterprise anti-bot solutions (Cloudflare Turnstile, Incapsula) on React SPAs.</li>
+                    <li>Handled dynamic browser fingerprinting, proxy rotation, automated CAPTCHA resolution, and asynchronous SMS verification gateways.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">Education</h2>
+            <div class="cv-entry">
+                <div class="cv-entry-head">
+                    <span class="cv-entry-title">Russian Academy of Crafts</span>
+                    <span class="cv-entry-date">2013 – 2014</span>
+                </div>
+                <div class="cv-edu-sub">Artistic Forging (Third-class Artisan)</div>
+            </div>
+            <p class="cv-note">* Continuous self-directed engineering specialization in Python backend architecture, distributed systems, cloud infrastructure, and security automation.</p>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
